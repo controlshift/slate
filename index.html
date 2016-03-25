@@ -4,10 +4,9 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>ControlShift Labs API & Webhook Reference</title>
+    <link rel="Shortcut Icon" href="http://www.controlshiftlabs.com/wp-content/themes/controlshift/images/favicon.ico" type="image/x-icon" />
 
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -88,10 +87,12 @@
   color: #90a959;
 }
     </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;]">
+  <body class="index" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -99,11 +100,8 @@
       </span>
     </a>
     <div class="tocify-wrapper">
-      <img src="images/logo.png" />
+      <img alt="ControlShift Labs" src="images/logo.png" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -121,87 +119,79 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>Welcome to the ControlShift Labs JSON API and Webhook Endpoint documentation!  Our API and Webhooks are designed to allow software engineers to create rich integrations between ControlShift content and third-party services and websites.</p>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+          <h1 id="json-api-endpoints">JSON API Endpoints</h1>
 
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
+<p>The JSONP API is a simple way to embed ControlShift petition content in external sites. It&rsquo;s intended for use by a front-end developer embed content on web pages outside of the platform.  For example, a developer could:</p>
 
-<h1 id="authentication">Authentication</h1>
+<ul>
+<li>Show petitions</li>
+<li>Allow a user to search for near by petitions</li>
+<li>List petition categories</li>
+<li>Show petitions within an effort</li>
+<li>If a site visitor is logged in, show a users past actions and created petitions</li>
+</ul>
 
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>All of the endpoints can be consumed as jsonp instead of json by adding callback or variable parameters to the URLs.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p>The URL slugs through the API are the same as those that are used through the web to represent specific petitions or categories.  Many front-end libraries including jQuery make it easy to consume jsonp endpoints. Our examples below use jQuery to consume these resources.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-
-<blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+<aside class="success">
+These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;ll need to replace this with the hostname of your instance.
 </aside>
 
-<h1 id="kittens">Kittens</h1>
+          <h2 id="get-a-single-petition">Get a single petition</h2>
+<pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="kd">var</span> <span class="nx">petitionSlug</span> <span class="o">=</span> <span class="s1">'turn-back-human-trafficking-faith-leaders'</span><span class="p">;</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s1">'https://demo.controlshiftlabs.com/petitions/'</span><span class="o">+</span><span class="nx">petitionSlug</span><span class="o">+</span><span class="s1">'.json'</span><span class="p">,</span>
+    <span class="na">dataType</span><span class="p">:</span> <span class="s1">'jsonp'</span><span class="p">,</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
 
-<h2 id="get-all-kittens">Get All Kittens</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above code would display your returned petition data in the console.  The JSON would be structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">107370</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pledge to TURN BACK human trafficking Now - Faith or Community Leaders"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"President John Dramani Mahama"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Today there are over 192,000 people trapped in modern slavery in Ghana [1]. Denied of their rights to education and often lacking parental care or support, over 1.8 million Ghanaian children are working rather than in school (21.8% of the population). Of these an estimated 1.2 million are forced to undertake hazardous child labour including mining, fishing and domestic slavery [3].\r\n\r\nThe experience of Kwesi is a typical example. Following the death of his father, Kwesi’s mother borrowed money to pay for the funeral. Faced with a debt she was unable to pay her creditor threatened her with jail unless she gave up her son as a labourer.  Kwesi was trafficked to Lake Volta to work as a “fisher boy”. and for the next three years, Kwesi worked for an average of 18 hours per day with little rest, no pay and only enough food to give him the energy for more work. By the time we found Kwesi and rescued him, he had suffered extensive emotional and physical abuse and partially lost sight in his left eye. \r\n\r\nOver 21,000 children like Kwesi, many of them trafficked, are trapped in hazardous labour on Lake Volta in Ghana[2]. We are working hard to bring them home, but want to ensure no one is trafficked in the first place. Please help fulfil the wish made by Kwesi when he gained his freedom: “I want the world to know that no child should be sent into slavery”.\r\n\r\n[1]. http://www.globalslaveryindex.org/ 2014\r\n[2].International Labour Organisation/International Programme on Elimination of Child Labour (ILO/IPEC) Analytical Study on Child Labour In Lake Volta Fishing in Ghana\r\n[3].Ghana Living Standard Survey 6 (GLSS 6): Child Labour Report by Ghana Statistical Services, 2014"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I know that globally millions of people are trafficked for forced labour and sexual exploitation and that Ghana is a source, transit and destination country for this social evil. The concerns raised by Parliament recently, about men, women, and children who are trafficked and subjected to forced labor and sexual exploitation human points to the need for everyone to take action.\r\n\r\nI hereby pledge to TURN BACK human trafficking. \r\n•\tI will be vigilant of suspicious movement of children and vulnerable people, victims of bonded labour and of children working when they should be in school \r\n•\tI promise to always report my concerns to the appropriate authorities as quickly as possible.\r\n\r\nAs a faith or community leader, I promise to warn my congregation of the dangers of child trafficking, and support them in reporting any suspicions they have."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-01T15:37:47.621-04:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-14T08:45:52.396-04:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"turn-back-human-trafficking-faith-leaders"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"delivery_details"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"administered_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-29T09:32:08.258-04:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"alias"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"bsd_constituent_group_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Civil Rights"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"civil-rights-1"</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"effort"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"turn-back-human-trafficking-now"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"resized_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/hero/Untitled.png?1433187465"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/original/Untitled.png?1433187465"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kristyn Arrighi"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves all kittens.</p>
+<p>This retrieves a single petition object.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
+<p><code class="prettyprint">GET https://demo.controlshiftlabs.com/petitions/&lt;slug&gt;.json</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -213,75 +203,1525 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>slug</td>
+<td>null</td>
+<td>The petition&rsquo;s unique identification slug. If none is provided, you will get a 404 error.</td>
 </tr>
 </tbody></table>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+<h3 id="working-example">Working Example</h3>
 
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>A working example can be found on <a href="#not-implemented">jsbin</a>.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+          <h2 id="get-featured-petitions">Get featured petitions</h2>
+<pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s1">'https://demo.controlshiftlabs.com/featured.json'</span><span class="p">,</span>
+    <span class="na">dataType</span><span class="p">:</span> <span class="s1">'jsonp'</span><span class="p">,</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above code would display your returned featured petitions data in the console.  The JSON would be structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight json"><code><span class="p">[{</span><span class="w">
+  </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"release-pro-democracy-youth-activists-in-azerbaijan"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Release pro-democracy youth activists in Azerbaijan"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/release-pro-democracy-youth-activists-in-azerbaijan"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awesome"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/hero/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/form/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/large/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/open_graph/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/original/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"President Ilham Aliyev of Azerbaijan"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Immediately release the imprisoned youth activists from the NIDA civic movement.\r\n\r\nShahin Novruzlu, Rashadat Akundov, Mammad Azizov, Bakhtiyar Guliyev, Zaur Gurbanli, Rashad Hasanov, Uzeyir Mammadli and Ilkin Rustamzade were arrested on criminal charges of possessing explosives and intent of public disorder. Human rights organizations believe these charges have been fabricated. The actual reason for their arrest was their criticism of the Azerbaijani authorities and their online activism, calling for peaceful demonstrations.\r\n\r\nShahin Novruzlu, who was only 17 at the time of his arrest, has lost his front teeth as a result of torture in detention. Mammad Azizov and Bakhtiyar Guliyev have complained of torture too.\r\n\r\nFrom 14 May 2014, Azerbaijan is chairing the Committee of Ministers of the Council of Europe. This organization is responsible for promoting and protecting human rights. I am deeply concerned that there are civil society activists in Azerbaijan tortured and imprisoned solely for expressing their views and organizing peaceful protests.\r\n\r\nAzerbaijan must live up to the high expectations of the chair of the Committee of Ministers of the Council of Europe. The NIDA activists must be immediately released."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">119</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kristyn Arrighi"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-07-24T20:07:14.607-04:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-26T14:30:57.330-05:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shahin Novruzlu and fellow youth activists from the pro-democracy movement NIDA campaigned for democracy and against human rights abuses and widespread corruption in Azerbaijan. In February 2013 th..."</span><span class="w">
+</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"give-us-more-icecream"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Give us more icecream"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/give-us-more-icecream"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awesome"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/hero/10982478_634745530004482_279346285079955699_n.jpg?1455250695"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/form/10982478_634745530004482_279346285079955699_n.jpg?1455250695"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/large/10982478_634745530004482_279346285079955699_n.jpg?1455250695"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/open_graph/10982478_634745530004482_279346285079955699_n.jpg?1455250695"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/original/10982478_634745530004482_279346285079955699_n.jpg?1455250695"</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cook"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cook and provide more icecream"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tudor Bradatan"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-11T23:17:42.782-05:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-26T14:20:46.987-05:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Because we like and need it"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cluj"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46.7712101"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23.6236353"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RO"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CJ"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-11T23:17:42.769-05:00"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"turn-back-human-trafficking-faith-leaders"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pledge to TURN BACK human trafficking Now - Faith or Community Leaders"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/turn-back-human-trafficking-faith-leaders"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awesome"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/hero/Untitled.png?1433187465"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/form/Untitled.png?1433187465"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/large/Untitled.png?1433187465"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/open_graph/Untitled.png?1433187465"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/original/Untitled.png?1433187465"</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"President John Dramani Mahama"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I know that globally millions of people are trafficked for forced labour and sexual exploitation and that Ghana is a source, transit and destination country for this social evil. The concerns raised by Parliament recently, about men, women, and children who are trafficked and subjected to forced labor and sexual exploitation human points to the need for everyone to take action.\r\n\r\nI hereby pledge to TURN BACK human trafficking. \r\n•\tI will be vigilant of suspicious movement of children and vulnerable people, victims of bonded labour and of children working when they should be in school \r\n•\tI promise to always report my concerns to the appropriate authorities as quickly as possible.\r\n\r\nAs a faith or community leader, I promise to warn my congregation of the dangers of child trafficking, and support them in reporting any suspicions they have."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kristyn Arrighi"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-01T15:37:47.621-04:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-14T08:45:52.396-04:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Today there are over 192,000 people trapped in modern slavery in Ghana [1]. Denied of their rights to education and often lacking parental care or support, over 1.8 million Ghanaian children are wo..."</span><span class="w">
+</span><span class="p">}]</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can&rsquo;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<p>This retrieves a JSON array of featured petitions objects.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">GET https://demo.controlshiftlabs.com/featured.json</code></p>
 
-<h3 id="url-parameters">URL Parameters</h3>
+<h3 id="working-example">Working Example</h3>
+
+<p>A working example can be found on <a href="#not-implemented">jsbin</a>.</p>
+
+          <h2 id="get-list-of-categories">Get list of categories</h2>
+<pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s1">'https://demo.controlshiftlabs.com/categories.json'</span><span class="p">,</span>
+    <span class="na">dataType</span><span class="p">:</span> <span class="s1">'jsonp'</span><span class="p">,</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+
+</code></pre>
+
+<blockquote>
+<p>The above code would display a list of categories in the console.  The JSON would be structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"category_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Animal Rights"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"category_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"animal-rights-2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/categories/animal-rights-2.json"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"locales"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"es"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Derechos Animales"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"category_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cats"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"category_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cats"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/categories/cats.json"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">270</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"locales"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"es"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gatos"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"category_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Civil Rights"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"category_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"civil-rights-1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/categories/civil-rights-1.json"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">165</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"locales"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"es"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Derechos Civiles"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"category_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Culture"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"category_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cultura"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/categories/cultura.json"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"locales"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"es"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cultura"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This retrieves a JSON array of category objects.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://demo.controlshiftlabs.com/categories.json</code></p>
+
+<h3 id="working-example">Working Example</h3>
+
+<p>A working example can be found on <a href="#not-implemented">jsbin</a>.</p>
+
+          <h2 id="list-petitions-in-a-category">List petitions in a category</h2>
+<pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s1">'https://demo.controlshiftlabs.com/categories/mice.json'</span><span class="p">,</span>
+    <span class="na">dataType</span><span class="p">:</span> <span class="s1">'jsonp'</span><span class="p">,</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+
+</code></pre>
+
+<blockquote>
+<p>The above code would return petitions data from the category with the slug <code class="prettyprint">mice</code>.  The JSON would be structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"previous_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"next_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mice"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apple-stop-your-comic-sans-snobbery"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple: Stop your Comic Sans snobbery"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/apple-stop-your-comic-sans-snobbery"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/24551/hero/helveticacomicsans.gif?1398764339"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/24551/form/helveticacomicsans.gif?1398764339"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/24551/large/helveticacomicsans.gif?1398764339"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/24551/open_graph/helveticacomicsans.gif?1398764339"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/24551/original/helveticacomicsans.gif?1398764339"</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+    </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tim Cook, CEO Apple"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Use Comic Sans for the default font on the iPhone 6."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Wood"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-04-29T05:35:47.693-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-01-06T11:02:17.617-05:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple occupy a key position in the hearts of typeface poseurs everywhere. If they were to make a bold step and switch to using the people's font, Comic Sans on the new iPhone, this would cause mass..."</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clean-up-the-himalayas"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clean up the Himalayas"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/clean-up-the-himalayas"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/6359/hero/gorak_shep_thumb.jpg?1431734031"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/6359/form/gorak_shep_thumb.jpg?1431734031"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/6359/large/gorak_shep_thumb.jpg?1431734031"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/6359/open_graph/gorak_shep_thumb.jpg?1431734031"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/6359/original/gorak_shep_thumb.jpg?1431734031"</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+    </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nepal Ghurung"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clean up the Khumbu region."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grant Cox"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-06-03T17:13:41.399-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-17T15:11:48.665-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It's quite dirty, and I don't like it."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nepal"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28.394857"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"84.124008"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NP"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nepal"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-06-03T17:13:41.057-04:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This retrieves a paginated list of petitions in a category.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://demo.controlshiftlabs.com/categories/&lt;category slug&gt;.json</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>page</td>
+<td>1</td>
+<td>The page number of results for the specified category. Minimum of 1.</td>
 </tr>
 </tbody></table>
 
+<h3 id="working-example">Working Example</h3>
+
+<p>A working example can be found on <a href="#not-implemented">jsbin</a>.</p>
+
+          <h2 id="list-petitions-in-an-effort">List petitions in an effort</h2>
+<pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="kd">var</span> <span class="nx">effortSlug</span> <span class="o">=</span> <span class="s1">'forecast-the-facts'</span><span class="p">;</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s1">'https://demo.controlshiftlabs.com/efforts/'</span><span class="o">+</span><span class="nx">effortSlug</span><span class="o">+</span><span class="s1">'.json'</span><span class="p">,</span>
+    <span class="na">dataType</span><span class="p">:</span> <span class="s1">'jsonp'</span><span class="p">,</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+
+</code></pre>
+
+<blockquote>
+<p>The above code would return petitions data from the effort with the slug <code class="prettyprint">forecast-the-facts</code>.  The JSON would be structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast the Facts"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"forecast-the-facts"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It is imperative that weather reporters fulfill an important part of their job, and explain the ways that climate change has influenced the freakish \"Frankenstorm\" Sandy. Below is a list of the meteorologists in your area, with telephone numbers and e-mail addresses. Please call or email them a message in your own words, asking them to connect the dots between global warming pollution and disasters like Sandy. Take a look at the talking points below if you need any help."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/efforts/images/16/hero/forecast.png?1351625402"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"petitions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"forecast-the-facts-of-frankenstorm-wmtv-madison-wi"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast the Facts of Frankenstorm: WMTV Madison, WI"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-wmtv-madison-wi"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/hero/forecast.png?1429199472"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/form/forecast.png?1429199472"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/large/forecast.png?1429199472"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/open_graph/forecast.png?1429199472"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/original/forecast.png?1429199472"</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+    </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WMTV Madison, WI"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It is imperative that weather reporters fulfill an important part of their job, and explain the ways that climate change has influenced the freakish \"Frankenstorm\" Sandy. Below is a list of the meteorologists in your area, with telephone numbers and e-mail addresses. Please call or email them a message in your own words, asking them to connect the dots between global warming pollution and disasters like Sandy. Take a look at the talking points below if you need any help."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kristyn Arrighi"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-04-16T11:51:12.700-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T20:23:06.034-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We want TV meteorologists to understand that the public is depending on them for information about climate change, especially as it increasingly impacts our weather patterns. We know that meteorolo..."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WMTV-TV (Madison), Forward Drive, Madison, WI, United States"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43.05091"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-89.486738"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forward Dr"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53711"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WI"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"615"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WMTV-TV (Madison)"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-04-16T11:51:11.222-04:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"forecast-the-facts-of-frankenstorm-oakland-weather-forecaster"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast the Facts of Frankenstorm: Oakland Weather Forecaster"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-oakland-weather-forecaster"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/26261/hero/forecast.png?1401823164"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/26261/form/forecast.png?1401823164"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/26261/large/forecast.png?1401823164"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/26261/open_graph/forecast.png?1401823164"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/26261/original/forecast.png?1401823164"</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+    </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oakland Weather Forecaster"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It is imperative that weather reporters fulfill an important part of their job, and explain the ways that climate change has influenced the freakish \"Frankenstorm\" Sandy. Below is a list of the meteorologists in your area, with telephone numbers and e-mail addresses. Please call or email them a message in your own words, asking them to connect the dots between global warming pollution and disasters like Sandy. Take a look at the talking points below if you need any help."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adam Klaus"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-06-03T15:19:26.620-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-09-22T14:33:22.751-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We want TV meteorologists to understand that the public is depending on them for information about climate change, especially as it increasingly impacts our weather patterns. We know that meteorolo..."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oakland, CA, United States"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37.8043637"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-122.2711137"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-11-27T14:51:10.091-05:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"forecast-the-facts-of-frankenstorm-woak"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast the Facts of Frankenstorm: WOAK"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-woak"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/hero/forecast.png?1439846499"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/form/forecast.png?1439846499"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/large/forecast.png?1439846499"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/open_graph/forecast.png?1439846499"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/original/forecast.png?1439846499"</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+    </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WOAK"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It is imperative that weather reporters fulfill an important part of their job, and explain the ways that climate change has influenced the freakish \"Frankenstorm\" Sandy. Below is a list of the meteorologists in your area, with telephone numbers and e-mail addresses. Please call or email them a message in your own words, asking them to connect the dots between global warming pollution and disasters like Sandy. Take a look at the talking points below if you need any help."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adam Klaus"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-17T17:21:39.791-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-17T17:29:02.816-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We want TV meteorologists to understand that the public is depending on them for information about climate change, especially as it increasingly impacts our weather patterns. We know that meteorolo..."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oklahoma City, OK, United States"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35.4675602"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-97.5164276"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-12-17T14:49:51.324-05:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This retrieves a list of petitions in an effort.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://demo.controlshiftlabs.com/efforts/&lt;effort slug&gt;.json</code></p>
+
+<h3 id="working-example">Working Example</h3>
+
+<p>A working example can be found on <a href="#not-implemented">jsbin</a>.</p>
+
+          <h2 id="find-near-by-petitions">Find near by petitions</h2>
+<pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="kd">var</span> <span class="nx">effortSlug</span> <span class="o">=</span> <span class="s1">'forecast-the-facts'</span><span class="p">,</span>
+    <span class="nx">formatted_address</span> <span class="o">=</span> <span class="s1">'123 Main Street Fall Church, VA, USA'</span><span class="p">,</span>
+    <span class="nx">latitude</span> <span class="o">=</span> <span class="mf">38.88233400000001</span><span class="p">,</span>
+    <span class="nx">longitude</span> <span class="o">=</span> <span class="o">-</span><span class="mf">77.17109140000002</span><span class="p">;</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s1">'https://demo.controlshiftlabs.com/efforts/'</span><span class="o">+</span><span class="nx">effortSlug</span><span class="o">+</span><span class="s1">'near.json'</span><span class="p">,</span>
+    <span class="na">dataType</span><span class="p">:</span> <span class="s1">'jsonp'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s1">'location[query]'</span><span class="p">:</span> <span class="nx">formatted_address</span><span class="p">,</span>
+      <span class="s1">'location[latitude]'</span><span class="p">:</span> <span class="nx">latitude</span><span class="p">,</span>
+      <span class="s1">'location[longitude]'</span><span class="p">:</span> <span class="nx">longitude</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span> <span class="nx">data</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+
+
+
+</code></pre>
+
+<blockquote>
+<p>The above code would return petitions data from the effort with the slug <code class="prettyprint">forecast-the-facts</code>.  The JSON would be structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"closest_target"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"doug-kammerer-nbc4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doug Kammerer - NBC4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Washington D.C., DC"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"target_petition_created"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"petition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"forecast-the-facts-of-frankenstorm-doug-kammerer-nbc4"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast the Facts of Frankenstorm: Doug Kammerer - NBC4"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-doug-kammerer-nbc4"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/2139/hero/forecast.png?1351625677"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doug Kammerer - NBC4"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"other_targets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linda-church-wpix"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Linda Church - WPIX"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York, NY"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"target_petition_created"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"petition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"forecast-the-facts-of-frankenstorm-linda-church-wpix"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast the Facts of Frankenstorm: Linda Church - WPIX"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-linda-church-wpix"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/2137/hero/forecast.png?1351625520"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Linda Church - WPIX"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wnyc"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WNYC "</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manhattan, New York, NY, United States"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"target_awaiting_petition"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"create_petition_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/efforts/forecast-the-facts/petitions/creating?target_id=5148"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"whdtv-boston"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHDTV Boston"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Boston, MA, United States"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"target_petition_created"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"petition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"forecast-the-facts-of-frankenstorm-whdtv-boston"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast the Facts of Frankenstorm: WHDTV Boston"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-whdtv-boston"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/28044/hero/forecast.png?1405015225"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHDTV Boston"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wmtv-madison-wi"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WMTV Madison, WI"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WMTV-TV (Madison), Forward Drive, Madison, WI, United States"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"target_petition_created"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"petition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"forecast-the-facts-of-frankenstorm-wmtv-madison-wi"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast the Facts of Frankenstorm: WMTV Madison, WI"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-wmtv-madison-wi"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/hero/forecast.png?1429199472"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WMTV Madison, WI"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Search for closest petition in an effort</p>
+
+<p>This JSON endpoint allows you to reproduce the &lsquo;search for the nearest petition in an effort&rsquo; interface. Use this endpoint to build a place for users to enter their location. Once they&rsquo;ve searched for a location, we&rsquo;ll return the nearest petition. This endpoint can most easily be used with a google maps integration to help your users locate their addresses or other points of interest.  Click on the working example below.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://demo.controlshiftlabs.com/efforts/&lt;effort slug&gt;/near.json</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<p>This endpoints accepts a few nested attributes in a <code class="prettyprint">location</code> object, as described below.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>location[query]</td>
+<td>null</td>
+<td>MARIO TODO</td>
+</tr>
+<tr>
+<td>location[latitude]</td>
+<td>null</td>
+<td>Float - a float representing the queried latitude</td>
+</tr>
+<tr>
+<td>location[longitude]</td>
+<td>null</td>
+<td>Float - a float representing the queried longitude</td>
+</tr>
+</tbody></table>
+
+<h3 id="working-example">Working Example</h3>
+
+<p>A working example can be found on <a href="#not-implemented">jsbin</a>.</p>
+
+          <h2 id="logged-in-user">Logged in user</h2>
+<pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s1">'https://demo.controlshiftlabs.com/api/graph/me.json'</span><span class="p">,</span>
+    <span class="na">dataType</span><span class="p">:</span> <span class="s1">'jsonp'</span><span class="p">,</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+
+</code></pre>
+
+<blockquote>
+<p>The above code would user details for a signed in user. The returned JSON would be structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="nt">"status"</span><span class="p">:</span><span class="s2">"authenticated"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"me"</span><span class="p">:{</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="s2">"john@smith.com"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="nt">"petitions"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nt">"slug"</span><span class="p">:</span><span class="s2">"sample-campaign"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"title"</span><span class="p">:</span><span class="s2">"Sample Campaign"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2016-03-25T15:37:28.849-04:00"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-03-25T15:37:35.304-04:00"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="nt">"events"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nt">"slug"</span><span class="p">:</span><span class="s2">"sample-campaign"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"title"</span><span class="p">:</span><span class="s2">"Sample Campaign"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2016-03-25T15:37:28.849-04:00"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-03-25T15:37:35.304-04:00"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="nt">"chapters"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Brooklyn bruisers"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"slug"</span><span class="p">:</span><span class="s2">"brooklyn-bruisers"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2015-05-14T15:53:03.901-04:00"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-03-25T15:40:44.661-04:00"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response for a visitor who is not logged in:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="s2">"not_authenticated"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"user is not signed in"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>We provide a specialized jsonp endpoint to return information about the currently signed in user. Customers can use this endpoint to power features where information about the current user&rsquo;s petitions, sign in status, and other information about their account is displayed on external sites. Some examples of the sorts of functionality that this could be used to provide include:</p>
+
+<ul>
+<li>Conditionally show either a login link for unauthenticated users or a link to the user&rsquo;s my account page in the header of external pages.</li>
+<li>Show information about a user&rsquo;s campaigns when someone visits an external site, or a prompt to start a campaign if the currently signed in user has none.</li>
+<li>Show a direct link to a user&rsquo;s local group from an external site rather than linking to a generic search for your group page.</li>
+</ul>
+
+<aside class="notice">
+You must whitelist your hostname prior to using this end point. Read more below.
+</aside>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://demo.controlshiftlabs.com/api/graph/me.json</code></p>
+
+<h3 id="whitelisting-a-hostname">Whitelisting a Hostname</h3>
+
+<p>We authenticate requests to the current user endpoint by validating the hostname set in the http referer header against a whitelist. The whitelist is set of hostnames that scripts can be served from. If you request the endpoint from a script served from a non-whitelisted hostname you&rsquo;ll get an error message. This is necessary to prevent cross site scripting attacks that would allow someone to display logged in user information on unauthorized sites.</p>
+
+<p>You can add hostnames to the whitelist through a self-serve interface in the &ldquo;Settings&rdquo; area of your instance. Settings &gt; Add Hostname &gt; enter a Hostname, and click save.</p>
+
+<p>The hostname must be a hostname string like &ldquo;localhost&rdquo; &ldquo;www.google.com&rdquo; or the like. Wildcards or full http urls are not supported.</p>
+
+<p>When you access the graph api endpoint from a page served from a whitelisted hostname the browser will automatically set a referrer header on those requests. We use this referrer header to validate the server the script was served from against the whitelist. You can verify that a whitelisted hostname is working properly with the curl command line tool:</p>
+
+<p><code class="prettyprint">curl --referer http://localhost/ http://demo.controlshiftlabs.com/api/graph/me.json</code></p>
+
+<p>The above should return a json blob indicating that the user is not signed in if localhost is whitelisted. Otherwise you&rsquo;ll get a not whitelisted error.</p>
+
+<p>For authenticated users we currently return their first and last names, email addresses, and lists of petitions they&rsquo;ve created, events they&rsquo;ve created and local groups they are a member of.</p>
+
+          <h1 id="webhook-endpoints">Webhook Endpoints</h1>
+
+<p>Webhooks can be used by software engineers to integrate ControlShift with third-party systems. They allow engineers to build software that is triggered by events that take place within ControlShift. Controlshift would execute HTTP calls when certain event happen (e.g. a petition is launched; a category is changed).</p>
+
+<p>To begin using these new webhooks, go to the admin homepage and click &ldquo;Settings&rdquo; under &ldquo;Manage.&rdquo; Then choose the &ldquo;CRM Integration &amp; Webhooks&rdquo; tab and click &ldquo;Configure Webhook Endpoints.&rdquo; To begin sending data, you&rsquo;ll need to add a &ldquo;New Webhook Endpoint.&rdquo; Each Webhook Endpoint URL receives a full firehose of all hooks that occur within ControlShift.</p>
+
+<p>We recommend using a tool like <a href="http://requestb.in/">RequestBin</a> to help debug and develop your webhook integration. RequestBin allows engineers to see all of the webhooks generated by the application and sent to an endpoint.</p>
+
+<p>If you need additional information about webhooks or how to use them, please send us a support email <a href="mailto:support@controlshiftlabs.com">support@controlshiftlabs.com</a>. We&rsquo;d also love stories about how customers are using webhooks.</p>
+
+<h2 id="webhooks-event-summary">Webhooks event summary</h2>
+
+<p>The ControlShift Labs Webhooks can be configured to support the following events:</p>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#blast_email-created">blast_email.created</a></td>
+<td>A new blast email is ready for moderation</td>
+</tr>
+<tr>
+<td><a href="#category-created">category.created</a></td>
+<td>A new category is created</td>
+</tr>
+<tr>
+<td><a href="#category-updated">category.updated</a></td>
+<td>A category is changed</td>
+</tr>
+<tr>
+<td><a href="#data-full_table_exported">data.full_table_exported</a></td>
+<td>A full-table dump is ready for retrieval at S3</td>
+</tr>
+<tr>
+<td><a href="#data-incremental_table_exported">data.incremental_table_exported</a></td>
+<td>An incremental CSV update is ready for retrieval at S3</td>
+</tr>
+<tr>
+<td><a href="#event-created">event.created</a></td>
+<td>A new event is published</td>
+</tr>
+<tr>
+<td><a href="#event-updated">event.updated</a></td>
+<td>An event is updated</td>
+</tr>
+<tr>
+<td><a href="#flag-created">flag.created</a></td>
+<td>Someone flags a problem for admin attention</td>
+</tr>
+<tr>
+<td><a href="#local_chapter-last_organiser-deleted">local_chapter.last_organiser.deleted</a></td>
+<td>A local chapter&rsquo;s last organiser leaves the group</td>
+</tr>
+<tr>
+<td><a href="#local_chapter-organiser_request-created">local_chapter.organiser_request.created</a></td>
+<td>A user applies to be a local chapter organiser</td>
+</tr>
+<tr>
+<td><a href="#member-deleted-resources_transferred">member.deleted.resources_transferred</a></td>
+<td>Resources previously owned by a deleted member have been transferred to another</td>
+</tr>
+<tr>
+<td><a href="#petition-flagged">petition.flagged</a></td>
+<td>A petition is flagged for the first or fifth time</td>
+</tr>
+<tr>
+<td><a href="#petition-inappropriate-creator_message">petition.inappropriate.creator_message</a></td>
+<td>An inappropriate petition&rsquo;s creator writes a message to admins</td>
+</tr>
+<tr>
+<td><a href="#petition-launched">petition.launched</a></td>
+<td>A new petition is launched</td>
+</tr>
+<tr>
+<td><a href="#petition-launched-ham">petition.launched.ham</a></td>
+<td>A petition passes the post-launch spam check</td>
+</tr>
+<tr>
+<td><a href="#petition-reactivated">petition.reactivated</a></td>
+<td>A hidden or ended petition is reactivated</td>
+</tr>
+<tr>
+<td><a href="#petition-updated">petition.updated</a></td>
+<td>A petition is updated</td>
+</tr>
+<tr>
+<td><a href="#petition-edited">petition.edited</a></td>
+<td>A petition&rsquo;s content is edited</td>
+</tr>
+<tr>
+<td><a href="#signature-created">signature.created</a></td>
+<td>Member signs a petition</td>
+</tr>
+<tr>
+<td><a href="#unsubscribe-created">unsubscribe.created</a></td>
+<td>Member unsubscribes</td>
+</tr>
+<tr>
+<td><a href="#locale-created">locale.created</a></td>
+<td>New i18n instance created</td>
+</tr>
+<tr>
+<td><a href="#forum-message-requires_moderation">forum.message.requires_moderation</a></td>
+<td>A new message requires moderation</td>
+</tr>
+</tbody></table>
+
+<h2 id="blast_email-created">blast_email.created</h2>
+
+<blockquote>
+<p>Here&rsquo;s what the payload looks like:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blast_email.created"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"from_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please help spread the word"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"recipient_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">990</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"030ee43a4fa9788e084d9cfc"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>A new blast email is ready for moderation</p>
+
+<h2 id="category-created">category.created</h2>
+
+<blockquote>
+<p>Here&rsquo;s what the payload looks like:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"category.created"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Environment"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"environment"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T12:38:46-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T12:38:46-04:00"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"df67126973794c2efde76cc4"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>A new category is created</p>
+
+<h2 id="category-updated">category.updated</h2>
+
+<blockquote>
+<p>Here&rsquo;s what the payload looks like:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"category.updated"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Environment"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"environment"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T12:38:46-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T12:38:46-04:00"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"df67126973794c2efde76cc4"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>A category is changed</p>
+
+<h2 id="data-full_table_exported">data.full_table_exported</h2>
+
+<blockquote>
+<p>Here&rsquo;s what the payload looks like:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data.full_table_exported"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://agra-data-exports.s3.amazonaws.com/default/petitions_20150803180434.csv?AWSAccessKeyId=XXX&amp;amp;Expires=1438711490&amp;amp;Signature=ABCDE%3D"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"petitions"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cf0f50d7d225e20a188be328"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>A full-table dump is ready for retrieval at S3.</p>
+
+<aside class="notice">
+URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &rsquo;&amp;&rsquo;, &rsquo;&lt;&rsquo;, &rsquo;&gt;&rsquo;, etc.). See <a target="blank" href="http://www.rubydoc.info/gems/activesupport/3.2.22/ActiveSupport/JSON/Encoding">
+http://www.rubydoc.info/gems/activesupport/3.2.22/ActiveSupport/JSON/Encoding</a> for more details.
+</aside>
+
+<h2 id="data-incremental_table_exported">data.incremental_table_exported</h2>
+
+<blockquote>
+<p>Here&rsquo;s what the payload looks like:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data.incremental_table_exported"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://agra-data-exports.s3.amazonaws.com/default/petitions_20150803180434.csv?AWSAccessKeyId=XXX&amp;amp;Expires=1438711490&amp;amp;Signature=ABCDE%3D"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"petitions"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cf0f50d7d225e20a188be328"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>An incremental CSV update is ready for retrieval at S3</p>
+
+<aside class="notice">
+URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &rsquo;&amp;&rsquo;, &rsquo;&lt;&rsquo;, &rsquo;&gt;&rsquo;, etc.). See <a target="blank" href="http://www.rubydoc.info/gems/activesupport/3.2.22/ActiveSupport/JSON/Encoding">
+http://www.rubydoc.info/gems/activesupport/3.2.22/ActiveSupport/JSON/Encoding</a> for more details.
+</aside>
+
+<h2 id="event-created">event.created</h2>
+
+<blockquote>
+<p>Here&rsquo;s what the payload looks like:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"event.created"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"petition-hand-in"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Petition Hand In"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/events/petition-hand-in"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"030ee43a4fa9788e084d9cfc"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>A new event is published</p>
+
+<h2 id="event-updated">event.updated</h2>
+
+<blockquote>
+<p>Here&rsquo;s what the payload looks like:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"event.updated"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"petition-hand-in"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Petition Hand In"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/events/petition-hand-in"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"030ee43a4fa9788e084d9cfc"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>An event is updated</p>
+
+<h2 id="flag-created">flag.created</h2>
+
+<blockquote>
+<p>For example, a local chapter organiser flags a forum message.</p>
+</blockquote>
+
+<p>Here&rsquo;s what the payload looks like:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flag.created"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"flagged"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ForumMessage"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">224</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"flagged_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bobby@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bobby Singer"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This violates our community commitments"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unreviewed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-05T13:17:46-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-05T13:17:46-04:00"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f848f4b38b9125f7089d59ad"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Someone flags a problem for admin attention</p>
+
+<h2 id="local_chapter-last_organiser-deleted">local_chapter.last_organiser.deleted</h2>
+
+<blockquote>
+<p>Here&rsquo;s what the payload looks like:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local_chapter.last_organiser.deleted"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"springfield-members"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Springfield Members"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/local_chapters/springfield-members"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"030ee43a4fa9788e084d9cfc"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>A local chapter&rsquo;s last organiser leaves the group</p>
+
+<h2 id="local_chapter-organiser_request-created">local_chapter.organiser_request.created</h2>
+
+<blockquote>
+<p>Here&rsquo;s what the payload looks like:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local_chapter.organiser_request.created"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"local_chapter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"springfield-members"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Springfield Members"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/local_chapters/springfield-members"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">505</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane@example.com"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I want to be part of this amazing group"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T12:38:46-04:00"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"030ee43a4fa9788e084d9cfc"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>A user applies to be a local chapter organiser</p>
+
+<h2 id="member-deleted-resources_transferred">member.deleted.resources_transferred</h2>
+
+<blockquote>
+<p>Here&rsquo;s what the payload looks like:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"member.deleted.resources_transferred"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"member"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane@example.com"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"new_owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">888</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"richard@example.com"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"030ee43a4fa9788e084d9cfc"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Resources previously owned by a deleted member have been transferred to another</p>
+
+<h2 id="petition-flagged">petition.flagged</h2>
+
+<blockquote>
+<p>Here&rsquo;s what the payload looks like:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"petition.flagged"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"don-t-destroy-our-park"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Don't destroy our park!"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/don-t-destroy-our-park"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/hero/imag0945.jpg?1438621934"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/form/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/large/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/open_graph/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/original/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown City Council"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tyshawn Morissette"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9fccc1957d7d7ebc93fb0f05"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>A petition is flagged for the first or fifth time</p>
+
+<h2 id="petition-inappropriate-creator_message">petition.inappropriate.creator_message</h2>
+
+<blockquote>
+<p>Here&rsquo;s what the payload looks like:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"petition.inappropriate.creator_message"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"don-t-destroy-our-park"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Don't destroy our park!"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/don-t-destroy-our-park"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/hero/imag0945.jpg?1438621934"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/form/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/large/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/open_graph/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/original/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown City Council"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tyshawn Morissette"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9fccc1957d7d7ebc93fb0f05"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>An inappropriate petition&rsquo;s creator writes a message to admins</p>
+
+<h2 id="petition-launched">petition.launched</h2>
+
+<blockquote>
+<p>Here&rsquo;s what the payload looks like:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"petition.launched"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"don-t-destroy-our-park"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Don't destroy our park!"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/don-t-destroy-our-park"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/hero/imag0945.jpg?1438621934"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/form/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/large/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/open_graph/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/original/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown City Council"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tyshawn Morissette"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9fccc1957d7d7ebc93fb0f05"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>A new petition is launched</p>
+
+<h2 id="petition-launched-ham">petition.launched.ham</h2>
+
+<blockquote>
+<p>Here&rsquo;s what the payload looks like:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"petition.launched.ham"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"don-t-destroy-our-park"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Don't destroy our park!"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/don-t-destroy-our-park"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/hero/imag0945.jpg?1438621934"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/form/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/large/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/open_graph/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/original/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown City Council"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tyshawn Morissette"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9fccc1957d7d7ebc93fb0f05"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>A petition passes the post-launch spam check</p>
+
+<h2 id="petition-reactivated">petition.reactivated</h2>
+
+<blockquote>
+<p>Here&rsquo;s what the payload looks like:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"petition.reactivated"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"don-t-destroy-our-park"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Don't destroy our park!"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/don-t-destroy-our-park"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/hero/imag0945.jpg?1438621934"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/form/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/large/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/open_graph/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/original/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown City Council"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tyshawn Morissette"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9fccc1957d7d7ebc93fb0f05"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>A hidden or ended petition is reactivated</p>
+
+<h2 id="petition-updated">petition.updated</h2>
+
+<blockquote>
+<p>Here&rsquo;s what the payload looks like:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"petition.updated"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"don-t-destroy-our-park"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Don't destroy our park!"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/don-t-destroy-our-park"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/hero/imag0945.jpg?1438621934"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/form/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/large/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/open_graph/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/original/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown City Council"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tyshawn Morissette"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9fccc1957d7d7ebc93fb0f05"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>A petition is updated</p>
+
+<h2 id="petition-edited">petition.edited</h2>
+
+<blockquote>
+<p>Here&rsquo;s what the payload looks like:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"petition.edited"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"don-t-destroy-our-park"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Don't destroy our park!"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/don-t-destroy-our-park"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/hero/imag0945.jpg?1438621934"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/form/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/large/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/open_graph/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/original/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown City Council"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tyshawn Morissette"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9fccc1957d7d7ebc93fb0f05"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>A petition&rsquo;s content is edited</p>
+
+<h2 id="signature-created">signature.created</h2>
+
+<blockquote>
+<p>Here&rsquo;s what the payload looks like:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"signature.created"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">645</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jennifer"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Goines"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jenny@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23456"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"join_group"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"bucket"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"daisy_chain_used"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"from_embed"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"last_signed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nt">"member"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">747</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01-04:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"petition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost/petitions/don-t-destroy-our-park"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"don-t-destroy-our-park"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01-04:00"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1ebf2eb10c3d8939f42dff68"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>We also include optional partnership or effort slugs nested under the petition resource for signatures that take place on petitions associated with those objects.</p>
+</blockquote>
+
+<p>Member signs a petition</p>
+
+<h2 id="unsubscribe-created">unsubscribe.created</h2>
+
+<blockquote>
+<p>Here&rsquo;s what the payload looks like:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsubscribe.created"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"river@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"unsubscribe_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"unsubscribable_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:38:49-04:00"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"030ee43a4fa9788e084d9cfc"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Member unsubscribes</p>
+
+<h2 id="locale-created">locale.created</h2>
+
+<blockquote>
+<p>Here&rsquo;s what the payload looks like:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"locale.created"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"es"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"action_kit_external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T12:38:46-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T12:38:46-04:00"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"df67126973794c2efde76cc4"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>New i18n instance created</p>
+
+<h2 id="forum-message-requires_moderation">forum.message.requires_moderation</h2>
+
+<blockquote>
+<p>Here&rsquo;s what the payload looks like:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"forum.message.requires_moderation"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"thread_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello everyone"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I just wanted to say hi"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unreviewed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sent_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-05T13:17:46-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"member"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10829</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-05T13:17:46-04:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"discussable"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"discussable_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LocalChapter"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"discussable_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">56</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f848f4b38b9125f7089d59ad"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>A new message requires moderation</p>
+
+<p>The <strong>admin_status</strong> field can take any of the following values:
+<ul>
+  <li><em>unreviewed</em></li>
+  <li><em>flagged</em></li>
+  <li><em>approved_automatically</em></li>
+  <li><em>approved_manually</em></li>
+  <li><em>flagged_deleted</em></li>
+  <li><em>inappropriate</em></li>
+</ul></p>
+
+<p>Though on the <em>forum.message.requires_moderation</em> notification type it will always be set to <em>unreviewed</em></p>
+
+<p>The <strong>discussable.discussable_type</strong> field can take any of the following values:
+<ul>
+  <li><em>LocalChapter</em></li>
+  <li><em>Event</em></li>
+  <li><em>CalendarEvent</em></li>
+  <li><em>LocalChapterEvent</em></li>
+  <li><em>PetitionEvent</em></li>
+</ul></p>
+
+<h1 id="bulk-data-webhooks">Bulk Data Webhooks</h1>
+
+<p>We&rsquo;ve included two special sorts of bulk data webhooks that are designed to help you keep an external reporting or analytics database server up to date with information from ControlShift&rsquo;s internal tables. The <a href="#data-full_table_exported">data.full_table_exported</a> and <a href="#data-incremental_table_exported">data.incremental_table_exported</a> webhooks can be consumed to keep an external database mirror containing ControlShift data up to date. This service was built in a database agnostic way, but it should be possible to build a ControlShift -&gt; Amazon Redshift data pipeline using a technique like <a href="https://blogs.aws.amazon.com/bigdata/post/Tx24VJ6XF1JVJAA/A-Zero-Administration-Amazon-Redshift-Database-Loader">this one</a>.</p>
+
           <h1 id="errors">Errors</h1>
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
-
-<p>The Kittn API uses the following error codes:</p>
+<p>The ControlShift Labs API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -338,9 +1778,6 @@ Remember — a happy kitten is an authenticated kitten!
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
           </div>
       </div>
     </div>
