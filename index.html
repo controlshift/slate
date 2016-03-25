@@ -205,7 +205,7 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 <tr>
 <td>slug</td>
 <td>null</td>
-<td>The petition&rsquo;s unique identification slug. If none is provided, you will get a 404 error.</td>
+<td>string - required - The petition&rsquo;s unique identification slug. If none is provided, you will get a 404 error. Note: submitted as a part of the endpoint path, not as a separate URL parameter</td>
 </tr>
 </tbody></table>
 
@@ -511,9 +511,14 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 </tr>
 </thead><tbody>
 <tr>
+<td>category slug</td>
+<td>null</td>
+<td>string - required - submitted as a part of the endpoint path, not as a separate URL parameter</td>
+</tr>
+<tr>
 <td>page</td>
 <td>1</td>
-<td>The page number of results for the specified category. Minimum of 1.</td>
+<td>integer - optional - The page number of results for the specified category. Minimum of 1.</td>
 </tr>
 </tbody></table>
 
@@ -672,6 +677,20 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 
 <p><code class="prettyprint">GET https://demo.controlshiftlabs.com/efforts/&lt;effort slug&gt;.json</code></p>
 
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>effort slug</td>
+<td>null</td>
+<td>string - required - submitted as a part of the endpoint path, not as a separate URL parameter</td>
+</tr>
+</tbody></table>
+
 <h3 id="working-example">Working Example</h3>
 
 <p>A working example can be found on <a href="#not-implemented">jsbin</a>.</p>
@@ -796,19 +815,24 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 </tr>
 </thead><tbody>
 <tr>
+<td>effort slug</td>
+<td>null</td>
+<td>string - required - submitted as a part of the endpoint path, not as a separate URL parameter</td>
+</tr>
+<tr>
 <td>location[query]</td>
 <td>null</td>
-<td>MARIO TODO</td>
+<td>string - optional - MARIO TODO</td>
 </tr>
 <tr>
 <td>location[latitude]</td>
 <td>null</td>
-<td>Float - a float representing the queried latitude</td>
+<td>float - required - a float representing the queried latitude</td>
 </tr>
 <tr>
 <td>location[longitude]</td>
 <td>null</td>
-<td>Float - a float representing the queried longitude</td>
+<td>float - required - a float representing the queried longitude</td>
 </tr>
 </tbody></table>
 
