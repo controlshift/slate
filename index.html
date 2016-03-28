@@ -88,6 +88,7 @@
 }
     </style>
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/controlshift.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" media="print" />
       <script src="javascripts/all.js"></script>
   </head>
@@ -152,7 +153,6 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">});</span>
-
 </code></pre>
 
 <blockquote>
@@ -211,7 +211,46 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 
 <h3 id="working-example">Working Example</h3>
 
-<p>A working example can be found on <a href="#not-implemented">jsbin</a>.</p>
+<p>View and edit a working example on codepen.io:</p>
+
+<div class="js-codepen-data hidden" data-title="ControlShift Labs: Single Petition Example">
+  <div class="codepen-html">
+    <div id="js-content-wrapper" class="hidden">
+      <h1 id="title"></h1>
+      <h3><span id="signature_count"></span> signatures</h3>
+      <p>Created by <span id="creator_name"></span></p>
+      <h2>What</h2>
+      <p id="what"></p>
+      <h2>Who</h2>
+      <p id="who"></p>
+      <h2>Why</h2>
+      <p id="why"></p>
+    </div>
+  </div>
+  <pre class="codepen-js">
+    $(document).ready(function(){
+      var petitionSlug = 'turn-back-human-trafficking-faith-leaders';
+      $.ajax({
+        url: 'https://demo.controlshiftlabs.com/petitions/'+petitionSlug+'.json',
+        dataType: 'jsonp',
+      })
+      .done(function(data) {
+        $('#title').html(data.title);
+        $('#signature_count').html(data.signature_count);
+        $('#creator_name').html(data.creator_name);
+        $('#what').html(data.what);
+        $('#who').html(data.who);
+        $('#why').html(data.why);
+        $('#js-content-wrapper').removeClass('hidden');
+      });
+    });
+  </pre>
+</div>
+
+<form action="https://codepen.io/pen/define" method="POST" target="_blank" class="hidden">
+  <input type="hidden" name="data" class="js-data" value="">
+  <input type="submit" value="Launch Example on CodePen">
+</form>
 
           <h2 id="get-featured-petitions">Get featured petitions</h2>
 <pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
@@ -223,7 +262,6 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">});</span>
-
 </code></pre>
 
 <blockquote>
@@ -333,7 +371,40 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 
 <h3 id="working-example">Working Example</h3>
 
-<p>A working example can be found on <a href="#not-implemented">jsbin</a>.</p>
+<p>View and edit a working example on codepen.io:</p>
+
+<div class="js-codepen-data hidden" data-title="ControlShift Labs: Featured Petitions Example">
+  <div class="codepen-html">
+    <h1>Featured Petitions</h1>
+    <ul id="featured-petitions">
+    </ul>
+  </div>
+  <pre class="codepen-js">
+    $(document).ready(function(){
+      $.ajax({
+        url: 'https://demo.controlshiftlabs.com/featured.json',
+        dataType: 'jsonp',
+      })
+      .done(function(data) {
+        var $placeholder = $('#featured-petitions');
+        $.each(data, function(index, petition){
+          output = '<li>'
+          output += '<h2><a href="'+petition.url+'">'+petition.title+'</a></h2>';
+          output += '<h3>'+petition.signature_count+' signatures out of '+petition.goal+' needed </h3>';
+          output += '<p>'+petition.why+'</p>';
+          output += '<p><a href="'+petition.url+'">Learn More</a></p>';
+          output += '</li>';
+          $placeholder.append(output);
+        });
+      });
+    });
+  </pre>
+</div>
+
+<form action="https://codepen.io/pen/define" method="POST" target="_blank" class="hidden">
+  <input type="hidden" name="data" class="js-data" value="">
+  <input type="submit" value="Launch Example on CodePen">
+</form>
 
           <h2 id="get-list-of-categories">Get list of categories</h2>
 <pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
@@ -345,7 +416,6 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">});</span>
-
 </code></pre>
 
 <blockquote>
@@ -400,7 +470,40 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 
 <h3 id="working-example">Working Example</h3>
 
-<p>A working example can be found on <a href="#not-implemented">jsbin</a>.</p>
+<p>View and edit a working example on codepen.io:</p>
+
+<div class="js-codepen-data hidden" data-title="ControlShift Labs: Categories List Example">
+  <div class="codepen-html">
+    <h1>Categories List</h1>
+    <div id="categories">
+    </div>
+  </div>
+  <pre class="codepen-js">
+    $(document).ready(function(){
+      $.ajax({
+        url: 'https://demo.controlshiftlabs.com/categories.json',
+        dataType: 'jsonp',
+      })
+      .done(function(data) {
+        var $placeholder = $('#categories');
+        $.each(data, function(index, category){
+          output = '<h2><a href="'+category.url+'">'+category.category_name+'</a></h2>';
+          output += '<ul>'
+          output += '<li><strong>Slug:</strong> '+category.slug+'</li>';
+          output += '<li><strong>Signatures:</strong>'+category.signature_count+'</li>';
+          output += '<li><strong>API URL:</strong>'+category.url+'</li>';
+          output += '</ul><hr/>';
+          $placeholder.append(output);
+        });
+      });
+    });
+  </pre>
+</div>
+
+<form action="https://codepen.io/pen/define" method="POST" target="_blank" class="hidden">
+  <input type="hidden" name="data" class="js-data" value="">
+  <input type="submit" value="Launch Example on CodePen">
+</form>
 
           <h2 id="list-petitions-in-a-category">List petitions in a category</h2>
 <pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
@@ -412,7 +515,6 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">});</span>
-
 </code></pre>
 
 <blockquote>
@@ -524,7 +626,47 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 
 <h3 id="working-example">Working Example</h3>
 
-<p>A working example can be found on <a href="#not-implemented">jsbin</a>.</p>
+<p>View and edit a working example on codepen.io:</p>
+
+<div class="js-codepen-data hidden"  data-title="ControlShift Labs: List of Petitions in a Category Example">
+  <div class="codepen-html">
+    <h1>Petitions in category &ldquo;<span id="name"></span>&rdquo;</h1>
+    <div id="petitions">
+    </div>
+  </div>
+  <pre class="codepen-js">
+    $(document).ready(function(){
+      $.ajax({
+        url: 'https://demo.controlshiftlabs.com/categories/mice.json',
+        dataType: 'jsonp',
+      })
+      .done(function(data) {
+        // Populate global category data
+        $('#name').text(data.name);
+
+        // Populate petitions data
+        var $placeholder = $('#petitions');
+        $.each(data.results, function(index, petition){
+          output = '<h2><a href="'+petition.url+'">'+petition.title+'</a></h2>';
+          output += '<ul>';
+          output += '<li><strong>Image:</strong> '+petition.image_url+'</li>';
+          output += '<li><strong>Who:</strong> '+petition.who+'</li>';
+          output += '<li><strong>What:</strong> '+petition.what+'</li>';
+          output += '<li><strong>Why:</strong> '+petition.why+'</li>';
+          output += '<li><strong>Signatures:</strong> '+petition.signature_count+'</li>';
+          output += '<li><strong>URL:</strong> '+petition.url+'</li>';
+          output += '</ul><hr/>';
+          $placeholder.append(output);
+        });
+      });
+    });
+  </pre>
+</div>
+
+<form action="https://codepen.io/pen/define" method="POST" target="_blank" class="hidden">
+  <input type="hidden" name="data" class="js-data" value="">
+  <input type="submit" value="Launch Example on CodePen">
+</form>
 
           <h2 id="list-petitions-in-an-effort">List petitions in an effort</h2>
 <pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
@@ -537,7 +679,6 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">});</span>
-
 </code></pre>
 
 <blockquote>
@@ -550,124 +691,87 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
   </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
   </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
   </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/efforts/images/16/hero/forecast.png?1351625402"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"petitions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"forecast-the-facts-of-frankenstorm-wmtv-madison-wi"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast the Facts of Frankenstorm: WMTV Madison, WI"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-wmtv-madison-wi"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/hero/forecast.png?1429199472"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/form/forecast.png?1429199472"</span><span class="w">
+  </span><span class="nt">"petitions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"forecast-the-facts-of-frankenstorm-wmtv-madison-wi"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast the Facts of Frankenstorm: WMTV Madison, WI"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-wmtv-madison-wi"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/hero/forecast.png?1429199472"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/form/forecast.png?1429199472"</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/large/forecast.png?1429199472"</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/open_graph/forecast.png?1429199472"</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/original/forecast.png?1429199472"</span><span class="w">
+      </span><span class="p">}],</span><span class="w">
+      </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WMTV Madison, WI"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It is imperative that weather reporters fulfill an important part of their job, and explain the ways that climate change has influenced the freakish \"Frankenstorm\" Sandy. Below is a list of the meteorologists in your area, with telephone numbers and e-mail addresses. Please call or email them a message in your own words, asking them to connect the dots between global warming pollution and disasters like Sandy. Take a look at the talking points below if you need any help."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kristyn Arrighi"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-04-16T11:51:12.700-04:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T20:23:06.034-04:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We want TV meteorologists to understand that the public is depending on them for information about climate change, especially as it increasingly impacts our weather patterns. We know that meteorolo..."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WMTV-TV (Madison), Forward Drive, Madison, WI, United States"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43.05091"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-89.486738"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forward Dr"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53711"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WI"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"615"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WMTV-TV (Madison)"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-04-16T11:51:11.222-04:00"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/large/forecast.png?1429199472"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/open_graph/forecast.png?1429199472"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/original/forecast.png?1429199472"</span><span class="w">
-    </span><span class="p">}],</span><span class="w">
-    </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WMTV Madison, WI"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It is imperative that weather reporters fulfill an important part of their job, and explain the ways that climate change has influenced the freakish \"Frankenstorm\" Sandy. Below is a list of the meteorologists in your area, with telephone numbers and e-mail addresses. Please call or email them a message in your own words, asking them to connect the dots between global warming pollution and disasters like Sandy. Take a look at the talking points below if you need any help."</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kristyn Arrighi"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-04-16T11:51:12.700-04:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T20:23:06.034-04:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We want TV meteorologists to understand that the public is depending on them for information about climate change, especially as it increasingly impacts our weather patterns. We know that meteorolo..."</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WMTV-TV (Madison), Forward Drive, Madison, WI, United States"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43.05091"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-89.486738"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forward Dr"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53711"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WI"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"615"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WMTV-TV (Madison)"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-04-16T11:51:11.222-04:00"</span><span class="w">
+      </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"forecast-the-facts-of-frankenstorm-woak"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast the Facts of Frankenstorm: WOAK"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-woak"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/hero/forecast.png?1439846499"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/form/forecast.png?1439846499"</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/large/forecast.png?1439846499"</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/open_graph/forecast.png?1439846499"</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/original/forecast.png?1439846499"</span><span class="w">
+      </span><span class="p">}],</span><span class="w">
+      </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WOAK"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It is imperative that weather reporters fulfill an important part of their job, and explain the ways that climate change has influenced the freakish \"Frankenstorm\" Sandy. Below is a list of the meteorologists in your area, with telephone numbers and e-mail addresses. Please call or email them a message in your own words, asking them to connect the dots between global warming pollution and disasters like Sandy. Take a look at the talking points below if you need any help."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adam Klaus"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-17T17:21:39.791-04:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-17T17:29:02.816-04:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We want TV meteorologists to understand that the public is depending on them for information about climate change, especially as it increasingly impacts our weather patterns. We know that meteorolo..."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oklahoma City, OK, United States"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35.4675602"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-97.5164276"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-12-17T14:49:51.324-05:00"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"forecast-the-facts-of-frankenstorm-oakland-weather-forecaster"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast the Facts of Frankenstorm: Oakland Weather Forecaster"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-oakland-weather-forecaster"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/26261/hero/forecast.png?1401823164"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/26261/form/forecast.png?1401823164"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/26261/large/forecast.png?1401823164"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/26261/open_graph/forecast.png?1401823164"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/26261/original/forecast.png?1401823164"</span><span class="w">
-    </span><span class="p">}],</span><span class="w">
-    </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oakland Weather Forecaster"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It is imperative that weather reporters fulfill an important part of their job, and explain the ways that climate change has influenced the freakish \"Frankenstorm\" Sandy. Below is a list of the meteorologists in your area, with telephone numbers and e-mail addresses. Please call or email them a message in your own words, asking them to connect the dots between global warming pollution and disasters like Sandy. Take a look at the talking points below if you need any help."</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adam Klaus"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-06-03T15:19:26.620-04:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-09-22T14:33:22.751-04:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We want TV meteorologists to understand that the public is depending on them for information about climate change, especially as it increasingly impacts our weather patterns. We know that meteorolo..."</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oakland, CA, United States"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37.8043637"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-122.2711137"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-11-27T14:51:10.091-05:00"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"forecast-the-facts-of-frankenstorm-woak"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast the Facts of Frankenstorm: WOAK"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-woak"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/hero/forecast.png?1439846499"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/form/forecast.png?1439846499"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/large/forecast.png?1439846499"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/open_graph/forecast.png?1439846499"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/original/forecast.png?1439846499"</span><span class="w">
-    </span><span class="p">}],</span><span class="w">
-    </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WOAK"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It is imperative that weather reporters fulfill an important part of their job, and explain the ways that climate change has influenced the freakish \"Frankenstorm\" Sandy. Below is a list of the meteorologists in your area, with telephone numbers and e-mail addresses. Please call or email them a message in your own words, asking them to connect the dots between global warming pollution and disasters like Sandy. Take a look at the talking points below if you need any help."</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adam Klaus"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-17T17:21:39.791-04:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-17T17:29:02.816-04:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We want TV meteorologists to understand that the public is depending on them for information about climate change, especially as it increasingly impacts our weather patterns. We know that meteorolo..."</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oklahoma City, OK, United States"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35.4675602"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-97.5164276"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-12-17T14:49:51.324-05:00"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}]</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -693,7 +797,56 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 
 <h3 id="working-example">Working Example</h3>
 
-<p>A working example can be found on <a href="#not-implemented">jsbin</a>.</p>
+<p>View and edit a working example on codepen.io:</p>
+
+<div class="js-codepen-data hidden" data-title="ControlShift Labs: List of Petitions in an Effort Example">
+  <div class="codepen-html">
+    <h1>Petitions in effort &ldquo;<span id="title"></span>&rdquo;</h1>
+    <p><span id="description"></span></h1>
+    <div id="petitions">
+    </div>
+  </div>
+  <pre class="codepen-js">
+    $(document).ready(function(){
+      var effortSlug = 'forecast-the-facts';
+      $.ajax({
+        url: 'https://demo.controlshiftlabs.com/efforts/'+effortSlug+'.json',
+        dataType: 'jsonp',
+      })
+      .done(function(data) {
+        // Populate global effort data
+        $('#title').text(data.title);
+        $('#description').text(data.description);
+
+        // Populate petitions data
+        var $placeholder = $('#petitions');
+        $.each(data.petitions, function(index, petition){
+          output = '<h2><a href="'+petition.url+'">'+petition.title+'</a></h2>';
+          output += '<ul>';
+          output += '<li><strong>Image:</strong> '+petition.image_url+'</li>';
+          output += '<li><strong>Who:</strong> '+petition.who+'</li>';
+          output += '<li><strong>What:</strong> '+petition.what+'</li>';
+          output += '<li><strong>Why:</strong> '+petition.why+'</li>';
+          output += '<li><strong>Signatures:</strong> '+petition.signature_count+'</li>';
+          output += '<li><strong>Goal:</strong> '+petition.goal+'</li>';
+          output += '<li><strong>URL:</strong> '+petition.url+'</li>';
+          output += '<li><strong>Location:</strong> <ul>'
+          output += '<li><strong>Query:</strong> '+petition.location.query+'</li>';
+          output += '<li><strong>Latitude:</strong> '+petition.location.latitude+'</li>';
+          output += '<li><strong>Longitude:</strong> '+petition.location.longitude+'</li>';
+          output += '</ul></li>';
+          output += '</ul><hr/>';
+          $placeholder.append(output);
+        });
+      });
+    });
+  </pre>
+</div>
+
+<form action="https://codepen.io/pen/define" method="POST" target="_blank" class="hidden">
+  <input type="hidden" name="data" class="js-data" value="">
+  <input type="submit" value="Launch Example on CodePen">
+</form>
 
           <h2 id="find-near-by-petitions">Find near by petitions</h2>
 <pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
@@ -702,7 +855,7 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
     <span class="nx">latitude</span> <span class="o">=</span> <span class="mf">38.88233400000001</span><span class="p">,</span>
     <span class="nx">longitude</span> <span class="o">=</span> <span class="o">-</span><span class="mf">77.17109140000002</span><span class="p">;</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-    <span class="na">url</span><span class="p">:</span> <span class="s1">'https://demo.controlshiftlabs.com/efforts/'</span><span class="o">+</span><span class="nx">effortSlug</span><span class="o">+</span><span class="s1">'near.json'</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s1">'https://demo.controlshiftlabs.com/efforts/'</span><span class="o">+</span><span class="nx">effortSlug</span><span class="o">+</span><span class="s1">'/'</span><span class="o">+</span><span class="s1">'near.json'</span><span class="p">,</span>
     <span class="na">dataType</span><span class="p">:</span> <span class="s1">'jsonp'</span><span class="p">,</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
       <span class="s1">'location[query]'</span><span class="p">:</span> <span class="nx">formatted_address</span><span class="p">,</span>
@@ -714,10 +867,9 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">});</span>
-
-
-
 </code></pre>
+
+<!--slash in '/'+'near.json' above disappears if combined with near-->
 
 <blockquote>
 <p>The above code would return petitions data from the effort with the slug <code class="prettyprint">forecast-the-facts</code>.  The JSON would be structured like this:</p>
@@ -797,7 +949,7 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 
 <p>Search for closest petition in an effort</p>
 
-<p>This JSON endpoint allows you to reproduce the &lsquo;search for the nearest petition in an effort&rsquo; interface. Use this endpoint to build a place for users to enter their location. Once they&rsquo;ve searched for a location, we&rsquo;ll return the nearest petition. This endpoint can most easily be used with a google maps integration to help your users locate their addresses or other points of interest.  Click on the working example below.</p>
+<p>This JSON endpoint allows you to reproduce the &ldquo;search for the nearest petition in an effort&rdquo; interface. Use this endpoint to build a place for users to enter their location. Once they&rsquo;ve searched for a location, we&rsquo;ll return the nearest petition. This endpoint can most easily be used with a google maps integration to help your users locate their addresses or other points of interest. For an example, click on the working example below.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -838,7 +990,67 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 
 <h3 id="working-example">Working Example</h3>
 
-<p>A working example can be found on <a href="#not-implemented">jsbin</a>.</p>
+<p>View and edit a working example on codepen.io:</p>
+
+<div class="js-codepen-data hidden"
+  data-js_external="https://maps.googleapis.com/maps/api/js?key=AIzaSyAm5aA1UDKBL6dRD9yHPGydlZcBgzk6lsY&libraries=places"
+  data-title="ControlShift Labs: List of Petitions in an Effort Example">
+  <div class="codepen-html">
+    <h1>Find the closest petitions to you</h1>
+    <form><input type="text" class="form-control" id="effort-lookup-input" placeholder="Enter your address or a nearby landmark"></form>
+    <div id="petitions">
+    </div>
+  </div>
+  <pre class="codepen-js">
+    function buildPetition(target, description){
+      output = '<h2><em>'+description+' Petition</em>: '+target.name+'</h2>';
+      output += '<h3>'+target.location+'</h3> <ul>';
+      output += '<li><strong>Title:</strong> '+target.petition.title+'</li>';
+      output += '<li><strong>Who:</strong> '+target.petition.who+'</li>';
+      output += '<li><strong>Goal:</strong> '+target.petition.goal+'</li>';
+      output += '<li><strong>Signatures so far:</strong> '+target.petition.signature_count+'</li>';
+      output += '</ul><hr/>';
+      return output;
+    }
+
+    function getPetitionsCallback(place) {
+      // Get the place details from the autocomplete object.
+      var place = autocomplete.getPlace();
+
+      // get the targets and petitions (if they exist) for the effort near the place specified.
+      $.ajax({
+        url: 'https://demo.controlshiftlabs.com/efforts/forecast-the-facts/near.json',
+        dataType: 'jsonp',
+        data: {
+          'location[query]': place.formatted_address,
+          'location[latitude]': place.geometry.location.lat(),
+          'location[longitude]': place.geometry.location.lng()
+        }
+      })
+      .done(function(data) {
+        $placeholder = $('#petitions');
+        //populate closest target
+        $placeholder.append( buildPetition(data.closest_target, 'Closest') );
+        $.each(data.other_targets, function(index, other_petition){
+          $placeholder.append( buildPetition(other_petition, 'Near By') );
+        });
+      });
+    };
+
+    $(document).ready(function(){
+      $('form').on('submit', function(e){e.preventDefault()});
+      var input = document.getElementById('effort-lookup-input');
+      var options = { };
+      autocomplete = new google.maps.places.Autocomplete(input, options);
+      autocomplete.addListener('place_changed', getPetitionsCallback);
+    });
+  </pre>
+</div>
+
+<form action="https://codepen.io/pen/define" method="POST" target="_blank" class="hidden">
+  <input type="hidden" name="data" class="js-data" value="">
+  <input type="submit" value="Launch Example on CodePen">
+</form>
 
           <h2 id="logged-in-user">Logged in user</h2>
 <pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
@@ -850,43 +1062,42 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">});</span>
-
 </code></pre>
 
 <blockquote>
 <p>The above code would user details for a signed in user. The returned JSON would be structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-   </span><span class="nt">"status"</span><span class="p">:</span><span class="s2">"authenticated"</span><span class="p">,</span><span class="w">
-   </span><span class="nt">"me"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="s2">"John"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="s2">"john@smith.com"</span><span class="w">
-   </span><span class="p">},</span><span class="w">
-   </span><span class="nt">"petitions"</span><span class="p">:[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-         </span><span class="nt">"slug"</span><span class="p">:</span><span class="s2">"sample-campaign"</span><span class="p">,</span><span class="w">
-         </span><span class="nt">"title"</span><span class="p">:</span><span class="s2">"Sample Campaign"</span><span class="p">,</span><span class="w">
-         </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2016-03-25T15:37:28.849-04:00"</span><span class="p">,</span><span class="w">
-         </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-03-25T15:37:35.304-04:00"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-   </span><span class="p">],</span><span class="w">
-   </span><span class="nt">"events"</span><span class="p">:[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-         </span><span class="nt">"slug"</span><span class="p">:</span><span class="s2">"sample-campaign"</span><span class="p">,</span><span class="w">
-         </span><span class="nt">"title"</span><span class="p">:</span><span class="s2">"Sample Campaign"</span><span class="p">,</span><span class="w">
-         </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2016-03-25T15:37:28.849-04:00"</span><span class="p">,</span><span class="w">
-         </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-03-25T15:37:35.304-04:00"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-   </span><span class="p">],</span><span class="w">
-   </span><span class="nt">"chapters"</span><span class="p">:[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-         </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Brooklyn bruisers"</span><span class="p">,</span><span class="w">
-         </span><span class="nt">"slug"</span><span class="p">:</span><span class="s2">"brooklyn-bruisers"</span><span class="p">,</span><span class="w">
-         </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2015-05-14T15:53:03.901-04:00"</span><span class="p">,</span><span class="w">
-         </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-03-25T15:40:44.661-04:00"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-   </span><span class="p">]</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="s2">"authenticated"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"me"</span><span class="p">:{</span><span class="w">
+    </span><span class="nt">"first_name"</span><span class="p">:</span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"last_name"</span><span class="p">:</span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="s2">"john@smith.com"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"petitions"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+       </span><span class="nt">"slug"</span><span class="p">:</span><span class="s2">"sample-campaign"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"title"</span><span class="p">:</span><span class="s2">"Sample Campaign"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2016-03-25T15:37:28.849-04:00"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-03-25T15:37:35.304-04:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"events"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+       </span><span class="nt">"slug"</span><span class="p">:</span><span class="s2">"sample-campaign"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"title"</span><span class="p">:</span><span class="s2">"Sample Campaign"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2016-03-25T15:37:28.849-04:00"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-03-25T15:37:35.304-04:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"chapters"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+       </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Brooklyn bruisers"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"slug"</span><span class="p">:</span><span class="s2">"brooklyn-bruisers"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2015-05-14T15:53:03.901-04:00"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-03-25T15:40:44.661-04:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -896,6 +1107,22 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="s2">"not_authenticated"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"user is not signed in"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response for a hostname that is not whitelisted:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"errors"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"field"</span><span class="p">:</span><span class="s2">"referer"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"messages"</span><span class="p">:[</span><span class="w">
+        </span><span class="s2">"host name not whitelisted"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -914,6 +1141,76 @@ You must whitelist your hostname prior to using this end point. Read more below.
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">GET http://demo.controlshiftlabs.com/api/graph/me.json</code></p>
+
+<h3 id="working-example">Working Example</h3>
+
+<p>View and edit a working example on codepen.io.  Note: codepen.io is <em>whitelisted</em> for the demo account.</p>
+
+<div class="js-codepen-data hidden" data-title="ControlShift Labs: Logged in User Example">
+  <div class="codepen-html">
+    <h1>Logged in User</h1>
+    <p class="js-not-logged-in hidden">The user is not logged in.</p>
+    <ul class="js-logged-in hidden">
+      <li><strong>First Name:</strong> <span id="first_name"></span></li>
+      <li><strong>First Name:</strong> <span id="last_name"></span></li>
+      <li><strong>Email:</strong> <span id="email"></span></li>
+      <li><strong>Petitions:</strong> <ul id="petitions"></ul></li>
+      <li><strong>Events:</strong> <ul id="events"></ul></li>
+      <li><strong>Chapters:</strong> <ul id="chapters"></ul></li>
+    </ul>
+  </div>
+  <pre class="codepen-js">
+    $(document).ready(function(){
+      $.ajax({
+        url: 'https://demo.controlshiftlabs.com/api/graph/me.json',
+        dataType: 'jsonp',
+      })
+      .done(function(data) {
+        if(data.status == 'authenticated'){
+          // Populate data for logged in user
+          $('#first_name').html(data.me.first_name);
+          $('#last_name').html(data.me.last_name);
+          $('#email').html(data.me.email);
+
+          var $petitionsPlaceholder = $('#petitions');
+          $.each(data.petitions, function(index, petition){
+            $petitionsPlaceholder.append('<li>'+petition.title+'</li>');
+          });
+
+          var $eventsPlaceholder = $('#events');
+          $.each(data.events, function(index, event){
+            $eventsPlaceholder.append('<li>'+event.title+'</li>');
+          });
+
+          var $chaptersPlaceholder = $('#chapters');
+          $.each(data.chapters, function(index, chapter){
+            $chaptersPlaceholder.append('<li>'+chapter.name+'</li>');
+          });
+
+          $('.js-logged-in').removeClass('hidden');
+        }else if(data.status == 'not_authenticated'){
+          // Show "not logged in" for users who aren't logged in
+          $('.js-not-logged-in').removeClass('hidden');
+        }else if(data.status == 'error'){
+          // Show known error messages
+          $('body').append('<h2>Errors</h2><ul>')
+          $.each(data.errors, function(index, error){
+            $('body').append('<li><strong>'+error.field+'</strong> '+error.messages.join('; ')+'</li>')
+          });
+          $('body').append('</ul>')
+        }
+      });
+    })
+    .error(function(data){
+      $('body').append('<h2>Errors</h2><p>Unknown Error</p>');
+    });
+  </pre>
+</div>
+
+<form action="https://codepen.io/pen/define" method="POST" target="_blank" class="hidden">
+  <input type="hidden" name="data" class="js-data" value="">
+  <input type="submit" value="Launch Example on CodePen">
+</form>
 
 <h3 id="whitelisting-a-hostname">Whitelisting a Hostname</h3>
 
@@ -1805,5 +2102,28 @@ http://www.rubydoc.info/gems/activesupport/3.2.22/ActiveSupport/JSON/Encoding</a
           </div>
       </div>
     </div>
+    <script>
+      $(document).ready(function(){
+        var defaultOptions = {
+          "title": "ControlShift Labs Example",
+          "editors": "101",
+          "html": "Oops.  There has been an error.",
+          "js": "",
+          "css_external": "https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css",
+          "js_library": "jquery"
+        }
+
+        $.each($('.js-codepen-data'), function(index, codePenHTML){
+          $codePenDomObject = $(codePenHTML);
+          var dataOptions = jQuery.extend({}, defaultOptions);
+          dataOptions = jQuery.extend(dataOptions, $codePenDomObject.data());
+          dataOptions.html = '  <div class="container">';
+          dataOptions.html += $codePenDomObject.find('.codepen-html').html();
+          dataOptions.html += '</div>';
+          dataOptions.js = $codePenDomObject.find('.codepen-js').html();
+          $codePenDomObject.next().removeClass('hidden').find('.js-data').val(JSON.stringify(dataOptions));
+        });
+      });
+    </script>
   </body>
 </html>
