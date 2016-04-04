@@ -134,9 +134,9 @@
 <li>If a site visitor is logged in, show a users past actions and created petitions</li>
 </ul>
 
-<p>All of the endpoints can be consumed as jsonp instead of json by adding callback or variable parameters to the URLs.</p>
+<p>All of the endpoints can be consumed as JSONP instead of JSON by adding callback or variable parameters to the URLs.</p>
 
-<p>The URL slugs through the API are the same as those that are used through the web to represent specific petitions or categories.  Many front-end libraries including jQuery make it easy to consume jsonp endpoints. Our examples below use jQuery to consume these resources.</p>
+<p>The URL slugs through the API are the same as those that are used through the web to represent specific petitions or categories.  Many front-end libraries including jQuery make it easy to consume JSONP endpoints. Our examples below use jQuery to consume these resources.</p>
 
 <aside class="success">
 These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;ll need to replace this with the hostname of your instance.
@@ -156,7 +156,7 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 </code></pre>
 
 <blockquote>
-<p>The above code would display your returned petition data in the console.  The JSON would be structured like this:</p>
+<p>The above code would display your returned petition data in the console.  The JSON response data would be structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">107370</span><span class="p">,</span><span class="w">
@@ -949,7 +949,7 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 
 <p>Search for closest petition in an effort</p>
 
-<p>This JSON endpoint allows you to reproduce the &ldquo;search for the nearest petition in an effort&rdquo; interface. Use this endpoint to build a place for users to enter their location. Once they&rsquo;ve searched for a location, we&rsquo;ll return the nearest petition. This endpoint can most easily be used with a google maps integration to help your users locate their addresses or other points of interest. For an example, click on the working example below.</p>
+<p>This JSON endpoint allows you to reproduce the &ldquo;search for the nearest petition in an effort&rdquo; interface. Use this endpoint to build a place for users to enter their location. Once they&rsquo;ve searched for a location, we&rsquo;ll return the nearest petition. This endpoint can most easily be used with a <a href="https://developers.google.com/places/web-service/autocomplete">Google Maps</a> integration to help your users locate their addresses or other points of interest. For an example, click on the working example below.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -997,7 +997,10 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
   data-title="ControlShift Labs: List of Petitions in an Effort Example">
   <div class="codepen-html">
     <h1>Find the closest petitions to you</h1>
-    <form><input type="text" class="form-control" id="effort-lookup-input" placeholder="Enter your address or a nearby landmark"></form>
+    <form>
+      <input type="text" class="form-control" id="effort-lookup-input" placeholder="Enter your address or a nearby landmark">
+      <small>Note: The above text field is auto-completed using the Google Maps <a href="https://developers.google.com/places/web-service/autocomplete" target="_blank">Autocomplete API</a></small>
+    </form>
     <div id="petitions">
     </div>
   </div>
@@ -1214,23 +1217,23 @@ You must whitelist your hostname prior to using this end point. Read more below.
 
 <h3 id="whitelisting-a-hostname">Whitelisting a Hostname</h3>
 
-<p>We authenticate requests to the current user endpoint by validating the hostname set in the http referer header against a whitelist. The whitelist is set of hostnames that scripts can be served from. If you request the endpoint from a script served from a non-whitelisted hostname you&rsquo;ll get an error message. This is necessary to prevent cross site scripting attacks that would allow someone to display logged in user information on unauthorized sites.</p>
+<p>We authenticate requests to the current user endpoint by validating the hostname set in the HTTP referrer header against a whitelist. The whitelist is set of hostnames that scripts can be served from. If you request the endpoint from a script served from a non-whitelisted hostname you&rsquo;ll get an error message. This is necessary to prevent cross site scripting attacks that would allow someone to display logged in user information on unauthorized sites.</p>
 
 <p>You can add hostnames to the whitelist through a self-serve interface in the &ldquo;Settings&rdquo; area of your instance. Settings &gt; Add Hostname &gt; enter a Hostname, and click save.</p>
 
-<p>The hostname must be a hostname string like &ldquo;localhost&rdquo; &ldquo;www.google.com&rdquo; or the like. Wildcards or full http urls are not supported.</p>
+<p>The hostname must be a hostname string like &ldquo;localhost&rdquo; &ldquo;www.google.com&rdquo; or the like. Wildcards or full HTTP URLs are not supported.</p>
 
-<p>When you access the graph api endpoint from a page served from a whitelisted hostname the browser will automatically set a referrer header on those requests. We use this referrer header to validate the server the script was served from against the whitelist. You can verify that a whitelisted hostname is working properly with the curl command line tool:</p>
+<p>When you access the graph API endpoint from a page served from a whitelisted hostname the browser will automatically set a referrer header on those requests. We use this referrer header to validate the server the script was served from against the whitelist. You can verify that a whitelisted hostname is working properly with the curl command line tool:</p>
 
 <p><code class="prettyprint">curl --referer http://localhost/ http://demo.controlshiftlabs.com/api/graph/me.json</code></p>
 
-<p>The above should return a json blob indicating that the user is not signed in if localhost is whitelisted. Otherwise you&rsquo;ll get a not whitelisted error.</p>
+<p>The above should return a JSON blob indicating that the user is not signed in if localhost is whitelisted. Otherwise you&rsquo;ll get a not whitelisted error.</p>
 
 <p>For authenticated users we currently return their first and last names, email addresses, and lists of petitions they&rsquo;ve created, events they&rsquo;ve created and local groups they are a member of.</p>
 
           <h1 id="webhook-endpoints">Webhook Endpoints</h1>
 
-<p>Webhooks can be used by software engineers to integrate ControlShift with third-party systems. They allow engineers to build software that is triggered by events that take place within ControlShift. Controlshift would execute HTTP calls when certain event happen (e.g. a petition is launched; a category is changed).</p>
+<p>Webhooks can be used by software engineers to integrate ControlShift with third-party systems. They allow engineers to build software that is triggered by events that take place within ControlShift. ControlShift would execute HTTP calls when certain event happen (e.g. a petition is launched; a category is changed).</p>
 
 <p>To begin using these new webhooks, go to the admin homepage and click &ldquo;Settings&rdquo; under &ldquo;Manage.&rdquo; Then choose the &ldquo;CRM Integration &amp; Webhooks&rdquo; tab and click &ldquo;Configure Webhook Endpoints.&rdquo; To begin sending data, you&rsquo;ll need to add a &ldquo;New Webhook Endpoint.&rdquo; Each Webhook Endpoint URL receives a full firehose of all hooks that occur within ControlShift.</p>
 
