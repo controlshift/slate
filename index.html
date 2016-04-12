@@ -122,24 +122,6 @@
 
 <p>Welcome to the <a href="http://www.controlshiftlabs.com/">ControlShift Labs</a> JSON API and Webhook Endpoint documentation!  Our API and Webhooks are designed to allow software engineers to create rich integrations between ControlShift content and third-party services and websites.</p>
 
-<table><thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>&lt;% data.webhooks.each do</td>
-<td>webhook</td>
-</tr>
-<tr>
-<td><a href="#&lt;%= webhook.webhook %">&lt;%= webhook.webhook %&gt;</a></td>
-<td>&lt;%= webhook.description %&gt;</td>
-</tr>
-</tbody></table>
-
-<p>&lt;% end %&gt;</p>
-
           <h1 id="json-api-endpoints">JSON API Endpoints</h1>
 
 <p>The JSONP API is a simple way to embed ControlShift petition content in external sites. It&rsquo;s intended for use by a front-end developer embed content on web pages outside of the platform.  For example, a developer could:</p>
@@ -1002,12 +984,12 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 <tr>
 <td>location[country]</td>
 <td>null</td>
-<td>string - optional - for efforts that use the &ldquo;by country&rdquo; search strategy, you can pass in the target country here.</td>
+<td>string - optional - for efforts configured to use the &ldquo;by country&rdquo; search strategy, you can pass in the target country as a two letter <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements">ISO 3166-1</a> code.</td>
 </tr>
 <tr>
 <td>location[region]</td>
 <td>null</td>
-<td>string - optional - for efforts that use the &ldquo;by state&rdquo; search strategy, you can pass in the target state here.</td>
+<td>string - optional - for efforts configured to use the &ldquo;by state&rdquo; search strategy, you can pass in the target state as a two letter state abbreviation.</td>
 </tr>
 </tbody></table>
 
