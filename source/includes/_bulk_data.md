@@ -37,7 +37,7 @@ Additional files:
 
 Setting up an Amazon Redshift integration should take one to two hours. We'll use a custom [AWS Lamda](http://docs.aws.amazon.com/lambda/latest/dg/welcome.html) to receive data from ControlShift's webhook and Amazon's [Lamda Redshift Loader](https://github.com/awslabs/aws-lambda-redshift-loader) to load our data into Redshift. For this example, we'll focus on the daily full_table dump, and truncating the previous days data for petitions only. You could also add a second pipeline to add incremental data if you need more frequent updates.
 
-As of this writing, aws-lambda-redshift-loader v2.4.0 only supports a single configuration per Lambda.  This means you'll have a setup a separate Lambda for every table you want to capture. If you want to capture both nightly and incremental dumps, you'll also need to set up one nightly lambda and one incremental lambda per table you want to capture. It can be a little tedious, but remember, the first one is the hardest!
+As of this writing, aws-lambda-redshift-loader v2.4.0 only supports a single configuration per Lambda.  This means you'll have to setup a separate Lambda for every table you want to capture. If you want to capture both nightly and incremental dumps, you'll also need to set up one nightly lambda and one incremental lambda per table you want to capture. It can be a little tedious, but remember, the first one is the hardest!
 
 ### Example Flow
 
