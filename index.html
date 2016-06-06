@@ -1034,8 +1034,17 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
       })
       .done(function(data) {
         $placeholder = $('#petitions');
+        if (data.code != undefined) {
+          if ((data.code == 'no_nearby_targets') || (data.code == 'no_nearby_petitions')){
+            $placeholder.html('<h2>No Petitions Found</h2>');
+            return;
+          } else if (data.code == 'location_required') {
+            $placeholder.html('<h2>Location required</h2>');
+            return;
+          }
+        }
         //populate closest target
-        $placeholder.append( buildPetition(data.closest_target, 'Closest') );
+        $placeholder.html( buildPetition(data.closest_target, 'Closest') );
         $.each(data.other_targets, function(index, other_petition){
           $placeholder.append( buildPetition(other_petition, 'Near By') );
         });
@@ -1243,9 +1252,11 @@ You must whitelist your hostname prior to using this end point. Read more below.
 
 <p>If you need additional information about webhooks or how to use them, please send us a support email <a href="mailto:support@controlshiftlabs.com">support@controlshiftlabs.com</a>. We&rsquo;d also love stories about how customers are using webhooks.</p>
 
-<h3 id="identifying-unique-webhook-events">Identifying Unique Webhook Events</h3>
+<h3 id="retries">Retries</h3>
 
-<p>In the extermely unlikely event that a webhook is double set for some reason (error on our end, Internet gremlins, etc.), you can always identify webhooks by their unique <code class="prettyprint">jid</code> (job id). If an incoming webhook has the same <code class="prettyprint">jid</code> as a webhook that has already been processed, you can safely ignore the new one.</p>
+<p>For webhook notifications successfully processed the response should have an HTTP 2XX status code. Responses returning a different status code will be marked as failed and automatically retried up to 9 times with an exponential backoff (e.g.: after 15s, 30s, 90s, etc.).</p>
+
+<p>If after 9 retries the notification cannot be delivered, the webhook endpoint will be automatically disabled and will need to be re-enabled from the admin page to start receiving webhook notifications again.</p>
 
 <h2 id="webhook-types-summary">Webhook types summary</h2>
 
@@ -1340,6 +1351,10 @@ You must whitelist your hostname prior to using this end point. Read more below.
 <tr>
 <td><a href="#petition-updated-requires_moderation">petition.updated.requires_moderation</a></td>
 <td>An updated petition requires moderation</td>
+</tr>
+<tr>
+<td><a href="#petition-target-response">petition.target.response</a></td>
+<td>Decision maker responded to a petition notification</td>
 </tr>
 <tr>
 <td><a href="#signature-created">signature.created</a></td>
@@ -2078,6 +2093,59 @@ You must whitelist your hostname prior to using this end point. Read more below.
 
 <p>An updated petition requires moderation</p>
 
+<h2 id="petition-target-response">petition.target.response</h2>
+
+<blockquote>
+<p>Example payload for <code class="prettyprint">petition.target.response</code>:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"petition.target.response"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"don-t-destroy-our-park"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Don't destroy our park!"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/don-t-destroy-our-park"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/hero/imag0945.jpg?1438621934"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/form/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/large/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/open_graph/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/original/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown City Council"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"agra.user.adm@gmail.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tyshawn Morissette"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tyshawn"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Morissette"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345-1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34058-2356"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9fccc1957d7d7ebc93fb0f05"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Decision maker responded to a petition notification</p>
+
 <h2 id="signature-created">signature.created</h2>
 
 <blockquote>
@@ -2280,7 +2348,7 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 
 <p>Setting up an Amazon Redshift integration should take one to two hours. We&rsquo;ll use a custom <a href="http://docs.aws.amazon.com/lambda/latest/dg/welcome.html">AWS Lamda</a> to receive data from ControlShift&rsquo;s webhook and Amazon&rsquo;s <a href="https://github.com/awslabs/aws-lambda-redshift-loader">Lamda Redshift Loader</a> to load our data into Redshift. For this example, we&rsquo;ll focus on the daily full_table dump, and truncating the previous days data for petitions only. You could also add a second pipeline to add incremental data if you need more frequent updates.</p>
 
-<p>As of this writing, aws-lambda-redshift-loader v2.4.0 only supports a single configuration per Lambda.  This means you&rsquo;ll have a setup a separate Lambda for every table you want to capture. If you want to capture both nightly and incremental dumps, you&rsquo;ll also need to set up one nightly lambda and one incremental lambda per table you want to capture. It can be a little tedious, but remember, the first one is the hardest!</p>
+<p>As of this writing, aws-lambda-redshift-loader v2.4.0 only supports a single configuration per Lambda.  This means you&rsquo;ll have to setup a separate Lambda for every table you want to capture. If you want to capture both nightly and incremental dumps, you&rsquo;ll also need to set up one nightly lambda and one incremental lambda per table you want to capture. It can be a little tedious, but remember, the first one is the hardest!</p>
 
 <h3 id="example-flow">Example Flow</h3>
 
@@ -2298,9 +2366,9 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 <li>Configure your bulk data webhook in the Control Shift settings console.</li>
 </ol>
 
-<p><strong>Note:</strong> All resources should be set up in the same AWS region (ex: us-east-1) so they can access each other. &ldquo;US Standard&rdquo; and &ldquo;us-east-1&rdquo; are the same thing.</p>
+<p><strong>Note:</strong> All resources should be set up in the same AWS region (e.g.: us-east-1) so they can access each other. &ldquo;US Standard&rdquo; and &ldquo;us-east-1&rdquo; are the same thing.</p>
 
-<p><strong>Before starting:</strong> You&rsquo;ll need git, npm, and access to a PostgreSQL connection tool (Redshift is based on PostgreSQL). These instructions use <code class="prettyprint">psql</code> on the command line.</p>
+<p><strong>Before starting:</strong> You&rsquo;ll need git, npm, and access to a PostgreSQL connection tool, such as <code class="prettyprint">psql</code> on the command line (Redshift is based on PostgreSQL).</p>
 
 <p>These instructions were prepared for aws-lambda-redshift-loader v2.4.0.</p>
 
@@ -2434,7 +2502,7 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 
 <h3 id="setting-up-redshift-database">Setting Up RedShift Database</h3>
 
-<p>Click on over to the Redshift service in the AWS console.</p>
+<p>Click on Redshift service in the AWS console.</p>
 
 <h4 id="launch-your-cluster">Launch Your Cluster</h4>
 
@@ -2459,7 +2527,7 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 
 <ol>
 <li>Go to the AWS Console &gt; EC2</li>
-<li>Click to &quot;Security Groups&rdquo; in the left hand menu.</li>
+<li>Click on &quot;Security Groups&rdquo; in the left hand menu.</li>
 <li>Click on the default Security Group (it should say default in the &ldquo;Group Name&rdquo; column)</li>
 <li>Click on the &ldquo;Inbound Rules&rdquo; tab at the bottom and click &ldquo;Edit.&rdquo;</li>
 <li>Click &ldquo;Add Rule&rdquo; to start adding our first rule.</li>
@@ -2468,21 +2536,21 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 <li>Select &ldquo;Redshift&rdquo; for &ldquo;Type.&rdquo; Enter your cluster&rsquo;s port (typically 5439). Type &ldquo;sg-&rdquo; into the source field, and it should pull up your default security group.</li>
 </ol>
 
-<p><strong>Note:</strong> If you&rsquo;re having trouble getting your own IP/CIDR setup, try either looking up your subnet mask and using <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks">this table</a>. Your CIDR will almost always be your id address followed by <code class="prettyprint">/32</code> or <code class="prettyprint">/64</code> for ipv6.  Example: <code class="prettyprint">123.123.123.123/32</code>. If all else fails, use the &ldquo;Anywhere&rdquo; global option <code class="prettyprint">0.0.0.0/0</code> - opening your cluster to the public Internet. The latter isn&rsquo;t recommended. If you do have to do this, make sure you remove the rule when you&rsquo;re done.</p>
+<p><strong>Note:</strong> If you&rsquo;re having trouble getting your own IP/CIDR setup, try either looking up your subnet mask and using <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks">this table</a>. Your CIDR will almost always be your ip address followed by <code class="prettyprint">/32</code> or <code class="prettyprint">/64</code> for ipv6.  Example: <code class="prettyprint">123.123.123.123/32</code>. If all else fails, use the &ldquo;Anywhere&rdquo; global option <code class="prettyprint">0.0.0.0/0</code> - opening your cluster to the public Internet. The latter isn&rsquo;t recommended. If you do have to do this, make sure you remove the rule when you&rsquo;re done.</p>
 
 <h4 id="prepare-redshift-schema">Prepare Redshift Schema</h4>
 
-<p>We need to prep our tables data schema to receive our ConrtolShift Data.  We&rsquo;ll use <code class="prettyprint">psql</code> for this.</p>
+<p>We need to prep our tables data schema to receive our ControlShift Data.  We&rsquo;ll use <code class="prettyprint">psql</code> for this.</p>
 
 <ol>
-<li>Install <code class="prettyprint">psql</code> you don&rsquo;t have it already.</li>
+<li>Install <code class="prettyprint">psql</code> if you don&rsquo;t have it already.</li>
 <li>Download the current schema for our petitions table as <a href="/data/petitions_schema.sql" target="_blank">petitions_schema.sql</a>.</li>
-<li>Finally, you&rsquo;ll need to load that schema into your table with the following command.</li>
+<li>Finally, you&rsquo;ll need to load that schema into your table with the following command:</li>
 </ol>
 
 <p><code class="prettyprint">psql -h &lt;cluster_endpoint&gt; -U &lt;database_user&gt; -d &lt;database_name&gt; -p &lt;cluster_port&gt; -f petitions_schema.sql</code></p>
 
-<p><strong>Note:</strong> When connecting, you should almost immediately get a request for your password. If you&rsquo;re connection is timing out <em>before</em> you enter your password, there is an authorization issue. If you are timing out <em>after</em> connecting, you can extend your keep alive timeout with the following shell command.</p>
+<p><strong>Note:</strong> When connecting, you should almost immediately get a request for your password. If your connection is timing out <em>before</em> you enter your password, there is an authorization issue. If you are timing out <em>after</em> connecting, you can extend your keep alive timeout with the following shell command.</p>
 
 <p><code class="prettyprint">sudo /sbin/sysctl -w net.ipv4.tcp_keepalive_time=200 net.ipv4.tcp_keepalive_intvl=200 net.ipv4.tcp_keepalive_probes=5</code></p>
 
@@ -2575,16 +2643,17 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 
 <ol>
 <li>Go to the AWS Lambda Console in the same region as your S3 bucket and Amazon Redshift cluster.</li>
-<li>Select Create a Lambda function and enter the name controlShiftRedshiftLoader (for example).</li>
-<li>Under Code entry type select &lsquo;Upload a zip file&rsquo; and upload the <a href="https://github.com/awslabs/aws-lambda-redshift-loader/blob/master/dist/AWSLambdaRedshiftLoader-2.4.0.zip">AWSLambdaRedshiftLoader-2.4.0.zip</a> from your local <code class="prettyprint">dist</code> folder or <a href="https://github.com/awslabs/aws-lambda-redshift-loader/tree/master/dist">download it</a>.</li>
+<li>Select Create a Lambda function and enter a name (e.g.: controlShiftRedshiftLoader).</li>
+<li>Clone the <a href="https://github.com/awslabs/aws-lambda-redshift-loader">Amazon Redshift Database Loader</a> repository locally</li>
+<li>Under Code entry type select &lsquo;Upload a zip file&rsquo; and upload the AWSLambdaRedshiftLoader-2.4.0.zip file from the &ldquo;dist&rdquo; directory on the repository you just cloned.</li>
 <li>Set the Runtime to Node.js 0.10.</li>
 <li>Use the default values for the handler, and in the Role drop-down, select &ldquo;* Basic Execution Role.&rdquo; A IAM creation wizard will open in a new window.</li>
 <li>Follow the wizard, selecting to &ldquo;Create a new IAM Role&rdquo; and name it as you like.  Click to &ldquo;View the Policy&rdquo; and then click edit.</li>
-<li>Copy and paste the the AWS Lambda Execution Role permissions from the example &ldquo;AWS Lambda Execution Role&rdquo; or from the official <a href="https://github.com/awslabs/aws-lambda-redshift-loader#getting-started---lambda-execution-role">readme</a>.</li>
+<li>Copy and paste the the AWS Lambda Execution Role permissions from the right.</li>
 <li>Then click &ldquo;Add Policy.&rdquo; Select the <code class="prettyprint">AmazonRedshiftFullAccess</code> role and add it, then add another role - <code class="prettyprint">AmazonDMSRedshiftS3Role</code>.</li>
 <li>Navigate back to your Lambda setup tab and set the max timeout (5 minutes) to accommodate potentially long COPY times.</li>
 <li>From the VPC dropdown, select your default VPC.</li>
-<li>Leave the rest of the settings alone.</li>
+<li>Leave the rest of the settings unchanged.</li>
 <li>Click next and then click to create your Lambda.</li>
 </ol>
 
@@ -2601,17 +2670,15 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 
 <h4 id="configuration-prep">Configuration Prep</h4>
 
-<ol>
-<li>If you have already installed npm&rsquo;s <code class="prettyprint">aws-sdk</code> with your credentials, great, but if not, you can always export your credentials as environment variables before running <code class="prettyprint">setup node.js</code>.
-<code class="prettyprint">export AWS_ACCESS_KEY_ID=XXXXXXXXX AWS_SECRET_ACCESS_KEY=XXXXXXXXXXX</code></li>
-<li>You&rsquo;ll need to export your region as well <code class="prettyprint">export AWS_REGION=us-east-1</code>.</li>
-</ol>
+<p>Setup your AWS credentials as environment variables as follows:
+<code class="prettyprint">export AWS_ACCESS_KEY_ID=XXXXXXXXX AWS_SECRET_ACCESS_KEY=XXXXXXXXXXX AWS_REGION=us-east-1</code></p>
 
 <h4 id="running-setup-js">Running setup.js</h4>
 
 <ol>
 <li>After setting up your environment, head to your local copy of aws-lambda-redshift-loader.</li>
-<li>run <code class="prettyprint">node setup.js</code></li>
+<li>run <code class="prettyprint">npm install</code> to install package&rsquo;s dependencies.</li>
+<li>run <code class="prettyprint">node setup.js</code>.</li>
 <li>The script will request various configuration options.  Some sensible responses for our use case are below. Empty responses were just skipped.</li>
 </ol>
 
