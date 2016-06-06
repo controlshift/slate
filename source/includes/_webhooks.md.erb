@@ -12,7 +12,7 @@ If you need additional information about webhooks or how to use them, please sen
 
 Webhook notifications successful processed expect the response to have an HTTP 2XX status code. Responses returning a different status code will be marked as failed and automatically retried up to 9 times with an exponential backoff (i.e.: after 15s, 30s, 90s, etc.).
 
-
+If after 9 retries the notification cannot be delivered, the webhook endpoint will be automatically disabled and will need to be re-enabled from the admin page to start receiving webhook notifications again.
 
 ## Webhook types summary
 
