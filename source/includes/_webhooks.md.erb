@@ -8,11 +8,11 @@ We recommend using a tool like [RequestBin](http://requestb.in/) to help debug a
 
 If you need additional information about webhooks or how to use them, please send us a support email [support@controlshiftlabs.com](mailto:support@controlshiftlabs.com). We'd also love stories about how customers are using webhooks.
 
-### Identifying Unique Webhook Events
+### Retries
 
-In the extermely unlikely event that a webhook is double set for some reason (error on our end, Internet gremlins, etc.), you can always identify webhooks by their unique `jid` (job id). If an incoming webhook has the same `jid` as a webhook that has already been processed, you can safely ignore the new one.
+For webhook notifications successfully processed the response should have an HTTP 2XX status code. Responses returning a different status code will be marked as failed and automatically retried up to 9 times with an exponential backoff (e.g.: after 15s, 30s, 90s, etc.).
 
-
+If after 9 retries the notification cannot be delivered, the webhook endpoint will be automatically disabled and will need to be re-enabled from the admin page to start receiving webhook notifications again.
 
 ## Webhook types summary
 

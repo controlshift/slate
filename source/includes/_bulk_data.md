@@ -37,7 +37,7 @@ Additional files:
 
 Setting up an Amazon Redshift integration should take one to two hours. We'll use a custom [AWS Lamda](http://docs.aws.amazon.com/lambda/latest/dg/welcome.html) to receive data from ControlShift's webhook and Amazon's [Lamda Redshift Loader](https://github.com/awslabs/aws-lambda-redshift-loader) to load our data into Redshift. For this example, we'll focus on the daily full_table dump, and truncating the previous days data for petitions only. You could also add a second pipeline to add incremental data if you need more frequent updates.
 
-As of this writing, aws-lambda-redshift-loader v2.4.0 only supports a single configuration per Lambda.  This means you'll have a setup a separate Lambda for every table you want to capture. If you want to capture both nightly and incremental dumps, you'll also need to set up one nightly lambda and one incremental lambda per table you want to capture. It can be a little tedious, but remember, the first one is the hardest!
+As of this writing, aws-lambda-redshift-loader v2.4.0 only supports a single configuration per Lambda.  This means you'll have to setup a separate Lambda for every table you want to capture. If you want to capture both nightly and incremental dumps, you'll also need to set up one nightly lambda and one incremental lambda per table you want to capture. It can be a little tedious, but remember, the first one is the hardest!
 
 ### Example Flow
 
@@ -54,9 +54,9 @@ The core steps to get this up and running are:
 4. Setting up your `aws-lambda-redshift-loader` lambda.
 5. Configure your bulk data webhook in the Control Shift settings console.
 
-**Note:** All resources should be set up in the same AWS region (ex: us-east-1) so they can access each other. "US Standard" and "us-east-1" are the same thing.
+**Note:** All resources should be set up in the same AWS region (e.g.: us-east-1) so they can access each other. "US Standard" and "us-east-1" are the same thing.
 
-**Before starting:** You'll need git, npm, and access to a PostgreSQL connection tool (Redshift is based on PostgreSQL). These instructions use `psql` on the command line.
+**Before starting:** You'll need git, npm, and access to a PostgreSQL connection tool, such as `psql` on the command line (Redshift is based on PostgreSQL).
 
 These instructions were prepared for aws-lambda-redshift-loader v2.4.0.
 
@@ -181,7 +181,7 @@ Now that we have our Lambda setup, we need to be able to POST to it from your Co
 
 ### Setting Up RedShift Database
 
-Click on over to the Redshift service in the AWS console.
+Click on Redshift service in the AWS console.
 
 #### Launch Your Cluster
 
@@ -200,7 +200,7 @@ Click on over to the Redshift service in the AWS console.
 We need to whitelist relevant IP addresses in our default security group. We'll need to add two rules. While we're managing our security through a VPC (Virtual Private Cloud), the best UI for our purposes is actually in the EC2 configuration console.
 
 1. Go to the AWS Console > EC2
-2. Click to "Security Groups" in the left hand menu.
+2. Click on "Security Groups" in the left hand menu.
 3. Click on the default Security Group (it should say default in the "Group Name" column)
 4. Click on the "Inbound Rules" tab at the bottom and click "Edit."
 5. Click "Add Rule" to start adding our first rule.
@@ -208,19 +208,19 @@ We need to whitelist relevant IP addresses in our default security group. We'll 
 7. Click "Add Rule" again.
 8. Select "Redshift" for "Type." Enter your cluster's port (typically 5439). Type "sg-" into the source field, and it should pull up your default security group.
 
-**Note:** If you're having trouble getting your own IP/CIDR setup, try either looking up your subnet mask and using [this table](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks). Your CIDR will almost always be your id address followed by `/32` or `/64` for ipv6.  Example: `123.123.123.123/32`. If all else fails, use the "Anywhere" global option `0.0.0.0/0` - opening your cluster to the public Internet. The latter isn't recommended. If you do have to do this, make sure you remove the rule when you're done.
+**Note:** If you're having trouble getting your own IP/CIDR setup, try either looking up your subnet mask and using [this table](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks). Your CIDR will almost always be your ip address followed by `/32` or `/64` for ipv6.  Example: `123.123.123.123/32`. If all else fails, use the "Anywhere" global option `0.0.0.0/0` - opening your cluster to the public Internet. The latter isn't recommended. If you do have to do this, make sure you remove the rule when you're done.
 
 #### Prepare Redshift Schema
 
-We need to prep our tables data schema to receive our ConrtolShift Data.  We'll use `psql` for this.
+We need to prep our tables data schema to receive our ControlShift Data.  We'll use `psql` for this.
 
-1. Install `psql` you don't have it already.
+1. Install `psql` if you don't have it already.
 2. Download the current schema for our petitions table as <a href="/data/petitions_schema.sql" target="_blank">petitions_schema.sql</a>.
-3. Finally, you'll need to load that schema into your table with the following command.
+3. Finally, you'll need to load that schema into your table with the following command:
 
 ```psql -h <cluster_endpoint> -U <database_user> -d <database_name> -p <cluster_port> -f petitions_schema.sql```
 
-**Note:** When connecting, you should almost immediately get a request for your password. If you're connection is timing out *before* you enter your password, there is an authorization issue. If you are timing out *after* connecting, you can extend your keep alive timeout with the following shell command.
+**Note:** When connecting, you should almost immediately get a request for your password. If your connection is timing out *before* you enter your password, there is an authorization issue. If you are timing out *after* connecting, you can extend your keep alive timeout with the following shell command.
 
 ```sudo /sbin/sysctl -w net.ipv4.tcp_keepalive_time=200 net.ipv4.tcp_keepalive_intvl=200 net.ipv4.tcp_keepalive_probes=5```
 
@@ -310,17 +310,18 @@ We need to allow our user to access our aws-lambda-redshift-loader to access our
 ```
 
 1. Go to the AWS Lambda Console in the same region as your S3 bucket and Amazon Redshift cluster.
-2. Select Create a Lambda function and enter the name controlShiftRedshiftLoader (for example).
-3. Under Code entry type select 'Upload a zip file' and upload the [AWSLambdaRedshiftLoader-2.4.0.zip](https://github.com/awslabs/aws-lambda-redshift-loader/blob/master/dist/AWSLambdaRedshiftLoader-2.4.0.zip) from your local ```dist``` folder or [download it](https://github.com/awslabs/aws-lambda-redshift-loader/tree/master/dist).
-4. Set the Runtime to Node.js 0.10.
-5. Use the default values for the handler, and in the Role drop-down, select "* Basic Execution Role." A IAM creation wizard will open in a new window.
-6. Follow the wizard, selecting to "Create a new IAM Role" and name it as you like.  Click to "View the Policy" and then click edit.
-7. Copy and paste the the AWS Lambda Execution Role permissions from the example "AWS Lambda Execution Role" or from the official [readme](https://github.com/awslabs/aws-lambda-redshift-loader#getting-started---lambda-execution-role).
-8. Then click "Add Policy." Select the `AmazonRedshiftFullAccess` role and add it, then add another role - `AmazonDMSRedshiftS3Role`.
-9. Navigate back to your Lambda setup tab and set the max timeout (5 minutes) to accommodate potentially long COPY times.
-10. From the VPC dropdown, select your default VPC.
-11. Leave the rest of the settings alone.
-12. Click next and then click to create your Lambda.
+2. Select Create a Lambda function and enter a name (e.g.: controlShiftRedshiftLoader).
+3. Clone the [Amazon Redshift Database Loader](https://github.com/awslabs/aws-lambda-redshift-loader) repository locally
+4. Under Code entry type select 'Upload a zip file' and upload the AWSLambdaRedshiftLoader-2.4.0.zip file from the "dist" directory on the repository you just cloned.
+5. Set the Runtime to Node.js 0.10.
+6. Use the default values for the handler, and in the Role drop-down, select "* Basic Execution Role." A IAM creation wizard will open in a new window.
+7. Follow the wizard, selecting to "Create a new IAM Role" and name it as you like.  Click to "View the Policy" and then click edit.
+8. Copy and paste the the AWS Lambda Execution Role permissions from the right.
+9. Then click "Add Policy." Select the `AmazonRedshiftFullAccess` role and add it, then add another role - `AmazonDMSRedshiftS3Role`.
+10. Navigate back to your Lambda setup tab and set the max timeout (5 minutes) to accommodate potentially long COPY times.
+11. From the VPC dropdown, select your default VPC.
+12. Leave the rest of the settings unchanged.
+13. Click next and then click to create your Lambda.
 
 #### Establishing an Event Source
 
@@ -333,14 +334,14 @@ Once deployed, you need to add an event source:
 
 #### Configuration Prep
 
-1. If you have already installed npm's `aws-sdk` with your credentials, great, but if not, you can always export your credentials as environment variables before running `setup node.js`.
-```export AWS_ACCESS_KEY_ID=XXXXXXXXX AWS_SECRET_ACCESS_KEY=XXXXXXXXXXX```
-2. You'll need to export your region as well `export AWS_REGION=us-east-1`.
+Setup your AWS credentials as environment variables as follows:
+```export AWS_ACCESS_KEY_ID=XXXXXXXXX AWS_SECRET_ACCESS_KEY=XXXXXXXXXXX AWS_REGION=us-east-1```
 
 #### Running setup.js
 
 1. After setting up your environment, head to your local copy of aws-lambda-redshift-loader.
-2. run `node setup.js`
+2. run `npm install` to install package's dependencies.
+2. run `node setup.js`.
 3. The script will request various configuration options.  Some sensible responses for our use case are below. Empty responses were just skipped.
 
 |          |
