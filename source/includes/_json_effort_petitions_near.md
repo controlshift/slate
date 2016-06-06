@@ -159,8 +159,17 @@ View and edit a working example on codepen.io:
       })
       .done(function(data) {
         $placeholder = $('#petitions');
+        if (data.code != undefined) {
+          if ((data.code == 'no_nearby_targets') || (data.code == 'no_nearby_petitions')){
+            $placeholder.html('<h2>No Petitions Found</h2>');
+            return;
+          } else if (data.code == 'location_required') {
+            $placeholder.html('<h2>Location required</h2>');
+            return;
+          }
+        }
         //populate closest target
-        $placeholder.append( buildPetition(data.closest_target, 'Closest') );
+        $placeholder.html( buildPetition(data.closest_target, 'Closest') );
         $.each(data.other_targets, function(index, other_petition){
           $placeholder.append( buildPetition(other_petition, 'Near By') );
         });
