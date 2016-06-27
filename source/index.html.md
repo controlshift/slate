@@ -20,10 +20,22 @@ includes:
   - json_me
   - webhooks.md.erb
   - bulk_data
+  - authenticated_api_intro
+  - authenticated_api_organisation
 
 search: true
 ---
 
 # Introduction
 
-Welcome to the [ControlShift Labs](http://www.controlshiftlabs.com/) JSON API and Webhook Endpoint documentation!  Our API and Webhooks are designed to allow software engineers to create rich integrations between ControlShift content and third-party services and websites.
+Welcome to the [ControlShift Labs](http://www.controlshiftlabs.com/) Developer documentation. Our APIs are designed to allow software engineers to create rich integrations between ControlShift content and third-party services and websites.
+
+We offer several APIs to customers to cover different integration use cases. 
+
+- __JSONP API__ Unauthenticated API designed to be consumed by javascript clients written by front-end engineers. Quickly display public information about petitions, efforts, and users on external sites.  
+
+- __Webhooks__ Get notified when changes happen so external systems can react. 
+
+- __Bulk Data__ Integrate your ControlShift instance with a data warehouse like Redshift for SQL access and reporting.
+
+- __Authenticated REST__ Server Side API integration option for more advanced scenarios. Uses OAuth2 to allow third-party developers to create applications and customers to grant access.
