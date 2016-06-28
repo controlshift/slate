@@ -2863,6 +2863,10 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 
 <p>Should return a json representation of the current organisation. See documentation for other endpoints that are available. </p>
 
+<p>We&rsquo;ve also written an example <a href="https://github.com/controlshift/controlshift-oauth-example">of this same work flow</a> in ruby using the oauth2 gem. </p>
+
+<p>In most production scenarios instead of manually performing the authorization, and exchanging the code for a token, this setup process would be automated. See your oauth2 library documentation for more information. </p>
+
           <h2 id="organisation">Organisation</h2>
 
 <h3 id="retrieve">Retrieve</h3>
@@ -2882,6 +2886,63 @@ Bulk data webhooks should be automatically included when adding a new webhook en
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+
+          <h2 id="members">Members</h2>
+
+<p>The platform transparently creates a member record for any email address that creates a user account, signs a petition, or attends an event. Members are unique by email address, and all 
+platform activity is tracked by member id.  </p>
+
+<h3 id="lookup">Lookup</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"member"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo@bar.com"</span><span class="p">,</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="err">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Find a member by email address. Once you have obtained a member id you can use this identifier in other API calls. </p>
+
+<p><code class="prettyprint">GET /api/v1/members/lookup?email=foo@bar.com</code></p>
+
+<h3 id="show">Show</h3>
+
+<p>Find a member by id. Member ids can be discovered via a call to the lookup API. </p>
+
+<p><code class="prettyprint">GET /api/v1/members/123</code></p>
+
+<h3 id="destroy">Destroy</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"member"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo@bar.com"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Permanently deletes a member with specified id and all associated records including petitions, signatures, events. The deletion feature is designed to honor requests from members around the right to be forgotten.</p>
+
+<p><code class="prettyprint">DELETE /api/v1/members/123</code></p>
+
+<p>Deletes are synchronous and may take several seconds depdending on how many resources are owned by the member. </p>
+
+<p>Ownership of Petitions and Events created by the deleted member will be re-assigned to the user account specified in the organisation&rsquo;s settings. </p>
+
+<h3 id="unsubscribe">Unsubscribe</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"member"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"unsubscribed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo@bar.com"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Unsubscribes a member with specified id from emails from event hosts and petiton creators. Member will still receive transactional emails, and will be resubscribed if they opt in while signing a new petition or attending a new event, etc. </p>
+
+<p><code class="prettyprint">POST /api/v1/members/123/unsubscribe</code></p>
 
       </div>
       <div class="dark-box">
