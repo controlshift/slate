@@ -35,3 +35,7 @@ curl -X POST --header "Content-Type: application/json" --header "Accept: applica
 
 Should return a json representation of the current organisation. See documentation for other endpoints that are available. 
 
+We've also written an example [of this same work flow](https://github.com/controlshift/controlshift-oauth-example) in ruby using the oauth2 gem. 
+
+In most production scenarios instead of manually performing the authorization, and exchanging the code for a token, this setup process would be automated. See your oauth2 library documentation for more information. 
+

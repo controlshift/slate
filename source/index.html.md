@@ -22,6 +22,7 @@ includes:
   - bulk_data
   - authenticated_api_intro
   - authenticated_api_organisation
+  - authenticated_api_members
 
 search: true
 ---
