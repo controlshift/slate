@@ -120,16 +120,7 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the <a href="http://www.controlshiftlabs.com/">ControlShift Labs</a> Developer documentation. Our APIs are designed to allow software engineers to create rich integrations between ControlShift content and third-party services and websites.</p>
-
-<p>We offer several APIs to customers to cover different integration use cases. </p>
-
-<ul>
-<li><p><strong>JSONP API</strong> Unauthenticated API designed to be consumed by javascript clients written by front-end engineers. Quickly display public information about petitions, efforts, and users on external sites.  </p></li>
-<li><p><strong>Webhooks</strong> Get notified when changes happen so external systems can react. </p></li>
-<li><p><strong>Bulk Data</strong> Integrate your ControlShift instance with a data warehouse like Redshift for SQL access and reporting.</p></li>
-<li><p><strong>Authenticated REST</strong> Server Side API integration option for more advanced scenarios. Uses OAuth2 to allow third-party developers to create applications and customers to grant access.</p></li>
-</ul>
+<p>Welcome to the <a href="http://www.controlshiftlabs.com/">ControlShift Labs</a> JSON API and Webhook Endpoint documentation!  Our API and Webhooks are designed to allow software engineers to create rich integrations between ControlShift content and third-party services and websites.</p>
 
           <h1 id="json-api-endpoints">JSON API Endpoints</h1>
 
@@ -2820,129 +2811,6 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 <li>If you get an error message &ldquo;Unknown Error during Customer Master Key describe&rdquo; when running setup.js, you probably didn&rsquo;t <code class="prettyprint">export</code>the environment params as described above.</li>
 </ul></li>
 </ul>
-
-          <h1 id="authenticated-rest-api">Authenticated REST API</h1>
-
-<p>The Authenticated REST API allows customers to build applications that interact with their own data or securely grant access to third-party app developers without exposing administrative credentials. It is designed to be consumed server-side, in contrast to the JSONP API which is designed for unauthenticated javascript integrations. </p>
-
-<p>We use <a href="http://oauth.net/2/">OAuth2</a> to allow organizations to securely grant access to API Applications. OAuth2 is a standardized protocol that allows user credentials to be exchanged for a secret token which can then be used to access an API. There are OAuth2 implementations available for most common programming languages. You&rsquo;ll probably want to read some general documentation on how OAuth2 works before attempting to use this API. </p>
-
-<p>An <em>API Application</em> must be configured within your ControlShift instance before using the API. Access is then granted to this application, and exchanged for a token which is used to authenticate your access to API endpoints.   </p>
-
-<h2 id="quickstart-guide">Quickstart Guide</h2>
-
-<p>These are the steps to setup a new API Application and to use that new API Application to access platform resources through OAuth2. In a production context, automating these steps is recommended. </p>
-
-<ol>
-<li><p><strong>Setup a new API Application</strong> Login as an Organisation Owner and navigate to Settings &gt; Integrations &gt; Configure API Applications. Add a New Application. Use urn:ietf:wg:oauth:2.0:oob as the callback URL unless you plan to allow self-service application authorization. </p></li>
-<li><p><strong>Generate Authorization Code</strong> From the API Application show page, click &ldquo;Authorize&rdquo;. This will generate a code that can be exchanged with a token to act as the currently signed in user. After the authorization is approved, an authorization code should be displayed. Record this code for the next step. </p></li>
-</ol>
-
-<blockquote>
-<p>Use cURL to do the token exchange</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X POST --header <span class="s2">"Content-Type: application/json"</span> --header <span class="s2">"Accept: application/json"</span> --data <span class="s1">'{"grant_type":"authorization_code", "code":"{code}", "client_id":"{client_id}", "client_secret":"{client_secret}", "redirect_uri":"{redirect_uri}"}'</span> https://foo.controlshiftlabs.com/oauth/token
-</code></pre>
-
-<ol>
-<li><strong>Exchange Authorization Code for Token</strong> Take the authorization code from the previous step and exchange it for an OAuth2 Token. </li>
-</ol>
-
-<p><code class="prettyprint">POST https://foo.controlshiftlabs.com/oauth/token
-  client_id=...
-  redirect_uri=...
-  grant_type=authorization_code
-  client_secret=...
-  code=...</code></p>
-
-<ol>
-<li><strong>Use Token to Access API</strong> The token can now be used to access API endpoints as the authorized user. </li>
-</ol>
-
-<p><code class="prettyprint">GET https://foo.controlshiftlabs.com/api/v1/organisation?access_token={token}</code></p>
-
-<p>Should return a json representation of the current organisation. See documentation for other endpoints that are available. </p>
-
-<p>We&rsquo;ve also written an example <a href="https://github.com/controlshift/controlshift-oauth-example">of this same work flow</a> in ruby using the oauth2 gem. </p>
-
-<p>In most production scenarios instead of manually performing the authorization, and exchanging the code for a token, this setup process would be automated. See your oauth2 library documentation for more information. </p>
-
-          <h2 id="organisation">Organisation</h2>
-
-<h3 id="retrieve">Retrieve</h3>
-
-<p>Get up to date statistics about the current organisation.</p>
-
-<blockquote>
-<p>GET /api/v1/organisation</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"organisation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"petitions_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"signatures_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"blast_emails_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"members_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-          <h2 id="members">Members</h2>
-
-<p>The platform transparently creates a member record for any email address that creates a user account, signs a petition, or attends an event. Members are unique by email address, and all 
-platform activity is tracked by member id.  </p>
-
-<h3 id="lookup">Lookup</h3>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"member"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo@bar.com"</span><span class="p">,</span><span class="w">
-    </span><span class="err">...</span><span class="w">
-  </span><span class="err">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Find a member by email address. Once you have obtained a member id you can use this identifier in other API calls. </p>
-
-<p><code class="prettyprint">GET /api/v1/members/lookup?email=foo@bar.com</code></p>
-
-<h3 id="show">Show</h3>
-
-<p>Find a member by id. Member ids can be discovered via a call to the lookup API. </p>
-
-<p><code class="prettyprint">GET /api/v1/members/123</code></p>
-
-<h3 id="destroy">Destroy</h3>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"member"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo@bar.com"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Permanently deletes a member with specified id and all associated records including petitions, signatures, events. The deletion feature is designed to honor requests from members around the right to be forgotten.</p>
-
-<p><code class="prettyprint">DELETE /api/v1/members/123</code></p>
-
-<p>Deletes are synchronous and may take several seconds depdending on how many resources are owned by the member. </p>
-
-<p>Ownership of Petitions and Events created by the deleted member will be re-assigned to the user account specified in the organisation&rsquo;s settings. </p>
-
-<h3 id="unsubscribe">Unsubscribe</h3>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"member"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"unsubscribed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo@bar.com"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Unsubscribes a member with specified id from emails from event hosts and petiton creators. Member will still receive transactional emails, and will be resubscribed if they opt in while signing a new petition or attending a new event, etc. </p>
-
-<p><code class="prettyprint">POST /api/v1/members/123/unsubscribe</code></p>
 
       </div>
       <div class="dark-box">
