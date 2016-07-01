@@ -1357,12 +1357,28 @@ You must whitelist your hostname prior to using this end point. Read more below.
 <td>Decision maker responded to a petition notification</td>
 </tr>
 <tr>
+<td><a href="#user-created">user.created</a></td>
+<td>New user created.</td>
+</tr>
+<tr>
+<td><a href="#user-confirmed">user.confirmed</a></td>
+<td>User has confirmed its new account. This event is only emitted for organisations who have user confirmation turned on.</td>
+</tr>
+<tr>
+<td><a href="#user-changed">user.changed</a></td>
+<td>A user has changed their saved first_name, last_name, postcode or locale.</td>
+</tr>
+<tr>
 <td><a href="#signature-created">signature.created</a></td>
 <td>Member signs a petition</td>
 </tr>
 <tr>
 <td><a href="#signature-deleted">signature.deleted</a></td>
 <td>Signature permanently deleted. Signature deletions are distinct from unsubscribes and should be treated as if the signature never happened</td>
+</tr>
+<tr>
+<td><a href="#signature-confirmed">signature.confirmed</a></td>
+<td></td>
 </tr>
 <tr>
 <td><a href="#unsubscribe-created">unsubscribe.created</a></td>
@@ -2146,6 +2162,68 @@ You must whitelist your hostname prior to using this end point. Read more below.
 
 <p>Decision maker responded to a petition notification</p>
 
+<h2 id="user-created">user.created</h2>
+
+<blockquote>
+<p>Example payload for <code class="prettyprint">user.created</code>:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user.created"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jenny@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jennifer"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Goines"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123-456"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101010"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"030ee43a4fa9788e084d9cfc"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>New user created.</p>
+
+<h2 id="user-confirmed">user.confirmed</h2>
+
+<blockquote>
+<p>Example payload for <code class="prettyprint">user.confirmed</code>:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user.confirmed"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo@bar.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01-04:00"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"030ee43a4fa9788e084d9cfc"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>User has confirmed its new account. This event is only emitted for organisations who have user confirmation turned on.</p>
+
+<h2 id="user-changed">user.changed</h2>
+
+<blockquote>
+<p>Example payload for <code class="prettyprint">user.changed</code>:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user.changed"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo@bar.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"changes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Nate"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Nathan"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"030ee43a4fa9788e084d9cfc"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>A user has changed their saved first_name, last_name, postcode or locale.</p>
+
 <h2 id="signature-created">signature.created</h2>
 
 <blockquote>
@@ -2237,6 +2315,50 @@ You must whitelist your hostname prior to using this end point. Read more below.
 </span></code></pre>
 
 <p>Signature permanently deleted. Signature deletions are distinct from unsubscribes and should be treated as if the signature never happened</p>
+
+<h2 id="signature-confirmed">signature.confirmed</h2>
+
+<blockquote>
+<p>Example payload for <code class="prettyprint">signature.confirmed</code>:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"signature.created"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">645</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jennifer"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Goines"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jenny@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23456"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"join_group"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"bucket"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"daisy_chain_used"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"from_embed"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"last_signed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"member"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">747</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01-04:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"petition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost/petitions/don-t-destroy-our-park"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"don-t-destroy-our-park"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01-04:00"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1ebf2eb10c3d8939f42dff68"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h2 id="unsubscribe-created">unsubscribe.created</h2>
 
