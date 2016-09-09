@@ -264,7 +264,7 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
           <h2 id="get-featured-petitions">Get featured petitions</h2>
 <pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-    <span class="na">url</span><span class="p">:</span> <span class="s1">'https://demo.controlshiftlabs.com/featured.json'</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s1">'https://demo.controlshiftlabs.com/petitions/featured.json'</span><span class="p">,</span>
     <span class="na">dataType</span><span class="p">:</span> <span class="s1">'jsonp'</span><span class="p">,</span>
   <span class="p">})</span>
   <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
@@ -276,107 +276,141 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 <blockquote>
 <p>The above code would display your returned featured petitions data in the console.  The JSON would be structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[{</span><span class="w">
-  </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"release-pro-democracy-youth-activists-in-azerbaijan"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Release pro-democracy youth activists in Azerbaijan"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/release-pro-democracy-youth-activists-in-azerbaijan"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awesome"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/hero/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/form/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"total_entries"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"release-pro-democracy-youth-activists-in-azerbaijan"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Release pro-democracy youth activists in Azerbaijan"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/release-pro-democracy-youth-activists-in-azerbaijan"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awesome"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/hero/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/form/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/large/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/open_graph/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/original/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+    </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"President Ilham Aliyev of Azerbaijan"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Immediately release the imprisoned youth activists from the NIDA civic movement.\r\n\r\nShahin Novruzlu, Rashadat Akundov, Mammad Azizov, Bakhtiyar Guliyev, Zaur Gurbanli, Rashad Hasanov, Uzeyir Mammadli and Ilkin Rustamzade were arrested on criminal charges of possessing explosives and intent of public disorder. Human rights organizations believe these charges have been fabricated. The actual reason for their arrest was their criticism of the Azerbaijani authorities and their online activism, calling for peaceful demonstrations.\r\n\r\nShahin Novruzlu, who was only 17 at the time of his arrest, has lost his front teeth as a result of torture in detention. Mammad Azizov and Bakhtiyar Guliyev have complained of torture too.\r\n\r\nFrom 14 May 2014, Azerbaijan is chairing the Committee of Ministers of the Council of Europe. This organization is responsible for promoting and protecting human rights. I am deeply concerned that there are civil society activists in Azerbaijan tortured and imprisoned solely for expressing their views and organizing peaceful protests.\r\n\r\nAzerbaijan must live up to the high expectations of the chair of the Committee of Ministers of the Council of Europe. The NIDA activists must be immediately released."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">119</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kristyn Arrighi"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-07-24T20:07:14.607-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-26T14:30:57.330-05:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shahin Novruzlu and fellow youth activists from the pro-democracy movement NIDA campaigned for democracy and against human rights abuses and widespread corruption in Azerbaijan. In February 2013 th..."</span><span class="w">
   </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/large/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"give-us-more-icecream"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Give us more icecream"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/give-us-more-icecream"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awesome"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/hero/10982478_634745530004482_279346285079955699_n.jpg?1455250695"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/form/10982478_634745530004482_279346285079955699_n.jpg?1455250695"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/large/10982478_634745530004482_279346285079955699_n.jpg?1455250695"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/open_graph/10982478_634745530004482_279346285079955699_n.jpg?1455250695"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/original/10982478_634745530004482_279346285079955699_n.jpg?1455250695"</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+    </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cook"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cook and provide more icecream"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tudor Bradatan"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-11T23:17:42.782-05:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-26T14:20:46.987-05:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Because we like and need it"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cluj"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46.7712101"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23.6236353"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RO"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CJ"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-11T23:17:42.769-05:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/open_graph/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"</span><span class="w">
-  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/original/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"</span><span class="w">
-  </span><span class="p">}],</span><span class="w">
-  </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"President Ilham Aliyev of Azerbaijan"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Immediately release the imprisoned youth activists from the NIDA civic movement.\r\n\r\nShahin Novruzlu, Rashadat Akundov, Mammad Azizov, Bakhtiyar Guliyev, Zaur Gurbanli, Rashad Hasanov, Uzeyir Mammadli and Ilkin Rustamzade were arrested on criminal charges of possessing explosives and intent of public disorder. Human rights organizations believe these charges have been fabricated. The actual reason for their arrest was their criticism of the Azerbaijani authorities and their online activism, calling for peaceful demonstrations.\r\n\r\nShahin Novruzlu, who was only 17 at the time of his arrest, has lost his front teeth as a result of torture in detention. Mammad Azizov and Bakhtiyar Guliyev have complained of torture too.\r\n\r\nFrom 14 May 2014, Azerbaijan is chairing the Committee of Ministers of the Council of Europe. This organization is responsible for promoting and protecting human rights. I am deeply concerned that there are civil society activists in Azerbaijan tortured and imprisoned solely for expressing their views and organizing peaceful protests.\r\n\r\nAzerbaijan must live up to the high expectations of the chair of the Committee of Ministers of the Council of Europe. The NIDA activists must be immediately released."</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">119</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kristyn Arrighi"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-07-24T20:07:14.607-04:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-26T14:30:57.330-05:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shahin Novruzlu and fellow youth activists from the pro-democracy movement NIDA campaigned for democracy and against human rights abuses and widespread corruption in Azerbaijan. In February 2013 th..."</span><span class="w">
-</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"give-us-more-icecream"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Give us more icecream"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/give-us-more-icecream"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awesome"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/hero/10982478_634745530004482_279346285079955699_n.jpg?1455250695"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/form/10982478_634745530004482_279346285079955699_n.jpg?1455250695"</span><span class="w">
-  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/large/10982478_634745530004482_279346285079955699_n.jpg?1455250695"</span><span class="w">
-  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/open_graph/10982478_634745530004482_279346285079955699_n.jpg?1455250695"</span><span class="w">
-  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/original/10982478_634745530004482_279346285079955699_n.jpg?1455250695"</span><span class="w">
-  </span><span class="p">}],</span><span class="w">
-  </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cook"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cook and provide more icecream"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tudor Bradatan"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-11T23:17:42.782-05:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-26T14:20:46.987-05:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Because we like and need it"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cluj"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46.7712101"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23.6236353"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RO"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CJ"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-11T23:17:42.769-05:00"</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"turn-back-human-trafficking-faith-leaders"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pledge to TURN BACK human trafficking Now - Faith or Community Leaders"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/turn-back-human-trafficking-faith-leaders"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awesome"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/hero/Untitled.png?1433187465"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/form/Untitled.png?1433187465"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/large/Untitled.png?1433187465"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/open_graph/Untitled.png?1433187465"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/original/Untitled.png?1433187465"</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+    </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"President John Dramani Mahama"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I know that globally millions of people are trafficked for forced labour and sexual exploitation and that Ghana is a source, transit and destination country for this social evil. The concerns raised by Parliament recently, about men, women, and children who are trafficked and subjected to forced labor and sexual exploitation human points to the need for everyone to take action.\r\n\r\nI hereby pledge to TURN BACK human trafficking. \r\n•\tI will be vigilant of suspicious movement of children and vulnerable people, victims of bonded labour and of children working when they should be in school \r\n•\tI promise to always report my concerns to the appropriate authorities as quickly as possible.\r\n\r\nAs a faith or community leader, I promise to warn my congregation of the dangers of child trafficking, and support them in reporting any suspicions they have."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kristyn Arrighi"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-01T15:37:47.621-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-14T08:45:52.396-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Today there are over 192,000 people trapped in modern slavery in Ghana [1]. Denied of their rights to education and often lacking parental care or support, over 1.8 million Ghanaian children are wo..."</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w">
+</span><span class="p">],</span><span class="w">
+</span><span class="nt">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/featured.json?page=1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/featured.json"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"prev"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/featured.json?page=2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/featured.json?page=3"</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"turn-back-human-trafficking-faith-leaders"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pledge to TURN BACK human trafficking Now - Faith or Community Leaders"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/turn-back-human-trafficking-faith-leaders"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awesome"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/hero/Untitled.png?1433187465"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/form/Untitled.png?1433187465"</span><span class="w">
-  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/large/Untitled.png?1433187465"</span><span class="w">
-  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/open_graph/Untitled.png?1433187465"</span><span class="w">
-  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/original/Untitled.png?1433187465"</span><span class="w">
-  </span><span class="p">}],</span><span class="w">
-  </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"President John Dramani Mahama"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I know that globally millions of people are trafficked for forced labour and sexual exploitation and that Ghana is a source, transit and destination country for this social evil. The concerns raised by Parliament recently, about men, women, and children who are trafficked and subjected to forced labor and sexual exploitation human points to the need for everyone to take action.\r\n\r\nI hereby pledge to TURN BACK human trafficking. \r\n•\tI will be vigilant of suspicious movement of children and vulnerable people, victims of bonded labour and of children working when they should be in school \r\n•\tI promise to always report my concerns to the appropriate authorities as quickly as possible.\r\n\r\nAs a faith or community leader, I promise to warn my congregation of the dangers of child trafficking, and support them in reporting any suspicions they have."</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kristyn Arrighi"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-01T15:37:47.621-04:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-14T08:45:52.396-04:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Today there are over 192,000 people trapped in modern slavery in Ghana [1]. Denied of their rights to education and often lacking parental care or support, over 1.8 million Ghanaian children are wo..."</span><span class="w">
-</span><span class="p">}]</span><span class="w">
 </span></code></pre>
 
-<p>This retrieves a JSON array of featured petitions objects.</p>
+<p>This retrieves a JSON object compliant with the <a href="http://jsonapi.org/">JSON API</a> specification, containing an array of featured petitions objects on its data property.</p>
+
+<p><strong>Important Note:</strong> The previous featured petitions API endpoint at <code class="prettyprint">https://demo.controlshiftlabs.com/featured.json</code> (note the missing <code class="prettyprint">/petitions</code> path) is being deprecated and <strong>will be removed</strong> in the near future. Please use this new endpoint for retrieving featured petitions from now on.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://demo.controlshiftlabs.com/featured.json</code></p>
+<p><code class="prettyprint">GET https://demo.controlshiftlabs.com/petitions/featured.json</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>locale</td>
+<td>null</td>
+<td>string - optional - Locale filter for petitions</td>
+</tr>
+</tbody></table>
 
 <h3 id="working-example">Working Example</h3>
 
@@ -391,12 +425,12 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
   <pre class="codepen-js">
     $(document).ready(function(){
       $.ajax({
-        url: 'https://demo.controlshiftlabs.com/featured.json',
+        url: 'https://demo.controlshiftlabs.com/petitions/featured.json',
         dataType: 'jsonp',
       })
-      .done(function(data) {
+      .done(function(resp) {
         var $placeholder = $('#featured-petitions');
-        $.each(data, function(index, petition){
+        $.each(resp.data, function(index, petition){
           output = '<li>'
           output += '<h2><a href="'+petition.url+'">'+petition.title+'</a></h2>';
           output += '<h3>'+petition.signature_count+' signatures out of '+petition.goal+' needed </h3>';
@@ -1737,6 +1771,7 @@ You must whitelist your hostname prior to using this end point. Read more below.
       </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345-1"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34058-2356"</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02-04:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15-04:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
@@ -1790,6 +1825,7 @@ You must whitelist your hostname prior to using this end point. Read more below.
       </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345-1"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34058-2356"</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02-04:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15-04:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
@@ -1843,6 +1879,7 @@ You must whitelist your hostname prior to using this end point. Read more below.
       </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345-1"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34058-2356"</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02-04:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15-04:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
@@ -1896,6 +1933,7 @@ You must whitelist your hostname prior to using this end point. Read more below.
       </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345-1"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34058-2356"</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02-04:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15-04:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
@@ -1949,6 +1987,7 @@ You must whitelist your hostname prior to using this end point. Read more below.
       </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345-1"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34058-2356"</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02-04:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15-04:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
@@ -2002,6 +2041,7 @@ You must whitelist your hostname prior to using this end point. Read more below.
       </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345-1"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34058-2356"</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02-04:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15-04:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
@@ -2055,6 +2095,7 @@ You must whitelist your hostname prior to using this end point. Read more below.
       </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345-1"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34058-2356"</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02-04:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15-04:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
@@ -2108,6 +2149,7 @@ You must whitelist your hostname prior to using this end point. Read more below.
       </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345-1"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34058-2356"</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02-04:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15-04:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
@@ -2161,6 +2203,7 @@ You must whitelist your hostname prior to using this end point. Read more below.
       </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345-1"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34058-2356"</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02-04:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15-04:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
