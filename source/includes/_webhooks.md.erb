@@ -29,10 +29,16 @@ Type | Description
 ## <%= webhook.webhook %>
 > Example payload for `<%= webhook.webhook %>`:
 
-```json
-<%= JSON.pretty_generate(webhook.payload) %>
-```
+<% if webhook.payload %>
+  ```json
+  <%= JSON.pretty_generate(webhook.payload) %>
+  ```
+<% end %>
 
 <%= webhook.description %>
+
+<% if webhook.notes %>
+  <%= webhook.notes %>
+<% end %>
 
 <% end %>
