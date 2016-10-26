@@ -1437,7 +1437,7 @@ You must whitelist your hostname prior to using this end point. Read more below.
 </tr>
 <tr>
 <td><a href="#unsubscribe-created">unsubscribe.created</a></td>
-<td>Member unsubscribes</td>
+<td>Member unsubscribes. This notification is emitted when member: is globally unsubscribed from the organisation by an admin or through the API, unsubscribes from partnership or unsubscribes from a petition.</td>
 </tr>
 <tr>
 <td><a href="#locale-created">locale.created</a></td>
@@ -1549,6 +1549,11 @@ You must whitelist your hostname prior to using this end point. Read more below.
 
 <p>A full-table dump is ready for retrieval at S3</p>
 
+<p><p>
+<b>Note</b>
+URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &rsquo;&amp;&rsquo;, &rsquo;&lt;&rsquo;, &rsquo;&gt;&rsquo;, etc.). See <a target="blank" href="http://www.rubydoc.info/gems/activesupport/3.2.22/ActiveSupport/JSON/Encoding">http://www.rubydoc.info/gems/activesupport/3.2.22/ActiveSupport/JSON/Encoding</a> for more details
+</p></p>
+
 <h2 id="data-incremental_table_exported">data.incremental_table_exported</h2>
 
 <blockquote>
@@ -1565,6 +1570,11 @@ You must whitelist your hostname prior to using this end point. Read more below.
 </span></code></pre>
 
 <p>An incremental CSV update is ready for retrieval at S3</p>
+
+<p><p>
+<b>Note</b>
+URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &rsquo;&amp;&rsquo;, &rsquo;&lt;&rsquo;, &rsquo;&gt;&rsquo;, etc.). See <a target="blank" href="http://www.rubydoc.info/gems/activesupport/3.2.22/ActiveSupport/JSON/Encoding">http://www.rubydoc.info/gems/activesupport/3.2.22/ActiveSupport/JSON/Encoding</a> for more details
+</p></p>
 
 <h2 id="event-created">event.created</h2>
 
@@ -1740,6 +1750,8 @@ You must whitelist your hostname prior to using this end point. Read more below.
 </span></code></pre>
 
 <p>Someone flags a problem for admin attention</p>
+
+<p><p>For example, a local chapter organiser flags a forum message.</p></p>
 
 <h2 id="local_chapter-last_organiser-deleted">local_chapter.last_organiser.deleted</h2>
 
@@ -2456,6 +2468,8 @@ You must whitelist your hostname prior to using this end point. Read more below.
 
 <p>Member signs a petition</p>
 
+<p><p>We also include optional partnership or effort slugs nested under the petition resource for signatures that take place on petitions associated with those objects.</p></p>
+
 <h2 id="signature-deleted">signature.deleted</h2>
 
 <blockquote>
@@ -2504,6 +2518,8 @@ You must whitelist your hostname prior to using this end point. Read more below.
 
 <p>Signature permanently deleted. Signature deletions are distinct from unsubscribes and should be treated as if the signature never happened</p>
 
+<p><p>We also include optional partnership or effort slugs nested under the petition resource for signatures that take place on petitions associated with those objects.</p></p>
+
 <h2 id="signature-confirmed">signature.confirmed</h2>
 
 <blockquote>
@@ -2550,25 +2566,86 @@ You must whitelist your hostname prior to using this end point. Read more below.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
+<p><p>We also include optional partnership or effort slugs nested under the petition resource for signatures that take place on petitions associated with those objects.</p></p>
+
 <h2 id="unsubscribe-created">unsubscribe.created</h2>
 
 <blockquote>
 <p>Example payload for <code class="prettyprint">unsubscribe.created</code>:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsubscribe.created"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"river@example.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"unsubscribe_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"unsubscribable_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:38:49-04:00"</span><span class="w">
+<pre class="highlight json"><code><span class="w">  </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsubscribe.created"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"river@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"unsubscribe_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"unsubscribable_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:38:49-04:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"030ee43a4fa9788e084d9cfc"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"030ee43a4fa9788e084d9cfc"</span><span class="w">
-</span><span class="p">}</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsubscribe.created"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"river@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"unsubscribe_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"unsubscribable_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GroupSubscription"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:38:49-04:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"030ee43a4fa9788e084d9cfc"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsubscribe.created"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"river@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"unsubscribe_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"unsubscribable_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Signature"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:38:49-04:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"blast_email"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">199</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please help spread the word"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"030ee43a4fa9788e084d9cfc"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
 </span></code></pre>
 
-<p>Member unsubscribes</p>
+<p>Member unsubscribes. This notification is emitted when member: is globally unsubscribed from the organisation by an admin or through the API, unsubscribes from partnership or unsubscribes from a petition.</p>
+
+<p><p>
+First example: Admin globally unsubscribes a member from the member page
+</p>
+<p>
+Second example: Member unsubscribes from partnership
+<br>
+<span>
+<strong>Note:</strong>
+<strong>unsubscribe_organisation</strong>
+can have true or false values depending on member&rsquo;s input at the unsubscribe page (only if the
+<em>Allow global unsubscribes</em>
+option is enabled for the organisation)
+</span>
+</p>
+<p>
+Third example: Member unsubscribes from petition
+<br>
+<span>
+<strong>Notes:</strong>
+<br>
+<strong>unsubscribe_organisation</strong>
+can have true or false values depending on member&rsquo;s input at the unsubscribe page (only if the
+<em>Allow global unsubscribes</em>
+option is enabled for the organisation)
+<br>
+The
+<strong>blast_email</strong>
+property will only be included if member unsubscribed by clicking on the link included on the petition blast email&rsquo;s footer
+</span>
+</p></p>
 
 <h2 id="locale-created">locale.created</h2>
 
@@ -2617,6 +2694,54 @@ You must whitelist your hostname prior to using this end point. Read more below.
 </span></code></pre>
 
 <p>A new message requires moderation</p>
+
+<p><div class='mt10'>
+<b>Note</b>
+<div>
+The <strong>admin_status</strong> field can take any of the following values:
+<ul>
+<li>
+<em>unreviewed</em>
+</li>
+<li>
+<em>flagged</em>
+</li>
+<li>
+<em>approved_automatically</em>
+</li>
+<li>
+<em>approved_manually</em>
+</li>
+<li>
+<em>flagged_deleted</em>
+</li>
+<li>
+<em>inappropriate</em>
+</li>
+</ul>
+Though on the <em>forum.message.requires_moderation</em> notification type it will always be set to <em>unreviewed</em>
+</div>
+<div class='mt5'>
+The <strong>discussable.discussable_type</strong> field can take any of the following values:
+<ul>
+<li>
+<em>LocalChapter</em>
+</li>
+<li>
+<em>Event</em>
+</li>
+<li>
+<em>CalendarEvent</em>
+</li>
+<li>
+<em>LocalChapterEvent</em>
+</li>
+<li>
+<em>PetitionEvent</em>
+</li>
+</ul>
+</div>
+</div></p>
 
           <h1 id="bulk-data">Bulk Data</h1>
 
