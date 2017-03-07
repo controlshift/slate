@@ -23,6 +23,7 @@ includes:
   - authenticated_api_intro
   - authenticated_api_organisation
   - authenticated_api_members
+  - authenticated_api_petitions
 
 search: true
 ---
