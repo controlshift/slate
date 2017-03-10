@@ -3374,6 +3374,51 @@ platform activity is tracked by member id.  </p>
 
 <p><code class="prettyprint">POST /api/v1/members/123/unsubscribe</code></p>
 
+          <h2 id="petitions">Petitions</h2>
+
+<p>Petition are pieces of content that can be signed by members. </p>
+
+<h3 id="show">Show</h3>
+
+<blockquote>
+<p>GET response Body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"petition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no-taxes-on-tea"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No Taxes on Tea"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"King George"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stop taxing our tea"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It is unjust."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"signature_count_add_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Find information about a petition by URL slug.</p>
+
+<p><code class="prettyprint">GET /api/v1/petitions/no-taxes-on-tea</code></p>
+
+<h3 id="update">Update</h3>
+
+<p>Updates petition content using an HTTP PUT request.</p>
+
+<p>We support several request formats for the data to be updated, but the most straightforward is to send the data as a json formatted PUT body. </p>
+
+<p>In the request body only include the fields that you would like to update to a new value. The slug in the URL defines which petition should be updated. </p>
+
+<p><code class="prettyprint">PUT /api/v1/petitions/no-taxes-on-tea</code></p>
+
+<blockquote>
+<p>PUT request body</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"petition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"signature_count_add_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
