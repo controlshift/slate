@@ -8,6 +8,19 @@ An *API Application* must be configured within your ControlShift instance before
 
 ## Quickstart Guide
 
+There are two ways to get set up to use the authenticated API. Use whichever is easier for you. *You only need to do one of these.*
+
+### The Easy Way: Client Credentials
+
+1. **Set up a new API Application** Log in as an Organisation Owner and navigate to Settings > Integrations > Configure API Applications. Add a New Application. Use urn:ietf:wg:oauth:2.0:oob as the callback URL unless you plan to allow self-service application authorization.
+
+2. Clone the [oauth-api-example](https://github.com/controlshift/oauth-api-example) github repo.
+
+3. Follow the instructions in the README.md file to get that example working with your credentials.
+
+4. Do something similar in your actual code.
+
+### The Hard Way: Application and Token Exchange
 These are the steps to setup a new API Application and to use that new API Application to access platform resources through OAuth2. In a production context, automating these steps is recommended. 
 
 > Use cURL to do the token exchange
@@ -16,7 +29,7 @@ These are the steps to setup a new API Application and to use that new API Appli
 curl -X POST --header "Content-Type: application/json" --header "Accept: application/json" --data '{"grant_type":"authorization_code", "code":"{code}", "client_id":"{client_id}", "client_secret":"{client_secret}", "redirect_uri":"{redirect_uri}"}' https://foo.controlshiftlabs.com/oauth/token
 ```
 
-1. **Setup a new API Application** Login as an Organisation Owner and navigate to Settings > Integrations > Configure API Applications. Add a New Application. Use urn:ietf:wg:oauth:2.0:oob as the callback URL unless you plan to allow self-service application authorization. 
+1. **Set up a new API Application** Log in as an Organisation Owner and navigate to Settings > Integrations > Configure API Applications. Add a New Application. Use urn:ietf:wg:oauth:2.0:oob as the callback URL unless you plan to allow self-service application authorization.
 
 2. **Generate Authorization Code** From the API Application show page, click "Authorize". This will generate a code that can be exchanged with a token to act as the currently signed in user. After the authorization is approved, an authorization code should be displayed. Record this code for the next step. 
 
