@@ -29,7 +29,7 @@ The bulk data webhooks include exports of the following tables.  You can use the
 
 Additional files:
 
-* combined schema - [CS_combined_schema.sql](/data/combined_schema.sql)
+* combined schema - [CS_combined_schema.sql](/data/CS_combined_schema.sql)
 * zip of all schema files [CS_data_assets.zip](/data/CS_data_assets.zip)
 
 
