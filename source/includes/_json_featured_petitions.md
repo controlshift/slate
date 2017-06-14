@@ -46,8 +46,8 @@ $(document).ready(function(){
     "goal": 200,
     "signature_count": 119,
     "creator_name": "Kristyn Arrighi",
-    "created_at": "2014-07-24T20:07:14.607-04:00",
-    "updated_at": "2016-02-26T14:30:57.330-05:00",
+    "created_at": "2014-07-24T20:07:14Z",
+    "updated_at": "2016-02-26T14:30:57Z",
     "why": "Shahin Novruzlu and fellow youth activists from the pro-democracy movement NIDA campaigned for democracy and against human rights abuses and widespread corruption in Azerbaijan. In February 2013 th..."
   }, {
     "slug": "give-us-more-icecream",
@@ -73,8 +73,8 @@ $(document).ready(function(){
     "goal": 100,
     "signature_count": 6,
     "creator_name": "Tudor Bradatan",
-    "created_at": "2016-02-11T23:17:42.782-05:00",
-    "updated_at": "2016-02-26T14:20:46.987-05:00",
+    "created_at": "2016-02-11T23:17:42Z",
+    "updated_at": "2016-02-26T14:20:46Z",
     "why": "Because we like and need it",
     "location": {
       "query": "Cluj",
@@ -86,7 +86,7 @@ $(document).ready(function(){
       "region": "CJ",
       "street_number": "",
       "venue": "",
-      "created_at": "2016-02-11T23:17:42.769-05:00"
+      "created_at": "2016-02-11T23:17:42Z"
     }
   }, {
     "slug": "turn-back-human-trafficking-faith-leaders",
@@ -112,8 +112,8 @@ $(document).ready(function(){
     "goal": 100,
     "signature_count": 6,
     "creator_name": "Kristyn Arrighi",
-    "created_at": "2015-06-01T15:37:47.621-04:00",
-    "updated_at": "2015-10-14T08:45:52.396-04:00",
+    "created_at": "2015-06-01T15:37:47Z",
+    "updated_at": "2015-10-14T08:45:52Z",
     "why": "Today there are over 192,000 people trapped in modern slavery in Ghana [1]. Denied of their rights to education and often lacking parental care or support, over 1.8 million Ghanaian children are wo..."
   },
   // ...

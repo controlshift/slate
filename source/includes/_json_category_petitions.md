@@ -45,8 +45,8 @@ $(document).ready(function(){
     "goal": 100,
     "signature_count": 7,
     "creator_name": "John Wood",
-    "created_at": "2014-04-29T05:35:47.693-04:00",
-    "updated_at": "2016-01-06T11:02:17.617-05:00",
+    "created_at": "2014-04-29T05:35:47Z",
+    "updated_at": "2016-01-06T11:02:17Z",
     "why": "Apple occupy a key position in the hearts of typeface poseurs everywhere. If they were to make a bold step and switch to using the people's font, Comic Sans on the new iPhone, this would cause mass..."
   }, {
     "slug": "clean-up-the-himalayas",
@@ -72,8 +72,8 @@ $(document).ready(function(){
     "goal": 100,
     "signature_count": 1,
     "creator_name": "Grant Cox",
-    "created_at": "2013-06-03T17:13:41.399-04:00",
-    "updated_at": "2015-07-17T15:11:48.665-04:00",
+    "created_at": "2013-06-03T17:13:41Z",
+    "updated_at": "2015-07-17T15:11:48Z",
     "why": "It's quite dirty, and I don't like it.",
     "location": {
       "query": "Nepal",
@@ -85,7 +85,7 @@ $(document).ready(function(){
       "region": "",
       "street_number": "",
       "venue": "Nepal",
-      "created_at": "2013-06-03T17:13:41.057-04:00"
+      "created_at": "2013-06-03T17:13:41Z"
     }
   }]
 }

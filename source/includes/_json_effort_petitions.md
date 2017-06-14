@@ -48,8 +48,8 @@ $(document).ready(function(){
       "goal": 100,
       "signature_count": 1,
       "creator_name": "Kristyn Arrighi",
-      "created_at": "2015-04-16T11:51:12.700-04:00",
-      "updated_at": "2015-08-03T20:23:06.034-04:00",
+      "created_at": "2015-04-16T11:51:12Z",
+      "updated_at": "2015-08-03T20:23:06Z",
       "why": "We want TV meteorologists to understand that the public is depending on them for information about climate change, especially as it increasingly impacts our weather patterns. We know that meteorolo...",
       "location": {
         "query": "WMTV-TV (Madison), Forward Drive, Madison, WI, United States",
@@ -61,7 +61,7 @@ $(document).ready(function(){
         "region": "WI",
         "street_number": "615",
         "venue": "WMTV-TV (Madison)",
-        "created_at": "2015-04-16T11:51:11.222-04:00"
+        "created_at": "2015-04-16T11:51:11Z"
       }
     }, {
       "slug": "forecast-the-facts-of-frankenstorm-woak",
@@ -87,8 +87,8 @@ $(document).ready(function(){
       "goal": 100,
       "signature_count": 2,
       "creator_name": "Adam Klaus",
-      "created_at": "2015-08-17T17:21:39.791-04:00",
-      "updated_at": "2015-08-17T17:29:02.816-04:00",
+      "created_at": "2015-08-17T17:21:39Z",
+      "updated_at": "2015-08-17T17:29:02Z",
       "why": "We want TV meteorologists to understand that the public is depending on them for information about climate change, especially as it increasingly impacts our weather patterns. We know that meteorolo...",
       "location": {
         "query": "Oklahoma City, OK, United States",
@@ -100,7 +100,7 @@ $(document).ready(function(){
         "region": "OK",
         "street_number": "",
         "venue": "",
-        "created_at": "2013-12-17T14:49:51.324-05:00"
+        "created_at": "2013-12-17T14:49:51Z"
       }
     }
   ]

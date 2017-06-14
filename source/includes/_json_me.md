@@ -26,24 +26,24 @@ $(document).ready(function(){
     {
        "slug":"sample-campaign",
        "title":"Sample Campaign",
-       "created_at":"2016-03-25T15:37:28.849-04:00",
-       "updated_at":"2016-03-25T15:37:35.304-04:00"
+       "created_at":"2016-03-25T15:37:28Z",
+       "updated_at":"2016-03-25T15:37:35Z"
     }
   ],
   "events":[
     {
        "slug":"sample-campaign",
        "title":"Sample Campaign",
-       "created_at":"2016-03-25T15:37:28.849-04:00",
-       "updated_at":"2016-03-25T15:37:35.304-04:00"
+       "created_at":"2016-03-25T15:37:28Z",
+       "updated_at":"2016-03-25T15:37:35Z"
     }
   ],
   "chapters":[
     {
        "name":"Brooklyn bruisers",
        "slug":"brooklyn-bruisers",
-       "created_at":"2015-05-14T15:53:03.901-04:00",
-       "updated_at":"2016-03-25T15:40:44.661-04:00"
+       "created_at":"2015-05-14T15:53:03Z",
+       "updated_at":"2016-03-25T15:40:44Z"
     }
   ]
 }
