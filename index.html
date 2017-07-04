@@ -1368,6 +1368,18 @@ You must whitelist your hostname prior to using this end point. Read more below.
 <td>A user applies to be a local chapter organiser</td>
 </tr>
 <tr>
+<td><a href="#local_chapter-organiser_request-approved">local_chapter.organiser_request.approved</a></td>
+<td>An admin approves a user&rsquo;s application to be a local chapter organiser</td>
+</tr>
+<tr>
+<td><a href="#local_chapter-member-created">local_chapter.member.created</a></td>
+<td>A member joins a local chapter</td>
+</tr>
+<tr>
+<td><a href="#local_chapter-member-deleted">local_chapter.member.deleted</a></td>
+<td>A member leaves or is removed from a local chapter</td>
+</tr>
+<tr>
 <td><a href="#member-deleted">member.deleted</a></td>
 <td>A member is deleted</td>
 </tr>
@@ -1802,6 +1814,98 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &r
 </span></code></pre>
 
 <p>A user applies to be a local chapter organiser</p>
+
+<h2 id="local_chapter-organiser_request-approved">local_chapter.organiser_request.approved</h2>
+
+<blockquote>
+<p>Example payload for <code class="prettyprint">local_chapter.organiser_request.approved</code>:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local_chapter.organiser_request.approved"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"local_chapter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"springfield-members"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Springfield Members"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/local_chapters/springfield-members"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">505</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Goodall"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Goodall"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345-1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34058-2356"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I want to be part of this amazing group"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T12:38:46Z"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"030ee43a4fa9788e084d9cfc"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>An admin approves a user&rsquo;s application to be a local chapter organiser</p>
+
+<h2 id="local_chapter-member-created">local_chapter.member.created</h2>
+
+<blockquote>
+<p>Example payload for <code class="prettyprint">local_chapter.member.created</code>:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local_chapter.member.created"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jenny@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jennifer Goines"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jennifer"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Goines"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23456"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"introduction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I want to save the world!"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"notification_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all_messages"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"local_chapter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"springfield-members"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Springfield Members"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/local_chapters/springfield-members"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"030ee43a4fa9788e084d9cfc"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>A member joins a local chapter</p>
+
+<h2 id="local_chapter-member-deleted">local_chapter.member.deleted</h2>
+
+<blockquote>
+<p>Example payload for <code class="prettyprint">local_chapter.member.deleted</code>:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local_chapter.member.deleted"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jenny@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jennifer Goines"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jennifer"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Goines"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23456"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"introduction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I want to save the world!"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"notification_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all_messages"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"local_chapter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"springfield-members"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Springfield Members"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/local_chapters/springfield-members"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"030ee43a4fa9788e084d9cfc"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>A member leaves or is removed from a local chapter</p>
 
 <h2 id="member-deleted">member.deleted</h2>
 
