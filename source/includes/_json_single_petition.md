@@ -38,12 +38,15 @@ $(document).ready(function(){
   "goal": 100,
   "effort": null,
   "group": "turn-back-human-trafficking-now",
+  "partnership": "turn-back-human-trafficking-now",
   "resized_image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/hero/Untitled.png?1433187465",
   "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/original/Untitled.png?1433187465",
   "creator_name": "Kristyn Arrighi",
   "signature_count": 6
 }
 ```
+
+> Note: The "group" key is deprecated and will be removed soon. Code should be updated to use the "partnership" key instead.
 
 This retrieves a single petition object.
 
