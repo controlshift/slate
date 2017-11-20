@@ -50,7 +50,9 @@ Find a member by id. Member ids can be discovered via a call to the lookup API.
 }
 ```
 
-Get information about a member's activity on the platform.
+Get information about a member's activity on the platform. This can be useful if you're building a member dashboard that includes information from ControlShift and other toolsets.
+
+The member activity report includes basic biographical information as well as petitions created or signed, events hosted or attended, group memberships, forum posts, partnership subscriptions, and unsubscribe history.
 
 `GET /api/v1/members/123/activity`
 
