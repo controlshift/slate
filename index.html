@@ -3404,21 +3404,21 @@ platform activity is tracked by member id.  </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"phone_number: "</span><span class="mi">555-555-5555</span><span class="s2">",
-  "</span><span class="err">created_at</span><span class="s2">": "</span><span class="mi">2015-06-01</span><span class="err">T</span><span class="mi">15</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">47</span><span class="err">Z</span><span class="s2">",
+  </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-555-5555"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-01T15:37:47Z"</span><span class="p">,</span><span class="w">
 
-  "</span><span class="err">signatures</span><span class="s2">": [
-    {
-      "</span><span class="err">email</span><span class="s2">": "</span><span class="err">jane.doe@example.com</span><span class="s2">",
-      "</span><span class="err">petition</span><span class="s2">": {
-        "</span><span class="err">slug</span><span class="s2">": "</span><span class="err">save-the-whales</span><span class="s2">"
-      }
-      ...
-    }
-    ...
-  ]
-  ...
-}
+  </span><span class="s2">"signatures"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane.doe@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"petition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"save-the-whales"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Get information about a member&rsquo;s activity on the platform. This can be useful if you&rsquo;re building a member dashboard that includes information from ControlShift and other toolsets.</p>
 
