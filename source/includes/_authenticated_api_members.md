@@ -33,7 +33,7 @@ Find a member by id. Member ids can be discovered via a call to the lookup API.
 {
   "first_name": "Jane",
   "last_name": "Doe",
-  "phone_number: "555-555-5555",
+  "phone_number": "555-555-5555",
   "created_at": "2015-06-01T15:37:47Z",
 
   "signatures": [
