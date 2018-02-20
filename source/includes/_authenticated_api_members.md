@@ -3,24 +3,8 @@
 The platform transparently creates a member record for any email address that creates a user account, signs a petition, or attends an event. Members are unique by email address, and all 
 platform activity is tracked by member id.  
 
-### Lookup
-```json
-{
-  "member": {
-    "id": 123,
-    "email": "foo@bar.com",
-    ...
-  }
-}
-```
+> GET response body for Lookup or Show
 
-Find a member by email address. Once you have obtained a member id you can use this identifier in other API calls. 
-
-`GET /api/v1/members/lookup?email=foo@bar.com`
-
-
-
-### Show
 ```json
 {
   "member": {
@@ -47,7 +31,17 @@ Find a member by email address. Once you have obtained a member id you can use t
 }
 ```
 
-Find a member by id. Member ids can be discovered via a call to the lookup API. 
+### Lookup
+
+Find a member by email address. Once you have obtained a member id you can use this identifier in other API calls. 
+
+`GET /api/v1/members/lookup?email=foo@bar.com`
+
+
+
+### Show
+
+Find a member by id.
 
 The `data_processing_consent` block is only present when the data processing consent feature is enabled.
 
@@ -56,6 +50,9 @@ The `data_processing_consent` block is only present when the data processing con
 
 
 ### Activity
+
+> GET response body for Activity
+
 ```json
 {
   "first_name": "Jane",
@@ -86,6 +83,9 @@ The member activity report includes basic biographical information as well as pe
 
 
 ### Destroy
+
+> DELETE response body for Destroy
+
 ```json
 {
   "member": {
@@ -107,6 +107,9 @@ Ownership of Petitions and Events created by the deleted member will be re-assig
 
 
 ### Unsubscribe
+
+> POST response body for Unsubscribe
+
 ```json
 {
   "member": {
