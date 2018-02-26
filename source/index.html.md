@@ -15,6 +15,7 @@ includes:
   - json_featured_petitions
   - json_categories_list
   - json_category_petitions
+  - json_partnership_petitions
   - json_effort_petitions
   - json_effort_petitions_near
   - json_me
