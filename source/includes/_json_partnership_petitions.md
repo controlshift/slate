@@ -118,7 +118,7 @@ View and edit a working example on codepen.io:
   <pre class="codepen-js">
     $(document).ready(function(){
       $.ajax({
-        url: 'https://demo.controlshiftlabs.com/partnership/rtm-roundtable-of-mice/petitions.json',
+        url: 'https://demo.controlshiftlabs.com/partnerships/rtm-roundtable-of-mice/petitions.json',
         dataType: 'jsonp',
       })
       .done(function(data) {
