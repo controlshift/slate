@@ -21,6 +21,7 @@ The bulk data webhooks include exports of the following tables.  You can use the
 * `categorized_petitions` - [csv headers](/data/categorized_petitions_headers.csv)/[sql_schema](/data/categorized_petitions_schema.sql)
 * `comments` - [csv headers](/data/comments_headers.csv)/[sql_schema](/data/comments_schema.sql)
 * `consent_content_versions` - [csv headers](/data/consent_content_versions_headers.csv)/[sql_schema](/data/consent_content_versions_schema.sql)
+* `data_processing_consents` - [csv headers](/data/data_processing_consents_headers.csv)/[sql_schema](/data/data_processing_consents_schema.sql)
 * `events` - [csv headers](/data/events_headers.csv)/[sql_schema](/data/events_schema.sql)
 * `local_chapter_members` - [csv headers](/data/local_chapter_members_headers.csv)/[sql_schema](/data/local_chapter_members_schema.sql)
 * `local_chapters` - [csv headers](/data/local_chapters_headers.csv)/[sql_schema](/data/local_chapters_schema.sql)
