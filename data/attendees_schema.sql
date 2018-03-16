@@ -32,7 +32,9 @@ CREATE TABLE attendees (
     join_list_suppressed boolean,
     source character varying,
     old_daisy_chain_used character varying(50),
+    token character varying(24) NOT NULL,
     eu_data_processing_consent boolean,
     consent_content_version_id bigint,
-    daisy_chain_id_used bigint
+    daisy_chain_id_used bigint,
+    email_opt_in_type_id bigint
 );

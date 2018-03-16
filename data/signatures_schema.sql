@@ -49,5 +49,6 @@ CREATE TABLE signatures (
     from_one_click boolean,
     eu_data_processing_consent boolean,
     consent_content_version_id bigint,
-    daisy_chain_id_used bigint
+    daisy_chain_id_used bigint,
+    email_opt_in_type_id bigint
 );

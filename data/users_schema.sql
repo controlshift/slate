@@ -49,5 +49,6 @@ CREATE TABLE users (
     last_sign_in_with_authy timestamp without time zone,
     authy_enabled boolean DEFAULT false,
     original_to_large_ratio double precision,
-    eu_data_processing_consent_at timestamp without time zone
+    eu_data_processing_consent_at timestamp without time zone,
+    email_opt_in_type_id bigint
 );
