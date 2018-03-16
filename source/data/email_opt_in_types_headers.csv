@@ -1,1 +1,1 @@
-id,organisation_id,kind,name,mailable,active,created_at,updated_at
+id,organisation_id,kind,mailable,active,created_at,updated_at
