@@ -13,6 +13,7 @@ CREATE TABLE email_opt_in_types (
     kind character varying NOT NULL,
     mailable boolean,
     active boolean,
+    external_id character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
