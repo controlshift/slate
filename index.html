@@ -3636,6 +3636,120 @@ Bulk data webhooks should be automatically included when adding a new webhook en
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+          <h2 id="email-opt-in-types">Email Opt In Types</h2>
+
+<h3 id="list">List</h3>
+
+<p>Get a list of the email opt in types that have been configured for this organisation. </p>
+
+<p>Email opt in types represent the way that members have opted in to your email list. </p>
+
+<h4 id="context">Context</h4>
+
+<p>The context this opt in type was displayed to users in.</p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>web_form</td>
+<td>an action on the web</td>
+</tr>
+<tr>
+<td>email</td>
+<td>in a confirmation email</td>
+</tr>
+<tr>
+<td>offline</td>
+<td>collected offline via a paper form</td>
+</tr>
+<tr>
+<td>external</td>
+<td>represents opt ins gathered in other systems</td>
+</tr>
+</tbody></table>
+
+<h4 id="kind">Kind</h4>
+
+<p>The sort of opt in that was gathered</p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email_confirmation</td>
+<td>an action on the web</td>
+</tr>
+<tr>
+<td>implicit</td>
+<td>a message displayed while taking action</td>
+</tr>
+<tr>
+<td>offline</td>
+<td>collected offline via a paper form</td>
+</tr>
+<tr>
+<td>unchecked_checkbox</td>
+<td>a checkbox that began unchecked</td>
+</tr>
+<tr>
+<td>physical_signature</td>
+<td>a wet ink signature</td>
+</tr>
+<tr>
+<td>pre_checked_checkbox</td>
+<td>a checkbox that began checked</td>
+</tr>
+<tr>
+<td>radio</td>
+<td>a radio button with yes/no options</td>
+</tr>
+</tbody></table>
+
+<h4 id="active">Active</h4>
+
+<p>This parameter is true if the opt in type is currently being used in it&rsquo;s specified context.</p>
+
+<h4 id="mailable">Mailable</h4>
+
+<p>Whether this opt-in type should be considered valid for email.</p>
+
+<h4 id="external_id">external_id</h4>
+
+<p>External IDs are set by customers through the admin interface while configuring opt in types. You can use them to match up email opt in types
+with your external systems, or to refer to email opt in types consistently through this API. </p>
+
+<blockquote>
+<p>GET /api/v1/organisation/email_opt_in_types</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"email_opt_in_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="s2">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"implicit"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your-external-id"</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+          <h2 id="consent-content-versions">Consent Content Versions</h2>
+
+<h3 id="list">List</h3>
+
+<p>Get a list of the Data Processing Consent Content Versions that have been configured for this organisation. </p>
+
+<p>These content versions track changes to the Terms of Service, Privacy Policy and Data Processing Consent disclaimers. </p>
+
+<blockquote>
+<p>GET /api/v1/organisation/consent_content_versions</p>
+</blockquote>
+
           <h2 id="members">Members</h2>
 
 <p>The platform transparently creates a member record for any email address that creates a user account, signs a petition, or attends an event. Members are unique by email address, and all 
@@ -3749,6 +3863,16 @@ platform activity is tracked by member id.  </p>
 <p>Unsubscribes a member with specified id from emails from event hosts and petiton creators. Member will still receive transactional emails, and will be resubscribed if they opt in while signing a new petition or attending a new event, etc. </p>
 
 <p><code class="prettyprint">POST /api/v1/members/123/unsubscribe</code></p>
+
+<h3 id="update-email-opt-in-type">Update Email Opt In Type</h3>
+
+<h4 id="post-body">POST body</h4>
+
+<p><code class="prettyprint">external_id=foo</code></p>
+
+<p>Changes the email opt in type for the member with the specified id to the external id in the POST body. </p>
+
+<p><code class="prettyprint">POST /api/v1/members/123/update_email_opt_in_type</code></p>
 
           <h2 id="petitions">Petitions</h2>
 
