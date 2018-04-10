@@ -131,6 +131,13 @@ Unsubscribes a member with specified id from emails from event hosts and petiton
 
 `external_id=foo`
 
-Changes the email opt in type for the member with the specified id to the external id in the POST body. 
+Changes the email opt in type for the member with the specified id to the external id in the POST body. This will update the opt in type for
+all associated signatures, attendee records, user accounts and other data held by ControlShift to the opt in type specified by external_id. 
+
+This feature may be useful for upgrading the recorded consent when new consent for email communications has been collected in external systems. 
+
+Most likely you will be changing historical consents that may no longer be mailable for legal reasons to a new mailable consent type. 
+
+No history is stored recording the original consent type, it is replaced by the new one specified.
 
 `POST /api/v1/members/123/update_email_opt_in_type`
