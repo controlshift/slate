@@ -23,6 +23,8 @@ includes:
   - bulk_data
   - authenticated_api_intro
   - authenticated_api_organisation
+  - authenticated_api_email_opt_in_types
+  - authenticated_api_consent_content_versions
   - authenticated_api_members
   - authenticated_api_petitions
 

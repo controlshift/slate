@@ -123,3 +123,14 @@ Ownership of Petitions and Events created by the deleted member will be re-assig
 Unsubscribes a member with specified id from emails from event hosts and petiton creators. Member will still receive transactional emails, and will be resubscribed if they opt in while signing a new petition or attending a new event, etc. 
 
 `POST /api/v1/members/123/unsubscribe`
+
+
+### Update Email Opt In Type
+
+#### POST body 
+
+`external_id=foo`
+
+Changes the email opt in type for the member with the specified id to the external id in the POST body. 
+
+`POST /api/v1/members/123/update_email_opt_in_type`
