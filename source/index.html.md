@@ -27,6 +27,7 @@ includes:
   - authenticated_api_consent_content_versions
   - authenticated_api_members
   - authenticated_api_petitions
+  - authenticated_api_signatures
 
 search: true
 ---
