@@ -1538,6 +1538,10 @@ You must whitelist your hostname prior to using this end point. Read more below.
 <td>Resources previously owned by a deleted member have been transferred to another</td>
 </tr>
 <tr>
+<td><a href="#petition-ended">petition.ended</a></td>
+<td>A petition is marked as won, lost, or ended for another reason</td>
+</tr>
+<tr>
 <td><a href="#petition-flagged">petition.flagged</a></td>
 <td>A petition is flagged for the first or fifth time</td>
 </tr>
@@ -2145,6 +2149,64 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &l
 </span></code></pre>
 <p>Resources previously owned by a deleted member have been transferred to another</p>
 
+<h2 id="petition-ended">petition.ended</h2>
+
+<blockquote>
+<p>Example payload for <code class="prettyprint">petition.ended</code>:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"petition.ended"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"don-t-destroy-our-park"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Don't destroy our park!"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/don-t-destroy-our-park"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/hero/imag0945.jpg?1438621934"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/form/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/large/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/open_graph/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/original/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown City Council"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"agra.user.adm@gmail.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tyshawn Morissette"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tyshawn"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Morissette"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345-1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34058-2356"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"successful"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_story"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won! Thanks to your support, the city council has agreed to protect the Main Street park from development."</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9fccc1957d7d7ebc93fb0f05"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>A petition is marked as won, lost, or ended for another reason</p>
+
 <h2 id="petition-flagged">petition.flagged</h2>
 
 <blockquote>
@@ -2191,7 +2253,12 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &l
     </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
+    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"successful"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_story"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won! Thanks to your support, the city council has agreed to protect the Main Street park from development."</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9fccc1957d7d7ebc93fb0f05"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2244,7 +2311,12 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &l
     </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
+    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"successful"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_story"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won! Thanks to your support, the city council has agreed to protect the Main Street park from development."</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9fccc1957d7d7ebc93fb0f05"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2297,7 +2369,12 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &l
     </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
+    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"successful"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_story"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won! Thanks to your support, the city council has agreed to protect the Main Street park from development."</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9fccc1957d7d7ebc93fb0f05"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2350,7 +2427,12 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &l
     </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
+    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"successful"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_story"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won! Thanks to your support, the city council has agreed to protect the Main Street park from development."</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9fccc1957d7d7ebc93fb0f05"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2403,7 +2485,12 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &l
     </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
+    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"successful"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_story"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won! Thanks to your support, the city council has agreed to protect the Main Street park from development."</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9fccc1957d7d7ebc93fb0f05"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2456,7 +2543,12 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &l
     </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
+    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"successful"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_story"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won! Thanks to your support, the city council has agreed to protect the Main Street park from development."</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9fccc1957d7d7ebc93fb0f05"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2509,7 +2601,12 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &l
     </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
+    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"successful"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_story"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won! Thanks to your support, the city council has agreed to protect the Main Street park from development."</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9fccc1957d7d7ebc93fb0f05"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2562,7 +2659,12 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &l
     </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
+    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"successful"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_story"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won! Thanks to your support, the city council has agreed to protect the Main Street park from development."</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9fccc1957d7d7ebc93fb0f05"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2615,7 +2717,12 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &l
     </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="w">
+    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"successful"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ended_story"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won! Thanks to your support, the city council has agreed to protect the Main Street park from development."</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9fccc1957d7d7ebc93fb0f05"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3987,6 +4094,31 @@ all associated signatures, attendee records, user accounts and other data held b
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+          <h2 id="signatures">Signatures</h2>
+
+<p>Signatures are actions that people have taken on Petitions. All signature actions are namespaced by URL underneath the petitions that the signature
+was recorded against. </p>
+
+<h3 id="lookup">Lookup</h3>
+
+<p>Find a member by email address. Once you have obtained a member id you can use this identifier in other API calls. </p>
+
+<p><code class="prettyprint">GET /api/v1/petitions/no-taxes-on-tea/signatures/lookup?email=foo@bar.com</code></p>
+
+<h3 id="update-email-opt-in-type">Update email opt in type</h3>
+
+<p>Updates the email opt in type associated with a single signature. This can be used to change the email opt in type
+if a more legally compliant form of consent was gathered elsewhere. The email opt in type for the signature is updated
+to the opt in type specified by external_id</p>
+
+<p>No history is stored recording the original consent type, it is replaced by the new one specified in the API call.</p>
+
+<p><code class="prettyprint">POST /api/v1/petitions/no-taxes-on-tea/signatures/123</code></p>
+
+<h4 id="post-body">POST body</h4>
+
+<p><code class="prettyprint">external_id=foo</code></p>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
