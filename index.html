@@ -4242,6 +4242,32 @@ to the opt in type specified by external_id</p>
 
 <p><code class="prettyprint">GET /api/v1/events/hands-off-my-birth-control-rally</code></p>
 
+          <h2 id="calendars">Calendars</h2>
+
+<p>Calendars are collections of related events.</p>
+
+<h3 id="show">Show</h3>
+
+<blockquote>
+<p>GET response Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"calendar"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Movie Screenings For Healthcare Access"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We're watching this amazing and powerful movie about the fight for health care for all."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"movie-screenings-for-healthcare-access"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/calendars/movie-screenings-for-healthcare-access"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"physicians-for-a-national-health-program"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/partnerships/physicians-for-a-national-health-program"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Find information about a calendar by URL slug.</p>
+
+<p><code class="prettyprint">GET /api/v1/calendars/movie-screenings-for-healthcare-access</code></p>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
