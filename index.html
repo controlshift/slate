@@ -4190,6 +4190,58 @@ to the opt in type specified by external_id</p>
 
 <p><code class="prettyprint">external_id=foo</code></p>
 
+          <h2 id="events">Events</h2>
+
+<p>Events represent real-world or virtual meetings that members can RSVP to. RSVP records are called &ldquo;attendees&rdquo;.</p>
+
+<h3 id="show">Show</h3>
+
+<blockquote>
+<p>GET response Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hands-off-my-birth-control-rally"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hands Off My Birth Control! A Rally."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/events/hands-off-my-birth-control-rally"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We'll meet at the park and march to City Hall. We're demanding that the mayor pledge to include all forms of birth control in health insurance plans for city employees."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-01T12:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-01T13:30:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"start_in_zone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-01T12:00:00-05:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"end_in_zone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-01T13:30:00-05:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_zone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/New_York"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"virtual"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"launched_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-03T12:34:56Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"host_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"max_attendees_count"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"control-shift-hands-off-my-birth-control-rally"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boston harbor"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42.3376368"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-70.99304"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Boston Harbor"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-16T22:38:29Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"local_chapter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"planned-parenthood-allies-boston"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/groups/planned-parenthood-allies-boston"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"planned-parenthood-league-of-massachusetts"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/partnerships/planned-parenthood-league-of-massachusetts"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Find information about an event by URL slug.</p>
+
+<p><code class="prettyprint">GET /api/v1/events/hands-off-my-birth-control-rally</code></p>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
