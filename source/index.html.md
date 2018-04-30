@@ -28,6 +28,7 @@ includes:
   - authenticated_api_members
   - authenticated_api_petitions
   - authenticated_api_signatures
+  - authenticated_api_events
 
 search: true
 ---
