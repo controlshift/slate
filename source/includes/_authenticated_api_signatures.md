@@ -26,4 +26,17 @@ No history is stored recording the original consent type, it is replaced by the 
 
 `external_id=foo`
 
+### List
 
+List the signatures that are part of a Petition. 
+
+This is a paginated response. You can advance to the next page using the page parameter, which accepts a page number integer.
+By default the first page is returned. 
+
+Hash     | Description
+--------- | ------- 
+meta      | pagination information
+petition  | basic information about the petition
+signatures | an array of signature results
+
+`GET /api/v1/petitions/no-taxes-on-tea/signatures?page=2`
