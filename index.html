@@ -4190,6 +4190,35 @@ to the opt in type specified by external_id</p>
 
 <p><code class="prettyprint">external_id=foo</code></p>
 
+<h3 id="list">List</h3>
+
+<p>List the signatures that are part of a Petition. </p>
+
+<p>This is a paginated response. You can advance to the next page using the page parameter, which accepts a page number integer.
+By default the first page is returned. </p>
+
+<table><thead>
+<tr>
+<th>Hash</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>meta</td>
+<td>pagination information</td>
+</tr>
+<tr>
+<td>petition</td>
+<td>basic information about the petition</td>
+</tr>
+<tr>
+<td>signatures</td>
+<td>an array of signature results</td>
+</tr>
+</tbody></table>
+
+<p><code class="prettyprint">GET /api/v1/petitions/no-taxes-on-tea/signatures?page=2</code></p>
+
           <h2 id="events">Events</h2>
 
 <p>Events represent real-world or virtual meetings that members can RSVP to. RSVP records are called &ldquo;attendees&rdquo;.</p>
@@ -4267,6 +4296,35 @@ to the opt in type specified by external_id</p>
 <p>Find information about a calendar by URL slug.</p>
 
 <p><code class="prettyprint">GET /api/v1/calendars/movie-screenings-for-healthcare-access</code></p>
+
+<h3 id="list-events">List Events</h3>
+
+<p>List the events that are part of a Calendar. </p>
+
+<p>This is a paginated response. You can advance to the next page using the page parameter, which accepts a page number integer.
+By default the first page is returned. </p>
+
+<table><thead>
+<tr>
+<th>Hash</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>meta</td>
+<td>pagination information</td>
+</tr>
+<tr>
+<td>calendar</td>
+<td>basic information about the calendar</td>
+</tr>
+<tr>
+<td>events</td>
+<td>an array of event results</td>
+</tr>
+</tbody></table>
+
+<p><code class="prettyprint">GET /api/v1/calendars/movie-screenings-for-healthcare-access/events?page=2</code></p>
 
       </div>
       <div class="dark-box">
