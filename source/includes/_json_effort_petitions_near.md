@@ -1,12 +1,12 @@
-## Find near by petitions
+## Find nearby petitions
 
 ```js
 $(document).ready(function(){
   var effortSlug = 'forecast-the-facts',
-    latitude = 38.88233400000001,
-    longitude = -77.17109140000002;
+      latitude = 38.88233,
+      longitude = -77.17109;
   $.ajax({
-    url: 'https://demo.controlshiftlabs.com/efforts/'+effortSlug+'/'+'near.json',
+    url: 'https://demo.controlshiftlabs.com/efforts/'+effortSlug+'/'+'lookup/query.json',
     dataType: 'jsonp',
     data: {
       'location[latitude]': latitude,
@@ -18,7 +18,7 @@ $(document).ready(function(){
   });
 });
 ```
-<!--slash in '/'+'near.json' above disappears if combined with near-->
+<!--slash in '/'+'lookup/query.json' above disappears if combined with lookup/query-->
 
 > The above code would return petitions data from the effort with the slug `forecast-the-facts`.  The JSON would be structured like this:
 
@@ -102,7 +102,7 @@ This JSON endpoint allows you to reproduce the "search for the nearest petition 
 
 ### HTTP Request
 
-`GET https://demo.controlshiftlabs.com/efforts/<effort slug>/near.json`
+`GET https://demo.controlshiftlabs.com/efforts/<effort slug>/lookup/query.json`
 
 ### Query Parameters
 
@@ -150,7 +150,7 @@ View and edit a working example on codepen.io:
 
       // get the targets and petitions (if they exist) for the effort near the place specified.
       $.ajax({
-        url: 'https://demo.controlshiftlabs.com/efforts/forecast-the-facts/near.json',
+        url: 'https://demo.controlshiftlabs.com/efforts/forecast-the-facts/lookup/query.json',
         dataType: 'jsonp',
         data: {
           'location[latitude]': place.geometry.location.lat(),
