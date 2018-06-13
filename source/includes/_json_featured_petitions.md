@@ -22,109 +22,83 @@ $(document).ready(function(){
     "per_page": 10
   },
   "data": [
-  {
-    "slug": "release-pro-democracy-youth-activists-in-azerbaijan",
-    "title": "Release pro-democracy youth activists in Azerbaijan",
-    "url": "http://demo.controlshiftlabs.com/petitions/release-pro-democracy-youth-activists-in-azerbaijan",
-    "admin_status": "awesome",
-    "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/hero/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011",
-    "additional_image_sizes_url": [{
-      "style": "form",
-      "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/form/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"
-    }, {
-      "style": "large",
-      "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/large/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"
-    }, {
-      "style": "open_graph",
-      "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/open_graph/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"
-    }, {
-      "style": "original",
-      "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/original/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"
-    }],
-    "who": "President Ilham Aliyev of Azerbaijan",
-    "what": "Immediately release the imprisoned youth activists from the NIDA civic movement.\r\n\r\nShahin Novruzlu, Rashadat Akundov, Mammad Azizov, Bakhtiyar Guliyev, Zaur Gurbanli, Rashad Hasanov, Uzeyir Mammadli and Ilkin Rustamzade were arrested on criminal charges of possessing explosives and intent of public disorder. Human rights organizations believe these charges have been fabricated. The actual reason for their arrest was their criticism of the Azerbaijani authorities and their online activism, calling for peaceful demonstrations.\r\n\r\nShahin Novruzlu, who was only 17 at the time of his arrest, has lost his front teeth as a result of torture in detention. Mammad Azizov and Bakhtiyar Guliyev have complained of torture too.\r\n\r\nFrom 14 May 2014, Azerbaijan is chairing the Committee of Ministers of the Council of Europe. This organization is responsible for promoting and protecting human rights. I am deeply concerned that there are civil society activists in Azerbaijan tortured and imprisoned solely for expressing their views and organizing peaceful protests.\r\n\r\nAzerbaijan must live up to the high expectations of the chair of the Committee of Ministers of the Council of Europe. The NIDA activists must be immediately released.",
-    "goal": 200,
-    "signature_count": 119,
-    "creator_name": "Kristyn Arrighi",
-    "created_at": "2014-07-24T20:07:14Z",
-    "updated_at": "2016-02-26T14:30:57Z",
-    "why": "Shahin Novruzlu and fellow youth activists from the pro-democracy movement NIDA campaigned for democracy and against human rights abuses and widespread corruption in Azerbaijan. In February 2013 th..."
-  }, {
-    "slug": "give-us-more-icecream",
-    "title": "Give us more icecream",
-    "url": "http://demo.controlshiftlabs.com/petitions/give-us-more-icecream",
-    "admin_status": "awesome",
-    "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/hero/10982478_634745530004482_279346285079955699_n.jpg?1455250695",
-    "additional_image_sizes_url": [{
-      "style": "form",
-      "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/form/10982478_634745530004482_279346285079955699_n.jpg?1455250695"
-    }, {
-      "style": "large",
-      "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/large/10982478_634745530004482_279346285079955699_n.jpg?1455250695"
-    }, {
-      "style": "open_graph",
-      "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/open_graph/10982478_634745530004482_279346285079955699_n.jpg?1455250695"
-    }, {
-      "style": "original",
-      "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/original/10982478_634745530004482_279346285079955699_n.jpg?1455250695"
-    }],
-    "who": "Cook",
-    "what": "Cook and provide more icecream",
-    "goal": 100,
-    "signature_count": 6,
-    "creator_name": "Tudor Bradatan",
-    "created_at": "2016-02-11T23:17:42Z",
-    "updated_at": "2016-02-26T14:20:46Z",
-    "why": "Because we like and need it",
-    "location": {
-      "query": "Cluj",
-      "latitude": "46.7712101",
-      "longitude": "23.6236353",
-      "street": "",
-      "postal_code": "",
-      "country": "RO",
-      "region": "CJ",
-      "street_number": "",
-      "venue": "",
-      "created_at": "2016-02-11T23:17:42Z"
+    {
+      "id": 92283,
+      "title": "Repair the Yellow Brick Road",
+      "slug": "repair-the-yellow-brick-road-1",
+      "who": "Oz, the Great and Terrible, Wizard",
+      "what": "The Yellow Brick Road has been neglected; commit to repairing the damaged sections of the road in the next year!",
+      "why": "The Yellow Brick Road is the main road connecting Munchkin Country to the Emerald City and in its current state it's impassable.",
+      "created_at": "2014-10-02T01:43:17Z",
+      "updated_at": "2018-05-07T15:38:39Z",
+      "delivery_details": "We're off to see the wizard!",
+      "administered_at": "2018-03-21T19:05:54Z",
+      "source": "homepage",
+      "location_id": 27575,
+      "alias": null,
+      "bsd_constituent_group_id": null,
+      "categories": [
+        {
+          "name": "Oz",
+          "slug": "oz"
+        }
+      ],
+      "goal": 500,
+      "effort": null,
+      "partnership": null,
+      "group": null,
+      "resized_image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741",
+      "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741",
+      "creator_name": "Kristyn Arrighi",
+      "signature_count": 223
+    },
+    {
+      "id": 92283,
+      "title": "We Need More Bike Lanes",
+      "slug": "we-need-more-bike-lanes",
+      "who": "My Mayor",
+      "what": "Build the bike lanes",
+      "why": "Cyclists aren't safe.",
+      "created_at": "2016-08-12T18:08:32Z",
+      "updated_at": "2016-09-14T12:43:45Z",
+      "delivery_details": null,
+      "administered_at": "2016-09-14T12:43:45Z",
+      "source": "my_campaign",
+      "location_id": 28907,
+      "alias": null,
+      "bsd_constituent_group_id": null,
+      "categories": [
+        {
+         "name": "Education",
+         "slug": "education-9"
+        },
+        {
+         "name": "Ohio",
+         "slug": "ohio"
+        },
+        {
+         "name": "mice",
+         "slug": "mice"
+        }
+      ],
+      "goal": 100,
+      "effort": null,
+      "partnership": null,
+      "group": null,
+      "resized_image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/167492/hero/IMG_1854.JPG?1472046912",
+      "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/167492/original/IMG_1854.JPG?1472046912",
+      "creator_name": "Greg Dutcher",
+      "signature_count": 5
     }
-  }, {
-    "slug": "turn-back-human-trafficking-faith-leaders",
-    "title": "Pledge to TURN BACK human trafficking Now - Faith or Community Leaders",
-    "url": "http://demo.controlshiftlabs.com/petitions/turn-back-human-trafficking-faith-leaders",
-    "admin_status": "awesome",
-    "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/hero/Untitled.png?1433187465",
-    "additional_image_sizes_url": [{
-      "style": "form",
-      "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/form/Untitled.png?1433187465"
-    }, {
-      "style": "large",
-      "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/large/Untitled.png?1433187465"
-    }, {
-      "style": "open_graph",
-      "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/open_graph/Untitled.png?1433187465"
-    }, {
-      "style": "original",
-      "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/original/Untitled.png?1433187465"
-    }],
-    "who": "President John Dramani Mahama",
-    "what": "I know that globally millions of people are trafficked for forced labour and sexual exploitation and that Ghana is a source, transit and destination country for this social evil. The concerns raised by Parliament recently, about men, women, and children who are trafficked and subjected to forced labor and sexual exploitation human points to the need for everyone to take action.\r\n\r\nI hereby pledge to TURN BACK human trafficking. \r\n•\tI will be vigilant of suspicious movement of children and vulnerable people, victims of bonded labour and of children working when they should be in school \r\n•\tI promise to always report my concerns to the appropriate authorities as quickly as possible.\r\n\r\nAs a faith or community leader, I promise to warn my congregation of the dangers of child trafficking, and support them in reporting any suspicions they have.",
-    "goal": 100,
-    "signature_count": 6,
-    "creator_name": "Kristyn Arrighi",
-    "created_at": "2015-06-01T15:37:47Z",
-    "updated_at": "2015-10-14T08:45:52Z",
-    "why": "Today there are over 192,000 people trapped in modern slavery in Ghana [1]. Denied of their rights to education and often lacking parental care or support, over 1.8 million Ghanaian children are wo..."
-  },
-  // ...
-],
-"links": {
+  ],
+  "links": {
     "self": "https://demo.controlshiftlabs.com/petitions/featured.json?page=1",
     "first": "https://demo.controlshiftlabs.com/petitions/featured.json",
     "prev": null,
     "next": "https://demo.controlshiftlabs.com/petitions/featured.json?page=2",
     "last": "https://demo.controlshiftlabs.com/petitions/featured.json?page=3"
   }
+}
 ```
 
 This retrieves a JSON object compliant with the [JSON API](http://jsonapi.org/) specification, containing an array of featured petitions objects on its data property.
