@@ -3,7 +3,7 @@
 ```js
 $(document).ready(function(){
   $.ajax({
-    url: 'https://demo.controlshiftlabs.com/categories/mice.json',
+    url: 'https://demo.controlshiftlabs.com/categories/oz.json',
     dataType: 'jsonp',
   })
   .done(function(data) {
@@ -12,82 +12,131 @@ $(document).ready(function(){
 });
 ```
 
-> The above code would return petitions data from the category with the slug `mice`.  The JSON would be structured like this:
+> The above code would return petitions data from the category with the slug `oz`.  The JSON would be structured like this:
 
 ```json
 {
   "current_page": 1,
-  "total_pages": 1,
+  "total_pages": 25,
   "previous_page": null,
-  "next_page": null,
-  "name": "mice",
-  "results": [{
-    "slug": "apple-stop-your-comic-sans-snobbery",
-    "title": "Apple: Stop your Comic Sans snobbery",
-    "url": "http://demo.controlshiftlabs.com/petitions/apple-stop-your-comic-sans-snobbery",
-    "admin_status": "good",
-    "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/24551/hero/helveticacomicsans.gif?1398764339",
-    "additional_image_sizes_url": [{
-      "style": "form",
-      "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/24551/form/helveticacomicsans.gif?1398764339"
-    }, {
-      "style": "large",
-      "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/24551/large/helveticacomicsans.gif?1398764339"
-    }, {
-      "style": "open_graph",
-      "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/24551/open_graph/helveticacomicsans.gif?1398764339"
-    }, {
-      "style": "original",
-      "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/24551/original/helveticacomicsans.gif?1398764339"
-    }],
-    "who": "Tim Cook, CEO Apple",
-    "what": "Use Comic Sans for the default font on the iPhone 6.",
-    "goal": 100,
-    "signature_count": 7,
-    "creator_name": "John Wood",
-    "created_at": "2014-04-29T05:35:47Z",
-    "updated_at": "2016-01-06T11:02:17Z",
-    "why": "Apple occupy a key position in the hearts of typeface poseurs everywhere. If they were to make a bold step and switch to using the people's font, Comic Sans on the new iPhone, this would cause mass..."
-  }, {
-    "slug": "clean-up-the-himalayas",
-    "title": "Clean up the Himalayas",
-    "url": "http://demo.controlshiftlabs.com/petitions/clean-up-the-himalayas",
-    "admin_status": "good",
-    "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/6359/hero/gorak_shep_thumb.jpg?1431734031",
-    "additional_image_sizes_url": [{
-      "style": "form",
-      "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/6359/form/gorak_shep_thumb.jpg?1431734031"
-    }, {
-      "style": "large",
-      "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/6359/large/gorak_shep_thumb.jpg?1431734031"
-    }, {
-      "style": "open_graph",
-      "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/6359/open_graph/gorak_shep_thumb.jpg?1431734031"
-    }, {
-      "style": "original",
-      "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/6359/original/gorak_shep_thumb.jpg?1431734031"
-    }],
-    "who": "Nepal Ghurung",
-    "what": "Clean up the Khumbu region.",
-    "goal": 100,
-    "signature_count": 1,
-    "creator_name": "Grant Cox",
-    "created_at": "2013-06-03T17:13:41Z",
-    "updated_at": "2015-07-17T15:11:48Z",
-    "why": "It's quite dirty, and I don't like it.",
-    "location": {
-      "query": "Nepal",
-      "latitude": "28.394857",
-      "longitude": "84.124008",
-      "street": "",
-      "postal_code": "",
-      "country": "NP",
-      "region": "",
-      "street_number": "",
-      "venue": "Nepal",
-      "created_at": "2013-06-03T17:13:41Z"
+  "next_page": 2,
+  "name": "Oz",
+  "results": [
+    {
+      "slug": "let-dorothy-go-home",
+      "url": "http://demo.controlshiftlabs.com/petitions/let-dorothy-go-home",
+      "title": "Let Dorothy Go Home!",
+      "who": " Oz, the Great and Terrible, Wizard",
+      "what": "Let poor Dorothy Gale go home to Kansas",
+      "why": "There's no place like home.",
+      "admin_status": "good",
+      "signature_count": 123,
+      "goal": 200,
+      "creator_name": "Tin Man",
+      "locale": "en",
+      "created_at": "2015-12-02T01:43:17Z",
+      "updated_at": "2017-05-07T15:38:39Z",
+      "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741",
+      "additional_image_sizes_url": [
+        {
+          "style": "original",
+          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"
+        },
+        {
+          "style": "form",
+          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/form/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"
+        },
+        {
+          "style": "horizontal",
+          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/horizontal/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"
+        },
+        {
+          "style": "open_graph",
+          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/open_graph/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"
+        }
+      ],
+      "target": {
+        "name": " Oz, the Great and Terrible",
+        "slug": "oz-the-great-and-terrible",
+        "context": "Wizard",
+        "location": {
+          "query": "Land of Oz, Kensington Avenue, Buffalo, NY, United States",
+          "latitude": "42.9399637",
+          "longitude": "-78.8087571",
+          "street": "Kensington Ave",
+          "postal_code": "",
+          "country": "US",
+          "region": "NY",
+          "street_number": "",
+          "venue": "",
+          "created_at": "2016-06-10T19:13:19Z"
+        }
+      }
+    },
+    {
+      "slug": "repair-the-yellow-brick-road-1",
+      "url": "http://demo.controlshiftlabs.com/petitions/repair-the-yellow-brick-road-1",
+      "title": "Repair the Yellow Brick Road",
+      "who": " Oz, the Great and Terrible, Wizard",
+      "what": "The Yellow Brick Road has been neglected; commit to repairing the damaged sections of the road in the next year!",
+      "why": "The Yellow Brick Road is the main road connecting Munchkin Country to the Emerald City and in its current state it's impassable.",
+      "admin_status": "good",
+      "signature_count": 223,
+      "goal": 500,
+      "creator_name": "Kristyn Arrighi",
+      "locale": "en",
+      "created_at": "2014-10-02T01:43:17Z",
+      "updated_at": "2018-05-07T15:38:39Z",
+      "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741",
+      "additional_image_sizes_url": [
+        {
+          "style": "original",
+          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"
+        },
+        {
+          "style": "form",
+          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/form/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"
+        },
+        {
+          "style": "horizontal",
+          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/horizontal/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"
+        },
+        {
+          "style": "open_graph",
+          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/open_graph/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"
+        }
+      ],
+      "target": {
+        "name": " Oz, the Great and Terrible",
+        "slug": "oz-the-great-and-terrible",
+        "context": "Wizard",
+        "location": {
+          "query": "Land of Oz, Kensington Avenue, Buffalo, NY, United States",
+          "latitude": "42.9399637",
+          "longitude": "-78.8087571",
+          "street": "Kensington Ave",
+          "postal_code": "",
+          "country": "US",
+          "region": "NY",
+          "street_number": "",
+          "venue": "",
+          "created_at": "2016-06-10T19:13:19Z"
+        }
+      },
+      "location": {
+        "query": "Land of Oz, Kensington Avenue, Buffalo, NY, United States",
+        "latitude": "42.9399637",
+        "longitude": "-78.8087571",
+        "street": "Kensington Ave",
+        "postal_code": "",
+        "country": "US",
+        "region": "NY",
+        "street_number": "",
+        "venue": "",
+        "created_at": "2016-06-10T19:13:19Z"
+      }
     }
-  }]
+  ]
 }
 
 ```
