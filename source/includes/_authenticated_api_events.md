@@ -9,10 +9,10 @@ Events represent real-world or virtual meetings that members can RSVP to. RSVP r
 ```json
 {
   "event": {
-    "slug": "hands-off-my-birth-control-rally",
-    "title": "Hands Off My Birth Control! A Rally.",
-    "url": "https://demo.controlshiftlabs.com/events/hands-off-my-birth-control-rally",
-    "description": "We'll meet at the park and march to City Hall. We're demanding that the mayor pledge to include all forms of birth control in health insurance plans for city employees.",
+    "slug": "deliver-the-petition-to-the-wizard",
+    "title": "Deliver the Petition to the Wizard",
+    "url": "https://demo.controlshiftlabs.com/events/deliver-the-petition-to-the-wizard",
+    "description": "Join us as we travel to the Emerald City to deliver our petition to the Wizard.",
     "start": "2018-03-01T12:00:00Z",
     "end": "2018-03-01T13:30:00Z",
     "start_in_zone": "2018-03-01T12:00:00-05:00",
@@ -23,12 +23,12 @@ Events represent real-world or virtual meetings that members can RSVP to. RSVP r
     "locale": "en-US",
     "host_address": null,
     "max_attendees_count": null,
-    "external_id": "control-shift-hands-off-my-birth-control-rally",
+    "external_id": "control-shift-deliver-the-petition-to-the-wizard",
     "location": {
-      "query": "boston harbor",
+      "query": "wizard room",
       "latitude": "42.3376368",
       "longitude": "-70.99304",
-      "venue": "Boston Harbor",
+      "venue": "The Wizard's Throne Room",
       "street_number": "",
       "street": "",
       "region": "MA",
@@ -36,17 +36,13 @@ Events represent real-world or virtual meetings that members can RSVP to. RSVP r
       "country": "US",
       "created_at": "2017-11-16T22:38:29Z"
     },
-    "local_chapter": {
-      "slug": "planned-parenthood-allies-boston",
-      "url": "https://demo.controlshiftlabs.com/groups/planned-parenthood-allies-boston"
-    },
-    "partnership": {
-      "slug": "planned-parenthood-league-of-massachusetts",
-      "url": "https://demo.controlshiftlabs.com/partnerships/planned-parenthood-league-of-massachusetts"
+    "petition": {
+      "slug": "repair-the-yellow-brick-road-1",
+      "url": "https://demo.controlshiftlabs.com/petitions/repair-the-yellow-brick-road-1"
     }
 }
 ```
 
 Find information about an event by URL slug.
 
-`GET /api/v1/events/hands-off-my-birth-control-rally`
+`GET /api/v1/events/deliver-the-petition-to-the-wizard`
