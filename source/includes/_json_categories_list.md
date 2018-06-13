@@ -17,40 +17,23 @@ $(document).ready(function(){
 ```json
 [
   {
-    "category_name": "Animal Rights",
-    "category_count": 7,
-    "slug": "animal-rights-2",
-    "url": "https://demo.controlshiftlabs.com/categories/animal-rights-2.json",
-    "signature_count": 8,
+    "category_name": "Education",
+    "category_count": 18,
+    "slug": "education-9",
+    "url": "https://demo.controlshiftlabs.com/categories/education-9.json",
+    "signature_count": 421,
     "locales": {
-      "es": "Derechos Animales"
+      "es": "Educación"
     }
-  }, {
-    "category_name": "cats",
-    "category_count": 31,
-    "slug": "cats",
-    "url": "https://demo.controlshiftlabs.com/categories/cats.json",
-    "signature_count": 270,
+  },
+  {
+    "category_name": "Environment",
+    "category_count": 352,
+    "slug": "environment-6",
+    "url": "https://demo.controlshiftlabs.com/categories/environment-6.json",
+    "signature_count": 2606,
     "locales": {
-      "es": "gatos"
-    }
-  }, {
-    "category_name": "Civil Rights",
-    "category_count": 23,
-    "slug": "civil-rights-1",
-    "url": "https://demo.controlshiftlabs.com/categories/civil-rights-1.json",
-    "signature_count": 165,
-    "locales": {
-      "es": "Derechos Civiles"
-    }
-  }, {
-    "category_name": "Culture",
-    "category_count": 3,
-    "slug": "cultura",
-    "url": "https://demo.controlshiftlabs.com/categories/cultura.json",
-    "signature_count": 10,
-    "locales": {
-      "es": "Cultura"
+      "es": "Medio Ambiente"
     }
   }
 ]
