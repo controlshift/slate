@@ -23,72 +23,113 @@ $(document).ready(function(){
   },
   "data": [
     {
-      "id": 92283,
-      "title": "Repair the Yellow Brick Road",
       "slug": "repair-the-yellow-brick-road-1",
-      "who": "Oz, the Great and Terrible, Wizard",
+      "url": "http://demo.controlshiftlabs.com/petitions/repair-the-yellow-brick-road-1",
+      "title": "Repair the Yellow Brick Road",
+      "who": " Oz, the Great and Terrible, Wizard",
       "what": "The Yellow Brick Road has been neglected; commit to repairing the damaged sections of the road in the next year!",
       "why": "The Yellow Brick Road is the main road connecting Munchkin Country to the Emerald City and in its current state it's impassable.",
+      "admin_status": "good",
+      "signature_count": 223,
+      "goal": 500,
+      "creator_name": "Kristyn Arrighi",
+      "locale": "en",
       "created_at": "2014-10-02T01:43:17Z",
       "updated_at": "2018-05-07T15:38:39Z",
-      "delivery_details": "We're off to see the wizard!",
-      "administered_at": "2018-03-21T19:05:54Z",
-      "source": "homepage",
-      "location_id": 27575,
-      "alias": null,
-      "bsd_constituent_group_id": null,
-      "categories": [
+      "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741",
+      "additional_image_sizes_url": [
         {
-          "name": "Oz",
-          "slug": "oz"
+          "style": "original",
+          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"
+        },
+        {
+          "style": "form",
+          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/form/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"
+        },
+        {
+          "style": "horizontal",
+          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/horizontal/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"
+        },
+        {
+          "style": "open_graph",
+          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/open_graph/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"
         }
       ],
-      "goal": 500,
-      "effort": null,
-      "partnership": null,
-      "group": null,
-      "resized_image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741",
-      "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741",
-      "creator_name": "Kristyn Arrighi",
-      "signature_count": 223
+      "target": {
+        "name": " Oz, the Great and Terrible",
+        "slug": "oz-the-great-and-terrible",
+        "context": "Wizard",
+        "location": {
+          "query": "Land of Oz, Kensington Avenue, Buffalo, NY, United States",
+          "latitude": "42.9399637",
+          "longitude": "-78.8087571",
+          "street": "Kensington Ave",
+          "postal_code": "",
+          "country": "US",
+          "region": "NY",
+          "street_number": "",
+          "venue": "",
+          "created_at": "2016-06-10T19:13:19Z"
+        }
+      },
+      "location": {
+        "query": "Land of Oz, Kensington Avenue, Buffalo, NY, United States",
+        "latitude": "42.9399637",
+        "longitude": "-78.8087571",
+        "street": "Kensington Ave",
+        "postal_code": "",
+        "country": "US",
+        "region": "NY",
+        "street_number": "",
+        "venue": "",
+        "created_at": "2016-06-10T19:13:19Z"
+      }
     },
     {
-      "id": 92283,
-      "title": "We Need More Bike Lanes",
       "slug": "we-need-more-bike-lanes",
+      "title": "We Need More Bike Lanes",
       "who": "My Mayor",
       "what": "Build the bike lanes",
       "why": "Cyclists aren't safe.",
+      "admin_status": "good",
+      "signature_count": 5,
+      "goal": 100,
+      "creator_name": "Greg Dutcher",
+      "locale": "en",
       "created_at": "2016-08-12T18:08:32Z",
       "updated_at": "2016-09-14T12:43:45Z",
-      "delivery_details": null,
-      "administered_at": "2016-09-14T12:43:45Z",
-      "source": "my_campaign",
-      "location_id": 28907,
-      "alias": null,
-      "bsd_constituent_group_id": null,
-      "categories": [
+      "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/167492/original/IMG_1854.JPG?1472046912",
+      "additional_image_sizes_url": [
+      ]
         {
-         "name": "Education",
-         "slug": "education-9"
+          "style": "original",
+          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/167492/original/IMG_1854.JPG?1473884741"
         },
         {
-         "name": "Ohio",
-         "slug": "ohio"
+          "style": "form",
+          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/167492/form/IMG_1854.JPG?1473884741"
         },
         {
-         "name": "mice",
-         "slug": "mice"
+          "style": "horizontal",
+          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/167492/horizontal/IMG_1854.JPG?1473884741"
+        },
+        {
+          "style": "open_graph",
+          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/167492/open_graph/IMG_1854.JPG?1473884741"
         }
       ],
-      "goal": 100,
-      "effort": null,
-      "partnership": null,
-      "group": null,
-      "resized_image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/167492/hero/IMG_1854.JPG?1472046912",
-      "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/167492/original/IMG_1854.JPG?1472046912",
-      "creator_name": "Greg Dutcher",
-      "signature_count": 5
+      "location": {
+        "query": "New York",
+        "latitude": "40.6974034",
+        "longitude": "-74.1197633",
+        "street": "",
+        "postal_code": "",
+        "country": "US",
+        "region": "NY",
+        "street_number": "",
+        "venue": "New York",
+        "created_at": "2017-04-11T13:32:08Z"
+      }
     }
   ],
   "links": {
