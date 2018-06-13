@@ -14,8 +14,8 @@ Calendars are collections of related events.
     "slug": "movie-screenings-for-healthcare-access",
     "url": "https://demo.controlshiftlabs.com/calendars/movie-screenings-for-healthcare-access",
     "partnership": {
-      "slug": "physicians-for-a-national-health-program",
-      "url": "https://demo.controlshiftlabs.com/partnerships/physicians-for-a-national-health-program"
+      "slug": "space-captains-for-health-care",
+      "url": "https://demo.controlshiftlabs.com/partnerships/space-captains-for-health-care"
     }
   }
 }
