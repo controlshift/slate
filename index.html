@@ -153,7 +153,7 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 
           <h2 id="get-a-single-petition">Get a single petition</h2>
 <pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-  <span class="kd">var</span> <span class="nx">petitionSlug</span> <span class="o">=</span> <span class="s1">'turn-back-human-trafficking-faith-leaders'</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">petitionSlug</span> <span class="o">=</span> <span class="s1">'repair-the-yellow-brick-road-1'</span><span class="p">;</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
     <span class="na">url</span><span class="p">:</span> <span class="s1">'https://demo.controlshiftlabs.com/petitions/'</span><span class="o">+</span><span class="nx">petitionSlug</span><span class="o">+</span><span class="s1">'.json'</span><span class="p">,</span>
     <span class="na">dataType</span><span class="p">:</span> <span class="s1">'jsonp'</span><span class="p">,</span>
@@ -167,32 +167,34 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 <p>The above code would display your returned petition data in the console.  The JSON response data would be structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">107370</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pledge to TURN BACK human trafficking Now - Faith or Community Leaders"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"President John Dramani Mahama"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Today there are over 192,000 people trapped in modern slavery in Ghana [1]. Denied of their rights to education and often lacking parental care or support, over 1.8 million Ghanaian children are working rather than in school (21.8% of the population). Of these an estimated 1.2 million are forced to undertake hazardous child labour including mining, fishing and domestic slavery [3].</span><span class="se">\r\n\r\n</span><span class="s2">The experience of Kwesi is a typical example. Following the death of his father, Kwesi’s mother borrowed money to pay for the funeral. Faced with a debt she was unable to pay her creditor threatened her with jail unless she gave up her son as a labourer.  Kwesi was trafficked to Lake Volta to work as a “fisher boy”. and for the next three years, Kwesi worked for an average of 18 hours per day with little rest, no pay and only enough food to give him the energy for more work. By the time we found Kwesi and rescued him, he had suffered extensive emotional and physical abuse and partially lost sight in his left eye. </span><span class="se">\r\n\r\n</span><span class="s2">Over 21,000 children like Kwesi, many of them trafficked, are trapped in hazardous labour on Lake Volta in Ghana[2]. We are working hard to bring them home, but want to ensure no one is trafficked in the first place. Please help fulfil the wish made by Kwesi when he gained his freedom: “I want the world to know that no child should be sent into slavery”.</span><span class="se">\r\n\r\n</span><span class="s2">[1]. http://www.globalslaveryindex.org/ 2014</span><span class="se">\r\n</span><span class="s2">[2].International Labour Organisation/International Programme on Elimination of Child Labour (ILO/IPEC) Analytical Study on Child Labour In Lake Volta Fishing in Ghana</span><span class="se">\r\n</span><span class="s2">[3].Ghana Living Standard Survey 6 (GLSS 6): Child Labour Report by Ghana Statistical Services, 2014"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I know that globally millions of people are trafficked for forced labour and sexual exploitation and that Ghana is a source, transit and destination country for this social evil. The concerns raised by Parliament recently, about men, women, and children who are trafficked and subjected to forced labor and sexual exploitation human points to the need for everyone to take action.</span><span class="se">\r\n\r\n</span><span class="s2">I hereby pledge to TURN BACK human trafficking. </span><span class="se">\r\n</span><span class="s2">•</span><span class="se">\t</span><span class="s2">I will be vigilant of suspicious movement of children and vulnerable people, victims of bonded labour and of children working when they should be in school </span><span class="se">\r\n</span><span class="s2">•</span><span class="se">\t</span><span class="s2">I promise to always report my concerns to the appropriate authorities as quickly as possible.</span><span class="se">\r\n\r\n</span><span class="s2">As a faith or community leader, I promise to warn my congregation of the dangers of child trafficking, and support them in reporting any suspicions they have."</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-01T15:37:47Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-14T08:45:52Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"turn-back-human-trafficking-faith-leaders"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"delivery_details"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"administered_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-29T09:32:08Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">92283</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Repair the Yellow Brick Road"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"repair-the-yellow-brick-road-1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oz, the Great and Terrible, Wizard"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Yellow Brick Road has been neglected; commit to repairing the damaged sections of the road in the next year!"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Yellow Brick Road is the main road connecting Munchkin Country to the Emerald City and in its current state it's impassable."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-10-02T01:43:17Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-07T15:38:39Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"delivery_details"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We're off to see the wizard!"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"administered_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-21T19:05:54Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"homepage"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">27575</span><span class="p">,</span><span class="w">
   </span><span class="s2">"alias"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"bsd_constituent_group_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Civil Rights"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"civil-rights-1"</span><span class="w">
-  </span><span class="p">}],</span><span class="w">
-  </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oz"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oz"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
   </span><span class="s2">"effort"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"turn-back-human-trafficking-now"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="s2">"turn-back-human-trafficking-now"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resized_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/hero/Untitled.png?1433187465"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/original/Untitled.png?1433187465"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resized_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kristyn Arrighi"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
+  </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">223</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
@@ -241,7 +243,7 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
   </div>
   <pre class="codepen-js">
     $(document).ready(function(){
-      var petitionSlug = 'turn-back-human-trafficking-faith-leaders';
+      var petitionSlug = 'repair-the-yellow-brick-road-1';
       $.ajax({
         url: 'https://demo.controlshiftlabs.com/petitions/'+petitionSlug+'.json',
         dataType: 'jsonp',
@@ -285,109 +287,124 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
     </span><span class="s2">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"release-pro-democracy-youth-activists-in-azerbaijan"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Release pro-democracy youth activists in Azerbaijan"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/release-pro-democracy-youth-activists-in-azerbaijan"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awesome"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/hero/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/form/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/large/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/open_graph/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/28870/original/Screen_Shot_2014-11-14_at_3.57.21_PM.png?1415999011"</span><span class="w">
-    </span><span class="p">}],</span><span class="w">
-    </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"President Ilham Aliyev of Azerbaijan"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Immediately release the imprisoned youth activists from the NIDA civic movement.</span><span class="se">\r\n\r\n</span><span class="s2">Shahin Novruzlu, Rashadat Akundov, Mammad Azizov, Bakhtiyar Guliyev, Zaur Gurbanli, Rashad Hasanov, Uzeyir Mammadli and Ilkin Rustamzade were arrested on criminal charges of possessing explosives and intent of public disorder. Human rights organizations believe these charges have been fabricated. The actual reason for their arrest was their criticism of the Azerbaijani authorities and their online activism, calling for peaceful demonstrations.</span><span class="se">\r\n\r\n</span><span class="s2">Shahin Novruzlu, who was only 17 at the time of his arrest, has lost his front teeth as a result of torture in detention. Mammad Azizov and Bakhtiyar Guliyev have complained of torture too.</span><span class="se">\r\n\r\n</span><span class="s2">From 14 May 2014, Azerbaijan is chairing the Committee of Ministers of the Council of Europe. This organization is responsible for promoting and protecting human rights. I am deeply concerned that there are civil society activists in Azerbaijan tortured and imprisoned solely for expressing their views and organizing peaceful protests.</span><span class="se">\r\n\r\n</span><span class="s2">Azerbaijan must live up to the high expectations of the chair of the Committee of Ministers of the Council of Europe. The NIDA activists must be immediately released."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">119</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kristyn Arrighi"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-07-24T20:07:14Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-26T14:30:57Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shahin Novruzlu and fellow youth activists from the pro-democracy movement NIDA campaigned for democracy and against human rights abuses and widespread corruption in Azerbaijan. In February 2013 th..."</span><span class="w">
-  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"give-us-more-icecream"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Give us more icecream"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/give-us-more-icecream"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awesome"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/hero/10982478_634745530004482_279346285079955699_n.jpg?1455250695"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/form/10982478_634745530004482_279346285079955699_n.jpg?1455250695"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/large/10982478_634745530004482_279346285079955699_n.jpg?1455250695"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/open_graph/10982478_634745530004482_279346285079955699_n.jpg?1455250695"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/139482/original/10982478_634745530004482_279346285079955699_n.jpg?1455250695"</span><span class="w">
-    </span><span class="p">}],</span><span class="w">
-    </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cook"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cook and provide more icecream"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tudor Bradatan"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-11T23:17:42Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-26T14:20:46Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Because we like and need it"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cluj"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46.7712101"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23.6236353"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RO"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CJ"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-11T23:17:42Z"</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"repair-the-yellow-brick-road-1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/repair-the-yellow-brick-road-1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Repair the Yellow Brick Road"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Oz, the Great and Terrible, Wizard"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Yellow Brick Road has been neglected; commit to repairing the damaged sections of the road in the next year!"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Yellow Brick Road is the main road connecting Munchkin Country to the Emerald City and in its current state it's impassable."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">223</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kristyn Arrighi"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-10-02T01:43:17Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-07T15:38:39Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/form/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"horizontal"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/horizontal/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/open_graph/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Oz, the Great and Terrible"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oz-the-great-and-terrible"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizard"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Land of Oz, Kensington Avenue, Buffalo, NY, United States"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42.9399637"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-78.8087571"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kensington Ave"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-10T19:13:19Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Land of Oz, Kensington Avenue, Buffalo, NY, United States"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42.9399637"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-78.8087571"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kensington Ave"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-10T19:13:19Z"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"we-need-more-bike-lanes"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We Need More Bike Lanes"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Mayor"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Build the bike lanes"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cyclists aren't safe."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Dutcher"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-12T18:08:32Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T12:43:45Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/167492/original/IMG_1854.JPG?1472046912"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/167492/original/IMG_1854.JPG?1473884741"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/167492/form/IMG_1854.JPG?1473884741"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"horizontal"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/167492/horizontal/IMG_1854.JPG?1473884741"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/167492/open_graph/IMG_1854.JPG?1473884741"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40.6974034"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-74.1197633"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-11T13:32:08Z"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"turn-back-human-trafficking-faith-leaders"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pledge to TURN BACK human trafficking Now - Faith or Community Leaders"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/turn-back-human-trafficking-faith-leaders"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"awesome"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/hero/Untitled.png?1433187465"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/form/Untitled.png?1433187465"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/large/Untitled.png?1433187465"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/open_graph/Untitled.png?1433187465"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/107370/original/Untitled.png?1433187465"</span><span class="w">
-    </span><span class="p">}],</span><span class="w">
-    </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"President John Dramani Mahama"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I know that globally millions of people are trafficked for forced labour and sexual exploitation and that Ghana is a source, transit and destination country for this social evil. The concerns raised by Parliament recently, about men, women, and children who are trafficked and subjected to forced labor and sexual exploitation human points to the need for everyone to take action.</span><span class="se">\r\n\r\n</span><span class="s2">I hereby pledge to TURN BACK human trafficking. </span><span class="se">\r\n</span><span class="s2">•</span><span class="se">\t</span><span class="s2">I will be vigilant of suspicious movement of children and vulnerable people, victims of bonded labour and of children working when they should be in school </span><span class="se">\r\n</span><span class="s2">•</span><span class="se">\t</span><span class="s2">I promise to always report my concerns to the appropriate authorities as quickly as possible.</span><span class="se">\r\n\r\n</span><span class="s2">As a faith or community leader, I promise to warn my congregation of the dangers of child trafficking, and support them in reporting any suspicions they have."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kristyn Arrighi"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-01T15:37:47Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-14T08:45:52Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Today there are over 192,000 people trapped in modern slavery in Ghana [1]. Denied of their rights to education and often lacking parental care or support, over 1.8 million Ghanaian children are wo..."</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w">
-</span><span class="p">],</span><span class="w">
-</span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/featured.json?page=1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/featured.json"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/featured.json?page=2"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/featured.json?page=3"</span><span class="w">
   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This retrieves a JSON object compliant with the <a href="http://jsonapi.org/">JSON API</a> specification, containing an array of featured petitions objects on its data property.</p>
 
@@ -466,40 +483,23 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"category_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Animal Rights"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"category_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"animal-rights-2"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/categories/animal-rights-2.json"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"category_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Education"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"category_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"education-9"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/categories/education-9.json"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">421</span><span class="p">,</span><span class="w">
     </span><span class="s2">"locales"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"es"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Derechos Animales"</span><span class="w">
+      </span><span class="s2">"es"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Educación"</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"category_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cats"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"category_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cats"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/categories/cats.json"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">270</span><span class="p">,</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"category_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Environment"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"category_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">352</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"environment-6"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/categories/environment-6.json"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2606</span><span class="p">,</span><span class="w">
     </span><span class="s2">"locales"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"es"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gatos"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"category_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Civil Rights"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"category_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"civil-rights-1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/categories/civil-rights-1.json"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">165</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"locales"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"es"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Derechos Civiles"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"category_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Culture"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"category_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cultura"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/categories/cultura.json"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"locales"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"es"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cultura"</span><span class="w">
+      </span><span class="s2">"es"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Medio Ambiente"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -550,7 +550,7 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
           <h2 id="list-petitions-in-a-category">List petitions in a category</h2>
 <pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-    <span class="na">url</span><span class="p">:</span> <span class="s1">'https://demo.controlshiftlabs.com/categories/mice.json'</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s1">'https://demo.controlshiftlabs.com/categories/oz.json'</span><span class="p">,</span>
     <span class="na">dataType</span><span class="p">:</span> <span class="s1">'jsonp'</span><span class="p">,</span>
   <span class="p">})</span>
   <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
@@ -559,81 +559,130 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 <span class="p">});</span>
 </code></pre>
 <blockquote>
-<p>The above code would return petitions data from the category with the slug <code class="prettyprint">mice</code>.  The JSON would be structured like this:</p>
+<p>The above code would return petitions data from the category with the slug <code class="prettyprint">oz</code>.  The JSON would be structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
   </span><span class="s2">"previous_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"next_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mice"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apple-stop-your-comic-sans-snobbery"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple: Stop your Comic Sans snobbery"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/apple-stop-your-comic-sans-snobbery"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/24551/hero/helveticacomicsans.gif?1398764339"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/24551/form/helveticacomicsans.gif?1398764339"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/24551/large/helveticacomicsans.gif?1398764339"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/24551/open_graph/helveticacomicsans.gif?1398764339"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/24551/original/helveticacomicsans.gif?1398764339"</span><span class="w">
-    </span><span class="p">}],</span><span class="w">
-    </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tim Cook, CEO Apple"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Use Comic Sans for the default font on the iPhone 6."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Wood"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-04-29T05:35:47Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-01-06T11:02:17Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple occupy a key position in the hearts of typeface poseurs everywhere. If they were to make a bold step and switch to using the people's font, Comic Sans on the new iPhone, this would cause mass..."</span><span class="w">
-  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clean-up-the-himalayas"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clean up the Himalayas"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/clean-up-the-himalayas"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/6359/hero/gorak_shep_thumb.jpg?1431734031"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/6359/form/gorak_shep_thumb.jpg?1431734031"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/6359/large/gorak_shep_thumb.jpg?1431734031"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/6359/open_graph/gorak_shep_thumb.jpg?1431734031"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/6359/original/gorak_shep_thumb.jpg?1431734031"</span><span class="w">
-    </span><span class="p">}],</span><span class="w">
-    </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nepal Ghurung"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clean up the Khumbu region."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grant Cox"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-06-03T17:13:41Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-17T15:11:48Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It's quite dirty, and I don't like it."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nepal"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28.394857"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"84.124008"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NP"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nepal"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-06-03T17:13:41Z"</span><span class="w">
+  </span><span class="s2">"next_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oz"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"let-dorothy-go-home"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/let-dorothy-go-home"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Let Dorothy Go Home!"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Oz, the Great and Terrible, Wizard"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Let poor Dorothy Gale go home to Kansas"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"There's no place like home."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tin Man"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-12-02T01:43:17Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-07T15:38:39Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/form/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"horizontal"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/horizontal/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/open_graph/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Oz, the Great and Terrible"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oz-the-great-and-terrible"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizard"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Land of Oz, Kensington Avenue, Buffalo, NY, United States"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42.9399637"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-78.8087571"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kensington Ave"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-10T19:13:19Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"repair-the-yellow-brick-road-1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/repair-the-yellow-brick-road-1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Repair the Yellow Brick Road"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Oz, the Great and Terrible, Wizard"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Yellow Brick Road has been neglected; commit to repairing the damaged sections of the road in the next year!"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Yellow Brick Road is the main road connecting Munchkin Country to the Emerald City and in its current state it's impassable."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">223</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kristyn Arrighi"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-10-02T01:43:17Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-07T15:38:39Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/form/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"horizontal"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/horizontal/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/open_graph/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Oz, the Great and Terrible"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oz-the-great-and-terrible"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizard"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Land of Oz, Kensington Avenue, Buffalo, NY, United States"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42.9399637"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-78.8087571"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kensington Ave"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-10T19:13:19Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Land of Oz, Kensington Avenue, Buffalo, NY, United States"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42.9399637"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-78.8087571"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kensington Ave"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-10T19:13:19Z"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">}]</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -724,79 +773,127 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
   </span><span class="s2">"previous_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"next_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Our Awesome Partner"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apple-stop-your-comic-sans-snobbery"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple: Stop your Comic Sans snobbery"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/apple-stop-your-comic-sans-snobbery"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/24551/hero/helveticacomicsans.gif?1398764339"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/24551/form/helveticacomicsans.gif?1398764339"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/24551/large/helveticacomicsans.gif?1398764339"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/24551/open_graph/helveticacomicsans.gif?1398764339"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/24551/original/helveticacomicsans.gif?1398764339"</span><span class="w">
-    </span><span class="p">}],</span><span class="w">
-    </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tim Cook, CEO Apple"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Use Comic Sans for the default font on the iPhone 6."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Wood"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-04-29T05:35:47Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-01-06T11:02:17Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple occupy a key position in the hearts of typeface poseurs everywhere. If they were to make a bold step and switch to using the people's font, Comic Sans on the new iPhone, this would cause mass..."</span><span class="w">
-  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clean-up-the-himalayas"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clean up the Himalayas"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/clean-up-the-himalayas"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/6359/hero/gorak_shep_thumb.jpg?1431734031"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/6359/form/gorak_shep_thumb.jpg?1431734031"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/6359/large/gorak_shep_thumb.jpg?1431734031"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/6359/open_graph/gorak_shep_thumb.jpg?1431734031"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/6359/original/gorak_shep_thumb.jpg?1431734031"</span><span class="w">
-    </span><span class="p">}],</span><span class="w">
-    </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nepal Ghurung"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clean up the Khumbu region."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grant Cox"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-06-03T17:13:41Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-17T15:11:48Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It's quite dirty, and I don't like it."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nepal"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28.394857"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"84.124008"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NP"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nepal"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-06-03T17:13:41Z"</span><span class="w">
+  </span><span class="s2">"next_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oz"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"let-dorothy-go-home"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/let-dorothy-go-home"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Let Dorothy Go Home!"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Oz, the Great and Terrible, Wizard"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Let poor Dorothy Gale go home to Kansas"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"There's no place like home."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tin Man"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-12-02T01:43:17Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-07T15:38:39Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/form/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"horizontal"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/horizontal/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/open_graph/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Oz, the Great and Terrible"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oz-the-great-and-terrible"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizard"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Land of Oz, Kensington Avenue, Buffalo, NY, United States"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42.9399637"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-78.8087571"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kensington Ave"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-10T19:13:19Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"repair-the-yellow-brick-road-1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/repair-the-yellow-brick-road-1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Repair the Yellow Brick Road"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Oz, the Great and Terrible, Wizard"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Yellow Brick Road has been neglected; commit to repairing the damaged sections of the road in the next year!"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Yellow Brick Road is the main road connecting Munchkin Country to the Emerald City and in its current state it's impassable."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">223</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kristyn Arrighi"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-10-02T01:43:17Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-07T15:38:39Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/form/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"horizontal"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/horizontal/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/open_graph/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Oz, the Great and Terrible"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oz-the-great-and-terrible"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizard"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Land of Oz, Kensington Avenue, Buffalo, NY, United States"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42.9399637"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-78.8087571"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kensington Ave"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-10T19:13:19Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Land of Oz, Kensington Avenue, Buffalo, NY, United States"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42.9399637"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-78.8087571"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kensington Ave"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-10T19:13:19Z"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">}]</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <p>This retrieves a paginated list of petitions in a partnership.</p>
 
@@ -871,7 +968,7 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 
           <h2 id="list-petitions-in-an-effort">List petitions in an effort</h2>
 <pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-  <span class="kd">var</span> <span class="nx">effortSlug</span> <span class="o">=</span> <span class="s1">'forecast-the-facts'</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">effortSlug</span> <span class="o">=</span> <span class="s1">'drivers-licenses-for-all'</span><span class="p">;</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
     <span class="na">url</span><span class="p">:</span> <span class="s1">'https://demo.controlshiftlabs.com/efforts/'</span><span class="o">+</span><span class="nx">effortSlug</span><span class="o">+</span><span class="s1">'.json'</span><span class="p">,</span>
     <span class="na">dataType</span><span class="p">:</span> <span class="s1">'jsonp'</span><span class="p">,</span>
@@ -882,93 +979,101 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 <span class="p">});</span>
 </code></pre>
 <blockquote>
-<p>The above code would return petitions data from the effort with the slug <code class="prettyprint">forecast-the-facts</code>.  The JSON would be structured like this:</p>
+<p>The above code would return petitions data from the effort with the slug <code class="prettyprint">drivers-licenses-for-all</code>.  The JSON would be structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast the Facts"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"forecast-the-facts"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It is imperative that weather reporters fulfill an important part of their job, and explain the ways that climate change has influenced the freakish </span><span class="se">\"</span><span class="s2">Frankenstorm</span><span class="se">\"</span><span class="s2"> Sandy. Below is a list of the meteorologists in your area, with telephone numbers and e-mail addresses. Please call or email them a message in your own words, asking them to connect the dots between global warming pollution and disasters like Sandy. Take a look at the talking points below if you need any help."</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/efforts/images/16/hero/forecast.png?1351625402"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Drivers' Licenses for All"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"drivers-licenses-for-all"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We're asking towns and villages across New York to pass resolutions in support of the Drivers' License bill. Anyone who can pass a driving test should be able to get a license."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">511</span><span class="p">,</span><span class="w">
   </span><span class="s2">"petitions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"forecast-the-facts-of-frankenstorm-wmtv-madison-wi"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast the Facts of Frankenstorm: WMTV Madison, WI"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-wmtv-madison-wi"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ossining-support-drivers-licenses-for-all"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/ossining-support-drivers-licenses-for-all"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ossining: Support Drivers' Licenses For All"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ossining Village Board of Trustees"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pass a resolution in support of the Drivers' Licenses bill"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Undocumented immigrants need access to drivers' licenses so they can drive to work, school, and everywhere else. This will improve road safety for everyone."</span><span class="p">,</span><span class="w">
       </span><span class="s2">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/hero/forecast.png?1429199472"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-        </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/form/forecast.png?1429199472"</span><span class="w">
-      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/large/forecast.png?1429199472"</span><span class="w">
-      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/open_graph/forecast.png?1429199472"</span><span class="w">
-      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/original/forecast.png?1429199472"</span><span class="w">
-      </span><span class="p">}],</span><span class="w">
-      </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WMTV Madison, WI"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It is imperative that weather reporters fulfill an important part of their job, and explain the ways that climate change has influenced the freakish </span><span class="se">\"</span><span class="s2">Frankenstorm</span><span class="se">\"</span><span class="s2"> Sandy. Below is a list of the meteorologists in your area, with telephone numbers and e-mail addresses. Please call or email them a message in your own words, asking them to connect the dots between global warming pollution and disasters like Sandy. Take a look at the talking points below if you need any help."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kristyn Arrighi"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-04-16T11:51:12Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T20:23:06Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We want TV meteorologists to understand that the public is depending on them for information about climate change, especially as it increasingly impacts our weather patterns. We know that meteorolo..."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">223</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jacinda Moore"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-02T01:43:17Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-07T15:38:39Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ossining Village Board of Trustees"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ossining-village-board-of-trustees"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ossining"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41.1617921"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-73.8874165"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10562"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-10T19:13:19Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WMTV-TV (Madison), Forward Drive, Madison, WI, United States"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43.05091"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-89.486738"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forward Dr"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53711"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WI"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"615"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WMTV-TV (Madison)"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-04-16T11:51:11Z"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"forecast-the-facts-of-frankenstorm-woak"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast the Facts of Frankenstorm: WOAK"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-woak"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/hero/forecast.png?1439846499"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-        </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/form/forecast.png?1439846499"</span><span class="w">
-      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/large/forecast.png?1439846499"</span><span class="w">
-      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/open_graph/forecast.png?1439846499"</span><span class="w">
-      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/original/forecast.png?1439846499"</span><span class="w">
-      </span><span class="p">}],</span><span class="w">
-      </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WOAK"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It is imperative that weather reporters fulfill an important part of their job, and explain the ways that climate change has influenced the freakish </span><span class="se">\"</span><span class="s2">Frankenstorm</span><span class="se">\"</span><span class="s2"> Sandy. Below is a list of the meteorologists in your area, with telephone numbers and e-mail addresses. Please call or email them a message in your own words, asking them to connect the dots between global warming pollution and disasters like Sandy. Take a look at the talking points below if you need any help."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adam Klaus"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-17T17:21:39Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-17T17:29:02Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We want TV meteorologists to understand that the public is depending on them for information about climate change, especially as it increasingly impacts our weather patterns. We know that meteorolo..."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oklahoma City, OK, United States"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35.4675602"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-97.5164276"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ossining"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41.1617921"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-73.8874165"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10562"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-12-17T14:49:51Z"</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-10T19:13:19Z"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yonkers-support-drivers-licenses-for-all"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/yonkers-support-drivers-licenses-for-all"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yonkers: Support Drivers' Licenses For All"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yonkers City Council"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pass a resolution in support of the Drivers' Licenses bill"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Undocumented immigrants need access to drivers' licenses so they can drive to work, school, and everywhere else. This will improve road safety for everyone."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jacinda Moore"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-02T01:43:17Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-07T15:38:39Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yonkers City Council"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yonkers-city-council"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yonkers"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40.9443748"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-73.8993138"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10701"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-10T19:13:19Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yonkers"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40.9443748"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-73.8993138"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10701"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-10T19:13:19Z"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -1047,13 +1152,13 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
   <input type="submit" value="Launch Example on CodePen">
 </form>
 
-          <h2 id="find-near-by-petitions">Find near by petitions</h2>
+          <h2 id="find-nearby-petitions">Find nearby petitions</h2>
 <pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-  <span class="kd">var</span> <span class="nx">effortSlug</span> <span class="o">=</span> <span class="s1">'forecast-the-facts'</span><span class="p">,</span>
-    <span class="nx">latitude</span> <span class="o">=</span> <span class="mf">38.88233400000001</span><span class="p">,</span>
-    <span class="nx">longitude</span> <span class="o">=</span> <span class="o">-</span><span class="mf">77.17109140000002</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">effortSlug</span> <span class="o">=</span> <span class="s1">'drivers-licenses-for-all'</span><span class="p">,</span>
+      <span class="nx">latitude</span> <span class="o">=</span> <span class="mf">38.88233</span><span class="p">,</span>
+      <span class="nx">longitude</span> <span class="o">=</span> <span class="o">-</span><span class="mf">77.17109</span><span class="p">;</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-    <span class="na">url</span><span class="p">:</span> <span class="s1">'https://demo.controlshiftlabs.com/efforts/'</span><span class="o">+</span><span class="nx">effortSlug</span><span class="o">+</span><span class="s1">'/'</span><span class="o">+</span><span class="s1">'near.json'</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s1">'https://demo.controlshiftlabs.com/efforts/'</span><span class="o">+</span><span class="nx">effortSlug</span><span class="o">+</span><span class="s1">'/'</span><span class="o">+</span><span class="s1">'lookup/query.json'</span><span class="p">,</span>
     <span class="na">dataType</span><span class="p">:</span> <span class="s1">'jsonp'</span><span class="p">,</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
       <span class="s1">'location[latitude]'</span><span class="p">:</span> <span class="nx">latitude</span><span class="p">,</span>
@@ -1065,79 +1170,37 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
   <span class="p">});</span>
 <span class="p">});</span>
 </code></pre>
-<!--slash in '/'+'near.json' above disappears if combined with near-->
+<!--slash in '/'+'lookup/query.json' above disappears if combined with lookup/query-->
 
 <blockquote>
-<p>The above code would return petitions data from the effort with the slug <code class="prettyprint">forecast-the-facts</code>.  The JSON would be structured like this:</p>
+<p>The above code would return petitions, decision makers, or objectives data from the effort with the slug <code class="prettyprint">drivers-licenses-for-all</code>. If returning decision makers, the JSON would be structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"closest_target"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"doug-kammerer-nbc4"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doug Kammerer - NBC4"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Washington D.C., DC"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ossining-village-board-of-trustees"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ossining Village Board of Trustees"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ossining, NY"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"target_petition_created"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"petition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"forecast-the-facts-of-frankenstorm-doug-kammerer-nbc4"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast the Facts of Frankenstorm: Doug Kammerer - NBC4"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-doug-kammerer-nbc4"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/2139/hero/forecast.png?1351625677"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doug Kammerer - NBC4"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ossining-support-drivers-licenses-for-all"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ossining: Support Drivers' Licenses For All"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/ossining-support-drivers-licenses-for-all"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ossining Village Board of Trustees"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">223</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-02T01:43:17Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-07T15:38:39Z"</span><span class="p">,</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"other_targets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linda-church-wpix"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Linda Church - WPIX"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York, NY"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"target_petition_created"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"petition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"forecast-the-facts-of-frankenstorm-linda-church-wpix"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast the Facts of Frankenstorm: Linda Church - WPIX"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-linda-church-wpix"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/2137/hero/forecast.png?1351625520"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Linda Church - WPIX"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wnyc"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WNYC "</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manhattan, New York, NY, United States"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yorktown-town-council"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yorktown Town Council"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yorktown, NY"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"target_awaiting_petition"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"create_petition_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/efforts/forecast-the-facts/petitions/creating?target_id=5148"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"whdtv-boston"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHDTV Boston"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Boston, MA, United States"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"target_petition_created"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"petition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"forecast-the-facts-of-frankenstorm-whdtv-boston"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast the Facts of Frankenstorm: WHDTV Boston"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-whdtv-boston"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/28044/hero/forecast.png?1405015225"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WHDTV Boston"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wmtv-madison-wi"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WMTV Madison, WI"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WMTV-TV (Madison), Forward Drive, Madison, WI, United States"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"target_petition_created"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"petition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"forecast-the-facts-of-frankenstorm-wmtv-madison-wi"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast the Facts of Frankenstorm: WMTV Madison, WI"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-wmtv-madison-wi"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/hero/forecast.png?1429199472"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WMTV Madison, WI"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+      </span><span class="s2">"create_petition_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/efforts/drivers-licenses-for-all/petitions/creating?target_id=1234"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1148,7 +1211,7 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://demo.controlshiftlabs.com/efforts/&lt;effort slug&gt;/near.json</code></p>
+<p><code class="prettyprint">GET https://demo.controlshiftlabs.com/efforts/&lt;effort slug&gt;/lookup/query.json</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -1222,7 +1285,7 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 
       // get the targets and petitions (if they exist) for the effort near the place specified.
       $.ajax({
-        url: 'https://demo.controlshiftlabs.com/efforts/forecast-the-facts/near.json',
+        url: 'https://demo.controlshiftlabs.com/efforts/forecast-the-facts/lookup/query.json',
         dataType: 'jsonp',
         data: {
           'location[latitude]': place.geometry.location.lat(),
