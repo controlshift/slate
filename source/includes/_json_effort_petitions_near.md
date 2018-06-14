@@ -1,12 +1,12 @@
-## Find near by petitions
+## Find nearby petitions
 
 ```js
 $(document).ready(function(){
-  var effortSlug = 'forecast-the-facts',
-    latitude = 38.88233400000001,
-    longitude = -77.17109140000002;
+  var effortSlug = 'drivers-licenses-for-all',
+      latitude = 38.88233,
+      longitude = -77.17109;
   $.ajax({
-    url: 'https://demo.controlshiftlabs.com/efforts/'+effortSlug+'/'+'near.json',
+    url: 'https://demo.controlshiftlabs.com/efforts/'+effortSlug+'/'+'lookup/query.json',
     dataType: 'jsonp',
     data: {
       'location[latitude]': latitude,
@@ -18,79 +18,37 @@ $(document).ready(function(){
   });
 });
 ```
-<!--slash in '/'+'near.json' above disappears if combined with near-->
+<!--slash in '/'+'lookup/query.json' above disappears if combined with lookup/query-->
 
-> The above code would return petitions data from the effort with the slug `forecast-the-facts`.  The JSON would be structured like this:
+> The above code would return petitions, decision makers, or objectives data from the effort with the slug `drivers-licenses-for-all`. If returning decision makers, the JSON would be structured like this:
 
 ```json
 {
   "closest_target": {
-    "slug": "doug-kammerer-nbc4",
-    "name": "Doug Kammerer - NBC4",
-    "location": "Washington D.C., DC",
+    "slug": "ossining-village-board-of-trustees",
+    "name": "Ossining Village Board of Trustees",
+    "context": "",
+    "location": "Ossining, NY",
     "status": "target_petition_created",
     "petition": {
-      "slug": "forecast-the-facts-of-frankenstorm-doug-kammerer-nbc4",
-      "title": "Forecast the Facts of Frankenstorm: Doug Kammerer - NBC4",
-      "url": "https://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-doug-kammerer-nbc4",
-      "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/2139/hero/forecast.png?1351625677",
-      "who": "Doug Kammerer - NBC4",
-      "goal": 100,
-      "signature_count": 1
+      "slug": "ossining-support-drivers-licenses-for-all",
+      "title": "Ossining: Support Drivers' Licenses For All",
+      "url": "http://demo.controlshiftlabs.com/petitions/ossining-support-drivers-licenses-for-all",
+      "who": "Ossining Village Board of Trustees",
+      "signature_count": 223,
+      "goal": 500,
+      "created_at": "2016-10-02T01:43:17Z",
+      "updated_at": "2016-10-07T15:38:39Z",
     }
   },
   "other_targets": [
     {
-      "slug": "linda-church-wpix",
-      "name": "Linda Church - WPIX",
-      "location": "New York, NY",
-      "status": "target_petition_created",
-      "petition": {
-        "slug": "forecast-the-facts-of-frankenstorm-linda-church-wpix",
-        "title": "Forecast the Facts of Frankenstorm: Linda Church - WPIX",
-        "url": "https://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-linda-church-wpix",
-        "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/2137/hero/forecast.png?1351625520",
-        "who": "Linda Church - WPIX",
-        "goal": 100,
-        "signature_count": 1
-      }
-    },
-    {
-      "slug": "wnyc",
-      "name": "WNYC ",
-      "location": "Manhattan, New York, NY, United States",
+      "slug": "yorktown-town-council",
+      "name": "Yorktown Town Council",
+      "context": "",
+      "location": "Yorktown, NY",
       "status": "target_awaiting_petition",
-      "create_petition_url": "https://demo.controlshiftlabs.com/efforts/forecast-the-facts/petitions/creating?target_id=5148"
-    },
-    {
-      "slug": "whdtv-boston",
-      "name": "WHDTV Boston",
-      "location": "Boston, MA, United States",
-      "status": "target_petition_created",
-      "petition": {
-        "slug": "forecast-the-facts-of-frankenstorm-whdtv-boston",
-        "title": "Forecast the Facts of Frankenstorm: WHDTV Boston",
-        "url": "https://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-whdtv-boston",
-        "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/28044/hero/forecast.png?1405015225",
-        "who": "WHDTV Boston",
-        "goal": 100,
-        "signature_count": 1
-      }
-    },
-    {
-      "slug": "wmtv-madison-wi",
-      "name": "WMTV Madison, WI",
-      "location": "WMTV-TV (Madison), Forward Drive, Madison, WI, United States",
-      "status": "target_petition_created",
-      "petition": {
-        "slug": "forecast-the-facts-of-frankenstorm-wmtv-madison-wi",
-        "title": "Forecast the Facts of Frankenstorm: WMTV Madison, WI",
-        "url": "https://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-wmtv-madison-wi",
-        "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/hero/forecast.png?1429199472",
-        "who": "WMTV Madison, WI",
-        "goal": 100,
-        "signature_count": 1
-      }
+      "create_petition_url": "https://demo.controlshiftlabs.com/efforts/drivers-licenses-for-all/petitions/creating?target_id=1234"
     }
   ]
 }
@@ -102,7 +60,7 @@ This JSON endpoint allows you to reproduce the "search for the nearest petition 
 
 ### HTTP Request
 
-`GET https://demo.controlshiftlabs.com/efforts/<effort slug>/near.json`
+`GET https://demo.controlshiftlabs.com/efforts/<effort slug>/lookup/query.json`
 
 ### Query Parameters
 
@@ -150,7 +108,7 @@ View and edit a working example on codepen.io:
 
       // get the targets and petitions (if they exist) for the effort near the place specified.
       $.ajax({
-        url: 'https://demo.controlshiftlabs.com/efforts/forecast-the-facts/near.json',
+        url: 'https://demo.controlshiftlabs.com/efforts/forecast-the-facts/lookup/query.json',
         dataType: 'jsonp',
         data: {
           'location[latitude]': place.geometry.location.lat(),

@@ -2,7 +2,7 @@
 
 ```js
 $(document).ready(function(){
-  var effortSlug = 'forecast-the-facts';
+  var effortSlug = 'drivers-licenses-for-all';
   $.ajax({
     url: 'https://demo.controlshiftlabs.com/efforts/'+effortSlug+'.json',
     dataType: 'jsonp',
@@ -13,94 +13,102 @@ $(document).ready(function(){
 });
 ```
 
-> The above code would return petitions data from the effort with the slug `forecast-the-facts`.  The JSON would be structured like this:
+> The above code would return petitions data from the effort with the slug `drivers-licenses-for-all`.  The JSON would be structured like this:
 
 ```json
 {
-  "title": "Forecast the Facts",
-  "slug": "forecast-the-facts",
-  "description": "It is imperative that weather reporters fulfill an important part of their job, and explain the ways that climate change has influenced the freakish \"Frankenstorm\" Sandy. Below is a list of the meteorologists in your area, with telephone numbers and e-mail addresses. Please call or email them a message in your own words, asking them to connect the dots between global warming pollution and disasters like Sandy. Take a look at the talking points below if you need any help.",
-  "goal": 100,
-  "signature_count": 11,
-  "image_url": "https://d8s293fyljwh4.cloudfront.net/efforts/images/16/hero/forecast.png?1351625402",
+  "title": "Drivers' Licenses for All",
+  "slug": "drivers-licenses-for-all",
+  "description": "We're asking towns and villages across New York to pass resolutions in support of the Drivers' License bill. Anyone who can pass a driving test should be able to get a license.",
+  "goal": 1000,
+  "signature_count": 511,
   "petitions": [
     {
-      "slug": "forecast-the-facts-of-frankenstorm-wmtv-madison-wi",
-      "title": "Forecast the Facts of Frankenstorm: WMTV Madison, WI",
-      "url": "http://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-wmtv-madison-wi",
+      "slug": "ossining-support-drivers-licenses-for-all",
+      "url": "http://demo.controlshiftlabs.com/petitions/ossining-support-drivers-licenses-for-all",
+      "title": "Ossining: Support Drivers' Licenses For All",
+      "who": "Ossining Village Board of Trustees",
+      "what": "Pass a resolution in support of the Drivers' Licenses bill",
+      "why": "Undocumented immigrants need access to drivers' licenses so they can drive to work, school, and everywhere else. This will improve road safety for everyone.",
       "admin_status": "good",
-      "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/hero/forecast.png?1429199472",
-      "additional_image_sizes_url": [{
-        "style": "form",
-        "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/form/forecast.png?1429199472"
-      }, {
-        "style": "large",
-        "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/large/forecast.png?1429199472"
-      }, {
-        "style": "open_graph",
-        "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/open_graph/forecast.png?1429199472"
-      }, {
-        "style": "original",
-        "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/102705/original/forecast.png?1429199472"
-      }],
-      "who": "WMTV Madison, WI",
-      "what": "It is imperative that weather reporters fulfill an important part of their job, and explain the ways that climate change has influenced the freakish \"Frankenstorm\" Sandy. Below is a list of the meteorologists in your area, with telephone numbers and e-mail addresses. Please call or email them a message in your own words, asking them to connect the dots between global warming pollution and disasters like Sandy. Take a look at the talking points below if you need any help.",
-      "goal": 100,
-      "signature_count": 1,
-      "creator_name": "Kristyn Arrighi",
-      "created_at": "2015-04-16T11:51:12Z",
-      "updated_at": "2015-08-03T20:23:06Z",
-      "why": "We want TV meteorologists to understand that the public is depending on them for information about climate change, especially as it increasingly impacts our weather patterns. We know that meteorolo...",
+      "signature_count": 223,
+      "goal": 500,
+      "creator_name": "Jacinda Moore",
+      "locale": "en",
+      "created_at": "2016-10-02T01:43:17Z",
+      "updated_at": "2016-10-07T15:38:39Z",
+      "target": {
+        "name": "Ossining Village Board of Trustees",
+        "slug": "ossining-village-board-of-trustees",
+        "context": "",
+        "location": {
+          "query": "Ossining",
+          "latitude": "41.1617921",
+          "longitude": "-73.8874165",
+          "street": "",
+          "postal_code": "10562",
+          "country": "US",
+          "region": "NY",
+          "street_number": "",
+          "venue": "",
+          "created_at": "2016-06-10T19:13:19Z"
+        }
+      },
       "location": {
-        "query": "WMTV-TV (Madison), Forward Drive, Madison, WI, United States",
-        "latitude": "43.05091",
-        "longitude": "-89.486738",
-        "street": "Forward Dr",
-        "postal_code": "53711",
-        "country": "US",
-        "region": "WI",
-        "street_number": "615",
-        "venue": "WMTV-TV (Madison)",
-        "created_at": "2015-04-16T11:51:11Z"
-      }
-    }, {
-      "slug": "forecast-the-facts-of-frankenstorm-woak",
-      "title": "Forecast the Facts of Frankenstorm: WOAK",
-      "url": "http://demo.controlshiftlabs.com/petitions/forecast-the-facts-of-frankenstorm-woak",
-      "admin_status": "good",
-      "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/hero/forecast.png?1439846499",
-      "additional_image_sizes_url": [{
-        "style": "form",
-        "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/form/forecast.png?1439846499"
-      }, {
-        "style": "large",
-        "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/large/forecast.png?1439846499"
-      }, {
-        "style": "open_graph",
-        "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/open_graph/forecast.png?1439846499"
-      }, {
-        "style": "original",
-        "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/115310/original/forecast.png?1439846499"
-      }],
-      "who": "WOAK",
-      "what": "It is imperative that weather reporters fulfill an important part of their job, and explain the ways that climate change has influenced the freakish \"Frankenstorm\" Sandy. Below is a list of the meteorologists in your area, with telephone numbers and e-mail addresses. Please call or email them a message in your own words, asking them to connect the dots between global warming pollution and disasters like Sandy. Take a look at the talking points below if you need any help.",
-      "goal": 100,
-      "signature_count": 2,
-      "creator_name": "Adam Klaus",
-      "created_at": "2015-08-17T17:21:39Z",
-      "updated_at": "2015-08-17T17:29:02Z",
-      "why": "We want TV meteorologists to understand that the public is depending on them for information about climate change, especially as it increasingly impacts our weather patterns. We know that meteorolo...",
-      "location": {
-        "query": "Oklahoma City, OK, United States",
-        "latitude": "35.4675602",
-        "longitude": "-97.5164276",
+        "query": "Ossining",
+        "latitude": "41.1617921",
+        "longitude": "-73.8874165",
         "street": "",
-        "postal_code": "",
+        "postal_code": "10562",
         "country": "US",
-        "region": "OK",
+        "region": "NY",
         "street_number": "",
         "venue": "",
-        "created_at": "2013-12-17T14:49:51Z"
+        "created_at": "2016-06-10T19:13:19Z"
+      }
+    },
+    {
+      "slug": "yonkers-support-drivers-licenses-for-all",
+      "url": "http://demo.controlshiftlabs.com/petitions/yonkers-support-drivers-licenses-for-all",
+      "title": "Yonkers: Support Drivers' Licenses For All",
+      "who": "Yonkers City Council",
+      "what": "Pass a resolution in support of the Drivers' Licenses bill",
+      "why": "Undocumented immigrants need access to drivers' licenses so they can drive to work, school, and everywhere else. This will improve road safety for everyone.",
+      "admin_status": "good",
+      "signature_count": 300,
+      "goal": 500,
+      "creator_name": "Jacinda Moore",
+      "locale": "en",
+      "created_at": "2016-10-02T01:43:17Z",
+      "updated_at": "2016-10-07T15:38:39Z",
+      "target": {
+        "name": "Yonkers City Council",
+        "slug": "yonkers-city-council",
+        "context": "",
+        "location": {
+          "query": "Yonkers",
+          "latitude": "40.9443748",
+          "longitude": "-73.8993138",
+          "street": "",
+          "postal_code": "10701",
+          "country": "US",
+          "region": "NY",
+          "street_number": "",
+          "venue": "",
+          "created_at": "2016-06-10T19:13:19Z"
+        }
+      },
+      "location": {
+        "query": "Yonkers",
+        "latitude": "40.9443748",
+        "longitude": "-73.8993138",
+        "street": "",
+        "postal_code": "10701",
+        "country": "US",
+        "region": "NY",
+        "street_number": "",
+        "venue": "",
+        "created_at": "2016-06-10T19:13:19Z"
       }
     }
   ]
