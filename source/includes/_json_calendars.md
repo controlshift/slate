@@ -1,4 +1,4 @@
-## Get list of calendars
+## Get calendar data
 
 ```js
 $(document).ready(function(){
