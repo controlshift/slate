@@ -35,6 +35,8 @@ $(document).ready(function(){
       "goal": 500,
       "creator_name": "Jacinda Moore",
       "locale": "en",
+      "successful": false,
+      "ended": false,
       "created_at": "2016-10-02T01:43:17Z",
       "updated_at": "2016-10-07T15:38:39Z",
       "target": {
@@ -79,6 +81,11 @@ $(document).ready(function(){
       "goal": 500,
       "creator_name": "Jacinda Moore",
       "locale": "en",
+      "successful": true,
+      "ended_story": "We did it, we won!",
+      "ended": true,
+      "ended_type": "won",
+      "ended_reason": "Campaigner said they won the campaign",
       "created_at": "2016-10-02T01:43:17Z",
       "updated_at": "2016-10-07T15:38:39Z",
       "target": {
@@ -116,6 +123,15 @@ $(document).ready(function(){
 ```
 
 This retrieves a list of petitions in an effort.
+
+Ended petitions will have the `ended` attribute set to `true` and will also include the following additional attributes:
+
+* `ended_type`: with values `"won"`, `"lost"` and `"other"` as set from petition Admin page.
+* `ended_reason`: with private reason for ending set from petition Admin page.
+
+Additionally, successful petitions will have the `successful` attribute set to `true` and will include the following additional attribute:
+
+* `ended_story`: with ended story from petition Settings / Admin pages.
 
 ### HTTP Request
 
