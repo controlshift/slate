@@ -4021,11 +4021,28 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 
           <h1 id="authenticated-rest-api">Authenticated REST API</h1>
 
-<p>The Authenticated REST API allows customers to build applications that interact with their own data or securely grant access to third-party app developers without exposing administrative credentials. It is designed to be consumed server-side, in contrast to the JSONP API which is designed for unauthenticated javascript integrations. </p>
+<p>The Authenticated REST API allows customers to build applications that interact with their own data or securely grant access to third-party app developers without exposing administrative credentials. It is designed to be consumed server-side, in contrast to the JSONP API which is designed for unauthenticated javascript integrations.</p>
 
-<p>We use <a href="http://oauth.net/2/">OAuth2</a> to allow organizations to securely grant access to API Applications. OAuth2 is a standardized protocol that allows user credentials to be exchanged for a secret token which can then be used to access an API. There are OAuth2 implementations available for most common programming languages. You&rsquo;ll probably want to read some general documentation on how OAuth2 works before attempting to use this API. </p>
+<p>We use <a href="http://oauth.net/2/">OAuth2</a> to allow organizations to securely grant access to API Applications. OAuth2 is a standardized protocol that allows user credentials to be exchanged for a secret token which can then be used to access an API. There are OAuth2 implementations available for most common programming languages. You&rsquo;ll probably want to read some general documentation on how OAuth2 works before attempting to use this API.</p>
 
-<p>An <em>API Application</em> must be configured within your ControlShift instance before using the API. Access is then granted to this application, and exchanged for a token which is used to authenticate your access to API endpoints.   </p>
+<p>An <em>API Application</em> must be configured within your ControlShift instance before using the API. Access is then granted to this application, and exchanged for a token which is used to authenticate your access to API endpoints.</p>
+
+<h2 id="rate-limits">Rate Limits</h2>
+
+<p>We apply the following per-domain rate limits on HTTP requests made to the API:</p>
+
+<ul>
+<li><strong>OAuth Token exchange (<code class="prettyprint">/oauth/token</code>)</strong>: 10 requests per minute.</li>
+<li><strong>Authenticated REST API (<code class="prettyprint">/api/v1/*</code>)</strong>: 1000 requests per minute.</li>
+</ul>
+
+<p>Once the limit is reached, we will return an HTTP response with status code <code class="prettyprint">429 - Too Many Requests</code> and the following headers:</p>
+
+<ul>
+<li><code class="prettyprint">RateLimit-Limit</code>: returns the number of requests per minute allowed on the endpoint, values will match the ones listed above depending if you are invoking the <em>OAuth Token Exchange</em> or one of the <em>Authenticated REST API</em> endpoints.</li>
+<li><code class="prettyprint">RateLimit-Remaining</code>: this header will always have <code class="prettyprint">0</code> as value, since this response is only returned when the rate limit has been reached.</li>
+<li><code class="prettyprint">RateLimit-Reset</code>: returns the number of seconds until the current rate limit is reset.</li>
+</ul>
 
 <h2 id="quickstart-guide">Quickstart Guide</h2>
 
@@ -4042,7 +4059,7 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 
 <h3 id="the-hard-way-application-and-token-exchange">The Hard Way: Application and Token Exchange</h3>
 
-<p>These are the steps to setup a new API Application and to use that new API Application to access platform resources through OAuth2. In a production context, automating these steps is recommended. </p>
+<p>These are the steps to setup a new API Application and to use that new API Application to access platform resources through OAuth2. In a production context, automating these steps is recommended.</p>
 
 <blockquote>
 <p>Use cURL to do the token exchange</p>
@@ -4051,8 +4068,8 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 </code></pre>
 <ol>
 <li><p><strong>Set up a new API Application</strong> Log in as an Organisation Owner and navigate to Settings &gt; Integrations &gt; Configure API Applications. Add a New Application. Use urn:ietf:wg:oauth:2.0:oob as the callback URL unless you plan to allow self-service application authorization.</p></li>
-<li><p><strong>Generate Authorization Code</strong> From the API Application show page, click &ldquo;Authorize&rdquo;. This will generate a code that can be exchanged with a token to act as the currently signed in user. After the authorization is approved, an authorization code should be displayed. Record this code for the next step. </p></li>
-<li><p><strong>Exchange Authorization Code for Token</strong> Take the authorization code from the previous step and exchange it for an OAuth2 Token. </p>
+<li><p><strong>Generate Authorization Code</strong> From the API Application show page, click &ldquo;Authorize&rdquo;. This will generate a code that can be exchanged with a token to act as the currently signed in user. After the authorization is approved, an authorization code should be displayed. Record this code for the next step.</p></li>
+<li><p><strong>Exchange Authorization Code for Token</strong> Take the authorization code from the previous step and exchange it for an OAuth2 Token.</p>
 
 <p><code class="prettyprint">POST https://foo.controlshiftlabs.com/oauth/token
   client_id=...
@@ -4060,16 +4077,18 @@ Bulk data webhooks should be automatically included when adding a new webhook en
   grant_type=authorization_code
   client_secret=...
   code=...</code></p></li>
-<li><p><strong>Use Token to Access API</strong> The token can now be used to access API endpoints as the authorized user. </p>
+<li><p><strong>Use Token to Access API</strong> The token can now be used to access API endpoints as the authorized user.</p>
 
 <p><code class="prettyprint">GET https://foo.controlshiftlabs.com/api/v1/organisation?access_token={token}</code></p>
 
-<p>Should return a json representation of the current organisation. See documentation for other endpoints that are available. </p></li>
+<p>Should return a json representation of the current organisation. See documentation for other endpoints that are available.</p></li>
 </ol>
 
-<p>We&rsquo;ve also written an example <a href="https://github.com/controlshift/controlshift-oauth-example">of this same work flow</a> in ruby using the oauth2 gem. </p>
+<p>We&rsquo;ve also written an example <a href="https://github.com/controlshift/controlshift-oauth-example">of this same work flow</a> in ruby using the oauth2 gem.</p>
 
-<p>In most production scenarios instead of manually performing the authorization, and exchanging the code for a token, this setup process would be automated. See your oauth2 library documentation for more information. </p>
+<p>In most production scenarios instead of manually performing the authorization, and exchanging the code for a token, this setup process would be automated. See your oauth2 library documentation for more information.</p>
+
+<p><strong>Note</strong>: Access tokens have a 2 hours expiration, after that period you can use the old token to generate a new one.</p>
 
           <h2 id="organisation">Organisation</h2>
 
