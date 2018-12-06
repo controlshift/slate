@@ -65,3 +65,4 @@ We've also written an example [of this same work flow](https://github.com/contro
 
 In most production scenarios instead of manually performing the authorization, and exchanging the code for a token, this setup process would be automated. See your oauth2 library documentation for more information.
 
+**Note**: Access tokens have a 2 hours expiration, after that period you can use the old token to generate a new one.
