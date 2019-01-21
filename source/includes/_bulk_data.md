@@ -7,7 +7,7 @@ ControlShift's Bulk Data Webhooks make it easy to pull your data into external s
 We provides two special bulk data webhooks to help you keep an external reporting or analytics database server up to date with information from ControlShift's internal tables. The [data.full_table_exported](#data-full_table_exported) and [data.incremental_table_exported](#data-incremental_table_exported) webhooks can be consumed to keep an external database mirror containing ControlShift data up to date. This service was built in a database agnostic way, but it should be possible to build a ControlShift -> Amazon Redshift data pipeline using the [ControlShift to Redshift Pipeline](#controlshift-to-redshift-pipeline) technique outlines below.
 
 <aside class="notice">
-Bulk data webhooks should be automatically included when adding a new webhook endpoint. Please contact support to report any issues with bulk data webhook generation. For testing, you can manually trigger these wehbooks by visiting <code>https://&lt;your controlshift instance&gt;/orgs/export</code> and clicking on "New Full Tables Data Export."
+Bulk data webhooks should be automatically included when adding a new webhook endpoint. Please contact support to report any issues with bulk data webhook generation. For testing, you can manually trigger these wehbooks by visiting <code>https://&lt;your controlshift instance&gt;/org/settings/integrations/webhook_endpoints</code> and clicking on "Trigger" under "Test Nightly Bulk Data Export Webhook".
 </aside>
 
 ## Bulk Data Data Schemas
