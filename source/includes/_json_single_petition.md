@@ -28,7 +28,6 @@ $(document).ready(function(){
   "delivery_details": "We're off to see the wizard!",
   "administered_at": "2018-03-21T19:05:54Z",
   "source": "homepage",
-  "location_id": 27575,
   "alias": null,
   "bsd_constituent_group_id": null,
   "categories": [
@@ -45,6 +44,22 @@ $(document).ready(function(){
   "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741",
   "creator_name": "Kristyn Arrighi",
   "signature_count": 223
+  "location": {
+    "country":"US",
+    "latitude":"42.9399637",
+    "locality":"Buffalo",
+    "longitude":"-78.8087571",
+    "postal_code":"",
+    "query":"Land of Oz, Kensington Avenue, Buffalo, NY, United States",
+    "region":"NY",
+    "street":"Kensington Ave",
+    "street_address":" Kensington Ave",
+    "street_number":"",
+    "venue":"",
+    "country_code":"US",
+    "country_name":"United States",
+    "static_map_url":"https://d8s293fyljwh4.cloudfront.net/locations/static_maps/27575/27575-static-map.png?1532035340"
+  },
 }
 ```
 
