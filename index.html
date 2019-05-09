@@ -1391,7 +1391,7 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
 
 <p>Where slug is the slug of the calendar you&rsquo;re retrieving. </p>
 
-          <h2 id="get-organizing-locations">Get organizing locations</h2>
+          <h2 id="get-organizing-locations-points">Get organizing locations: points</h2>
 <pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
     <span class="na">url</span><span class="p">:</span> <span class="s1">'https://demo.controlshiftlabs.com/api/local/points.json'</span><span class="p">,</span>
@@ -1426,11 +1426,84 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You&rsquo;
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>This JSON endpoint returns a list of latitude/longitude coordinates for events, groups, and external events in your organisation. It&rsquo;s intended to be used for plotting organizing activities on a map.</p>
+<p>This JSON endpoint returns a complete list of latitude/longitude coordinates for publicly listed events, groups, and external events in your organisation. It&rsquo;s intended to be used for plotting organizing activities on a map.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">GET https://demo.controlshiftlabs.com/api/local/points.json</code></p>
+
+          <h2 id="get-organizing-locations-details">Get organizing locations: details</h2>
+<pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s1">'https://demo.controlshiftlabs.com/api/local.json?page=1&amp;per_page=3'</span><span class="p">,</span>
+    <span class="na">dataType</span><span class="p">:</span> <span class="s1">'jsonp'</span><span class="p">,</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above code would retrieve one page of location data and log it to the js console. The JSON would be structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Event"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"picnic-in-the-park"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Picnic in the Park"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We are having a picnic in the park and you are invited!"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-01T12:00:00Z"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Group"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default-org-mariana-trench"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Org: Mariana Trench"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This group has the deepest conversations you will ever hear."</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ExternalEvent"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/sail-on-the-hudson"</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sail on the Hudson"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Go for a sail on the Hudson river to promote environmentalism."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-03T13:00:00Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This JSON endpoint returns a paginated list of publicly listed events, groups, and external events in your organisation.
+It can be used alongside the <code class="prettyprint">/api/local/points</code> endpoint; the criteria for inclusion are the same.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://demo.controlshiftlabs.com/api/local.json</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>1</td>
+<td>(optional) Which page of results to fetch</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>10</td>
+<td>(optional) How many results, maximum, should be included on each page</td>
+</tr>
+</tbody></table>
 
           <h2 id="logged-in-user">Logged in user</h2>
 <pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
