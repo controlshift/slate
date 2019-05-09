@@ -20,6 +20,7 @@ includes:
   - json_effort_petitions_near
   - json_calendars
   - json_local_points
+  - json_local
   - json_me
   - webhooks.md.erb
   - bulk_data

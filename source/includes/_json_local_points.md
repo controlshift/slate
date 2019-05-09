@@ -1,4 +1,4 @@
-## Get organizing locations
+## Get organizing locations: points
 
 ```js
 $(document).ready(function(){
@@ -37,7 +37,7 @@ $(document).ready(function(){
 ]
 ```
 
-This JSON endpoint returns a list of latitude/longitude coordinates for events, groups, and external events in your organisation. It's intended to be used for plotting organizing activities on a map.
+This JSON endpoint returns a complete list of latitude/longitude coordinates for publicly listed events, groups, and external events in your organisation. It's intended to be used for plotting organizing activities on a map.
 
 ### HTTP Request
 
