@@ -25,7 +25,7 @@ There are two ways to get set up to use the authenticated API. Use whichever is 
 
 ### The Easy Way: Client Credentials
 
-1. **Set up a new API Application** Log in as an Organisation Owner and navigate to Settings > Integrations > Configure API Applications. Add a New Application. Use urn:ietf:wg:oauth:2.0:oob as the callback URL unless you plan to allow self-service application authorization.
+1. **Set up a new API Application** Log in as an Organisation Owner and navigate to Settings > Integrations > REST API Apps. Add a New Application. Use urn:ietf:wg:oauth:2.0:oob as the callback URL unless you plan to allow self-service application authorization.
 
 2. Clone the [oauth-api-example](https://github.com/controlshift/oauth-api-example) github repo.
 
