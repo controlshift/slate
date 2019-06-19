@@ -122,11 +122,11 @@
 
 <p>Welcome to the <a href="http://www.controlshiftlabs.com/">ControlShift Labs</a> Developer documentation. Our APIs are designed to allow software engineers to create rich integrations between ControlShift content and third-party services and websites.</p>
 
-<p>We offer several APIs to customers to cover different integration use cases. </p>
+<p>We offer several APIs to customers to cover different integration use cases.</p>
 
 <ul>
-<li><p><strong>JSONP API</strong> Unauthenticated API designed to be consumed by javascript clients written by front-end engineers. Quickly display public information about petitions, efforts, and users on external sites.  </p></li>
-<li><p><strong>Webhooks</strong> Get notified when changes happen so external systems can react. </p></li>
+<li><p><strong>JSONP API</strong> Unauthenticated API designed to be consumed by javascript clients written by front-end engineers. Quickly display public information about petitions, efforts, and users on external sites.</p></li>
+<li><p><strong>Webhooks</strong> Get notified when changes happen so external systems can react.</p></li>
 <li><p><strong>Bulk Data</strong> Integrate your ControlShift instance with a data warehouse like Redshift for SQL access and reporting.</p></li>
 <li><p><strong>Authenticated REST</strong> Server Side API integration option for more advanced scenarios. Uses OAuth2 to allow third-party developers to create applications and customers to grant access.</p></li>
 </ul>
@@ -4353,7 +4353,7 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 <h3 id="the-easy-way-client-credentials">The Easy Way: Client Credentials</h3>
 
 <ol>
-<li><p><strong>Set up a new API Application</strong> Log in as an Organisation Owner and navigate to Settings &gt; Integrations &gt; Configure API Applications. Add a New Application. Use urn:ietf:wg:oauth:2.0:oob as the callback URL unless you plan to allow self-service application authorization.</p></li>
+<li><p><strong>Set up a new API Application</strong> Log in as an Organisation Owner and navigate to Settings &gt; Integrations &gt; REST API Apps. Add a New Application. Use urn:ietf:wg:oauth:2.0:oob as the callback URL unless you plan to allow self-service application authorization.</p></li>
 <li><p>Clone the <a href="https://github.com/controlshift/oauth-api-example">oauth-api-example</a> github repo.</p></li>
 <li><p>Follow the instructions in the README.md file to get that example working with your credentials.</p></li>
 <li><p>Do something similar in your actual code.</p></li>
@@ -4944,6 +4944,42 @@ By default the first page is returned. </p>
 
 <p><code class="prettyprint">GET /api/v1/calendars/movie-screenings-for-healthcare-access/events?page=2</code></p>
 
+          <h2 id="webhook-endpoints">Webhook Endpoints</h2>
+
+<p>Webhooks can be used by software engineers to integrate ControlShift with third-party systems. They allow engineers to build software that is triggered by events that take place within ControlShift. This authenticated endpoint provides status information about webhook endpoints.</p>
+
+<p>This is useful for customers who would like to build automated reporting to detect when webhooks have been disabled or are setup incorrectly. </p>
+
+<h3 id="list-webhook-endpoints">List Webhook Endpoints</h3>
+
+<p>Show information about all of the webhook endpoints configured for organisation</p>
+
+<p><code class="prettyprint">GET /api/v1/webhook_endpoints</code></p>
+
+<blockquote>
+<p>GET response body for Index (List)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organisation_id"</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https://example.com/test1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2019-06-19T15:02:47Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="s2">"2019-06-19T15:02:47Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"disabled_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_failure"</span><span class="p">:</span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organisation_id"</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https://example.com/test2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2019-06-19T15:10:47Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="s2">"2019-06-19T15:45:47Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"disabled_at"</span><span class="p">:</span><span class="s2">"2019-06-19T15:45:47Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_failure"</span><span class="p">:</span><span class="s2">"2019-06-19T15:45:01Z"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
