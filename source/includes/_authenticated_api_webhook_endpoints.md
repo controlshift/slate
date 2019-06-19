@@ -2,6 +2,8 @@
 
 Webhooks can be used by software engineers to integrate ControlShift with third-party systems. They allow engineers to build software that is triggered by events that take place within ControlShift. This authenticated endpoint provides status information about webhook endpoints.
 
+This is useful for customers who would like to build automated reporting to detect when webhooks have been disabled or are setup incorrectly. 
+
 ### List Webhook Endpoints
 
 Show information about all of the webhook endpoints configured for organisation
