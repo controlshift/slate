@@ -3367,7 +3367,29 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &l
 </span></code></pre>
 <p>Member signs a petition</p>
 
-<p><p>We also include optional partnership or effort slugs nested under the petition resource for signatures that take place on petitions associated with those objects.</p></p>
+<p><p>We also include optional partnership or effort slugs nested under the petition resource for signatures that take place on petitions associated with those objects.</p>
+<table class='table'>
+<tr>
+<th>Field</th>
+<th>Help</th>
+</tr>
+<tr>
+<td>join_organisation</td>
+<td>If the user opts in to receive email from the organisation, this is true. If the user does not wish to receive email or join the organisation this is false.</td>
+</tr>
+<tr>
+<td>confirmed_at</td>
+<td>A timestamp, set when the user confirms their email address and signature. Used for double opt in.</td>
+</tr>
+<tr>
+<td>confirmed_reason</td>
+<td>The mechanism through which the user confirmed their signature</td>
+</tr>
+<tr>
+<td>email_opt_in_type</td>
+<td>A representation of the mechanism that the member used while opting in or out of email.</td>
+</tr>
+</table></p>
 
 <h2 id="signature-updated">signature.updated</h2>
 
@@ -3429,7 +3451,29 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &l
 </span></code></pre>
 <p>Existing signature updated. This can happen when member unsubscribes or reasserts their opt in for receiving emails</p>
 
-<p><p>We also include optional partnership or effort slugs nested under the petition resource for signatures that take place on petitions associated with those objects.</p></p>
+<p><p>We also include optional partnership or effort slugs nested under the petition resource for signatures that take place on petitions associated with those objects.</p>
+<table class='table'>
+<tr>
+<th>Field</th>
+<th>Help</th>
+</tr>
+<tr>
+<td>join_organisation</td>
+<td>If the user opts in to receive email from the organisation, this is true. If the user does not wish to receive email or join the organisation this is false.</td>
+</tr>
+<tr>
+<td>confirmed_at</td>
+<td>A timestamp, set when the user confirms their email address and signature. Used for double opt in.</td>
+</tr>
+<tr>
+<td>confirmed_reason</td>
+<td>The mechanism through which the user confirmed their signature</td>
+</tr>
+<tr>
+<td>email_opt_in_type</td>
+<td>A representation of the mechanism that the member used while opting in or out of email.</td>
+</tr>
+</table></p>
 
 <h2 id="signature-deleted">signature.deleted</h2>
 
@@ -3491,7 +3535,29 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &l
 </span></code></pre>
 <p>Signature permanently deleted. Signature deletions are distinct from unsubscribes and should be treated as if the signature never happened</p>
 
-<p><p>We also include optional partnership or effort slugs nested under the petition resource for signatures that take place on petitions associated with those objects.</p></p>
+<p><p>We also include optional partnership or effort slugs nested under the petition resource for signatures that take place on petitions associated with those objects.</p>
+<table class='table'>
+<tr>
+<th>Field</th>
+<th>Help</th>
+</tr>
+<tr>
+<td>join_organisation</td>
+<td>If the user opts in to receive email from the organisation, this is true. If the user does not wish to receive email or join the organisation this is false.</td>
+</tr>
+<tr>
+<td>confirmed_at</td>
+<td>A timestamp, set when the user confirms their email address and signature. Used for double opt in.</td>
+</tr>
+<tr>
+<td>confirmed_reason</td>
+<td>The mechanism through which the user confirmed their signature</td>
+</tr>
+<tr>
+<td>email_opt_in_type</td>
+<td>A representation of the mechanism that the member used while opting in or out of email.</td>
+</tr>
+</table></p>
 
 <h2 id="signature-confirmed">signature.confirmed</h2>
 
@@ -3551,7 +3617,29 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &l
   </span><span class="s2">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1ebf2eb10c3d8939f42dff68"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><p>We also include optional partnership or effort slugs nested under the petition resource for signatures that take place on petitions associated with those objects.</p></p>
+<p><p>We also include optional partnership or effort slugs nested under the petition resource for signatures that take place on petitions associated with those objects.</p>
+<table class='table'>
+<tr>
+<th>Field</th>
+<th>Help</th>
+</tr>
+<tr>
+<td>join_organisation</td>
+<td>If the user opts in to receive email from the organisation, this is true. If the user does not wish to receive email or join the organisation this is false.</td>
+</tr>
+<tr>
+<td>confirmed_at</td>
+<td>A timestamp, set when the user confirms their email address and signature. Used for double opt in.</td>
+</tr>
+<tr>
+<td>confirmed_reason</td>
+<td>The mechanism through which the user confirmed their signature</td>
+</tr>
+<tr>
+<td>email_opt_in_type</td>
+<td>A representation of the mechanism that the member used while opting in or out of email.</td>
+</tr>
+</table></p>
 
 <h2 id="unsubscribe-created">unsubscribe.created</h2>
 
