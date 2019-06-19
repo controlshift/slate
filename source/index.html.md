@@ -33,6 +33,7 @@ includes:
   - authenticated_api_signatures
   - authenticated_api_events
   - authenticated_api_calendars
+  - authenticated_api_webhook_endpoints
 
 search: true
 ---
@@ -41,11 +42,11 @@ search: true
 
 Welcome to the [ControlShift Labs](http://www.controlshiftlabs.com/) Developer documentation. Our APIs are designed to allow software engineers to create rich integrations between ControlShift content and third-party services and websites.
 
-We offer several APIs to customers to cover different integration use cases. 
+We offer several APIs to customers to cover different integration use cases.
 
-- __JSONP API__ Unauthenticated API designed to be consumed by javascript clients written by front-end engineers. Quickly display public information about petitions, efforts, and users on external sites.  
+- __JSONP API__ Unauthenticated API designed to be consumed by javascript clients written by front-end engineers. Quickly display public information about petitions, efforts, and users on external sites.
 
-- __Webhooks__ Get notified when changes happen so external systems can react. 
+- __Webhooks__ Get notified when changes happen so external systems can react.
 
 - __Bulk Data__ Integrate your ControlShift instance with a data warehouse like Redshift for SQL access and reporting.
 
