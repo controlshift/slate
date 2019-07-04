@@ -79,7 +79,7 @@ location[region] | null | string - optional - for efforts configured to use the 
 View and edit a working example on codepen.io:
 
 <div class="js-codepen-data hidden"
-  data-js_external="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw9B-9V5FipCWKhEmMwCFGRcKHO3fSB78&libraries=places;https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+  data-js_external="https://maps.googleapis.com/maps/api/js?key=AIzaSyAY2t1MpsrZH3aH6wJqAiq4vAQUscMmjY0&libraries=places;https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
   data-title="ControlShift Labs: List of Petitions in an Effort Example">
   <div class="codepen-html">
     <h1>Find the closest petitions to you</h1>
