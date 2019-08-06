@@ -1,4 +1,4 @@
-## Data export schema
+## Bulk data schema
 
 This retrieves information on the tables exported by the Bulk Data feature.
 
@@ -36,4 +36,4 @@ This retrieves information on the tables exported by the Bulk Data feature.
 
 ### HTTP Request
 
-`GET https://demo.controlshiftlabs.com/data_exports.json`
+`GET https://demo.controlshiftlabs.com/bulk_data/schema.json`
