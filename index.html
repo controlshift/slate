@@ -1692,6 +1692,45 @@ You must whitelist your hostname prior to using this end point. Read more below.
 
 <p>For authenticated users we currently return their first and last names, email addresses, and lists of petitions they&rsquo;ve created, events they&rsquo;ve created and local groups they are a member of.</p>
 
+          <h2 id="bulk-data-schema">Bulk data schema</h2>
+
+<p>This retrieves information on the tables exported by the Bulk Data feature.</p>
+
+<blockquote>
+<p>Response format:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"tables"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"table"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"petitions"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"columns"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sql_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"character varying"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nullable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"default_value"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"custom_goal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sql_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nullable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"default_value"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="err">...</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://demo.controlshiftlabs.com/bulk_data/schema.json</code></p>
+
           <h1 id="webhook-endpoints">Webhook Endpoints</h1>
 
 <p>Webhooks can be used by software engineers to integrate ControlShift with third-party systems. They allow engineers to build software that is triggered by events that take place within ControlShift. ControlShift would execute HTTP calls when certain event happen (e.g. a petition is launched; a category is changed).</p>
@@ -3886,35 +3925,60 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 
 <h2 id="bulk-data-data-schemas">Bulk Data Data Schemas</h2>
 
-<p>The bulk data webhooks include exports of the following tables.  You can use the links to download CSV headers or a psql schema for each table.</p>
+<p>The bulk data webhooks include exports of the following tables:</p>
 
 <ul>
-<li><code class="prettyprint">attendees</code> - <a href="data/attendees_headers.csv">csv headers</a>/<a href="data/attendees_schema.sql">sql_schema</a></li>
-<li><code class="prettyprint">blast_emails</code> - <a href="data/blast_emails_headers.csv">csv headers</a>/<a href="data/blast_emails_schema.sql">sql_schema</a></li>
-<li><code class="prettyprint">calendars</code> - <a href="data/calendars_headers.csv">csv headers</a>/<a href="data/calendars_schema.sql">sql_schema</a></li>
-<li><code class="prettyprint">categories</code> - <a href="data/categories_headers.csv">csv headers</a>/<a href="data/categories_schema.sql">sql_schema</a></li>
-<li><code class="prettyprint">categorized_petitions</code> - <a href="data/categorized_petitions_headers.csv">csv headers</a>/<a href="data/categorized_petitions_schema.sql">sql_schema</a></li>
-<li><code class="prettyprint">comments</code> - <a href="data/comments_headers.csv">csv headers</a>/<a href="data/comments_schema.sql">sql_schema</a></li>
-<li><code class="prettyprint">consent_content_versions</code> - <a href="data/consent_content_versions_headers.csv">csv headers</a>/<a href="data/consent_content_versions_schema.sql">sql_schema</a></li>
-<li><code class="prettyprint">data_processing_consents</code> - <a href="data/data_processing_consents_headers.csv">csv headers</a>/<a href="data/data_processing_consents_schema.sql">sql_schema</a></li>
-<li><code class="prettyprint">email_opt_in_types</code> - <a href="data/email_opt_in_types_headers.csv">csv headers</a>/<a href="data/email_opt_in_types_schema.sql">sql_schema</a></li>
-<li><code class="prettyprint">events</code> - <a href="data/events_headers.csv">csv headers</a>/<a href="data/events_schema.sql">sql_schema</a></li>
-<li><code class="prettyprint">local_chapter_members</code> - <a href="data/local_chapter_members_headers.csv">csv headers</a>/<a href="data/local_chapter_members_schema.sql">sql_schema</a></li>
-<li><code class="prettyprint">local_chapters</code> - <a href="data/local_chapters_headers.csv">csv headers</a>/<a href="data/local_chapters_schema.sql">sql_schema</a></li>
-<li><code class="prettyprint">locations</code> - <a href="data/locations_headers.csv">csv headers</a>/<a href="data/locations_schema.sql">sql_schema</a></li>
-<li><code class="prettyprint">members</code> - <a href="data/members_headers.csv">csv headers</a>/<a href="data/members_schema.sql">sql_schema</a></li>
-<li><code class="prettyprint">petitions</code> - <a href="data/petitions_headers.csv">csv headers</a>/<a href="data/petitions_schema.sql">sql_schema</a></li>
-<li><code class="prettyprint">signatures</code> - <a href="data/signatures_headers.csv">csv headers</a>/<a href="data/signatures_schema.sql">sql_schema</a></li>
-<li><code class="prettyprint">unsubscribes</code> - <a href="data/unsubscribes_headers.csv">csv headers</a>/<a href="data/unsubscribes_schema.sql">sql_schema</a></li>
-<li><code class="prettyprint">users</code> - <a href="data/users_headers.csv">csv headers</a>/<a href="data/users_schema.sql">sql_schema</a></li>
+<li>attendees</li>
+<li>blast_emails</li>
+<li>calendars</li>
+<li>categories</li>
+<li>categorized_petitions</li>
+<li>comments</li>
+<li>consent_content_versions</li>
+<li>contents</li>
+<li>crm_sync_logs</li>
+<li>csv_reports</li>
+<li>custom_links</li>
+<li>daisy_chain_rules</li>
+<li>data_processing_consents</li>
+<li>drip_email_preferences</li>
+<li>efforts</li>
+<li>email_opt_in_types</li>
+<li>email_opt_in_uploads</li>
+<li>event_imports</li>
+<li>event_types</li>
+<li>events</li>
+<li>external_events</li>
+<li>import_batches</li>
+<li>labelings</li>
+<li>labels</li>
+<li>local_chapter_members</li>
+<li>local_chapters</li>
+<li>locales</li>
+<li>locations</li>
+<li>members</li>
+<li>objective_collections</li>
+<li>objectives</li>
+<li>partnership_subscriptions</li>
+<li>partnerships</li>
+<li>petition_flags</li>
+<li>petitions</li>
+<li>regions</li>
+<li>signatures</li>
+<li>stories</li>
+<li>target_collections</li>
+<li>target_notifications</li>
+<li>targets</li>
+<li>targets_for_petitions</li>
+<li>targets_in_collections</li>
+<li>teams</li>
+<li>timeline_posts</li>
+<li>unsubscribes</li>
+<li>user_invitations</li>
+<li>users</li>
 </ul>
 
-<p>Additional files:</p>
-
-<ul>
-<li>combined schema - <a href="data/CS_combined_schema.sql">CS_combined_schema.sql</a></li>
-<li>zip of all schema files <a href="data/CS_data_assets.zip">CS_data_assets.zip</a></li>
-</ul>
+<p>For full information on the schema of each table, use the <code class="prettyprint">/api/bulk_data/schema.json</code> API endpoint.</p>
 
 <h2 id="controlshift-to-redshift-pipeline">ControlShift to Redshift Pipeline</h2>
 
@@ -4281,7 +4345,7 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 <td>Enter the Table to be Loaded &gt; petitions</td>
 </tr>
 <tr>
-<td>Enter the comma-delimited column list (optional) &gt; (Copy and paste from our <a href="data/petitions_headers.csv">petitions_headers.csv</a>)</td>
+<td>Enter the comma-delimited column list (optional) &gt; (Copy and paste from our <a href="/data/petitions_headers.csv">petitions_headers.csv</a>)</td>
 </tr>
 <tr>
 <td>Should the Table be Truncated before Load? (Y/N) &gt; Y # Don&rsquo;t truncate if this lambda will handle incremental builds.</td>
