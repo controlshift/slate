@@ -22,8 +22,9 @@ includes:
   - json_local_points
   - json_local
   - json_me
+  - json_bulk_data_schema
   - webhooks.md.erb
-  - bulk_data
+  - bulk_data.md.erb
   - authenticated_api_intro
   - authenticated_api_organisation
   - authenticated_api_email_opt_in_types
