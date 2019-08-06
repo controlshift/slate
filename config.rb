@@ -36,7 +36,7 @@ set :relative_links, true
 activate :data_source do |c|
   c.files = {
     "https://demo.controlshiftlabs.com/api/webhooks.json" => "webhooks",
-    "https://demo.controlshiftlabs.com/api/data_exports.json" => "export_tables"
+    "https://demo.controlshiftlabs.com/api/bulk_data/schema.json" => "export_tables"
   }
 end
 
