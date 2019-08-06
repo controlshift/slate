@@ -12,13 +12,13 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 
 ## Bulk Data Data Schemas
 
-The bulk data webhooks include exports of the following tables.
+The bulk data webhooks include exports of the following tables:
 
-<%# TODO: alphabetize by table name %>
 <% data.export_tables['tables'].each do |tbl_info| %>
 * <%= tbl_info['table']['name'] %>
-<%# TODO: present schema info somehow %>
 <% end %>
+
+For full information on the schema of each table, use the `/api/data_exports.json` API endpoint.
 
 
 ## ControlShift to Redshift Pipeline
