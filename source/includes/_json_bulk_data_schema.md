@@ -1,6 +1,7 @@
 ## Bulk data schema
 
-This retrieves information on the tables exported by the Bulk Data feature.
+This retrieves information on the underlying schemas of tables exported by the Bulk Data feature. It can be used
+in your ETL processes to automate the setup of tables in your data warehouse.
 
 > Response format:
 

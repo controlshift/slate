@@ -23,6 +23,7 @@ includes:
   - json_local
   - json_me
   - json_bulk_data_schema
+  - json_bulk_data_columns
   - webhooks.md.erb
   - bulk_data.md.erb
   - authenticated_api_intro
