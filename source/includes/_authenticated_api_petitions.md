@@ -43,7 +43,7 @@ Petition are pieces of content that can be signed by members.
     "creator": {
       "full_name": "Patrick Henry",
       "first_name": "Patrick",
-      "last_name": "Henry"
+      "last_name": "Henry",
       "email": "patrick.henry@example.com",
       "phone_number": "555-555-5555"
     },
