@@ -4013,9 +4013,16 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 
 <h2 id="controlshift-to-redshift-pipeline">ControlShift to Redshift Pipeline</h2>
 
-<p>Setting up an Amazon Redshift integration should take one to two hours. We&rsquo;ll use a custom <a href="http://docs.aws.amazon.com/lambda/latest/dg/welcome.html">AWS Lamda</a> to receive data from ControlShift&rsquo;s webhook and Amazon&rsquo;s <a href="https://github.com/awslabs/aws-lambda-redshift-loader">Lamda Redshift Loader</a> to load our data into Redshift. For this example, we&rsquo;ll focus on the daily full_table dump, and truncating the previous days data for petitions only. You could also add a second pipeline to add incremental data if you need more frequent updates.</p>
+<p>Setting up an Amazon Redshift integration us a great way to learn more about the actions your members are taking or perform
+sophisticated analytics but is an advanced topic that requires knowledge of Amazon Web Services, SQL, and Terraform.</p>
 
-<p>As of this writing, aws-lambda-redshift-loader v2.4.0 only supports a single configuration per Lambda.  This means you&rsquo;ll have to setup a separate Lambda for every table you want to capture. If you want to capture both nightly and incremental dumps, you&rsquo;ll also need to set up one nightly lambda and one incremental lambda per table you want to capture. It can be a little tedious, but remember, the first one is the hardest!</p>
+<p>Following these instructions we&rsquo;ll use a custom <a href="http://docs.aws.amazon.com/lambda/latest/dg/welcome.html">AWS Lambda</a>
+to receive data from ControlShift&rsquo;s bulk data API webhooks and Amazon&rsquo;s <a href="https://github.com/awslabs/aws-lambda-redshift-loader">Lambda Redshift Loader</a>
+to load our data into Redshift. The final result will be a replica of the tables that back your instance of ControlShift that are refreshed in
+full each night and appended with inserts on a per-minute basis.</p>
+
+<p>ControlShift has authored a Terraform module that makes the entire setup process straightforward and allows for updates
+to the infrastructure over time.</p>
 
 <h3 id="example-flow">Example Flow</h3>
 
@@ -4023,457 +4030,31 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 
 <h3 id="redshift-pipeline-setup">Redshift Pipeline Setup</h3>
 
-<p>The core steps to get this up and running are:</p>
+<p>If you are not yet using Redshift or Terraform, we&rsquo;ve written <a href="https://github.com/controlshift/bulk-data-example">an example Terraform plan</a>
+that should create a working integration, a new Redshift instance and appropriate permissions from an otherwise empty AWS Account.</p>
 
-<ol>
-<li>Setting up S3 buckets to retain file storage</li>
-<li>Setting up your custom lambda webhook receiver</li>
-<li>Setting up your Redshift database cluster and pre-loading a schema.</li>
-<li>Setting up your <code class="prettyprint">aws-lambda-redshift-loader</code> lambda.</li>
-<li>Configure your bulk data webhook in the Control Shift settings console.</li>
-</ol>
+<p>If you are already using Terraform or Redshift it is probably best to either fork this example or
+ <a href="https://registry.terraform.io/modules/controlshift/controlshift-redshift-sync/aws/">use the module we provide directly in your own TF plan</a></p>
 
-<p><strong>Note:</strong> All resources should be set up in the same AWS region (e.g.: us-east-1) so they can access each other. &ldquo;US Standard&rdquo; and &ldquo;us-east-1&rdquo; are the same thing.</p>
-
-<p><strong>Before starting:</strong> You&rsquo;ll need git, npm, and access to a PostgreSQL connection tool, such as <code class="prettyprint">psql</code> on the command line (Redshift is based on PostgreSQL).</p>
-
-<p>These instructions were prepared for aws-lambda-redshift-loader v2.4.0.</p>
-
-<hr>
-
-<h3 id="setting-up-s3-buckets">Setting Up S3 Buckets</h3>
-
-<ol>
-<li>Login to you AWS console and create two s3 buckets for future use.
-
-<ol>
-<li>controlshift-receiver - will hold received csv files</li>
-<li>controlshift-manifests - will hold resulting manifest files from your aws-lambda-redshift-loader</li>
-</ol></li>
-<li>That&rsquo;s it. You&rsquo;re done here.</li>
-</ol>
-
-<hr>
-
-<h3 id="setting-up-custom-lambda-receiver">Setting Up Custom Lambda Receiver</h3>
-
-<blockquote>
-<p>Lambda Receiver Code</p>
-</blockquote>
-<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">https</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'https'</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'url'</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">AWS</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'aws-sdk'</span><span class="p">);</span>
-
-<span class="kd">function</span> <span class="nx">csvReceiver</span><span class="p">(</span><span class="nx">downloadUrl</span><span class="p">,</span> <span class="nx">eventContext</span><span class="p">,</span> <span class="nx">webhookJSON</span><span class="p">){</span>
-  <span class="kd">var</span> <span class="nx">targetBucket</span> <span class="o">=</span> <span class="s1">'controlshift-receiver'</span><span class="p">,</span> <span class="c1">// receiver bucket name</span>
-    <span class="nx">s3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AWS</span><span class="p">.</span><span class="nx">S3</span><span class="p">(),</span>
-    <span class="nx">firstLineRemoved</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="nx">csvData</span> <span class="o">=</span> <span class="s1">''</span><span class="p">,</span>
-    <span class="nx">context</span> <span class="o">=</span> <span class="nx">eventContext</span><span class="p">,</span>
-    <span class="nx">receivedJSON</span> <span class="o">=</span> <span class="nx">webhookJSON</span><span class="p">;</span>
-
-  <span class="kd">var</span> <span class="nx">parseFileName</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">url_string</span><span class="p">){</span>
-    <span class="nx">path</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">url_string</span><span class="p">).</span><span class="nx">pathname</span>
-    <span class="k">return</span> <span class="nx">path</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">lastIndexOf</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-  <span class="p">}</span>
-
-  <span class="c1">// Remove Headers</span>
-  <span class="kd">var</span> <span class="nx">removeFirstLine</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">chunk</span><span class="p">){</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">firstLineRemoved</span><span class="p">){</span>
-      <span class="nx">csvData</span> <span class="o">+=</span> <span class="nx">chunk</span><span class="p">;</span>
-    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-      <span class="kd">var</span> <span class="nx">buffer</span> <span class="o">=</span> <span class="nx">chunk</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">buffer</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">'\n'</span><span class="p">)</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">csvData</span> <span class="o">+=</span> <span class="nx">chunk</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">chunk</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">'\n'</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
-        <span class="nx">firstLineRemoved</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-        <span class="nx">buffer</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="kd">var</span> <span class="nx">uploadCsv</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
-    <span class="kd">var</span> <span class="nx">upload_details</span> <span class="o">=</span> <span class="p">{</span><span class="na">Bucket</span><span class="p">:</span> <span class="nx">targetBucket</span><span class="p">,</span> <span class="na">Key</span><span class="p">:</span> <span class="nx">fileName</span><span class="p">,</span> <span class="na">Body</span><span class="p">:</span> <span class="nx">csvData</span><span class="p">};</span>
-    <span class="nx">s3</span><span class="p">.</span><span class="nx">upload</span><span class="p">(</span><span class="nx">upload_details</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">){</span>
-        <span class="c1">// an error occurred</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">err</span><span class="p">.</span><span class="nx">stack</span><span class="p">);</span>
-        <span class="nx">context</span><span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-      <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-        <span class="c1">// successful response</span>
-        <span class="nx">context</span><span class="p">.</span><span class="nx">succeed</span><span class="p">({</span><span class="s2">"status"</span><span class="p">:</span> <span class="s2">"success"</span><span class="p">,</span> <span class="s2">"payload"</span><span class="p">:</span> <span class="nx">receivedJSON</span><span class="p">});</span>
-      <span class="p">}</span>
-    <span class="p">});</span>
-  <span class="p">}</span>
-
-  <span class="k">return</span> <span class="p">{</span>
-    <span class="na">processCsv</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
-      <span class="nx">fileName</span> <span class="o">=</span> <span class="nx">parseFileName</span><span class="p">(</span><span class="nx">downloadUrl</span><span class="p">);</span>
-      <span class="nx">https</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">downloadUrl</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">httpResponse</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">httpResponse</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'data'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">chunk</span><span class="p">)</span> <span class="p">{</span>
-          <span class="nx">removeFirstLine</span><span class="p">(</span><span class="nx">chunk</span><span class="p">);</span>
-        <span class="p">});</span>
-        <span class="nx">httpResponse</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'end'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">httpResponse</span><span class="p">);</span>
-          <span class="nx">uploadCsv</span><span class="p">();</span>
-        <span class="p">});</span>
-      <span class="p">});</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// Lambda event Handler</span>
-<span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">receivedJSON</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Received event:'</span><span class="p">,</span> <span class="nx">receivedJSON</span><span class="p">);</span>
-  <span class="k">if</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="s1">'data.full_table_exported'</span><span class="p">){</span>
-    <span class="kd">var</span> <span class="nx">receiver</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">csvReceiver</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">receivedJSON</span><span class="p">);</span>
-    <span class="nx">receiver</span><span class="p">.</span><span class="nx">processCsv</span><span class="p">();</span>
-  <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-    <span class="nx">context</span><span class="p">.</span><span class="nx">succeed</span><span class="p">({</span><span class="s2">"status"</span><span class="p">:</span> <span class="s2">"skipped"</span><span class="p">,</span> <span class="s2">"payload"</span><span class="p">:</span> <span class="nx">receivedJSON</span><span class="p">});</span>
-  <span class="p">}</span>
-<span class="p">};</span>
-</code></pre>
-<p>From the Lambda management console, you&rsquo;ll need to do the following.</p>
-
-<h4 id="create-the-receiver-lambda">Create the Receiver Lambda</h4>
-
-<ol>
-<li>Click to create a new Lambda function.</li>
-<li>Skip the existing blueprints (button towards the bottom of page)</li>
-<li>Name your function something like &ldquo;controlShiftWebhookReciever&rdquo; and leave the runtime to node default.</li>
-<li>Copy and paste the &ldquo;Lambda Receiver&rdquo; function from the right into the inline lambda code editor.</li>
-<li>Update the <code class="prettyprint">targetBucket</code> in the inline code editor (approximately line 6 after copying/pasting).</li>
-<li>Leave the handler as the default.</li>
-<li>For role, select &ldquo;S3 Execution role&rdquo;. This will open a new window.</li>
-<li>In this new window, called &ldquo;IAM Management Console&rdquo;, the IAM role field should say &ldquo;Create a new role.&rdquo; Name this new role something relevant, like &ldquo;controlShiftReceriver_s3.&rdquo; Then click &ldquo;Allow&rdquo; in the far bottom left corner, this returns you to the previous window.</li>
-<li>Next, set the memory size to 128MB. If you have a large petitions DB, you will likely need more. You can always update the memory size later and you can check the log stream in CloudWatch monitoring to see how much memory was used.</li>
-<li>Set the Timeout a little higher - 30 seconds should be fine.</li>
-<li>Use &ldquo;No VPC&rdquo;.</li>
-<li>Click next, then on the next page just click &ldquo;Create Function&rdquo;!</li>
-</ol>
-
-<h4 id="setup-the-api-endpoint">Setup the API Endpoint</h4>
-
-<p>Now that we have our Lambda setup, we need to be able to POST to it from your Control Shift instance.</p>
-
-<ol>
-<li>If not already there, go back to the Receiver Lambda we just created.</li>
-<li>Click on the &ldquo;API Endpoints&rdquo; tab and click to add a new endpoint.</li>
-<li>Select an API Gateway.</li>
-<li>Set the Method to POST and Security to Open.</li>
-<li>Click create. Done!</li>
-</ol>
-
-<hr>
-
-<h3 id="setting-up-redshift-database">Setting Up RedShift Database</h3>
-
-<p>Click on Redshift service in the AWS console.</p>
-
-<h4 id="launch-your-cluster">Launch Your Cluster</h4>
-
-<ol>
-<li>Click to create your cluster.</li>
-<li>Setup a identifier, database name, master user name and password as you desire and click next. Let&rsquo;s use these values for this example:
-
-<ul>
-<li>Cluster: control-shift-cluster</li>
-<li>Database name: controlshiftdb</li>
-<li>Port: Leave the default</li>
-<li>Master Username: masteruser</li>
-</ul></li>
-<li>Use the defaults on the next two screens, &ldquo;Node Configuration&rdquo; and &ldquo;Additional Configuration, just click next.</li>
-<li>Then Launch!</li>
-<li>Once the creation and launch process finishes, you can click to view your new cluster&rsquo;s properties, which will include an  endpoint address. Save that address somewhere. Example: <code class="prettyprint">control-shift-cluster.xXxXxX00Xx.us-east-1.redshift.amazonaws.com</code></li>
-</ol>
-
-<h4 id="prepare-redshift-connection-security">Prepare Redshift Connection Security</h4>
-
-<p>We need to whitelist relevant IP addresses in our default security group. We&rsquo;ll need to add two rules. While we&rsquo;re managing our security through a VPC (Virtual Private Cloud), the best UI for our purposes is actually in the EC2 configuration console.</p>
-
-<ol>
-<li>Go to the AWS Console &gt; EC2</li>
-<li>Click on &quot;Security Groups&rdquo; in the left hand menu.</li>
-<li>Click on the default Security Group (it should say default in the &ldquo;Group Name&rdquo; column)</li>
-<li>Click on the &ldquo;Inbound Rules&rdquo; tab at the bottom and click &ldquo;Edit.&rdquo;</li>
-<li>Click &ldquo;Add Rule&rdquo; to start adding our first rule.</li>
-<li>Select &ldquo;All Traffic&rdquo; for &ldquo;type&rdquo; and for &ldquo;source&rdquo; select &ldquo;My IP.&rdquo; This should pre-fill your CIDR.  Save the new rule.</li>
-<li>Click &ldquo;Add Rule&rdquo; again.</li>
-<li>Select &ldquo;Redshift&rdquo; for &ldquo;Type.&rdquo; Enter your cluster&rsquo;s port (typically 5439). Type &ldquo;sg-&rdquo; into the source field, and it should pull up your default security group.</li>
-</ol>
-
-<p><strong>Note:</strong> If you&rsquo;re having trouble getting your own IP/CIDR setup, try either looking up your subnet mask and using <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks">this table</a>. Your CIDR will almost always be your ip address followed by <code class="prettyprint">/32</code> or <code class="prettyprint">/64</code> for ipv6.  Example: <code class="prettyprint">123.123.123.123/32</code>. If all else fails, use the &ldquo;Anywhere&rdquo; global option <code class="prettyprint">0.0.0.0/0</code> - opening your cluster to the public Internet. The latter isn&rsquo;t recommended. If you do have to do this, make sure you remove the rule when you&rsquo;re done.</p>
+<p>Applying the Terraform plan in your AWS account will create all of the resources necessary and output the Webhook URL that you&rsquo;ll need to configure within
+your ControlShift platform settings.</p>
 
 <h4 id="prepare-redshift-schema">Prepare Redshift Schema</h4>
 
-<p>We need to prep our tables data schema to receive our ControlShift Data.  We&rsquo;ll use <code class="prettyprint">psql</code> for this.</p>
+<p>We need to prep tables in your Redshift Data Warehouse to receive our ControlShift Data.  We&rsquo;ll use <code class="prettyprint">psql</code> for this.</p>
 
 <ol>
 <li>Install <code class="prettyprint">psql</code> if you don&rsquo;t have it already.</li>
-<li>Download the current schema for our petitions table as <a href="/data/petitions_schema.sql" target="_blank">petitions_schema.sql</a>.</li>
-<li>Finally, you&rsquo;ll need to load that schema into your table with the following command:</li>
+<li>Download the current SQL DDL for ControlShift&rsquo;s tables <a href="/data/tables.sql" target="_blank">tables.sql</a>
+or <a href="https://github.com/controlshift/bulk-data-example/blob/master/create_tables.rb">generate an up to date one using this script.</a> that uses our Schema API.</li>
+<li>Finally, you&rsquo;ll need to load that set of tables into your Redshift instance with the following command:</li>
 </ol>
 
 <p><code class="prettyprint">psql -h &lt;cluster_endpoint&gt; -U &lt;database_user&gt; -d &lt;database_name&gt; -p &lt;cluster_port&gt; -f petitions_schema.sql</code></p>
 
-<p><strong>Note:</strong> When connecting, you should almost immediately get a request for your password. If your connection is timing out <em>before</em> you enter your password, there is an authorization issue. If you are timing out <em>after</em> connecting, you can extend your keep alive timeout with the following shell command.</p>
+<h3 id="configure-controlshifts-webhook">Configure ControlShift&rsquo;s Webhook</h3>
 
-<p><code class="prettyprint">sudo /sbin/sysctl -w net.ipv4.tcp_keepalive_time=200 net.ipv4.tcp_keepalive_intvl=200 net.ipv4.tcp_keepalive_probes=5</code></p>
-
-<h4 id="creating-a-database-user-granting-privileges">Creating a Database User &amp; Granting Privileges</h4>
-
-<blockquote>
-<p>Creating a user and granting INSERT Privileges</p>
-</blockquote>
-<pre class="highlight sql tab-sql"><code><span class="k">CREATE</span> <span class="k">USER</span> <span class="n">redshift_user</span> <span class="n">PASSWORD</span> <span class="n">PlainTextPassword123</span><span class="p">;</span>
-<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">petitions</span> <span class="k">OWNER</span> <span class="k">TO</span> <span class="n">redshift_user</span><span class="p">;</span>
-<span class="k">GRANT</span> <span class="k">INSERT</span> <span class="k">ON</span> <span class="n">petitions</span> <span class="k">TO</span> <span class="n">redshift_user</span><span class="p">;</span>
-</code></pre>
-<p>We need to allow our user to access our aws-lambda-redshift-loader to access our Redshift database. Connect via psql and create your user and grant permissions. See code example.</p>
-
-<p><code class="prettyprint">psql -h &lt;cluster_endpoint&gt; -U &lt;database_user&gt; -d &lt;database_name&gt; -p &lt;cluster_port&gt;</code></p>
-
-<p><strong>Security Notes:</strong></p>
-
-<ul>
-<li>Typically, we&rsquo;d like to limit the privileges we&rsquo;re granting our redshift_user to just INSERT and TRUNCATE. Unfortunately, Redshift doesn&rsquo;t allow us to specifically grant TRUNCATE permissions. Thus, our redshift_user must own the table.</li>
-<li>In PostgreSQL, we wouldn&rsquo;t need to grant INSERT privileges to the owner, but Redshift seems to need this.</li>
-<li>For Redshift cluster versions &gt; 1.0.1046, you can store your password as a MD5 hash instead of cleartext. At the time of this writing, most clusters are on version 1.0.1044. See the md5 section of the <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html">create user documentation</a>.</li>
-</ul>
-
-<hr>
-
-<h3 id="setting-up-aws-lambda-redshift-loader">Setting up aws-lambda-redshift-loader</h3>
-
-<h4 id="deploying-the-aws-lambda-redshift-loader-function">Deploying the aws-lambda-redshift-loader Function</h4>
-
-<blockquote>
-<p>AWS Lambda Execution Role</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"Version"</span><span class="p">:</span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"Statement"</span><span class="p">:[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"Sid"</span><span class="p">:</span><span class="s2">"Stmt1424787824000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Effect"</span><span class="p">:</span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Action"</span><span class="p">:[</span><span class="w">
-        </span><span class="s2">"dynamodb:DeleteItem"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"dynamodb:DescribeTable"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"dynamodb:GetItem"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"dynamodb:ListTables"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"dynamodb:PutItem"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"dynamodb:Query"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"dynamodb:Scan"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"dynamodb:UpdateItem"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sns:GetEndpointAttributes"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sns:GetSubscriptionAttributes"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sns:GetTopicAttributes"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sns:ListTopics"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sns:Publish"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sns:Subscribe"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sns:Unsubscribe"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"s3:Get*"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"s3:Put*"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"s3:List*"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"kms:Decrypt"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"kms:DescribeKey"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"kms:GetKeyPolicy"</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"Resource"</span><span class="p">:[</span><span class="w">
-        </span><span class="s2">"*"</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"Effect"</span><span class="p">:</span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Action"</span><span class="p">:[</span><span class="w">
-        </span><span class="s2">"logs:CreateLogGroup"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"logs:CreateLogStream"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"logs:PutLogEvents"</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"Resource"</span><span class="p">:</span><span class="s2">"arn:aws:logs:*:*:*"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"Effect"</span><span class="p">:</span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Action"</span><span class="p">:[</span><span class="w">
-        </span><span class="s2">"ec2:CreateNetworkInterface"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ec2:DescribeNetworkInterfaces"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ec2:DetachNetworkInterface"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ec2:DeleteNetworkInterface"</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"Resource"</span><span class="p">:</span><span class="s2">"*"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<ol>
-<li>Go to the AWS Lambda Console in the same region as your S3 bucket and Amazon Redshift cluster.</li>
-<li>Select Create a Lambda function and enter a name (e.g.: controlShiftRedshiftLoader).</li>
-<li>Clone the <a href="https://github.com/awslabs/aws-lambda-redshift-loader">Amazon Redshift Database Loader</a> repository locally</li>
-<li>Under Code entry type select &lsquo;Upload a zip file&rsquo; and upload the AWSLambdaRedshiftLoader-2.4.0.zip file from the &ldquo;dist&rdquo; directory on the repository you just cloned.</li>
-<li>Set the Runtime to Node.js 0.10.</li>
-<li>Use the default values for the handler, and in the Role drop-down, select &ldquo;* Basic Execution Role.&rdquo; A IAM creation wizard will open in a new window.</li>
-<li>Follow the wizard, selecting to &ldquo;Create a new IAM Role&rdquo; and name it as you like.  Click to &ldquo;View the Policy&rdquo; and then click edit.</li>
-<li>Copy and paste the the AWS Lambda Execution Role permissions from the right.</li>
-<li>Then click &ldquo;Add Policy.&rdquo; Select the <code class="prettyprint">AmazonRedshiftFullAccess</code> role and add it, then add another role - <code class="prettyprint">AmazonDMSRedshiftS3Role</code>.</li>
-<li>Navigate back to your Lambda setup tab and set the max timeout (5 minutes) to accommodate potentially long COPY times.</li>
-<li>From the VPC dropdown, select your default VPC.</li>
-<li>Leave the rest of the settings unchanged.</li>
-<li>Click next and then click to create your Lambda.</li>
-</ol>
-
-<h4 id="establishing-an-event-source">Establishing an Event Source</h4>
-
-<p>Once deployed, you need to add an event source:</p>
-
-<ol>
-<li>Select &ldquo;Event Source&rdquo; tab and click to &ldquo;Add event source.&rdquo;</li>
-<li>The event source type should be set to S3.</li>
-<li>Select the S3 bucket you want to use for input data - controlshift-receiver.</li>
-<li>Select the &lsquo;Object Created (All)&rsquo; notification type.</li>
-</ol>
-
-<h4 id="configuration-prep">Configuration Prep</h4>
-
-<p>Setup your AWS credentials as environment variables as follows:
-<code class="prettyprint">export AWS_ACCESS_KEY_ID=XXXXXXXXX AWS_SECRET_ACCESS_KEY=XXXXXXXXXXX AWS_REGION=us-east-1</code></p>
-
-<h4 id="running-setup-js">Running setup.js</h4>
-
-<ol>
-<li>After setting up your environment, head to your local copy of aws-lambda-redshift-loader.</li>
-<li>run <code class="prettyprint">npm install</code> to install package&rsquo;s dependencies.</li>
-<li>run <code class="prettyprint">node setup.js</code>.</li>
-<li>The script will request various configuration options.  Some sensible responses for our use case are below. Empty responses were just skipped.</li>
-</ol>
-
-<table><thead>
-<tr>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Enter the Region for the Configuration &gt; us-east-1</td>
-</tr>
-<tr>
-<td>Enter the S3 Bucket &amp; Prefix to watch for files &gt; controlshift-receiver</td>
-</tr>
-<tr>
-<td>Enter a Filename Filter Regex &gt;</td>
-</tr>
-<tr>
-<td>Enter the Cluster Endpoint &gt; control-shift-cluster.xXxXxX00Xx.us-east-1.redshift.amazonaws.com</td>
-</tr>
-<tr>
-<td>Enter the Cluster Port &gt; 5439</td>
-</tr>
-<tr>
-<td>Does your cluster use SSL (Y/N)  &gt; Y</td>
-</tr>
-<tr>
-<td>Enter the Database Name &gt; controlshiftdb</td>
-</tr>
-<tr>
-<td>Enter the Table to be Loaded &gt; petitions</td>
-</tr>
-<tr>
-<td>Enter the comma-delimited column list (optional) &gt; (Copy and paste from our <a href="/data/petitions_headers.csv">petitions_headers.csv</a>)</td>
-</tr>
-<tr>
-<td>Should the Table be Truncated before Load? (Y/N) &gt; Y # Don&rsquo;t truncate if this lambda will handle incremental builds.</td>
-</tr>
-<tr>
-<td>Enter the Database Username &gt; masteruser # Or any user you created in psql</td>
-</tr>
-<tr>
-<td>Enter the Database Password &gt; SuPeRs8CuR1tY # your password</td>
-</tr>
-<tr>
-<td>Enter the Data Format (CSV, JSON or AVRO) &gt; CSV</td>
-</tr>
-<tr>
-<td>Enter the CSV Delimiter &gt; ,</td>
-</tr>
-<tr>
-<td>Enter the S3 Bucket for Redshift COPY Manifests &gt; controlshift-manifests</td>
-</tr>
-<tr>
-<td>Enter the Prefix for Redshift COPY Manifests &gt; manifests</td>
-</tr>
-<tr>
-<td>Enter the Prefix to use for Failed Load Manifest Storage &gt; failed</td>
-</tr>
-<tr>
-<td>Enter the Access Key used by Redshift to get data from S3. If NULL then Lambda execution role credentials will be used &gt; <aws key></td>
-</tr>
-<tr>
-<td>Enter the Secret Key used by Redshift to get data from S3. If NULL then Lambda execution role credentials will be used &gt; <aws key></td>
-</tr>
-<tr>
-<td>Enter the SNS Topic ARN for Successful Loads &gt;</td>
-</tr>
-<tr>
-<td>Enter the SNS Topic ARN for Failed Loads &gt;</td>
-</tr>
-<tr>
-<td>How many files should be buffered before loading? &gt; 1</td>
-</tr>
-<tr>
-<td>How old should we allow a Batch to be before loading (seconds)? &gt; 120</td>
-</tr>
-<tr>
-<td>Additional Copy Options to be added &gt;</td>
-</tr>
-<tr>
-<td>If Encrypted Files are used, Enter the Symmetric Master Key Value &gt;</td>
-</tr>
-</tbody></table>
-
-<hr>
-
-<h3 id="configure-controlshifts-webhook">Configure ControlShift&rsquo;s webhook</h3>
-
-<p>Finally, you&rsquo;ll need to log into your admin panel.  Settings &gt; CRM Integrations &amp; Webhooks &gt; Configure Webhook Endpoints.  Then add a bulk data webhook pointing at your Lambda endpoint.</p>
-
-<h3 id="troubleshooting-errors">Troubleshooting Errors</h3>
-
-<blockquote>
-<p>Example LambdaRedshiftBatches error</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"control-shift-cluster.ckcgajpfnj82.us-east-1.redshift.amazonaws.com"</span><span class="p">:{</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="mi">-1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"error"</span><span class="p">:{</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"length"</span><span class="p">:</span><span class="mi">143</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"severity"</span><span class="p">:</span><span class="s2">"FATAL"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"28000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"file"</span><span class="p">:</span><span class="s2">"/home/awsrsqa/padb/src/pg/src/backend/libpq/auth.c"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"line"</span><span class="p">:</span><span class="s2">"402"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"routine"</span><span class="p">:</span><span class="s2">"auth_failed"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>A few tips if things aren&rsquo;t working:</p>
-
-<ul>
-<li>Most errors will probably occur when attempting to load data from Lambda into Redshift. The DynamoDB batch history captures errorMessages in the the <code class="prettyprint">LambdaRedshiftBatches</code> table. Click on the <code class="prettyprint">entries</code> field. You can also check AWS CloudWatch &gt; Logs and then click on the appropriate cloud stream.</li>
-<li>If you&rsquo;re DynamoDB batch history is empty, but your lambda is being invoked, and AWS CloudWatch logs show timeout errors, your Lambda probably cannot connect to your DynamoDB instance. Try moving your aws-lamda-loader out of the VPC group.</li>
-<li>Since Redshift is based on PostgreSQL 8.0.2, there is a healthy amount of overlapping error codes. You can <a href="http://www.postgresql.org/docs/8.0/static/errcodes-appendix.html">lookup errors codes here</a>. Example errors:
-
-<ul>
-<li><code class="prettyprint">28000</code> - Unable to connect to the database. Is the username/password/database name entered correctly when running setup.js? Is the user granted proper privileges on your database?</li>
-<li><code class="prettyprint">42P01</code> - Redshift doesn&rsquo;t have the table you&rsquo;re trying to import data into. Did you import the schema as described above?</li>
-<li><code class="prettyprint">XX000</code> - This is an internal error. In our case, the most likely causes are either an invalid schema usually caused by an <a href="http://docs.aws.amazon.com/redshift/latest/dg/c_unsupported-postgresql-datatypes.html">unsupported data type</a>. Double check that your imported schema is correct. If you aren&rsquo;t using the provided schema, double check that you&rsquo;re using the supported types and that your imported data matches those types.</li>
-<li><code class="prettyprint">42601</code> - Syntax error - This is most likely a typo when running setup.js. If you&rsquo;re entering your CSV columns during setup, be sure they match the schema you&rsquo;ve loaded into the database. Make sure your CSV Delimiter is set correctly and your CSV is properly formated.</li>
-<li><code class="prettyprint">42501</code> - Insufficient privileges errors.  Did you GRANT your user all the privileges required?</li>
-</ul></li>
-<li>Try manually uploading a petitions export to your <code class="prettyprint">controlshift-receiver</code> S3 bucket, and check DynamoDB batch history for errors. You can fetch these exports from your ControlShift Labs instance, in Settings &gt; Exports.
-
-<ul>
-<li>If you get an error message &ldquo;Unknown Error during Customer Master Key describe&rdquo; when running setup.js, you probably didn&rsquo;t <code class="prettyprint">export</code>the environment params as described above.</li>
-</ul></li>
-</ul>
+<p>Finally, you&rsquo;ll need to log into your admin panel.  Settings &gt; Integrations &gt; Webhooks.  Then add the bulk data webhook pointing at your Lambda endpoint output by the Terraform plan.</p>
 
           <h1 id="authenticated-rest-api">Authenticated REST API</h1>
 
