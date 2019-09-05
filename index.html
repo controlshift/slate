@@ -4855,7 +4855,7 @@ all associated signatures, attendee records, user accounts and other data held b
     </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patrick Henry"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patrick"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Henry"</span><span class="w">
+      </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Henry"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"patrick.henry@example.com"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-555-5555"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -4994,6 +4994,37 @@ By default the first page is returned. </p>
 </tbody></table>
 
 <p><code class="prettyprint">GET /api/v1/petitions/no-taxes-on-tea/signatures?page=2</code></p>
+
+          <h2 id="partnerships">Partnerships</h2>
+
+<p>Partnerships are other organisations you collaborate with </p>
+
+<h3 id="show">Show</h3>
+
+<blockquote>
+<p>GET response Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fight-fascism"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fight Fascism"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fighting fascism one day at a time. With petitions."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/partnerships/fight-fascism"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"open_graph"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cdn.example.com/partnerships/images/25/open_graph/a-little-teapot.png?1516647704"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"horizontal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cdn.example.com/partnerships/images/25/horizontal/a-little-teapot.png?1516647704"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hero"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cdn.example.com/partnerships/images/25/hero/a-little-teapot.png?1516647704"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cdn.example.com/partnerships/images/25/original/a-little-teapot.png?1516647704"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"form"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cdn.example.com/partnerships/images/25/form/a-little-teapot.png?1516647704"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Find information about a partnership by URL slug.</p>
+
+<p><code class="prettyprint">GET /api/v1/partnerships/fight-fascism</code></p>
 
           <h2 id="events">Events</h2>
 
