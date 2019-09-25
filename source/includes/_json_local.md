@@ -28,7 +28,7 @@ $(document).ready(function(){
             "id": "picnic-in-the-park",
             "title": "Picnic in the Park",
             "description": "We are having a picnic in the park and you are invited!",
-            "start": "2020-03-01T12:00:00Z"
+            "start_at": "2020-03-01T12:00:00Z"
         },
         {
             "type": "Group",
@@ -41,7 +41,7 @@ $(document).ready(function(){
             "id": "https://example.com/sail-on-the-hudson"
             "title": "Sail on the Hudson",
             "description": "Go for a sail on the Hudson river to promote environmentalism.",
-            "start": "2019-05-03T13:00:00Z"
+            "start_at": "2019-05-03T13:00:00Z"
         }
     ]
 }
