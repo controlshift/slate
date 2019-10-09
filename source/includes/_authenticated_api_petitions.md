@@ -9,6 +9,7 @@ Petition are pieces of content that can be signed by members.
 ```json
 {
   "petition": {
+    "id": 123,
     "slug": "no-taxes-on-tea",
     "title": "No Taxes on Tea",
     "who": "King George",
