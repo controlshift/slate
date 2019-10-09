@@ -21,7 +21,23 @@ Petition are pieces of content that can be signed by members.
     "updated_at": "2018-03-05T15:02:02Z",
     "signature_count_add_amount": 100
     "source": "effort_near",
-    "admin_notes": "We should have a call with this campaigner but they have no telephone.",
+    "admin_notes": [
+      {
+        "source": "legacy",
+        "body": "An older note about this campaign",
+        "created_at": "2018-01-25T23:45:12Z",
+        "user": null
+      },
+      {
+        "source": "user",
+        "body": "We should have a call with this campaigner but they have no telephone.",
+        "created_at": "2019-10-09T12:34:45Z",
+        "user": {
+          "email": "organiser_2@example.com",
+          "full_name": "Sarah Organiser"
+        }
+      }
+    ],
     "url": "https://demo.controlshiftlabs.com/petitions/no-taxes-on-tea",
     "public_who": "King George",
     "public_signature_count": 234,
