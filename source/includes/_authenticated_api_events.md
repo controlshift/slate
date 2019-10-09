@@ -39,7 +39,8 @@ Events represent real-world or virtual meetings that members can RSVP to. RSVP r
     "petition": {
       "slug": "repair-the-yellow-brick-road-1",
       "url": "https://demo.controlshiftlabs.com/petitions/repair-the-yellow-brick-road-1"
-    }
+    },
+    "labels": ["oz-organizer-help"]
 }
 ```
 
