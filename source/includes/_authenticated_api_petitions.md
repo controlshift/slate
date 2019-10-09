@@ -113,6 +113,43 @@ Find information about a petition by URL slug.
 
 
 
+### List
+
+> GET response body
+
+```json
+{
+  "petitions": [
+    {
+      "id": 123,
+      "slug": "no-taxes-on-tea",
+      "title": "No Taxes on Tea",
+      ...
+    },
+    {
+      "id": 124,
+      "slug": "stop-burning-coal-1",
+      "title": "Stop Burning Coal",
+      ...
+    },
+    ...
+  ],
+
+  "meta": {
+    "current_page": 1,
+    "total_pages": 12,
+    "previous_page": null,
+    "next_page": 2
+  }
+}
+```
+
+Get a paginated list of all petitions, including ones that are unlaunched or otherwise not visible to the public. Includes all the same data as the single-petition endpoint for each petition.
+
+`GET /api/v1/petitions?page=1`
+
+
+
 ### Update
 
 Updates petition content using an HTTP PUT request.
