@@ -9,6 +9,7 @@ Petition are pieces of content that can be signed by members.
 ```json
 {
   "petition": {
+    "id": 123,
     "slug": "no-taxes-on-tea",
     "title": "No Taxes on Tea",
     "who": "King George",
@@ -20,7 +21,23 @@ Petition are pieces of content that can be signed by members.
     "updated_at": "2018-03-05T15:02:02Z",
     "signature_count_add_amount": 100
     "source": "effort_near",
-    "admin_notes": "We should have a call with this campaigner but they have no telephone.",
+    "admin_notes": [
+      {
+        "source": "legacy",
+        "body": "An older note about this campaign",
+        "created_at": "2018-01-25T23:45:12Z",
+        "user": null
+      },
+      {
+        "source": "user",
+        "body": "We should have a call with this campaigner but they have no telephone.",
+        "created_at": "2019-10-09T12:34:45Z",
+        "user": {
+          "email": "organiser_2@example.com",
+          "full_name": "Sarah Organiser"
+        }
+      }
+    ],
     "url": "https://demo.controlshiftlabs.com/petitions/no-taxes-on-tea",
     "public_who": "King George",
     "public_signature_count": 234,
@@ -93,6 +110,43 @@ Petition are pieces of content that can be signed by members.
 Find information about a petition by URL slug.
 
 `GET /api/v1/petitions/no-taxes-on-tea`
+
+
+
+### List
+
+> GET response body
+
+```json
+{
+  "petitions": [
+    {
+      "id": 123,
+      "slug": "no-taxes-on-tea",
+      "title": "No Taxes on Tea",
+      ...
+    },
+    {
+      "id": 124,
+      "slug": "stop-burning-coal-1",
+      "title": "Stop Burning Coal",
+      ...
+    },
+    ...
+  ],
+
+  "meta": {
+    "current_page": 1,
+    "total_pages": 12,
+    "previous_page": null,
+    "next_page": 2
+  }
+}
+```
+
+Get a paginated list of all petitions, including ones that are unlaunched or otherwise not visible to the public. Includes all the same data as the single-petition endpoint for each petition.
+
+`GET /api/v1/petitions?page=1`
 
 
 
