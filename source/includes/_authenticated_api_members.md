@@ -120,11 +120,11 @@ Ownership of Petitions and Events created by the deleted member will be re-assig
 }
 ```
 
-Anonymizes the member with specified id. This permanently deletes the member and all associated records including petitions, signatures, events. However, petition signatures from the anonymized member are preserved, anonymized, on petition data exports, signature counts, and petition letters. The method of anonymization is configured in organisation name privacy settings.
+Anonymizes the member with specified id. This permanently deletes the member and all associated signatures. However, petition signatures from the anonymized member are preserved, anonymized, on petition data exports, signature counts, and petition letters. The method of anonymization is configured in organisation name privacy settings.
 
 `POST /api/v1/members/123/anonymize`
 
-Deletes are synchronous and may take several seconds depending on how many resources are owned by the member.
+Anonymization is synchronous and may take several seconds depending on how many resources are owned by the member.
 
 Ownership of Petitions and Events created by the deleted member will be re-assigned to the user account specified in the organisation's settings.
 
