@@ -1,7 +1,7 @@
 ## Members
 
-The platform transparently creates a member record for any email address that creates a user account, signs a petition, or attends an event. Members are unique by email address, and all 
-platform activity is tracked by member id.  
+The platform transparently creates a member record for any email address that creates a user account, signs a petition, or attends an event. Members are unique by email address, and all
+platform activity is tracked by member id.
 
 > GET response body for Lookup or Show
 
@@ -33,7 +33,7 @@ platform activity is tracked by member id.
 
 ### Lookup
 
-Find a member by email address. Once you have obtained a member id you can use this identifier in other API calls. 
+Find a member by email address. Once you have obtained a member id you can use this identifier in other API calls.
 
 `GET /api/v1/members/lookup?email=foo@bar.com`
 
@@ -89,7 +89,7 @@ The member activity report includes basic biographical information as well as pe
 ```json
 {
   "member": {
-    "deleted": true, 
+    "deleted": true,
     "id": 123,
     "email": "foo@bar.com"
   }
@@ -100,9 +100,33 @@ Permanently deletes a member with specified id and all associated records includ
 
 `DELETE /api/v1/members/123`
 
-Deletes are synchronous and may take several seconds depdending on how many resources are owned by the member. 
+Deletes are synchronous and may take several seconds depending on how many resources are owned by the member.
 
-Ownership of Petitions and Events created by the deleted member will be re-assigned to the user account specified in the organisation's settings. 
+Ownership of Petitions and Events created by the deleted member will be re-assigned to the user account specified in the organisation's settings.
+
+
+
+### Anonymize
+
+> POST response body for Anonymize
+
+```json
+{
+  "member": {
+    "deleted": true,
+    "id": 123,
+    "email": "foo@bar.com"
+  }
+}
+```
+
+Anonymizes the member with specified id. This permanently deletes the member and all associated signatures. However, petition signatures from the anonymized member are preserved, anonymized, on petition data exports, signature counts, and petition letters. The method of anonymization is configured in organisation name privacy settings.
+
+`POST /api/v1/members/123/anonymize`
+
+Anonymization is synchronous and may take several seconds depending on how many resources are owned by the member.
+
+Ownership of Petitions and Events created by the deleted member will be re-assigned to the user account specified in the organisation's settings.
 
 
 
@@ -113,30 +137,30 @@ Ownership of Petitions and Events created by the deleted member will be re-assig
 ```json
 {
   "member": {
-    "unsubscribed": true, 
+    "unsubscribed": true,
     "id": 123,
     "email": "foo@bar.com"
   }
 }
 ```
 
-Unsubscribes a member with specified id from emails from event hosts and petiton creators. Member will still receive transactional emails, and will be resubscribed if they opt in while signing a new petition or attending a new event, etc. 
+Unsubscribes a member with specified id from emails from event hosts and petiton creators. Member will still receive transactional emails, and will be resubscribed if they opt in while signing a new petition or attending a new event, etc.
 
 `POST /api/v1/members/123/unsubscribe`
 
 
 ### Update Email Opt In Type
 
-#### POST body 
+#### POST body
 
 `external_id=foo`
 
 Changes the email opt in type for the member with the specified id to the external id in the POST body. This will update the opt in type for
-all associated signatures, attendee records, user accounts and other data held by ControlShift to the opt in type specified by external_id. 
+all associated signatures, attendee records, user accounts and other data held by ControlShift to the opt in type specified by external_id.
 
-This feature may be useful for upgrading the recorded consent when new consent for email communications has been collected in external systems. 
+This feature may be useful for upgrading the recorded consent when new consent for email communications has been collected in external systems.
 
-Most likely you will be changing historical consents that may no longer be mailable for legal reasons to a new mailable consent type. 
+Most likely you will be changing historical consents that may no longer be mailable for legal reasons to a new mailable consent type.
 
 No history is stored recording the original consent type, it is replaced by the new one specified.
 
