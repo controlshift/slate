@@ -4015,12 +4015,18 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 
 <h2 id="controlshift-to-redshift-pipeline">ControlShift to Redshift Pipeline</h2>
 
-<p>Setting up an Amazon Redshift integration us a great way to learn more about the actions your members are taking or perform
-sophisticated analytics but is an advanced topic that requires knowledge of Amazon Web Services, SQL, and Terraform.</p>
+<p>Setting up an Amazon Redshift integration is a great way to learn more about the actions your members are taking or perform
+sophisticated analytics, but it is an advanced topic that requires knowledge of Amazon Web Services, SQL, and Terraform.</p>
 
 <p>Following these instructions we&rsquo;ll use a custom <a href="http://docs.aws.amazon.com/lambda/latest/dg/welcome.html">AWS Lambda</a>
-to receive data from ControlShift&rsquo;s bulk data API webhooks and Amazon&rsquo;s <a href="https://github.com/awslabs/aws-lambda-redshift-loader">Lambda Redshift Loader</a>
-to load our data into Redshift. The final result will be a replica of the tables that back your instance of ControlShift that are refreshed in
+to receive data from ControlShift&rsquo;s bulk data API webhooks and two different mechanisms to load our data into Redshift:</p>
+
+<ul>
+<li>Amazon&rsquo;s <a href="https://github.com/awslabs/aws-lambda-redshift-loader">Lambda Redshift Loader</a>, for processing incremental exports and full table exports for small tables.</li>
+<li><a href="https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html">AWS Glue</a>, for processing full table exports for large tables (i.e.: <code class="prettyprint">signatures</code>).</li>
+</ul>
+
+<p>The final result will be a replica of the tables that back your instance of ControlShift that are refreshed in
 full each night and appended with inserts on a per-minute basis.</p>
 
 <p>ControlShift has authored a Terraform module that makes the entire setup process straightforward and allows for updates
@@ -4028,7 +4034,13 @@ to the infrastructure over time.</p>
 
 <h3 id="example-flow">Example Flow</h3>
 
-<p><img src="images/ControlShift_Redshift_flow_transparent.svg" alt="ControlShift Redshift Flow Chart" /></p>
+<h4 id="controlshift-redshift-flow-for-small-data-exports">ControlShift Redshift Flow For Small Data Exports</h4>
+
+<p><img src="images/ControlShift_Redshift_flow_with_Lambdas_transparent.svg" alt="ControlShift Redshift Flow With Lambdas Chart" /></p>
+
+<h4 id="controlshift-redshift-flow-for-large-data-exports">ControlShift Redshift Flow For Large Data Exports</h4>
+
+<p><img src="images/ControlShift_Redshift_flow_with_Glue_transparent.svg" alt="ControlShift Redshift Flow With Glue Chart" /></p>
 
 <h3 id="redshift-pipeline-setup">Redshift Pipeline Setup</h3>
 
