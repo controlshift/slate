@@ -23,12 +23,18 @@ For full information on the schema of each table, use the `/api/bulk_data/schema
 
 ## ControlShift to Redshift Pipeline
 
-Setting up an Amazon Redshift integration us a great way to learn more about the actions your members are taking or perform
-sophisticated analytics but is an advanced topic that requires knowledge of Amazon Web Services, SQL, and Terraform.
+Setting up an Amazon Redshift integration is a great way to learn more about the actions your members are taking or perform
+sophisticated analytics, but it is an advanced topic that requires knowledge of Amazon Web Services, SQL, and Terraform.
+
+
 
 Following these instructions we'll use a custom [AWS Lambda](http://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
-to receive data from ControlShift's bulk data API webhooks and Amazon's [Lambda Redshift Loader](https://github.com/awslabs/aws-lambda-redshift-loader)
-to load our data into Redshift. The final result will be a replica of the tables that back your instance of ControlShift that are refreshed in
+to receive data from ControlShift's bulk data API webhooks and two different mechanisms to load our data into Redshift:
+
+* Amazon's [Lambda Redshift Loader](https://github.com/awslabs/aws-lambda-redshift-loader), for processing incremental exports and full table exports for small tables.
+* [AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html), for processing full table exports for large tables (i.e.: `signatures`).
+
+The final result will be a replica of the tables that back your instance of ControlShift that are refreshed in
 full each night and appended with inserts on a per-minute basis.
 
 ControlShift has authored a Terraform module that makes the entire setup process straightforward and allows for updates
@@ -36,7 +42,13 @@ to the infrastructure over time.
 
 ### Example Flow
 
-![ControlShift Redshift Flow Chart](/images/ControlShift_Redshift_flow_transparent.svg)
+#### ControlShift Redshift Flow For Small Data Exports
+
+![ControlShift Redshift Flow With Lambdas Chart](/images/ControlShift_Redshift_flow_with_Lambdas_transparent.svg)
+
+#### ControlShift Redshift Flow For Large Data Exports
+
+![ControlShift Redshift Flow With Glue Chart](/images/ControlShift_Redshift_flow_with_Glue_transparent.svg)
 
 
 ### Redshift Pipeline Setup
