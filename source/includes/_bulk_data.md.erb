@@ -20,6 +20,42 @@ The bulk data webhooks include exports of the following tables:
 
 For full information on the schema of each table, use the `/api/bulk_data/schema.json` API endpoint.
 
+### Interpreting the share_clicks table
+
+The `share_clicks` table is designed to help you understand in detail how social media sharing influences member actions.
+Every time a member clicks on a social sharing link on a petition or event page, it's recorded in the `share_clicks` table,
+and we add a unique sharing token to the campaign link they share. When another member follows the shared link and
+signs a petition, we record the `referring_share_click_id` for the new signature. Thus it is possible to trace the origin
+of a signature to the member who shared a campaign on social media.
+
+#### Auto-generated share clicks
+
+For button clicks on campaign pages, we can create share click records on the fly, using Javascript.
+But when members click on social sharing links in emails, or forward campaign emails to their friends, it's impossible
+to track that activity directly.
+
+To support the referring-member functionality for emails, we pre-create `share_clicks`
+records representing the idea that a user might click on the social sharing links in the Thanks email, or
+forward the email to their friends. Then we add the unique sharing tokens to the links in the email, so that any
+signatures resulting from those email-based shares can get a `referring_share_click_id`. We do this for both the
+Thanks For Signing email, and the Thanks For Creating Petition email.
+
+The pre-created `share_clicks` records have `true` values in the `auto_generated` column, to allow distinguishing them
+from records that represent a member definitely clicking on something.
+
+#### Column by column
+
+| Column    | Explanation                                                              |
+| --------- | ------------------------------------------------------------------------ |
+| id        | Unique identifier for this share click. Not guaranteed to be sequential. |
+| page_type | Campaign type (Petition or Event)                                        |
+| page_id   | Campaign ID; corresponds to `id` in the `petitions` or `events` table    |
+| medium    | What kind of share (e.g. "facebook" or "email")                          |
+| member_id | If available, which member did the share click. Corresponds to `id` in the `members` table. Might be null if e.g. a member arrived on a petition page and immediately shared without signing. |
+| created_at | When the member clicked on the sharing button. Or for auto-generated share clicks, when the email was sent. |
+| updated_at | Usually the same as `created_at`, but would be updated if the record was changed after creation |
+| token     | Random unique identifier used to refer to this share click in URLs       |
+| auto_generated | Whether this is an auto-generated share click. Boolean.             |
 
 ## ControlShift to Redshift Pipeline
 
