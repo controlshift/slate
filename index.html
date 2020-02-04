@@ -4013,6 +4013,75 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 
 <p>For full information on the schema of each table, use the <code class="prettyprint">/api/bulk_data/schema.json</code> API endpoint.</p>
 
+<h3 id="interpreting-the-share_clicks-table">Interpreting the share_clicks table</h3>
+
+<p>The <code class="prettyprint">share_clicks</code> table is designed to help you understand in detail how social media sharing influences member actions.
+Every time a member clicks on a social sharing link on a petition or event page, it&rsquo;s recorded in the <code class="prettyprint">share_clicks</code> table,
+and we add a unique sharing token to the campaign link they share. When another member follows the shared link and
+signs a petition, we record the <code class="prettyprint">referring_share_click_id</code> for the new signature. Thus it is possible to trace the origin
+of a signature to the member who shared a campaign on social media.</p>
+
+<h4 id="auto-generated-share-clicks">Auto-generated share clicks</h4>
+
+<p>For button clicks on campaign pages, we can create share click records on the fly, using Javascript.
+But when members click on social sharing links in emails, or forward campaign emails to their friends, it&rsquo;s impossible
+to track that activity directly.</p>
+
+<p>To support the referring-member functionality for emails, we pre-create <code class="prettyprint">share_clicks</code>
+records representing the idea that a user might click on the social sharing links in the Thanks email, or
+forward the email to their friends. Then we add the unique sharing tokens to the links in the email, so that any
+signatures resulting from those email-based shares can get a <code class="prettyprint">referring_share_click_id</code>. We do this for both the
+Thanks For Signing email, and the Thanks For Creating Petition email.</p>
+
+<p>The pre-created <code class="prettyprint">share_clicks</code> records have <code class="prettyprint">true</code> values in the <code class="prettyprint">auto_generated</code> column, to allow distinguishing them
+from records that represent a member definitely clicking on something.</p>
+
+<h4 id="column-by-column">Column by column</h4>
+
+<table><thead>
+<tr>
+<th>Column</th>
+<th>Explanation</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Unique identifier for this share click. Not guaranteed to be sequential.</td>
+</tr>
+<tr>
+<td>page_type</td>
+<td>Campaign type (Petition or Event)</td>
+</tr>
+<tr>
+<td>page_id</td>
+<td>Campaign ID; corresponds to <code class="prettyprint">id</code> in the <code class="prettyprint">petitions</code> or <code class="prettyprint">events</code> table</td>
+</tr>
+<tr>
+<td>medium</td>
+<td>What kind of share (e.g. &ldquo;facebook&rdquo; or &ldquo;email&rdquo;)</td>
+</tr>
+<tr>
+<td>member_id</td>
+<td>If available, which member did the share click. Corresponds to <code class="prettyprint">id</code> in the <code class="prettyprint">members</code> table. Might be null if e.g. a member arrived on a petition page and immediately shared without signing.</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>When the member clicked on the sharing button. Or for auto-generated share clicks, when the email was sent.</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>Usually the same as <code class="prettyprint">created_at</code>, but would be updated if the record was changed after creation</td>
+</tr>
+<tr>
+<td>token</td>
+<td>Random unique identifier used to refer to this share click in URLs</td>
+</tr>
+<tr>
+<td>auto_generated</td>
+<td>Whether this is an auto-generated share click. Boolean.</td>
+</tr>
+</tbody></table>
+
 <h2 id="controlshift-to-redshift-pipeline">ControlShift to Redshift Pipeline</h2>
 
 <p>Setting up an Amazon Redshift integration is a great way to learn more about the actions your members are taking or perform
