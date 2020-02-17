@@ -3969,9 +3969,9 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 <li>consent_content_versions</li>
 <li>contents</li>
 <li>crm_sync_logs</li>
-<li>csv_reports</li>
 <li>custom_links</li>
 <li>daisy_chain_rules</li>
+<li>data_exports</li>
 <li>data_processing_consents</li>
 <li>drip_email_preferences</li>
 <li>efforts</li>
@@ -4012,6 +4012,15 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 </ul>
 
 <p>For full information on the schema of each table, use the <code class="prettyprint">/api/bulk_data/schema.json</code> API endpoint.</p>
+
+<h2 id="bulk-data-files">Bulk Data Files</h2>
+
+<p>Each table exposed by the bulk data API is made available as a CSV file with the URL to download each file sent via webhook.</p>
+
+<p>We expire access to data 24 hours after it has been generated. This means that if you are building an automated system
+to ingest data from this API it must process webhook notifications within 24 hours.</p>
+
+<p>Once webhook data has expired, the download URLs will return a 403 error response.</p>
 
 <h3 id="interpreting-the-share_clicks-table">Interpreting the share_clicks table</h3>
 
