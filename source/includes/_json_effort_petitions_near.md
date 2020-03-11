@@ -1,16 +1,13 @@
-## Find nearby petitions
+## Search petitions in a effort
 
 ```js
 $(document).ready(function(){
-  var effortSlug = 'drivers-licenses-for-all',
-      latitude = 38.88233,
-      longitude = -77.17109;
+  var effortSlug = 'drivers-licenses-for-all';
   $.ajax({
     url: 'https://demo.controlshiftlabs.com/efforts/'+effortSlug+'/'+'lookup/query.json',
     dataType: 'jsonp',
     data: {
-      'location[latitude]': latitude,
-      'location[longitude]': longitude
+      'location_query': 'briarcliff manor, ny'
     }
   })
   .done(function( data ) {
@@ -54,9 +51,8 @@ $(document).ready(function(){
 }
 ```
 
-Search for closest petition in an effort
-
-This JSON endpoint allows you to reproduce the "search for the nearest petition in an effort" interface. Use this endpoint to build a place for users to enter their location. Once they've searched for a location, we'll return the nearest petition. This endpoint can most easily be used with a [Google Maps](https://developers.google.com/places/web-service/autocomplete) integration to help your users locate their addresses or other points of interest. For an example, click on the working example below.
+This JSON endpoint allows you to build an interface where users can search the petitions in an effort.
+Depending on how the effort is configured, you can search either by location, or by keyword.
 
 ### HTTP Request
 
@@ -64,15 +60,11 @@ This JSON endpoint allows you to reproduce the "search for the nearest petition 
 
 ### Query Parameters
 
-This endpoints accepts a few nested attributes in a `location` object, as described below.
-
-Parameter | Default | Description
+Parameter | Required? | Description
 --------- | ------- | -----------
-effort slug | null | string - required - submitted as a part of the endpoint path, not as a separate URL parameter
-location[latitude] | null | float - required - a float representing the queried latitude
-location[longitude] | null | float - required - a float representing the queried longitude
-location[country] | null | string - optional - for efforts configured to use the "by country" search strategy, you can pass in the target country as a two letter [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) code.
-location[region] | null | string - optional - for efforts configured to use the "by state" search strategy, you can pass in the target state as a two letter state abbreviation.
+effort slug | yes | string - submitted as a part of the endpoint path, not as a separate URL parameter
+location_query | yes, if effort is configured for location search | string to search for (will be geocoded on the server)
+query | yes, if effort is configured for keyword search | string to search for
 
 ### Working Example
 
@@ -80,12 +72,12 @@ View and edit a working example on codepen.io:
 
 <div class="js-codepen-data hidden"
   data-js_external="https://maps.googleapis.com/maps/api/js?key=AIzaSyAY2t1MpsrZH3aH6wJqAiq4vAQUscMmjY0&libraries=places;https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-  data-title="ControlShift Labs: List of Petitions in an Effort Example">
+  data-title="ControlShift Labs: Search Petitions in an Effort Example">
   <div class="codepen-html">
     <h1>Find the closest petitions to you</h1>
     <form>
-      <input type="text" class="form-control" id="effort-lookup-input" placeholder="Enter your address or a nearby landmark">
-      <small>Note: The above text field is auto-completed using the Google Maps <a href="https://developers.google.com/places/web-service/autocomplete" target="_blank">Autocomplete API</a></small>
+      <input type="text" class="form-control" id="effort-lookup-input" placeholder="Enter your city or postal code">
+      <input type="submit" value="Search"></input>
     </form>
     <div id="petitions">
     </div>
@@ -102,17 +94,13 @@ View and edit a working example on codepen.io:
       return output;
     }
 
-    function getPetitionsCallback(place) {
-      // Get the place details from the autocomplete object.
-      var place = autocomplete.getPlace();
-
+    function performSearch(query) {
       // get the targets and petitions (if they exist) for the effort near the place specified.
       $.ajax({
         url: 'https://demo.controlshiftlabs.com/efforts/forecast-the-facts/lookup/query.json',
         dataType: 'jsonp',
         data: {
-          'location[latitude]': place.geometry.location.lat(),
-          'location[longitude]': place.geometry.location.lng()
+          'location_query': query
         }
       })
       .done(function(data) {
@@ -135,11 +123,13 @@ View and edit a working example on codepen.io:
     };
 
     $(document).ready(function(){
-      $('form').on('submit', function(e){e.preventDefault()});
       var input = document.getElementById('effort-lookup-input');
-      var options = { };
-      autocomplete = new google.maps.places.Autocomplete(input, options);
-      autocomplete.addListener('place_changed', getPetitionsCallback);
+      $('form').on('submit', function(e){
+        e.preventDefault()
+
+        var searchQuery = $(input).val()
+        performSearch(searchQuery);
+      });
     });
   </pre>
 </div>
