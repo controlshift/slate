@@ -77,7 +77,7 @@ View and edit a working example on codepen.io:
     <h1>Find the closest petitions to you</h1>
     <form>
       <input type="text" class="form-control" id="effort-lookup-input" placeholder="Enter your city or postal code">
-      <input type="submit" value="Search"></input>
+      <input type="submit" value="Search">
     </form>
     <div id="petitions">
     </div>
