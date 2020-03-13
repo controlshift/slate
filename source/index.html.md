@@ -35,6 +35,7 @@ includes:
   - authenticated_api_signatures
   - authenticated_api_partnerships
   - authenticated_api_events
+  - authenticated_api_attendees
   - authenticated_api_calendars
   - authenticated_api_webhook_endpoints
 
