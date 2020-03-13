@@ -66,6 +66,37 @@ from records that represent a member definitely clicking on something.
 | token     | Random unique identifier used to refer to this share click in URLs       |
 | auto_generated | Whether this is an auto-generated share click. Boolean.             |
 
+### Interpreting the unsubscribes table
+
+The `unsubscribes` table is used for keeping a record of all member unsubscribes.
+
+There are several kinds of unsubscribes:
+
+* Petition unsubscribe: member is unsubscribing just from a petition they have signed.
+* Event unsubscribe: member is unsubscribing just from an event they have RSVPed to.
+* Partnership unsubscribe: member is unsubscribing from all actions they have taken in petitions and events from a partner organisation.
+* Organisation unsubscribe: member is unsubscribing from all actions they have taken with the organisation.
+
+Depending the kind of unsubscribe the member is taking, the database record will have different values on its attributes:
+
+| Unsubscribe Kind    | Attribute values                                              |
+|------------------------|---------------------------------------------------------------|
+| Petition unsubscribe | `unsubscribable_type` = `"Signature"`.<br>`unsubscribable_id` corresponds to id in the `signatures` table.<br>`unsubscribe_object` and `unsubscribe_organisation` may be `true` or `false` depending the option the member chooses when unsubscribing. |
+| Event unsubscribe | `unsubscribable_type` = `"Attendee"`.<br>`unsubscribable_id` corresponds to id in the `attendees` table.<br>`unsubscribe_object` and `unsubscribe_organisation` may be `true` or `false` depending the option the member chooses when unsubscribing. |
+| Partnership unsubscribe | `unsubscribable_type` = `"PartnershipSubscription"`.<br>`unsubscribable_id` corresponds to id in the `partnership_subscriptions` table.<br>`unsubscribe_object` and `unsubscribe_organisation` may be `true` or `false` depending the option the member chooses when unsubscribing. |
+| Organisation unsubscribe |  `unsubscribable_type` = `"Organisation"`.<br>`unsubscribe_object` = `false`.<br>`unsubscribe_organisation` = `true`. |
+
+Additionally the following columns apply for all kinds of unsubscribe:
+
+| Column    | Explanation                                                              |
+| --------- | ------------------------------------------------------------------------ |
+| blast_email_id | Blast email ID; corresponds to `id` in the `blast_emails` table. May be null if unsubscribe was not triggered by the member clicking on a blast email's unsubscribe link (e.g.: when unsubscribing member from the API or from org admin page). |
+| email | Member's email address. |
+| external_id | If unsubscribe was synced to CRM this column will store the ID on the external system. |
+| externally_unsubscribed_at | When the unsubscribe was synced to CRM.  |
+| created_at | When the unsubscribe was recorded in the platform. |
+| updated_at | Same as `created_at` as unsubscribe records cannot be updated after creation. |
+
 ## ControlShift to Redshift Pipeline
 
 Setting up an Amazon Redshift integration is a great way to learn more about the actions your members are taking or perform
