@@ -73,6 +73,8 @@ a particular petition within your instance of the ControlShift platform.
 All of the same post-signature actions that the platform usually supports including webhooks, CRM syncs, and other integrations
 will still be triggered, in the same way they are for normal signatures.
 
+For organisations that require email confirmation, a confirmation email will be sent to the action taker.
+
 
 | Field                     |   Explanation                                                              |
 | ------------------------- | ------------------------------------------------------------------------ |
