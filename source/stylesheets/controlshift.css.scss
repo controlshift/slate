@@ -43,3 +43,9 @@
 .hidden{
   display:none;
 }
+
+// in tables, the default code formatting can cause weird hyphens to appear with forced line-breaks.
+.content td code {
+  word-break: normal;
+  hyphens: none;
+}

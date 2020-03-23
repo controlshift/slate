@@ -5,11 +5,97 @@ was recorded against.
 
 ### Lookup
 
-Find a member by email address. Once you have obtained a member id you can use this identifier in other API calls.
+Find a specific signature by email address. Once you have obtained a member id you can use this identifier in other API calls.
 
 `GET /api/v1/petitions/no-taxes-on-tea/signatures/lookup?email=foo@bar.com`
 
 > GET response body for Lookup
+
+```json
+{
+  "signature": {
+    "bucket": "",
+    "country_without_fallback": "US",
+    "from_embed": null,
+    "last_signed_at": "2020-02-01T10:00:00Z",
+    "user_agent": null,
+    "deleted_at": null,
+    "additional_fields": {},
+    "id": 123,
+    "country": "US",
+    "created_at": "2020-02-01T10:00:00Z",
+    "updated_at": "2020-02-01T10:00:00Z",
+    "unsubscribe_at": null,
+    "email": "foo@bar.com",
+    "confirmed_at": null,
+    "confirmed_reason": null,
+    "first_name": "Foo",
+    "join_group": null,
+    "join_organisation": true,
+    "last_name": "Bar",
+    "phone_number": "123-456",
+    "postcode": "10010",
+    "source": "",
+    "token": "abcDEFghi123456789jklMNO",
+    "user_ip": "123.123.123.123",
+    "utm_campaign": null,
+    "utm_content": null,
+    "utm_medium": null,
+    "utm_source": null,
+    "utm_term": null,
+    "eu_data_processing_consent": false,
+    "consent_content_version": null,
+    "data_processing_consent_type": "explicit",
+    "email_opt_in_type": {
+      "context": "web_form",
+      "kind": "radio_sure",
+      "mailable": true,
+      "external_id": null,
+      "active": true
+    },
+    "member": {
+      "id": 111222333,
+      "created_at": "2020-02-01T10:00:00Z"
+    },
+    "petition": {
+      "url": "https://your-organisation.controlshiftlabs.com/petitions/no-taxes-on-tea",
+      "slug": "no-taxes-on-tea"
+    }
+  }
+}
+```
+
+### Create
+
+Creates a new signature for the specified petition. This API endpoint can be used to record externally recorded signatures for
+a particular petitions within your instance of the ControlShift platform. 
+
+All of the same post-signature actions that the platform usually supports including webhooks, CRM syncs, and other integrations
+will still be triggered, in the same way they are for normal signatures.
+
+
+| Field                     |   Explanation                                                              |
+| ------------------------- | ------------------------------------------------------------------------ |
+| `signature[first_name]`   | The first name of the member who took action                     |
+| `signature[last_name]`    | The last name of the member who took action                     |
+| `signature[email]`        | The email address of the member who took action                  |
+| `signature[postcode]`     | The postal or zip code of the member. Depending on your platform settings this may be a required field. Depending on your configuration, this may be validated for your country. |
+| `signature[phone_number]` | The phone number of the member who took action. Depending on your platform settings this may be a required field. |
+| `signature[locale]`       | The language and localization setting of the member who has taken action. This is specified as an [ISO_639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) two-character language code combined with an optional [ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) two character country code. For eg `en-US` or `en`.  |
+| `signature[country]`      | The country specified as an [ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) two character country code. This may be optional or required depending on your platform configuration. |
+| `signature[email_opt_in_type_id]` | The ControlShift email opt in type ID to use for this action. If this is not specified, fallbacks will be used, starting with any external opt in type that has been defined. |
+| `signature[join_organisation]` | Whether or not the member has opted in to email communications from this campaign and organisation |
+| `signature[join_partnership]` | For partnership campaigns, whether or not this member has opted into communication from the partnership |
+| `signature[utm_source]`   | UTM tracking field, optional |
+| `signature[utm_campaign]` | UTM tracking field, optional | 
+| `signature[utm_content]`  | UTM tracking field, optional | 
+| `signature[utm_medium]` | UTM tracking field, optional |
+| `signature[utm_term]`     | UTM tracking field, optional | 
+
+
+`POST /api/v1/petitions/no-taxes-on-tea/signatures/`
+
+> POST response body for create
 
 ```json
 {

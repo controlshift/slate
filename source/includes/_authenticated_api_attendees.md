@@ -1,6 +1,6 @@
 ## Attendees
 
-Attendees are member RSVPs to Event. All attendee actions are namespaced by URL underneath the events that the attendee was recorded against.
+Attendees are member RSVPs to an Event. All attendee actions are namespaced by URL underneath the events that the attendee was recorded against.
 
 ### Lookup
 
