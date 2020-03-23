@@ -3913,12 +3913,6 @@ The <strong>discussable.discussable_type</strong> field can take any of the foll
 <li>
 <em>Event</em>
 </li>
-<li>
-<em>LocalChapterEvent</em>
-</li>
-<li>
-<em>PetitionEvent</em>
-</li>
 </ul>
 </div>
 </div></p>
@@ -3953,6 +3947,8 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 <li>crm_sync_logs</li>
 <li>custom_links</li>
 <li>daisy_chain_rules</li>
+<li>daisy_chain_steps</li>
+<li>daisy_chains</li>
 <li>data_exports</li>
 <li>data_processing_consents</li>
 <li>drip_email_preferences</li>
@@ -4702,12 +4698,151 @@ was recorded against.</p>
 
 <h3 id="lookup">Lookup</h3>
 
-<p>Find a member by email address. Once you have obtained a member id you can use this identifier in other API calls.</p>
+<p>Find a specific signature by email address. Once you have obtained a signature id you can use this identifier in other API calls.</p>
 
 <p><code class="prettyprint">GET /api/v1/petitions/no-taxes-on-tea/signatures/lookup?email=foo@bar.com</code></p>
 
 <blockquote>
 <p>GET response body for Lookup</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"bucket"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country_without_fallback"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from_embed"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_signed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-01T10:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"deleted_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-01T10:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-01T10:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"unsubscribe_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo@bar.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"join_group"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bar"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123-456"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10010"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcDEFghi123456789jklMNO"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123.123.123.123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"utm_campaign"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"utm_content"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"utm_medium"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"utm_source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"utm_term"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"eu_data_processing_consent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"consent_content_version"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data_processing_consent_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"explicit"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"radio_sure"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"member"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">111222333</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-01T10:00:00Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"petition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://your-organisation.controlshiftlabs.com/petitions/no-taxes-on-tea"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no-taxes-on-tea"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="create">Create</h3>
+
+<p>Creates a new signature for the specified petition. This API endpoint can be used to record externally collected signatures for
+a particular petition within your instance of the ControlShift platform.</p>
+
+<p>All of the same post-signature actions that the platform usually supports including webhooks, CRM syncs, and other integrations
+will still be triggered, in the same way they are for normal signatures.</p>
+
+<p>For organisations that require email confirmation, a confirmation email will be sent to the action taker.</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Explanation</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">signature[first_name]</code></td>
+<td>The first name of the member who took action</td>
+</tr>
+<tr>
+<td><code class="prettyprint">signature[last_name]</code></td>
+<td>The last name of the member who took action</td>
+</tr>
+<tr>
+<td><code class="prettyprint">signature[email]</code></td>
+<td>The email address of the member who took action</td>
+</tr>
+<tr>
+<td><code class="prettyprint">signature[postcode]</code></td>
+<td>The postal or zip code of the member. Depending on your platform settings this may be a required field. Depending on your configuration, this may be validated for your country.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">signature[phone_number]</code></td>
+<td>The phone number of the member who took action. Depending on your platform settings this may be a required field.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">signature[locale]</code></td>
+<td>The language and localization setting of the member who has taken action. This is specified as an <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO_639-1</a> two-character language code combined with an optional <a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes">ISO 3166</a> two character country code. For eg <code class="prettyprint">en-US</code> or <code class="prettyprint">en</code>.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">signature[country]</code></td>
+<td>The country specified as an <a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes">ISO 3166</a> two character country code. This may be optional or required depending on your platform configuration.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">signature[email_opt_in_type_id]</code></td>
+<td>The ControlShift email opt in type ID to use for this action. If this is not specified, fallbacks will be used, starting with any external opt in type that has been defined.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">signature[join_organisation]</code></td>
+<td>Whether or not the member has opted in to email communications from this campaign and organisation</td>
+</tr>
+<tr>
+<td><code class="prettyprint">signature[join_partnership]</code></td>
+<td>For partnership campaigns, whether or not this member has opted into communication from the partnership</td>
+</tr>
+<tr>
+<td><code class="prettyprint">signature[utm_source]</code></td>
+<td>UTM tracking field, optional</td>
+</tr>
+<tr>
+<td><code class="prettyprint">signature[utm_campaign]</code></td>
+<td>UTM tracking field, optional</td>
+</tr>
+<tr>
+<td><code class="prettyprint">signature[utm_content]</code></td>
+<td>UTM tracking field, optional</td>
+</tr>
+<tr>
+<td><code class="prettyprint">signature[utm_medium]</code></td>
+<td>UTM tracking field, optional</td>
+</tr>
+<tr>
+<td><code class="prettyprint">signature[utm_term]</code></td>
+<td>UTM tracking field, optional</td>
+</tr>
+</tbody></table>
+
+<p><code class="prettyprint">POST /api/v1/petitions/no-taxes-on-tea/signatures/</code></p>
+
+<h4 id="post-body">POST body</h4>
+
+<p><code class="prettyprint">signature[first_name]=Ada&amp;signature[last_name]=Lovelave&amp;signature[email]=ada@lovelace.com&amp;signature[postcode]=12345</code></p>
+
+<blockquote>
+<p>POST response body for create</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -5028,7 +5163,7 @@ By default the first page is returned.</p>
 
           <h2 id="attendees">Attendees</h2>
 
-<p>Attendees are member RSVPs to Event. All attendee actions are namespaced by URL underneath the events that the attendee was recorded against.</p>
+<p>Attendees are member RSVPs to an Event. All attendee actions are namespaced by URL underneath the events that the attendee was recorded against.</p>
 
 <h3 id="lookup">Lookup</h3>
 
