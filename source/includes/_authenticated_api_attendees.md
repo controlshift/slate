@@ -25,7 +25,7 @@ Find an attendee by email address. Once you have obtained the attendee's id you 
     "confirmed_at": null,
     "confirmed_reason": null,
     "first_name": "Foo",
-    "join_group": true,
+    "join_partnership": true,
     "join_organisation": true,
     "last_name": "Bar",
     "phone_number": "123-456",
