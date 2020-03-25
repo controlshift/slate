@@ -94,7 +94,7 @@ View and edit a working example on codepen.io.  Note: codepen.io is _whitelisted
 
 <div class="js-codepen-data hidden" data-title="ControlShift Labs: Logged in User Example">
   <div class="codepen-html">
-    <h1>Logged in User</h1>
+    <strong>Logged in User</strong>
     <p class="js-not-logged-in hidden">The user is not logged in.</p>
     <ul class="js-logged-in hidden">
       <li><strong>First Name:</strong> <span id="first_name"></span></li>
@@ -139,7 +139,7 @@ View and edit a working example on codepen.io.  Note: codepen.io is _whitelisted
           $('.js-not-logged-in').removeClass('hidden');
         }else if(data.status == 'error'){
           // Show known error messages
-          $('body').append('<h2>Errors</h2><ul>')
+          $('body').append('<strong>Errors</strong><ul>')
           $.each(data.errors, function(index, error){
             $('body').append('<li><strong>'+error.field+'</strong> '+error.messages.join('; ')+'</li>')
           });
@@ -148,7 +148,7 @@ View and edit a working example on codepen.io.  Note: codepen.io is _whitelisted
       });
     })
     .error(function(data){
-      $('body').append('<h2>Errors</h2><p>Unknown Error</p>');
+      $('body').append('<strong>Errors</strong><p>Unknown Error</p>');
     });
   </pre>
 </div>

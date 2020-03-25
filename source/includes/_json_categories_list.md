@@ -51,7 +51,7 @@ View and edit a working example on codepen.io:
 
 <div class="js-codepen-data hidden" data-title="ControlShift Labs: Categories List Example">
   <div class="codepen-html">
-    <h1>Categories List</h1>
+    <strong>Categories List</strong>
     <div id="categories">
     </div>
   </div>
@@ -64,7 +64,7 @@ View and edit a working example on codepen.io:
       .done(function(data) {
         var $placeholder = $('#categories');
         $.each(data, function(index, category){
-          output = '<h2><a href="'+category.url+'">'+category.category_name+'</a></h2>';
+          output = '<strong><a href="'+category.url+'">'+category.category_name+'</a></strong>';
           output += '<ul>'
           output += '<li><strong>Slug:</strong> '+category.slug+'</li>';
           output += '<li><strong>Signatures:</strong>'+category.signature_count+'</li>';

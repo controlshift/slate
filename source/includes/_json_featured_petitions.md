@@ -166,7 +166,7 @@ View and edit a working example on codepen.io:
 
 <div class="js-codepen-data hidden" data-title="ControlShift Labs: Featured Petitions Example">
   <div class="codepen-html">
-    <h1>Featured Petitions</h1>
+    <strong>Featured Petitions</strong>
     <ul id="featured-petitions">
     </ul>
   </div>
@@ -180,8 +180,8 @@ View and edit a working example on codepen.io:
         var $placeholder = $('#featured-petitions');
         $.each(resp.data, function(index, petition){
           output = '<li>'
-          output += '<h2><a href="'+petition.url+'">'+petition.title+'</a></h2>';
-          output += '<h3>'+petition.signature_count+' signatures out of '+petition.goal+' needed </h3>';
+          output += '<strong><a href="'+petition.url+'">'+petition.title+'</a></strong>';
+          output += '<p>'+petition.signature_count+' signatures out of '+petition.goal+' needed </p>';
           output += '<p>'+petition.why+'</p>';
           output += '<p><a href="'+petition.url+'">Learn More</a></p>';
           output += '</li>';

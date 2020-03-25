@@ -74,7 +74,7 @@ View and edit a working example on codepen.io:
   data-js_external="https://maps.googleapis.com/maps/api/js?key=AIzaSyAY2t1MpsrZH3aH6wJqAiq4vAQUscMmjY0&libraries=places;https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
   data-title="ControlShift Labs: Search Petitions in an Effort Example">
   <div class="codepen-html">
-    <h1>Find the closest petitions to you</h1>
+    <strong>Find the closest petitions to you</strong>
     <form>
       <input type="text" class="form-control" id="effort-lookup-input" placeholder="Enter your city or postal code">
       <input type="submit" value="Search">
@@ -84,8 +84,8 @@ View and edit a working example on codepen.io:
   </div>
   <pre class="codepen-js">
     function buildPetition(target, description){
-      output = '<h2><em>'+description+' Petition</em>: '+target.name+'</h2>';
-      output += '<h3>'+target.location+'</h3> <ul>';
+      output = '<strong><em>'+description+' Petition</em>: '+target.name+'</strong>';
+      output += '<p>'+target.location+'</p> <ul>';
       output += '<li><strong>Title:</strong> '+target.petition.title+'</li>';
       output += '<li><strong>Who:</strong> '+target.petition.who+'</li>';
       output += '<li><strong>Goal:</strong> '+target.petition.goal+'</li>';
@@ -107,10 +107,10 @@ View and edit a working example on codepen.io:
         $placeholder = $('#petitions');
         if (data.code != undefined) {
           if ((data.code == 'no_nearby_targets') || (data.code == 'no_nearby_petitions')){
-            $placeholder.html('<h2>No Petitions Found</h2>');
+            $placeholder.html('<strong>No Petitions Found</strong>');
             return;
           } else if (data.code == 'location_required') {
-            $placeholder.html('<h2>Location required</h2>');
+            $placeholder.html('<strong>Location required</strong>');
             return;
           }
         }
