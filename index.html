@@ -1726,7 +1726,7 @@ which table header row is returned.</p>
 <blockquote>
 <p>Response format:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>id,petition_id,email,first_name,last_name,phone_number,postcode,created_at,join_organisation,deleted_at,unsubscribe_at,external_constituent_id,member_id,additional_fields,cached_organisation_slug,source,join_group,external_id,new_member,external_action_id,locale,obfuscated_bsd_cons_id,bucket,country,updated_at,user_ip,confirmation_token,confirmed_at,confirmation_sent_at,last_signed_at,join_list_suppressed,old_daisy_chain_used,bsd_ab_test_cons_group_id,from_embed,user_agent,confirmed_reason,synced_to_crm_at,daisy_chain_experiment_slug,eu_data_processing_consent,from_one_click,consent_content_version_id,daisy_chain_id_used,email_opt_in_type_id,facebook_id,utm_params,postcode_id,referring_share_click_id
+<pre class="highlight plaintext"><code>id,petition_id,email,first_name,last_name,phone_number,postcode,created_at,join_organisation,deleted_at,unsubscribe_at,external_constituent_id,member_id,additional_fields,cached_organisation_slug,source,join_partnership,external_id,new_member,external_action_id,locale,obfuscated_bsd_cons_id,bucket,country,updated_at,user_ip,confirmation_token,confirmed_at,confirmation_sent_at,last_signed_at,join_list_suppressed,old_daisy_chain_used,bsd_ab_test_cons_group_id,from_embed,user_agent,confirmed_reason,synced_to_crm_at,daisy_chain_experiment_slug,eu_data_processing_consent,from_one_click,consent_content_version_id,daisy_chain_id_used,email_opt_in_type_id,facebook_id,utm_params,postcode_id,referring_share_click_id
 </code></pre>
 <h3 id="http-request">HTTP Request</h3>
 
@@ -2135,7 +2135,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &l
     </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="s2">"attending_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attending"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"join_group"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -2189,7 +2189,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &l
     </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="s2">"attending_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attending"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"join_group"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -2243,7 +2243,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &l
     </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="s2">"attending_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attending"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"join_group"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -2297,7 +2297,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &l
     </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="s2">"attending_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attending"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"join_group"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -3417,7 +3417,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &l
     </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="s2">"country_without_fallback"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="s2">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"join_group"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facebook"</span><span class="p">,</span><span class="w">
@@ -3506,7 +3506,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &l
     </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="s2">"country_without_fallback"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="s2">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"join_group"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facebook"</span><span class="p">,</span><span class="w">
@@ -3595,7 +3595,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &l
     </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="s2">"country_without_fallback"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="s2">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"join_group"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facebook"</span><span class="p">,</span><span class="w">
@@ -3684,7 +3684,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &l
     </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="s2">"country_without_fallback"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="s2">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"join_group"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facebook"</span><span class="p">,</span><span class="w">
@@ -4723,7 +4723,7 @@ was recorded against.</p>
     </span><span class="s2">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"join_group"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bar"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123-456"</span><span class="p">,</span><span class="w">
@@ -4862,7 +4862,7 @@ will still be triggered, in the same way they are for normal signatures.</p>
     </span><span class="s2">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"join_group"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bar"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123-456"</span><span class="p">,</span><span class="w">
@@ -5188,7 +5188,7 @@ By default the first page is returned.</p>
     </span><span class="s2">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"join_group"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bar"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123-456"</span><span class="p">,</span><span class="w">
