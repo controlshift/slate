@@ -138,14 +138,14 @@ Retrieves a paginated list of a partnership's petitions.
   "events": [
     {
       "id": 123,
-      "slug": "no-taxes-on-tea",
-      "title": "No Taxes on Tea",
+      "slug": "house-party",
+      "title": "House Party for Justice",
       ...
     },
     {
       "id": 124,
-      "slug": "stop-burning-coal-1",
-      "title": "Stop Burning Coal",
+      "slug": "big-rally",
+      "title": "A big rally",
       ...
     },
     ...
