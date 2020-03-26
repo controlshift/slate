@@ -43,7 +43,7 @@ $(document).ready(function(){
   "resized_image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741",
   "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741",
   "creator_name": "Kristyn Arrighi",
-  "signature_count": 223
+  "signature_count": 223,
   "location": {
     "latitude":"36.1946827",
     "longitude":"-78.8087571",
@@ -59,7 +59,7 @@ $(document).ready(function(){
     "country_code":"US",
     "country_name":"United States",
     "static_map_url":"https://d8s293fyljwh4.cloudfront.net/locations/static_maps/27575/27575-static-map.png?1532035340"
-  },
+  }
 }
 ```
 
@@ -81,17 +81,17 @@ slug | null | string - required - The petition's unique identification slug. If 
 
 View and edit a working example on codepen.io:
 
+<div>
 <div class="js-codepen-data hidden" data-title="ControlShift Labs: Single Petition Example">
   <div class="codepen-html">
     <div id="js-content-wrapper" class="hidden">
-      <h1 id="title"></h1>
-      <h3><span id="signature_count"></span> signatures</h3>
+      <span><span id="signature_count"></span> signatures</span>
       <p>Created by <span id="creator_name"></span></p>
-      <h2>What</h2>
+      What
       <p id="what"></p>
-      <h2>Who</h2>
+      Who
       <p id="who"></p>
-      <h2>Why</h2>
+      Why
       <p id="why"></p>
     </div>
   </div>
@@ -119,4 +119,4 @@ View and edit a working example on codepen.io:
   <input type="hidden" name="data" class="js-data" value="">
   <input type="submit" value="Launch Example on CodePen">
 </form>
-
+</div>

@@ -12,9 +12,9 @@
   if(!('ontouchstart' in window)) return;
 
   var lastClick = {},
-      isThresholdReached, touchstart, touchmove, touchend,
-      click, closest;
-  
+    isThresholdReached, touchstart, touchmove, touchend,
+    click, closest;
+
   /**
    * isThresholdReached
    *
@@ -63,40 +63,40 @@
     if(this.threshold || isThresholdReached(this.startXY, [e.changedTouches[0].clientX, e.changedTouches[0].clientY])) {
       return;
     }
-    
+
     /**
      * Create and fire a click event on the target element
      * https://developer.mozilla.org/en/DOM/event.initMouseEvent
      */
     var touch = e.changedTouches[0],
-        evt = document.createEvent('MouseEvents');
+      evt = document.createEvent('MouseEvents');
     evt.initMouseEvent('click', true, true, window, 0, touch.screenX, touch.screenY, touch.clientX, touch.clientY, false, false, false, false, 0, null);
     evt.simulated = true;   // distinguish from a normal (nonsimulated) click
     e.target.dispatchEvent(evt);
   };
-  
+
   /**
    * click
    *
    * Because we've already fired a click event in touchend,
    * we need to listed for all native click events here
    * and suppress them as necessary.
-   */  
+   */
   click = function(e) {
     /**
      * Prevent ghost clicks by only allowing clicks we created
      * in the click event we fired (look for e.simulated)
      */
     var time = Date.now(),
-        timeDiff = time - lastClick.time,
-        x = e.clientX,
-        y = e.clientY,
-        xyDiff = [Math.abs(lastClick.x - x), Math.abs(lastClick.y - y)],
-        target = closest(e.target, 'A') || e.target,  // needed for standalone apps
-        nodeName = target.nodeName,
-        isLink = nodeName === 'A',
-        standAlone = window.navigator.standalone && isLink && e.target.getAttribute("href");
-    
+      timeDiff = time - lastClick.time,
+      x = e.clientX,
+      y = e.clientY,
+      xyDiff = [Math.abs(lastClick.x - x), Math.abs(lastClick.y - y)],
+      target = closest(e.target, 'A') || e.target,  // needed for standalone apps
+      nodeName = target.nodeName,
+      isLink = nodeName === 'A',
+      standAlone = window.navigator.standalone && isLink && e.target.getAttribute("href");
+
     lastClick.time = time;
     lastClick.x = x;
     lastClick.y = y;
@@ -113,7 +113,7 @@
       if(!standAlone) return false;
     }
 
-    /** 
+    /**
      * Special logic for standalone web apps
      * See http://stackoverflow.com/questions/2898740/iphone-safari-web-app-opens-links-in-new-window
      */
@@ -149,13 +149,13 @@
       if(!curNode || curNode.nodeName === tagName) { return curNode; } // found
       curNode = curNode.parentNode;     // not found, so keep going up
     }
-    
+
     return null;  // not found
   };
 
   /**
    * Add all delegated event listeners
-   * 
+   *
    * All the events we care about bubble up to document,
    * so we can take advantage of event delegation.
    *
@@ -165,5 +165,5 @@
   document.addEventListener('touchmove', touchmove, false);
   document.addEventListener('touchend', touchend, false);
   document.addEventListener('click', click, true);  // TODO: why does this use capture?
-  
+
 })();

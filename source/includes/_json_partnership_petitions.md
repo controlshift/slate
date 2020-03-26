@@ -163,7 +163,7 @@ View and edit a working example on codepen.io:
 
 <div class="js-codepen-data hidden"  data-title="ControlShift Labs: List of Petitions in a Partnership Example">
   <div class="codepen-html">
-    <h1>Petitions in partnership "<span id="name"></span>"</h1>
+    <strong>Petitions in partnership "<span id="name"></span>"</strong>
     <div id="petitions">
     </div>
   </div>
@@ -180,7 +180,7 @@ View and edit a working example on codepen.io:
         // Populate petitions data
         var $placeholder = $('#petitions');
         $.each(data.results, function(index, petition){
-          output = '<h2><a href="'+petition.url+'">'+petition.title+'</a></h2>';
+          output = '<strong><a href="'+petition.url+'">'+petition.title+'</a></strong>';
           output += '<ul>';
           output += '<li><strong>Image:</strong> '+petition.image_url+'</li>';
           output += '<li><strong>Who:</strong> '+petition.who+'</li>';
