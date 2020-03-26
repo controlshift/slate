@@ -1,6 +1,6 @@
 ## Partnerships
 
-Partnerships are other organisations you collaborate with 
+Partnerships are other organisations you collaborate with using the platform.
 
 ### List
 
@@ -83,6 +83,86 @@ Get a paginated list of all partnerships.
 Find information about a partnership by URL slug.
 
 `GET /api/v1/partnerships/fight-fascism`
+
+### List Petitions
+
+> GET response Body
+
+```json
+{
+  "partnership": {
+    "title": "Fight Fascism",
+    "slug": "fight-fascism"
+  },
+  "petitions": [
+    {
+      "id": 123,
+      "slug": "no-taxes-on-tea",
+      "title": "No Taxes on Tea",
+      ...
+    },
+    {
+      "id": 124,
+      "slug": "stop-burning-coal-1",
+      "title": "Stop Burning Coal",
+      ...
+    },
+    ...
+  ],
+
+  "meta": {
+    "current_page": 1,
+    "total_pages": 12,
+    "previous_page": null,
+    "next_page": 2
+  }
+}
+```
+
+Retrieves a paginated list of a partnership's petitions.
+
+`GET /api/v1/partnerships/fight-fascism/petitions`
+
+
+
+### List Events
+
+> GET response Body
+
+```json
+{
+  "partnership": {
+    "title": "Fight Fascism",
+    "slug": "fight-fascism"
+  },
+  "events": [
+    {
+      "id": 123,
+      "slug": "house-party",
+      "title": "House Party for Justice",
+      ...
+    },
+    {
+      "id": 124,
+      "slug": "big-rally",
+      "title": "A big rally",
+      ...
+    },
+    ...
+  ],
+
+  "meta": {
+    "current_page": 1,
+    "total_pages": 12,
+    "previous_page": null,
+    "next_page": 2
+  }
+}
+```
+
+Retrieves a paginated list of a partnership's events.
+
+`GET /api/v1/partnerships/fight-fascism/events`
 
 
 
