@@ -37,4 +37,4 @@ in your ETL processes to automate the setup of tables in your data warehouse.
 
 ### HTTP Request
 
-`GET https://demo.controlshiftlabs.com/bulk_data/schema.json`
+`GET https://demo.controlshiftlabs.com/api/bulk_data/schema.json`
