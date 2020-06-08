@@ -88,11 +88,13 @@ For organisations that require email confirmation, a confirmation email will be 
 | `signature[email_opt_in_type_id]` | The ControlShift email opt in type ID to use for this action. If this is not specified, fallbacks will be used, starting with any external opt in type that has been defined. |
 | `signature[join_organisation]` | Whether or not the member has opted in to email communications from this campaign and organisation |
 | `signature[join_partnership]` | For partnership campaigns, whether or not this member has opted into communication from the partnership |
+| `signature[eu_data_processing_consent]`      | Whether or not member has given consent for GDPR data processing. Must be true if the organisation has `use_eu_data_processing_consent = true` |
+| `signature[consent_content_version_id]`      | The ControlShift ID for the data processing consent content version the member has consented to. Must be supplied if organisation has `use_eu_data_processing_consent = true`|
 | `signature[utm_source]`   | UTM tracking field, optional |
-| `signature[utm_campaign]` | UTM tracking field, optional | 
-| `signature[utm_content]`  | UTM tracking field, optional | 
+| `signature[utm_campaign]` | UTM tracking field, optional |
+| `signature[utm_content]`  | UTM tracking field, optional |
 | `signature[utm_medium]` | UTM tracking field, optional |
-| `signature[utm_term]`     | UTM tracking field, optional | 
+| `signature[utm_term]`     | UTM tracking field, optional |
 
 
 `POST /api/v1/petitions/no-taxes-on-tea/signatures/`
