@@ -4891,8 +4891,8 @@ will still be triggered, in the same way they are for normal signatures.</p>
 <td>The country specified as an <a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes">ISO 3166</a> two character country code. This may be optional or required depending on your platform configuration.</td>
 </tr>
 <tr>
-<td><code>signature[email_opt_in_type_id]</code></td>
-<td>The ControlShift email opt in type ID to use for this action. If this is not specified, fallbacks will be used, starting with any external opt in type that has been defined.</td>
+<td><code>signature[email_opt_in_type_external_id]</code></td>
+<td>The External ID for the ControlShift email opt in type to use for this action. The email opt in type must have &quot;external&quot; context. You can list available email opt in types with <a href="https://developers.controlshiftlabs.com/#email-opt-in-types">this endpoint</a></td>
 </tr>
 <tr>
 <td><code>signature[join_organisation]</code></td>
@@ -4901,6 +4901,14 @@ will still be triggered, in the same way they are for normal signatures.</p>
 <tr>
 <td><code>signature[join_partnership]</code></td>
 <td>For partnership campaigns, whether or not this member has opted into communication from the partnership</td>
+</tr>
+<tr>
+<td><code>signature[eu_data_processing_consent]</code></td>
+<td>Whether or not member has given consent for GDPR data processing. This field must be true if the organisation requires data processing consent for user actions with <code>use_eu_data_processing_consent = true</code></td>
+</tr>
+<tr>
+<td><code>signature[consent_content_version_external_id]</code></td>
+<td>The External ID for the data processing consent content version the member has consented to on this signature. The consent content version tracks what the privacy policy, terms of service, and checkbox label were at the time of this signature. You can list available consent content versions via <a href="https://developers.controlshiftlabs.com/#consent-content-versions">this endpoint</a>. This field is required if the organisation requires data processing consent for user actions <code>use_eu_data_processing_consent = true</code></td>
 </tr>
 <tr>
 <td><code>signature[utm_source]</code></td>
@@ -9957,8 +9965,8 @@ will still be triggered, in the same way they are for normal signatures.</p>
 <td>The country specified as an <a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes">ISO 3166</a> two character country code. This may be optional or required depending on your platform configuration.</td>
 </tr>
 <tr>
-<td><code>signature[email_opt_in_type_id]</code></td>
-<td>The ControlShift email opt in type ID to use for this action. If this is not specified, fallbacks will be used, starting with any external opt in type that has been defined.</td>
+<td><code>signature[email_opt_in_type_external_id]</code></td>
+<td>The External ID for the ControlShift email opt in type to use for this action. The email opt in type must have &quot;external&quot; context. You can list available email opt in types with <a href="https://developers.controlshiftlabs.com/#email-opt-in-types">this endpoint</a></td>
 </tr>
 <tr>
 <td><code>signature[join_organisation]</code></td>
@@ -9967,6 +9975,14 @@ will still be triggered, in the same way they are for normal signatures.</p>
 <tr>
 <td><code>signature[join_partnership]</code></td>
 <td>For partnership campaigns, whether or not this member has opted into communication from the partnership</td>
+</tr>
+<tr>
+<td><code>signature[eu_data_processing_consent]</code></td>
+<td>Whether or not member has given consent for GDPR data processing. This field must be true if the organisation requires data processing consent for user actions with <code>use_eu_data_processing_consent = true</code></td>
+</tr>
+<tr>
+<td><code>signature[consent_content_version_external_id]</code></td>
+<td>The External ID for the data processing consent content version the member has consented to on this signature. The consent content version tracks what the privacy policy, terms of service, and checkbox label were at the time of this signature. You can list available consent content versions via <a href="https://developers.controlshiftlabs.com/#consent-content-versions">this endpoint</a>. This field is required if the organisation requires data processing consent for user actions <code>use_eu_data_processing_consent = true</code></td>
 </tr>
 <tr>
 <td><code>signature[utm_source]</code></td>
