@@ -15,7 +15,7 @@ id,petition_id,email,first_name,last_name,phone_number,postcode,created_at,join_
 
 ### HTTP Request
 
-`GET https://demo.controlshiftlabs.com/bulk_data/schema/columns?table=signatures`
+`GET https://demo.controlshiftlabs.com/api/bulk_data/schema/columns?table=signatures`
 
 ### Query Parameters
 
