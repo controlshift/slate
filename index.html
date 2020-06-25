@@ -271,7 +271,16 @@
                 <a href="#retries" class="toc-h2 toc-link" data-title="Retries">Retries</a>
               </li>
               <li>
+                <a href="#security" class="toc-h2 toc-link" data-title="Security">Security</a>
+              </li>
+              <li>
+                <a href="#webhook-hmac-authenticity-signing" class="toc-h2 toc-link" data-title="Webhook HMAC Authenticity Signing">Webhook HMAC Authenticity Signing</a>
+              </li>
+              <li>
                 <a href="#ip-addresses" class="toc-h2 toc-link" data-title="IP Addresses">IP Addresses</a>
+              </li>
+              <li>
+                <a href="#direct-aws-access" class="toc-h2 toc-link" data-title="Direct AWS Access">Direct AWS Access</a>
               </li>
               <li>
                 <a href="#webhook-types-summary" class="toc-h2 toc-link" data-title="Webhook types summary">Webhook types summary</a>
@@ -2026,22 +2035,60 @@ which table header row is returned.</p>
 </tr>
 </tbody></table>
 <h1 id='webhook-endpoints'>Webhook Endpoints</h1>
-<p>Webhooks can be used by software engineers to integrate ControlShift with third-party systems. They allow engineers to build software that is triggered by events that take place within ControlShift. ControlShift would execute HTTP calls when certain event happen (e.g. a petition is launched; a category is changed).</p>
+<p>Webhooks can be used by software engineers to integrate ControlShift with third-party systems. They allow engineers to build software that is triggered by events that take place within ControlShift. ControlShift executes HTTPS callbacks when certain events happen (e.g. a petition is launched; a category is changed).</p>
 
-<p>To begin using these new webhooks, go to the admin homepage and click &quot;Settings&quot; under &quot;Manage.&quot; Then choose the &quot;CRM Integration &amp; Webhooks&quot; tab and click &quot;Configure Webhook Endpoints.&quot; To begin sending data, you&#39;ll need to add a &quot;New Webhook Endpoint.&quot; Each Webhook Endpoint URL receives a full firehose of all hooks that occur within ControlShift.</p>
+<p>To begin using webhooks, visit the admin for your ControlShift Platform and choose Settings &gt; Integrations &gt; Webhooks.  To begin sending data, you&#39;ll need to add a &quot;New Webhook Endpoint.&quot; Each Webhook Endpoint URL you specify will receive a stream of all the hooks that occur within your ControlShift account.</p>
 
-<p>If you need additional information about webhooks or how to use them, please send us a support email <a href="mailto:support@controlshiftlabs.com">support@controlshiftlabs.com</a>. We&#39;d also love stories about how customers are using webhooks.</p>
+<p>If you need additional information about webhooks or how to use them, please send us a support email <a href="mailto:support@controlshiftlabs.com">support@controlshiftlabs.com</a>.</p>
 <h3 id='retries'>Retries</h3>
 <p>For webhook notifications successfully processed the response should have an HTTP 2XX status code. Responses returning a different status code will be marked as failed and automatically retried up to 9 times with an exponential backoff (e.g.: after 15s, 30s, 90s, etc.).</p>
 
 <p>If after 9 retries the notification cannot be delivered, the webhook endpoint will be automatically disabled and will need to be re-enabled from the admin page to start receiving webhook notifications again.</p>
+<h3 id='security'>Security</h3>
+<p>Securing access to your endpoints where webhooks are sent is important. We recommend taking a variety of steps.</p>
+
+<ul>
+<li>Using HTTPS with modern cypher suite.</li>
+<li>Restricting access by IP address</li>
+<li>Using basic HTTP authentication or an API token/secret in the URL.</li>
+<li>Verifying the signature hash of the message payload we send to authenticate ControlShift as the source of the webhook.</li>
+</ul>
+<h3 id='webhook-hmac-authenticity-signing'>Webhook HMAC Authenticity Signing</h3>
+<p>We send a special HTTP header along with webhook deliveries that allows customers to verify that the body of the
+webhook being delivered originated from within your ControlShift account. We use HMAC and SHA 256 along with a
+secret generated for each endpoint</p>
+
+<p>You can retrieve the secret or generate a new one via Settings &gt; Integrations &gt; Webhooks within your ControlShift platform admin.</p>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>x-controlshift-webhook-signature</code></td>
+<td>sha256:abc123hjkl6789</td>
+</tr>
+</tbody></table>
+
+<p>The value is the prefix <code>sha256:</code> specifying the algorithm in use combined with the <a href="https://en.wikipedia.org/wiki/HMAC">HMAC digest</a> of the webhook HTTP
+request body signed with the signing secret specified for your endpoint in the ControlShift admin tools.</p>
+
+<p>To verify the webhooks you receive are authentic, users should calculate the same digest value and compare it to the digest
+passed in the <code>x-controlshift-webhook-signature</code> header. These values should always be the same.</p>
 <h3 id='ip-addresses'>IP Addresses</h3>
-<p>Below you can find a list of the IP addresses that webhook deliveries will originate from, in case you want to whitelist them:</p>
+<p>Webhooks will be delivered from a stable set of the IP addresses that will not change. It is a good idea to safe-list these addresses and block webhooks originating from unknown IP addresses.</p>
 
 <ul>
 <li>54.144.65.46</li>
 <li>54.208.56.53</li>
 </ul>
+<h3 id='direct-aws-access'>Direct AWS Access</h3>
+<p>The Bulk Data API notifies customers about new data files via webhook. In addition to allowing access via signed HTTPS
+request, the Bulk Data API allows direct access to these files from within the same region where your ControlShift account
+resides (usually us-east-1). Direct AWS Access allows for high-performance access to files on AWS S3 without leaving the AWS
+Cloud for customers with a point of presence in the same AWS Region. Contact support if you would like to make use of this advanced feature.</p>
 <h2 id='webhook-types-summary'>Webhook types summary</h2>
 <p>You can configure ControlShift Labs Webhooks to return the following event types:</p>
 
@@ -7092,22 +7139,60 @@ which table header row is returned.</p>
 </tbody></table>
 
       <h1 id='webhook-endpoints'>Webhook Endpoints</h1>
-<p>Webhooks can be used by software engineers to integrate ControlShift with third-party systems. They allow engineers to build software that is triggered by events that take place within ControlShift. ControlShift would execute HTTP calls when certain event happen (e.g. a petition is launched; a category is changed).</p>
+<p>Webhooks can be used by software engineers to integrate ControlShift with third-party systems. They allow engineers to build software that is triggered by events that take place within ControlShift. ControlShift executes HTTPS callbacks when certain events happen (e.g. a petition is launched; a category is changed).</p>
 
-<p>To begin using these new webhooks, go to the admin homepage and click &quot;Settings&quot; under &quot;Manage.&quot; Then choose the &quot;CRM Integration &amp; Webhooks&quot; tab and click &quot;Configure Webhook Endpoints.&quot; To begin sending data, you&#39;ll need to add a &quot;New Webhook Endpoint.&quot; Each Webhook Endpoint URL receives a full firehose of all hooks that occur within ControlShift.</p>
+<p>To begin using webhooks, visit the admin for your ControlShift Platform and choose Settings &gt; Integrations &gt; Webhooks.  To begin sending data, you&#39;ll need to add a &quot;New Webhook Endpoint.&quot; Each Webhook Endpoint URL you specify will receive a stream of all the hooks that occur within your ControlShift account.</p>
 
-<p>If you need additional information about webhooks or how to use them, please send us a support email <a href="mailto:support@controlshiftlabs.com">support@controlshiftlabs.com</a>. We&#39;d also love stories about how customers are using webhooks.</p>
+<p>If you need additional information about webhooks or how to use them, please send us a support email <a href="mailto:support@controlshiftlabs.com">support@controlshiftlabs.com</a>.</p>
 <h3 id='retries'>Retries</h3>
 <p>For webhook notifications successfully processed the response should have an HTTP 2XX status code. Responses returning a different status code will be marked as failed and automatically retried up to 9 times with an exponential backoff (e.g.: after 15s, 30s, 90s, etc.).</p>
 
 <p>If after 9 retries the notification cannot be delivered, the webhook endpoint will be automatically disabled and will need to be re-enabled from the admin page to start receiving webhook notifications again.</p>
+<h3 id='security'>Security</h3>
+<p>Securing access to your endpoints where webhooks are sent is important. We recommend taking a variety of steps.</p>
+
+<ul>
+<li>Using HTTPS with modern cypher suite.</li>
+<li>Restricting access by IP address</li>
+<li>Using basic HTTP authentication or an API token/secret in the URL.</li>
+<li>Verifying the signature hash of the message payload we send to authenticate ControlShift as the source of the webhook.</li>
+</ul>
+<h3 id='webhook-hmac-authenticity-signing'>Webhook HMAC Authenticity Signing</h3>
+<p>We send a special HTTP header along with webhook deliveries that allows customers to verify that the body of the
+webhook being delivered originated from within your ControlShift account. We use HMAC and SHA 256 along with a
+secret generated for each endpoint</p>
+
+<p>You can retrieve the secret or generate a new one via Settings &gt; Integrations &gt; Webhooks within your ControlShift platform admin.</p>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>x-controlshift-webhook-signature</code></td>
+<td>sha256:abc123hjkl6789</td>
+</tr>
+</tbody></table>
+
+<p>The value is the prefix <code>sha256:</code> specifying the algorithm in use combined with the <a href="https://en.wikipedia.org/wiki/HMAC">HMAC digest</a> of the webhook HTTP
+request body signed with the signing secret specified for your endpoint in the ControlShift admin tools.</p>
+
+<p>To verify the webhooks you receive are authentic, users should calculate the same digest value and compare it to the digest
+passed in the <code>x-controlshift-webhook-signature</code> header. These values should always be the same.</p>
 <h3 id='ip-addresses'>IP Addresses</h3>
-<p>Below you can find a list of the IP addresses that webhook deliveries will originate from, in case you want to whitelist them:</p>
+<p>Webhooks will be delivered from a stable set of the IP addresses that will not change. It is a good idea to safe-list these addresses and block webhooks originating from unknown IP addresses.</p>
 
 <ul>
 <li>54.144.65.46</li>
 <li>54.208.56.53</li>
 </ul>
+<h3 id='direct-aws-access'>Direct AWS Access</h3>
+<p>The Bulk Data API notifies customers about new data files via webhook. In addition to allowing access via signed HTTPS
+request, the Bulk Data API allows direct access to these files from within the same region where your ControlShift account
+resides (usually us-east-1). Direct AWS Access allows for high-performance access to files on AWS S3 without leaving the AWS
+Cloud for customers with a point of presence in the same AWS Region. Contact support if you would like to make use of this advanced feature.</p>
 <h2 id='webhook-types-summary'>Webhook types summary</h2>
 <p>You can configure ControlShift Labs Webhooks to return the following event types:</p>
 
