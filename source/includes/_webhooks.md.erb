@@ -1,8 +1,8 @@
 # Webhook Endpoints
 
-Webhooks can be used by software engineers to integrate ControlShift with third-party systems. They allow engineers to build software that is triggered by events that take place within ControlShift. ControlShift executes HTTPS callbacks when certain event happen (e.g. a petition is launched; a category is changed).
+Webhooks can be used by software engineers to integrate ControlShift with third-party systems. They allow engineers to build software that is triggered by events that take place within ControlShift. ControlShift executes HTTPS callbacks when certain events happen (e.g. a petition is launched; a category is changed).
 
-To begin using webhooks, as an admin homepage and choose Settings > Integrations > Webhooks.  To begin sending data, you'll need to add a "New Webhook Endpoint." Each Webhook Endpoint URL you specify will receive a stream of all the hooks that occur within your ControlShift account.
+To begin using webhooks, visit the admin for your ControlShift Platform and choose Settings > Integrations > Webhooks.  To begin sending data, you'll need to add a "New Webhook Endpoint." Each Webhook Endpoint URL you specify will receive a stream of all the hooks that occur within your ControlShift account.
 
 If you need additional information about webhooks or how to use them, please send us a support email [support@controlshiftlabs.com](mailto:support@controlshiftlabs.com).
 
@@ -14,7 +14,7 @@ If after 9 retries the notification cannot be delivered, the webhook endpoint wi
 
 ### Security
 
-Securing access to your endpoints where webhooks are sent is delivered. We recommend taking a variety of steps.
+Securing access to your endpoints where webhooks are sent is important. We recommend taking a variety of steps.
 
 * Using HTTPS with modern cypher suite.
 * Restricting access by IP address
@@ -42,7 +42,7 @@ passed in the `x-controlshift-webhook-signature` header. These values should alw
 
 ### IP Addresses
 
-Webhooks will be delivered from a stable set of the IP addresses tied to your region that will not change. It is a good idea to safe-list these addresses and block webhooks originating from unknown IP addresses.
+Webhooks will be delivered from a stable set of the IP addresses that will not change. It is a good idea to safe-list these addresses and block webhooks originating from unknown IP addresses.
 
 * 54.144.65.46
 * 54.208.56.53
@@ -51,7 +51,7 @@ Webhooks will be delivered from a stable set of the IP addresses tied to your re
 
 The Bulk Data API notifies customers about new data files via webhook. In addition to allowing access via signed HTTPS
 request, the Bulk Data API allows direct access to these files from within the same region where your ControlShift account
-resides (usually US-East-1). Direct AWS Access allows for high-performance access to files on AWS S3 without leaving the AWS
+resides (usually us-east-1). Direct AWS Access allows for high-performance access to files on AWS S3 without leaving the AWS
 Cloud for customers with a point of presence in the same AWS Region. Contact support if you would like to make use of this advanced feature.
 
 ## Webhook types summary
