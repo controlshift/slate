@@ -10,6 +10,7 @@ Partnerships are other organisations you collaborate with using the platform.
 {
   "partnerships": [
     {
+      "id": 99,
       "slug": "fight-fascism",
       "title": "Fight Fascism",
       "description": "Fighting fascism one day at a time. With petitions.",
@@ -28,6 +29,7 @@ Partnerships are other organisations you collaborate with using the platform.
       }
     },
     {
+      "id": 107,
       "slug": "save-whales",
       "title": "Save the Whales",
       "description": "We're devoted to all policies that are good for whales.",
@@ -60,6 +62,7 @@ Get a paginated list of all partnerships.
 ```json
 {
   "partnership": {
+    "id": 99,
     "slug": "fight-fascism",
     "title": "Fight Fascism",
     "description": "Fighting fascism one day at a time. With petitions.",
