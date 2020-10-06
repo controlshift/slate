@@ -78,23 +78,23 @@ For organisations that require email confirmation, a confirmation email will be 
 
 | Field                     |   Explanation                                                              |
 | ------------------------- | ------------------------------------------------------------------------ |
-| `signature[first_name]`   | The first name of the member who took action                     |
-| `signature[last_name]`    | The last name of the member who took action                     |
-| `signature[email]`        | The email address of the member who took action                  |
+| `signature[first_name]`   | The first name of the member who took action, required.                     |
+| `signature[last_name]`    | The last name of the member who took action, required.                     |
+| `signature[email]`        | The email address of the member who took action, required.                  |
 | `signature[postcode]`     | The postal or zip code of the member. Depending on your platform settings this may be a required field. Depending on your configuration, this may be validated for your country. |
 | `signature[phone_number]` | The phone number of the member who took action. Depending on your platform settings this may be a required field. |
-| `signature[locale]`       | The language and localization setting of the member who has taken action. This is specified as an [ISO_639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) two-character language code combined with an optional [ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) two character country code. For eg `en-US` or `en`. |
+| `signature[locale]`       | The language and localization setting of the member who has taken action. This is specified as an [ISO_639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) two-character language code combined with an optional [ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) two character country code. For eg `en-US` or `en`. This is an optional field, if not provided will be set to `en` by default. |
 | `signature[country]`      | The country specified as an [ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) two character country code. This may be optional or required depending on your platform configuration. |
-| `signature[email_opt_in_type_external_id]` | The External ID for the ControlShift email opt in type to use for this action. The email opt in type must have "external" context. You can list available email opt in types with [this endpoint](https://developers.controlshiftlabs.com/#email-opt-in-types)|
-| `signature[join_organisation]` | Whether or not the member has opted in to email communications from this campaign and organisation |
-| `signature[join_partnership]` | For partnership campaigns, whether or not this member has opted into communication from the partnership |
-| `signature[eu_data_processing_consent]`      | Whether or not member has given consent for GDPR data processing. This field must be true if the organisation requires data processing consent for user actions with `use_eu_data_processing_consent = true` |
-| `signature[consent_content_version_external_id]`      | The External ID for the data processing consent content version the member has consented to on this signature. The consent content version tracks what the privacy policy, terms of service, and checkbox label were at the time of this signature. You can list available consent content versions via [this endpoint](https://developers.controlshiftlabs.com/#consent-content-versions). This field is required if the organisation requires data processing consent for user actions `use_eu_data_processing_consent = true`|
-| `signature[utm_source]`   | UTM tracking field, optional |
-| `signature[utm_campaign]` | UTM tracking field, optional |
-| `signature[utm_content]`  | UTM tracking field, optional |
-| `signature[utm_medium]` | UTM tracking field, optional |
-| `signature[utm_term]`     | UTM tracking field, optional |
+| `signature[email_opt_in_type_external_id]` | The External ID for the ControlShift email opt in type to use for this action. The email opt in type must have "external" context. You can list available email opt in types with [this endpoint](https://developers.controlshiftlabs.com/#email-opt-in-types). This is a required field. |
+| `signature[join_organisation]` | Whether or not the member has opted in to email communications from this campaign and organisation. This may be optional if you are using email confirmation for members actions. |
+| `signature[join_partnership]` | For partnership campaigns, whether or not this member has opted into communication from the partnership, optional. |
+| `signature[eu_data_processing_consent]`      | Whether or not member has given consent for GDPR data processing. This field must be true if the organisation requires data processing consent for user actions with `use_eu_data_processing_consent = true`. |
+| `signature[consent_content_version_external_id]`      | The External ID for the data processing consent content version the member has consented to on this signature. The consent content version tracks what the privacy policy, terms of service, and checkbox label were at the time of this signature. You can list available consent content versions via [this endpoint](https://developers.controlshiftlabs.com/#consent-content-versions). This field is required if the organisation requires data processing consent for user actions `use_eu_data_processing_consent = true`. |
+| `signature[utm_source]`   | UTM tracking field, optional. |
+| `signature[utm_campaign]` | UTM tracking field, optional. |
+| `signature[utm_content]`  | UTM tracking field, optional. |
+| `signature[utm_medium]` | UTM tracking field, optional. |
+| `signature[utm_term]`     | UTM tracking field, optional. |
 
 
 `POST /api/v1/petitions/no-taxes-on-tea/signatures/`
