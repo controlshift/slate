@@ -4845,7 +4845,32 @@ all associated signatures, attendee records, user accounts and other data held b
     </span><span class="s2">"signature_count_add_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='signatures'>Signatures</h2>
+</span></code></pre><h3 id='apply-label'>Apply Label</h3>
+<p>Applies an existing Label to a specific Petition.</p>
+
+<p><strong>Note:</strong> Currently it is not possible to create Labels via the API. The Label needs to exists to allow tagging a Petition with it.</p>
+
+<p>The request body must include a <code>name</code> attribute with the name of the label to be applied to the Petition.</p>
+
+<p><code>POST /api/v1/petitions/no-taxes-on-tea/labelings</code></p>
+
+<p>Response on success will not have a body, and status code will be <code>201 - Created</code></p>
+
+<blockquote>
+<p>POST request body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We Love Tea!"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='remove-label'>Remove Label</h3>
+<p>Removes a Label from the Petition.</p>
+
+<p>The name of the Label must be included in the URL and be correctly percent encoded as per RFC 3986.</p>
+
+<p>Response on success will not have a body, and status code will be <code>200 - Ok</code></p>
+
+<p><code>DELETE /api/v1/petitions/no-taxes-on-tea/labelings/We%20Love%20Tea%21</code></p>
+<h2 id='signatures'>Signatures</h2>
 <p>Signatures are actions that people have taken on Petitions. All signature actions are namespaced by URL underneath the petitions that the signature
 was recorded against.</p>
 <h3 id='lookup'>Lookup</h3>
