@@ -37,6 +37,20 @@ Events represent real-world or virtual meetings that members can RSVP to. RSVP r
         "country": "US",
         "created_at": "2017-11-16T22:38:29Z"
       },
+      "shifts": [
+        {
+          "id": "103",
+          "name": "Lunch",
+          "start_at": "2018-03-01T12:00:00Z",
+          "end_at": "2018-03-01T13:00:00Z"
+        },
+        {
+          "id": "105",
+          "name": "Demonstration",
+          "start_at": "2018-03-01T13:00:00Z",
+          "end_at": "2018-03-01T13:30:00Z"
+        }
+      ],
       "petition": {
         "slug": "repair-the-yellow-brick-road-1",
         "url": "https://demo.controlshiftlabs.com/petitions/repair-the-yellow-brick-road-1"
