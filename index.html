@@ -4678,7 +4678,7 @@ all associated signatures, attendee records, user accounts and other data held b
 
 <p><code>POST /api/v1/members/123/update_email_opt_in_type</code></p>
 <h2 id='petitions'>Petitions</h2>
-<p>Petition are pieces of content that can be signed by members. </p>
+<p>Petition are pieces of content that can be signed by members.</p>
 <h3 id='show'>Show</h3>
 <blockquote>
 <p>GET response Body</p>
@@ -4695,6 +4695,7 @@ all associated signatures, attendee records, user accounts and other data held b
     </span><span class="s2">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-22T19:01:44Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-05T15:02:02Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"launched"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"signature_count_add_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
     </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"effort_near"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"admin_notes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -4778,7 +4779,17 @@ all associated signatures, attendee records, user accounts and other data held b
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"the-american-revolution"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"avoidingtaxes"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Avoiding Taxes"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boats"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Boats"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -4820,9 +4831,9 @@ all associated signatures, attendee records, user accounts and other data held b
 <h3 id='update'>Update</h3>
 <p>Updates petition content using an HTTP PUT request.</p>
 
-<p>We support several request formats for the data to be updated, but the most straightforward is to send the data as a json formatted PUT body. </p>
+<p>We support several request formats for the data to be updated, but the most straightforward is to send the data as a json formatted PUT body.</p>
 
-<p>In the request body only include the fields that you would like to update to a new value. The slug in the URL defines which petition should be updated. </p>
+<p>In the request body only include the fields that you would like to update to a new value. The slug in the URL defines which petition should be updated.</p>
 
 <p><code>PUT /api/v1/petitions/no-taxes-on-tea</code></p>
 
@@ -5294,6 +5305,20 @@ By default the first page is returned.</p>
         </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-11-16T22:38:29Z"</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"shifts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lunch"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-01T12:00:00Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-01T13:00:00Z"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"105"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demonstration"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-01T13:00:00Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-01T13:30:00Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
       </span><span class="s2">"petition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"repair-the-yellow-brick-road-1"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/repair-the-yellow-brick-road-1"</span><span class="w">
