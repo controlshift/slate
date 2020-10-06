@@ -183,3 +183,35 @@ In the request body only include the fields that you would like to update to a n
 ```
 
 
+
+### Apply Label
+
+Applies an existing Label to a specific Petition.
+
+**Note:** Currently it is not possible to create Labels via the API. The Label needs to exists to allow tagging a Petition with it.
+
+The request body must include a `name` attribute with the name of the label to be applied to the Petition.
+
+`POST /api/v1/petitions/no-taxes-on-tea/labelings`
+
+Response on success will not have a body, and status code will be `201 - Created`
+
+> POST request body
+
+```json
+{
+  "name": "We Love Tea!"
+}
+```
+
+
+
+### Remove Label
+
+Removes a Label from the Petition.
+
+The name of the Label must be included in the URL and be correctly percent encoded as per RFC 3986.
+
+Response on success will not have a body, and status code will be `200 - Ok`
+
+`DELETE /api/v1/petitions/no-taxes-on-tea/labelings/We%20Love%20Tea%21`
