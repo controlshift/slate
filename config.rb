@@ -1,5 +1,7 @@
 # Unique header generation
-require './lib/unique_head.rb'
+# Fix for issue with header titles that are duplicated in different sections of the ToC
+# from: https://github.com/slatedocs/slate/issues/738#issuecomment-406353752
+require './lib/nesting_unique_head.rb'
 
 # Markdown
 set :markdown_engine, :redcarpet
@@ -12,7 +14,7 @@ set :markdown,
     tables: true,
     with_toc_data: true,
     no_intra_emphasis: true,
-    renderer: UniqueHeadCounter
+    renderer: NestingUniqueHeadCounter
 
 # Assets
 set :css_dir, 'stylesheets'
