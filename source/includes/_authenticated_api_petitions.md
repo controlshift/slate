@@ -103,7 +103,17 @@ Petition are pieces of content that can be signed by members.
     },
     "partnership": {
       "slug": "the-american-revolution"
-    }
+    },
+    "categories": [
+      {
+        "slug": "avoidingtaxes",
+        "name": "Avoiding Taxes"
+      },
+      {
+        "slug": "boats",
+        "name": "Boats"
+      }
+    ]
   }
 }
 ```
