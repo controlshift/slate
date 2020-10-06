@@ -1,6 +1,6 @@
 ## Petitions
 
-Petition are pieces of content that can be signed by members. 
+Petition are pieces of content that can be signed by members.
 
 ### Show
 
@@ -19,6 +19,7 @@ Petition are pieces of content that can be signed by members.
     "admin_status": "good",
     "created_at": "2018-01-22T19:01:44Z",
     "updated_at": "2018-03-05T15:02:02Z",
+    "launched": true,
     "signature_count_add_amount": 100
     "source": "effort_near",
     "admin_notes": [
@@ -154,9 +155,9 @@ Get a paginated list of all petitions, including ones that are unlaunched or oth
 
 Updates petition content using an HTTP PUT request.
 
-We support several request formats for the data to be updated, but the most straightforward is to send the data as a json formatted PUT body. 
+We support several request formats for the data to be updated, but the most straightforward is to send the data as a json formatted PUT body.
 
-In the request body only include the fields that you would like to update to a new value. The slug in the URL defines which petition should be updated. 
+In the request body only include the fields that you would like to update to a new value. The slug in the URL defines which petition should be updated.
 
 
 `PUT /api/v1/petitions/no-taxes-on-tea`
