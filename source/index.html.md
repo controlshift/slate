@@ -32,10 +32,10 @@ includes:
   - authenticated_api_consent_content_versions
   - authenticated_api_members
   - authenticated_api_petitions
-  - authenticated_api_signatures
+  - authenticated_api_signatures.md.erb
   - authenticated_api_partnerships
   - authenticated_api_events
-  - authenticated_api_attendees
+  - authenticated_api_attendees.md.erb
   - authenticated_api_calendars
   - authenticated_api_webhook_endpoints
 
