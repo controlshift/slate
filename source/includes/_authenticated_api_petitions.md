@@ -182,7 +182,27 @@ In the request body only include the fields that you would like to update to a n
 }
 ```
 
+### Destroy
 
+Permanently deletes the petition and all associated information including signature data via an HTTP DELETE request.
+
+This is an asynchronous task, so while API calls will return with a success message immediately
+it may take up to several minutes for the petition and all of its data to be completely 
+destroyed.  
+
+`DELETE /api/v1/petitions/no-taxes-on-tea`
+
+> DELETE response body
+
+```json
+{
+  "status": "success",
+  "message": "Petition has been scheduled for deletion.",
+  "petition": {
+    "slug": "no-taxes-on-tea"
+  }
+}
+```
 
 ### Apply Label
 
