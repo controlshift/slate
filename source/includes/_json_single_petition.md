@@ -29,7 +29,6 @@ $(document).ready(function(){
   "administered_at": "2018-03-21T19:05:54Z",
   "source": "homepage",
   "alias": null,
-  "bsd_constituent_group_id": null,
   "categories": [
     {
       "name": "Oz",
