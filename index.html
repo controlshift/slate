@@ -304,6 +304,12 @@
                 <a href="#webhook-endpoints-data-incremental_table_exported" class="toc-h2 toc-link" data-title="data.incremental_table_exported">data.incremental_table_exported</a>
               </li>
               <li>
+                <a href="#webhook-endpoints-email-open" class="toc-h2 toc-link" data-title="email.open">email.open</a>
+              </li>
+              <li>
+                <a href="#webhook-endpoints-email-click" class="toc-h2 toc-link" data-title="email.click">email.click</a>
+              </li>
+              <li>
                 <a href="#webhook-endpoints-event-created" class="toc-h2 toc-link" data-title="event.created">event.created</a>
               </li>
               <li>
@@ -2115,11 +2121,19 @@ Cloud for customers with a point of presence in the same AWS Region. Contact sup
 </tr>
 <tr>
 <td><a href="#data-full_table_exported">data.full_table_exported</a></td>
-<td>A full-table dump is ready for retrieval at S3</td>
+<td>A full-table dump is ready for retrieval on S3</td>
 </tr>
 <tr>
 <td><a href="#data-incremental_table_exported">data.incremental_table_exported</a></td>
-<td>An incremental CSV update is ready for retrieval at S3</td>
+<td>An incremental CSV update is ready for retrieval on S3</td>
+</tr>
+<tr>
+<td><a href="#email-open">email.open</a></td>
+<td>Link in an email has been clicked</td>
+</tr>
+<tr>
+<td><a href="#email-click">email.click</a></td>
+<td>Email has been opened</td>
 </tr>
 <tr>
 <td><a href="#event-created">event.created</a></td>
@@ -2362,7 +2376,7 @@ Cloud for customers with a point of presence in the same AWS Region. Contact sup
   </span><span class="s2">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cf0f50d7d225e20a188be328"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>A full-table dump is ready for retrieval at S3</p>
+<p>A full-table dump is ready for retrieval on S3</p>
 
 <p><p>
 <b>Note</b>
@@ -2381,12 +2395,55 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
   </span><span class="s2">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cf0f50d7d225e20a188be328"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>An incremental CSV update is ready for retrieval at S3</p>
+<p>An incremental CSV update is ready for retrieval on S3</p>
 
 <p><p>
 <b>Note</b>
 URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#39;&amp;&#39;, &#39;&lt;&#39;, &#39;&gt;&#39;, etc.). See <a target="blank" href="http://www.rubydoc.info/gems/activesupport/3.2.22/ActiveSupport/JSON/Encoding">http://www.rubydoc.info/gems/activesupport/3.2.22/ActiveSupport/JSON/Encoding</a> for more details
 </p></p>
+<h2 id='webhook-endpoints-email-open'>email.open</h2>
+<blockquote>
+<p>Example payload for <code>email.open</code>:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email.open"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example@test.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1513299569</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"smtp-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;14c5d75ce93.dfd.64b469@ismtpd-555&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cat facts"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sg_event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sg_event_id"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sg_message_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sg_message_id"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"useragent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP; .NET CLR 1.1.4322; .NET CLR 2.0.50727)"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"255.255.255.255"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"df67126973794c2efde76cc4"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Link in an email has been clicked</p>
+<h2 id='webhook-endpoints-email-click'>email.click</h2>
+<blockquote>
+<p>Example payload for <code>email.click</code>:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email.click"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example@test.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1513299569</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"smtp-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;14c5d75ce93.dfd.64b469@ismtpd-555&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"click"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cat facts"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sg_event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sg_event_id"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sg_message_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sg_message_id"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"useragent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP; .NET CLR 1.1.4322; .NET CLR 2.0.50727)"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"255.255.255.255"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.controlshift.app/"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"df67126973794c2efde76cc4"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Email has been opened</p>
 <h2 id='webhook-endpoints-event-created'>event.created</h2>
 <blockquote>
 <p>Example payload for <code>event.created</code>:</p>
