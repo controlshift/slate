@@ -432,7 +432,7 @@
         <a href="#bulk-data" class="toc-h1 toc-link" data-title="Bulk Data">Bulk Data</a>
           <ul class="toc-list-h2">
               <li>
-                <a href="#bulk-data-webhooks" class="toc-h2 toc-link" data-title="Webhooks">Webhooks</a>
+                <a href="#bulk-data-export-schedule-and-webhooks" class="toc-h2 toc-link" data-title="Export schedule and webhooks">Export schedule and webhooks</a>
               </li>
               <li>
                 <a href="#bulk-data-bulk-data-data-schemas" class="toc-h2 toc-link" data-title="Bulk Data Data Schemas">Bulk Data Data Schemas</a>
@@ -2377,11 +2377,6 @@ Cloud for customers with a point of presence in the same AWS Region. Contact sup
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>A full-table dump is ready for retrieval on S3</p>
-
-<p><p>
-<b>Note</b>
-URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#39;&amp;&#39;, &#39;&lt;&#39;, &#39;&gt;&#39;, etc.). See <a target="blank" href="http://www.rubydoc.info/gems/activesupport/3.2.22/ActiveSupport/JSON/Encoding">http://www.rubydoc.info/gems/activesupport/3.2.22/ActiveSupport/JSON/Encoding</a> for more details
-</p></p>
 <h2 id='webhook-endpoints-data-incremental_table_exported'>data.incremental_table_exported</h2>
 <blockquote>
 <p>Example payload for <code>data.incremental_table_exported</code>:</p>
@@ -2396,11 +2391,6 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>An incremental CSV update is ready for retrieval on S3</p>
-
-<p><p>
-<b>Note</b>
-URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#39;&amp;&#39;, &#39;&lt;&#39;, &#39;&gt;&#39;, etc.). See <a target="blank" href="http://www.rubydoc.info/gems/activesupport/3.2.22/ActiveSupport/JSON/Encoding">http://www.rubydoc.info/gems/activesupport/3.2.22/ActiveSupport/JSON/Encoding</a> for more details
-</p></p>
 <h2 id='webhook-endpoints-email-open'>email.open</h2>
 <blockquote>
 <p>Example payload for <code>email.open</code>:</p>
@@ -2721,8 +2711,6 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Someone flags a problem for admin attention</p>
-
-<p><p>For example, a local chapter organiser flags a forum message.</p></p>
 <h2 id='webhook-endpoints-label-applied'>label.applied</h2>
 <blockquote>
 <p>Example payload for <code>label.applied</code>:</p>
@@ -3773,30 +3761,6 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Member signs a petition</p>
-
-<p><p>We also include optional partnership or effort slugs nested under the petition resource for signatures that take place on petitions associated with those objects.</p>
-<table class='table'>
-<tr>
-<th>Field</th>
-<th>Help</th>
-</tr>
-<tr>
-<td>join_organisation</td>
-<td>If the user opts in to receive email from the organisation, this is true. If the user does not wish to receive email or join the organisation this is false.</td>
-</tr>
-<tr>
-<td>confirmed_at</td>
-<td>A timestamp, set when the user confirms their email address and signature. Used for double opt in.</td>
-</tr>
-<tr>
-<td>confirmed_reason</td>
-<td>The mechanism through which the user confirmed their signature</td>
-</tr>
-<tr>
-<td>email_opt_in_type</td>
-<td>A representation of the mechanism that the member used while opting in or out of email.</td>
-</tr>
-</table></p>
 <h2 id='webhook-endpoints-signature-updated'>signature.updated</h2>
 <blockquote>
 <p>Example payload for <code>signature.updated</code>:</p>
@@ -3860,30 +3824,6 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Existing signature updated. This can happen when member unsubscribes or reasserts their opt in for receiving emails</p>
-
-<p><p>We also include optional partnership or effort slugs nested under the petition resource for signatures that take place on petitions associated with those objects.</p>
-<table class='table'>
-<tr>
-<th>Field</th>
-<th>Help</th>
-</tr>
-<tr>
-<td>join_organisation</td>
-<td>If the user opts in to receive email from the organisation, this is true. If the user does not wish to receive email or join the organisation this is false.</td>
-</tr>
-<tr>
-<td>confirmed_at</td>
-<td>A timestamp, set when the user confirms their email address and signature. Used for double opt in.</td>
-</tr>
-<tr>
-<td>confirmed_reason</td>
-<td>The mechanism through which the user confirmed their signature</td>
-</tr>
-<tr>
-<td>email_opt_in_type</td>
-<td>A representation of the mechanism that the member used while opting in or out of email.</td>
-</tr>
-</table></p>
 <h2 id='webhook-endpoints-signature-deleted'>signature.deleted</h2>
 <blockquote>
 <p>Example payload for <code>signature.deleted</code>:</p>
@@ -3947,30 +3887,6 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Signature permanently deleted. Signature deletions are distinct from unsubscribes and should be treated as if the signature never happened</p>
-
-<p><p>We also include optional partnership or effort slugs nested under the petition resource for signatures that take place on petitions associated with those objects.</p>
-<table class='table'>
-<tr>
-<th>Field</th>
-<th>Help</th>
-</tr>
-<tr>
-<td>join_organisation</td>
-<td>If the user opts in to receive email from the organisation, this is true. If the user does not wish to receive email or join the organisation this is false.</td>
-</tr>
-<tr>
-<td>confirmed_at</td>
-<td>A timestamp, set when the user confirms their email address and signature. Used for double opt in.</td>
-</tr>
-<tr>
-<td>confirmed_reason</td>
-<td>The mechanism through which the user confirmed their signature</td>
-</tr>
-<tr>
-<td>email_opt_in_type</td>
-<td>A representation of the mechanism that the member used while opting in or out of email.</td>
-</tr>
-</table></p>
 <h2 id='webhook-endpoints-signature-confirmed'>signature.confirmed</h2>
 <blockquote>
 <p>Example payload for <code>signature.confirmed</code>:</p>
@@ -4032,31 +3948,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1ebf2eb10c3d8939f42dff68"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><p>We also include optional partnership or effort slugs nested under the petition resource for signatures that take place on petitions associated with those objects.</p>
-<table class='table'>
-<tr>
-<th>Field</th>
-<th>Help</th>
-</tr>
-<tr>
-<td>join_organisation</td>
-<td>If the user opts in to receive email from the organisation, this is true. If the user does not wish to receive email or join the organisation this is false.</td>
-</tr>
-<tr>
-<td>confirmed_at</td>
-<td>A timestamp, set when the user confirms their email address and signature. Used for double opt in.</td>
-</tr>
-<tr>
-<td>confirmed_reason</td>
-<td>The mechanism through which the user confirmed their signature</td>
-</tr>
-<tr>
-<td>email_opt_in_type</td>
-<td>A representation of the mechanism that the member used while opting in or out of email.</td>
-</tr>
-</table></p>
-<h2 id='webhook-endpoints-unsubscribe-created'>unsubscribe.created</h2>
+</span></code></pre><h2 id='webhook-endpoints-unsubscribe-created'>unsubscribe.created</h2>
 <blockquote>
 <p>Example payload for <code>unsubscribe.created</code>:</p>
 </blockquote>
@@ -4101,37 +3993,6 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Member unsubscribes. This notification is emitted when member: is globally unsubscribed from the organisation by an admin or through the API, unsubscribes from partnership or unsubscribes from a petition.</p>
-
-<p><p>
-First example: Admin globally unsubscribes a member from the member page
-</p>
-<p>
-Second example: Member unsubscribes from partnership
-<br>
-<span>
-<strong>Note:</strong>
-<strong>unsubscribe_organisation</strong>
-can have true or false values depending on member&#39;s input at the unsubscribe page (only if the
-<em>Allow global unsubscribes</em>
-option is enabled for the organisation)
-</span>
-</p>
-<p>
-Third example: Member unsubscribes from petition
-<br>
-<span>
-<strong>Notes:</strong>
-<br>
-<strong>unsubscribe_organisation</strong>
-can have true or false values depending on member&#39;s input at the unsubscribe page (only if the
-<em>Allow global unsubscribes</em>
-option is enabled for the organisation)
-<br>
-The
-<strong>blast_email</strong>
-property will only be included if member unsubscribed by clicking on the link included on the petition blast email&#39;s footer
-</span>
-</p></p>
 <h2 id='webhook-endpoints-locale-created'>locale.created</h2>
 <blockquote>
 <p>Example payload for <code>locale.created</code>:</p>
@@ -4174,49 +4035,16 @@ property will only be included if member unsubscribed by clicking on the link in
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>A new message requires moderation</p>
-
-<p><div class='mt10'>
-<b>Note</b>
-<div>
-The <strong>admin_status</strong> field can take any of the following values:
-<ul>
-<li>
-<em>unreviewed</em>
-</li>
-<li>
-<em>flagged</em>
-</li>
-<li>
-<em>approved_automatically</em>
-</li>
-<li>
-<em>approved_manually</em>
-</li>
-<li>
-<em>flagged_deleted</em>
-</li>
-<li>
-<em>inappropriate</em>
-</li>
-</ul>
-Though on the <em>forum.message.requires_moderation</em> notification type it will always be set to <em>unreviewed</em>
-</div>
-<div class='mt5'>
-The <strong>discussable.discussable_type</strong> field can take any of the following values:
-<ul>
-<li>
-<em>LocalChapter</em>
-</li>
-<li>
-<em>Event</em>
-</li>
-</ul>
-</div>
-</div></p>
 <h1 id='bulk-data'>Bulk Data</h1>
-<p>ControlShift&#39;s Bulk Data Webhooks make it easy to pull your data into external services.</p>
-<h2 id='bulk-data-webhooks'>Webhooks</h2>
-<p>We provides two special bulk data webhooks to help you keep an external reporting or analytics database server up to date with information from ControlShift&#39;s internal tables. The <a href="#data-full_table_exported">data.full_table_exported</a> and <a href="#data-incremental_table_exported">data.incremental_table_exported</a> webhooks can be consumed to keep an external database mirror containing ControlShift data up to date. This service was built in a database agnostic way, but it should be possible to build a ControlShift -&gt; Amazon Redshift data pipeline using the <a href="#controlshift-to-redshift-pipeline">ControlShift to Redshift Pipeline</a> technique outlines below.</p>
+<p>To perform advanced reporting or analytics on your ControlShift data, you can mirror all your data into an external database. This can be a helpful tool for answering high-level questions about member engagement.</p>
+
+<p>We provide a set of automated bulk exports and webhooks, along with examples (linked below) on how to use them.</p>
+
+<p>This service was built in a database agnostic way, but it is possible to build a ControlShift &rarr; Amazon Redshift data pipeline using the <a href="#controlshift-to-redshift-pipeline">ControlShift to Redshift Pipeline</a> technique outlined below.</p>
+<h2 id='bulk-data-export-schedule-and-webhooks'>Export schedule and webhooks</h2>
+<p>Every night, we&#39;ll export the most up-to-date version of all of your data into a set of CSV files, one for each internal ControlShift table. The <a href="#data-full_table_exported">data.full_table_exported</a> indicates such an export. These full CSV files should <em>replace</em> the existing data in your mirror database.</p>
+
+<p>Additionally, once a minute, we&#39;ll produce CSV files with any new rows that have been <em>added</em> to ControlShift&#39;s internal tables. The <a href="#data-incremental_table_exported">data.incremental_table_exported</a> webhooks indicates a set of these added-rows exports. Note that the incremental exports do <em>not</em> include any updates or deletions of existing rows; you&#39;ll have to wait for the nightly export to receive fresh data with updates and deletions included.</p>
 
 <aside class="notice">
 Bulk data webhooks should be automatically included when adding a new webhook endpoint. Please contact support to report any issues with bulk data webhook generation. For testing, you can manually trigger these wehbooks by visiting <code>https://&lt;your controlshift instance&gt;/org/settings/integrations/webhook_endpoints</code> and clicking on "Trigger" under "Test Nightly Bulk Data Export Webhook".
