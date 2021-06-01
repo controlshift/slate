@@ -186,6 +186,74 @@ signatures | an array of signature results
 
 `GET /api/v1/petitions/no-taxes-on-tea/signatures?page=2`
 
+> GET response body for List
+
+```json
+{
+  "petition": {
+    "title": "No Taxes on Tea!",
+    "slug": "no-taxes-on-tea"
+  },
+  "signatures": [
+    {
+      "bucket": "",
+      "country_without_fallback": "US",
+      "from_embed": null,
+      "last_signed_at": "2020-02-01T10:00:00Z",
+      "user_agent": null,
+      "deleted_at": null,
+      "additional_fields": {},
+      "id": 123,
+      "country": "US",
+      "created_at": "2020-02-01T10:00:00Z",
+      "updated_at": "2020-02-01T10:00:00Z",
+      "unsubscribe_at": null,
+      "email": "foo@bar.com",
+      "confirmed_at": null,
+      "confirmed_reason": null,
+      "first_name": "Foo",
+      "join_partnership": null,
+      "join_organisation": true,
+      "last_name": "Bar",
+      "phone_number": "123-456",
+      "postcode": "10010",
+      "source": "",
+      "token": "abcDEFghi123456789jklMNO",
+      "user_ip": "123.123.123.123",
+      "utm_campaign": null,
+      "utm_content": null,
+      "utm_medium": null,
+      "utm_source": null,
+      "utm_term": null,
+      "eu_data_processing_consent": false,
+      "consent_content_version": null,
+      "data_processing_consent_type": "explicit",
+      "email_opt_in_type": {
+        "context": "web_form",
+        "kind": "radio_sure",
+        "mailable": true,
+        "external_id": null,
+        "active": true
+      },
+      "member": {
+        "id": 111222333,
+        "created_at": "2020-02-01T10:00:00Z"
+      },
+      "petition": {
+        "url": "https://your-organisation.controlshiftlabs.com/petitions/no-taxes-on-tea",
+        "slug": "no-taxes-on-tea"
+      }
+    }
+  ],
+  "meta": {
+    "current_page": 2,
+    "total_pages": 2,
+    "previous_page": 1,
+    "next_page": null
+  }
+}
+```
+
 ### Unsubscribe
 
 > POST response body for Unsubscribe
