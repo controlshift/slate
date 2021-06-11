@@ -61,7 +61,7 @@ You can configure ControlShift Labs Webhooks to return the following event types
 Type | Description
 ---------- | -------
 <% data.webhooks.each do |webhook| %>
-[<%= webhook.webhook %>](#<%= webhook.webhook.gsub('.','-') %>) | <%= webhook.description %>
+  [<%= webhook.webhook %>](#webhook-endpoints-<%= webhook.webhook.gsub('.','-') %>) | <%= webhook.description %>
 <% end %>
 
 
