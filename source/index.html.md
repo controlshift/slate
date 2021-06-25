@@ -10,35 +10,35 @@ toc_footers:
   - <a href="https://github.com/tripit/slate">Documentation Powered by Slate</a>
 
 includes:
-  - json_intro
-  - json_single_petition
-  - json_featured_petitions
-  - json_categories_list
-  - json_category_petitions
-  - json_partnership_petitions
-  - json_effort_petitions
-  - json_effort_petitions_near
-  - json_calendars
-  - json_local_points
-  - json_local
-  - json_me
-  - json_bulk_data_schema
-  - json_bulk_data_columns
+  - json/intro
+  - json/single_petition
+  - json/featured_petitions
+  - json/categories_list
+  - json/category_petitions
+  - json/partnership_petitions
+  - json/effort_petitions
+  - json/effort_petitions_near
+  - json/calendars
+  - json/local_points
+  - json/local
+  - json/me
+  - json/bulk_data_schema
+  - json/bulk_data_columns
   - webhooks.md.erb
   - bulk_data.md.erb
-  - authenticated_api_intro
-  - authenticated_api_organisation
-  - authenticated_api_email_opt_in_types
-  - authenticated_api_consent_content_versions
-  - authenticated_api_members.md.erb
-  - authenticated_api_petitions.md.erb
-  - authenticated_api_signatures.md.erb
-  - authenticated_api_partnerships
-  - authenticated_api_events.md.erb
-  - authenticated_api_attendees.md.erb
-  - authenticated_api_calendars
-  - authenticated_api_local_chapters.md.erb  
-  - authenticated_api_webhook_endpoints
+  - authenticated_api/intro
+  - authenticated_api/organisation
+  - authenticated_api/email_opt_in_types
+  - authenticated_api/consent_content_versions
+  - authenticated_api/members.md.erb
+  - authenticated_api/petitions.md.erb
+  - authenticated_api/signatures.md.erb
+  - authenticated_api/partnerships
+  - authenticated_api/events.md.erb
+  - authenticated_api/attendees.md.erb
+  - authenticated_api/calendars
+  - authenticated_api/local_chapters.md.erb  
+  - authenticated_api/webhook_endpoints
 
 search: true
 ---
