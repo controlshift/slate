@@ -4563,12 +4563,20 @@ with your external systems, or to refer to email opt in types consistently throu
 <p>GET /api/v1/organisation/consent_content_versions</p>
 </blockquote>
 <h2 id='authenticated-rest-api-members'>Members</h2>
-<p>The platform transparently creates a member record for any email address that creates a user account, signs a petition, or attends an event. Members are unique by email address, and all
-platform activity is tracked by member id.</p>
+<p>The platform transparently creates a member record for any email address that creates a user account, signs a petition, or attends an event.</p>
 
+<p>Members are unique by email address, and all platform activity is tracked by member id.</p>
+
+<p>When someone signs a petition or attends an event, we lookup the email address to see if they have taken action before
+and either reuse the existing member record or create a new one if your organisation has not interacted with that
+person before.</p>
+
+<div></div>
+<h3 id='authenticated-rest-api-members-lookup'>Lookup</h3>
 <blockquote>
-<p>GET response body for Lookup or Show</p>
+<p>GET response body for Lookup</p>
 </blockquote>
+
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"member"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
@@ -4592,16 +4600,50 @@ platform activity is tracked by member id.</p>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='authenticated-rest-api-members-lookup'>Lookup</h3>
+</span></code></pre></div>
+
 <p>Find a member by email address. Once you have obtained a member id you can use this identifier in other API calls.</p>
 
 <p><code>GET /api/v1/members/lookup?email=foo@bar.com</code></p>
+
+<div></div>
 <h3 id='authenticated-rest-api-members-show'>Show</h3>
+<blockquote>
+<p>GET response body for Show</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"member"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo@bar.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-01T15:37:47Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-01T11:23:45Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc123"</span><span class="p">,</span><span class="w">
+
+    </span><span class="nl">"data_processing_consent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"consented_to_latest_version"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+
+      </span><span class="nl">"most_recent_consent_from_member"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"consented_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-01T04:00Z"</span><span class="p">,</span><span class="w">
+
+        </span><span class="nl">"consent_content_version"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"def456"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-31T23:59Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
 <p>Find a member by id.</p>
 
 <p>The <code>data_processing_consent</code> block is only present when the data processing consent feature is enabled.</p>
 
 <p><code>GET /api/v1/members/123</code></p>
+
+<div></div>
 <h3 id='authenticated-rest-api-members-activity'>Activity</h3>
 <blockquote>
 <p>GET response body for Activity</p>
@@ -4630,6 +4672,8 @@ platform activity is tracked by member id.</p>
 <p>The member activity report includes basic biographical information as well as petitions created or signed, events hosted or attended, group memberships, forum posts, partnership subscriptions, and unsubscribe history.</p>
 
 <p><code>GET /api/v1/members/123/activity</code></p>
+
+<div></div>
 <h3 id='authenticated-rest-api-members-destroy'>Destroy</h3>
 <blockquote>
 <p>DELETE response body for Destroy</p>
@@ -4649,6 +4693,8 @@ platform activity is tracked by member id.</p>
 <p>Deletes are synchronous and may take several seconds depending on how many resources are owned by the member.</p>
 
 <p>Ownership of Petitions and Events created by the deleted member will be re-assigned to the user account specified in the organisation&#39;s settings.</p>
+
+<div></div>
 <h3 id='authenticated-rest-api-members-anonymize'>Anonymize</h3>
 <blockquote>
 <p>POST response body for Anonymize</p>
@@ -4668,6 +4714,8 @@ platform activity is tracked by member id.</p>
 <p>Anonymization is synchronous and may take several seconds depending on how many resources are owned by the member.</p>
 
 <p>Ownership of Petitions and Events created by the deleted member will be re-assigned to the user account specified in the organisation&#39;s settings.</p>
+
+<div></div>
 <h3 id='authenticated-rest-api-members-unsubscribe'>Unsubscribe</h3>
 <blockquote>
 <p>POST response body for Unsubscribe</p>
@@ -4683,6 +4731,8 @@ platform activity is tracked by member id.</p>
 <p>Unsubscribes a member with specified id from emails from event hosts and petiton creators. Member will still receive transactional emails, and will be resubscribed if they opt in while signing a new petition or attending a new event, etc.</p>
 
 <p><code>POST /api/v1/members/123/unsubscribe</code></p>
+
+<div></div>
 <h3 id='authenticated-rest-api-members-update-email-opt-in-type'>Update Email Opt In Type</h3><h4 id='authenticated-rest-api-members-update-email-opt-in-type-post-body'>POST body</h4>
 <p><code>external_id=foo</code></p>
 
@@ -4696,6 +4746,8 @@ all associated signatures, attendee records, user accounts and other data held b
 <p>No history is stored recording the original consent type, it is replaced by the new one specified.</p>
 
 <p><code>POST /api/v1/members/123/update_email_opt_in_type</code></p>
+
+<div></div>
 <h2 id='authenticated-rest-api-petitions'>Petitions</h2>
 <p>Petition are pieces of content that can be signed by members.</p>
 <h3 id='authenticated-rest-api-petitions-show'>Show</h3>
