@@ -157,6 +157,8 @@ Find information about a petition by URL slug.
 
 Get a paginated list of all petitions, including ones that are unlaunched or otherwise not visible to the public. Includes all the same data as the single-petition endpoint for each petition.
 
+<%= partial "includes/shared/pagination.md" %>
+
 `GET /api/v1/petitions?page=1`
 
 <div></div>
@@ -189,8 +191,8 @@ In the request body only include the fields that you would like to update to a n
 Permanently deletes the petition and all associated information including signature data via an HTTP DELETE request.
 
 This is an asynchronous task, so while API calls will return with a success message immediately
-it may take up to several minutes for the petition and all of its data to be completely 
-destroyed.  
+it may take up to several minutes for the petition and all of its data to be completely
+destroyed.
 
 `DELETE /api/v1/petitions/no-taxes-on-tea`
 

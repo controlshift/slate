@@ -31,13 +31,13 @@ includes:
   - authenticated_api_email_opt_in_types
   - authenticated_api_consent_content_versions
   - authenticated_api_members
-  - authenticated_api_petitions
+  - authenticated_api_petitions.md.erb
   - authenticated_api_signatures.md.erb
   - authenticated_api_partnerships
-  - authenticated_api_events
+  - authenticated_api_events.md.erb
   - authenticated_api_attendees.md.erb
   - authenticated_api_calendars
-  - authenticated_api_local_chapters  
+  - authenticated_api_local_chapters.md.erb  
   - authenticated_api_webhook_endpoints
 
 search: true

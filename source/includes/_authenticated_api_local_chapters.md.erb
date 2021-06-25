@@ -1,17 +1,25 @@
 ## Local Groups
 
-Local Groups are groups of supporters that host events and create petitions. 
-They can exist either in a specific place, organize around a topic, or a geographic shape. 
+Local Groups are groups of supporters that host events and create petitions.
+They can exist either in a specific place, organize around a topic, or a geographic shape.
 
-Within the API and in other technical documentation Local Groups are often referred to as 
+Within the API and in other technical documentation Local Groups are often referred to as
 Local Chapters. These are synonymous features, and simply a consequence of how the software is structured
-internally versus the way that Local Groups are described publicly. 
+internally versus the way that Local Groups are described publicly.
 
 ### List
 
-Get a paginated list of all local groups.
+Get a paginated list of all local groups and information about each of them.
+
+<%= partial "includes/shared/pagination.md" %>
 
 `GET /api/v1/local_chapters/?page=1`
+
+Hash           | Description
+-------------- | -----------
+meta           | pagination information
+local_chapters | an array of information about the local chapters
+
 
 ### Show
 <div></div>
@@ -27,6 +35,12 @@ Find information about an event by URL slug.
 Retrieve a paginated list of all of the people who are members of a particular local group.
 
 `GET /api/v1/local_chapters/save-gotham/members`
+
+Hash           | Description
+-------------- | -----------
+meta           | pagination information
+local_chapter  | Basic information about the local group
+members        | Array of information about each supporter in this group
 
 ### Apply Label
 <div></div>

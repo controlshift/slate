@@ -68,7 +68,10 @@ Events represent real-world or virtual meetings that members can RSVP to. RSVP r
 }
 ```
 
-Get a paginated list of all events, including ones that are unlaunched or otherwise not visible to the public. Includes all the same data as the single-event endpoint for each event.
+Returns a paginated list of all events, including ones that are unlaunched or otherwise not visible to the public. Includes all the same data as the single-event endpoint for each event.
+
+<%= partial "includes/shared/pagination.md" %>
+
 
 `GET /api/v1/events?page=1`
 
