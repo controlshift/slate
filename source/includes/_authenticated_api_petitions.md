@@ -122,7 +122,7 @@ Find information about a petition by URL slug.
 
 `GET /api/v1/petitions/no-taxes-on-tea`
 
-
+<div></div>
 
 ### List
 
@@ -159,7 +159,7 @@ Get a paginated list of all petitions, including ones that are unlaunched or oth
 
 `GET /api/v1/petitions?page=1`
 
-
+<div></div>
 
 ### Update
 
@@ -181,6 +181,8 @@ In the request body only include the fields that you would like to update to a n
   }
 }
 ```
+
+<div></div>
 
 ### Destroy
 
@@ -204,6 +206,9 @@ destroyed.
 }
 ```
 
+<div></div>
+
+
 ### Apply Label
 
 Applies an existing Label to a specific Petition.
@@ -224,7 +229,7 @@ Response on success will not have a body, and status code will be `201 - Created
 }
 ```
 
-
+<div></div>
 
 ### Remove Label
 

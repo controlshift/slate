@@ -53,6 +53,7 @@ Get a paginated list of all partnerships.
 
 `GET /api/v1/partnerships?page=1`
 
+<div></div>
 
 
 ### Show
@@ -82,6 +83,8 @@ Get a paginated list of all partnerships.
   }
 }
 ```
+
+<div></div>
 
 Find information about a partnership by URL slug.
 
@@ -126,6 +129,7 @@ Retrieves a paginated list of a partnership's petitions.
 
 `GET /api/v1/partnerships/fight-fascism/petitions`
 
+<div></div>
 
 
 ### List Events
@@ -167,5 +171,6 @@ Retrieves a paginated list of a partnership's events.
 
 `GET /api/v1/partnerships/fight-fascism/events`
 
+<div></div>
 
 

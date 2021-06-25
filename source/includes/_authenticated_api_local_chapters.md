@@ -72,11 +72,8 @@ Get a paginated list of all events, including ones that are unlaunched or otherw
 
 `GET /api/v1/events?page=1`
 
-<div></div>
-
 ### Show
-
-Event show URLs are constructed using the slug field as a unique identifier.
+<div></div>
 
 > GET response Body
 
@@ -123,19 +120,17 @@ Find information about an event by URL slug.
 
 `GET /api/v1/events/deliver-the-petition-to-the-wizard`
 
-<div></div>
 
 ### Apply Label
+<div></div>
 
-Applies an existing Label to a specific Event.
+Applies an existing Label to a specific Local Group.
 
-**Note:** Currently it is not possible to create Labels via the API. The Label needs to exists to allow tagging an Event with it.
+**Note:** Currently it is not possible to create Labels via the API. The Label needs to exists to allow tagging an Local Group with it.
 
-The request body must include a `name` attribute with the name of the label to be applied to the Event.
+The request body must include a `name` attribute with the name of the label to be applied to the Local Group.
 
-Event show URLs are constructed using the slug field as a unique identifier for each event.
-
-`POST /api/v1/events/deliver-the-petition-to-the-wizard/labelings`
+`POST /api/v1/local_chapters/deliver-the-petition-to-the-wizard/labelings`
 
 Response on success will not have a body, and status code will be `201 - Created`
 
@@ -147,8 +142,6 @@ Response on success will not have a body, and status code will be `201 - Created
 }
 ```
 
-<div></div>
-
 ### Remove Label
 
 Removes a Label from the Event.
@@ -157,4 +150,4 @@ The name of the Label must be included in the URL and be correctly percent encod
 
 Response on success will not have a body, and status code will be `200 - Ok`
 
-`DELETE /api/v1/events/deliver-the-petition-to-the-wizard/labelings/Oz`
+`DELETE /api/v1/petitions/no-taxes-on-tea/labelings/Oz`

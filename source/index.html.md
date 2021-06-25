@@ -6,7 +6,7 @@ title: ControlShift Labs API & Webhook Reference
 #  - ruby
 
 toc_footers:
-  - <a href="http://www.controlshiftlabs.com/">Sign Up for ControlShift Labs</a>
+  - <a href="https://www.controlshiftlabs.com/">Sign Up for ControlShift</a>
   - <a href="https://github.com/tripit/slate">Documentation Powered by Slate</a>
 
 includes:

@@ -21,6 +21,8 @@ Calendars are collections of related events.
 }
 ```
 
+<div></div>
+
 Find information about a calendar by URL slug.
 
 `GET /api/v1/calendars/movie-screenings-for-healthcare-access`
