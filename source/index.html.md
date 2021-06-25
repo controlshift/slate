@@ -30,7 +30,7 @@ includes:
   - authenticated_api_organisation
   - authenticated_api_email_opt_in_types
   - authenticated_api_consent_content_versions
-  - authenticated_api_members
+  - authenticated_api_members.md.erb
   - authenticated_api_petitions.md.erb
   - authenticated_api_signatures.md.erb
   - authenticated_api_partnerships
