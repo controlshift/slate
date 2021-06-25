@@ -37,6 +37,7 @@ includes:
   - authenticated_api_events
   - authenticated_api_attendees.md.erb
   - authenticated_api_calendars
+  - authenticated_api_local_chapters  
   - authenticated_api_webhook_endpoints
 
 search: true
