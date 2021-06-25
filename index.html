@@ -4907,14 +4907,6 @@ By default the first page is returned.</p>
 
 <div></div>
 <h3 id='authenticated-rest-api-petitions-update'>Update</h3>
-<p>Updates petition content using an HTTP PUT request.</p>
-
-<p>We support several request formats for the data to be updated, but the most straightforward is to send the data as a json formatted PUT body.</p>
-
-<p>In the request body only include the fields that you would like to update to a new value. The slug in the URL defines which petition should be updated.</p>
-
-<p><code>PUT /api/v1/petitions/no-taxes-on-tea</code></p>
-
 <blockquote>
 <p>PUT request body</p>
 </blockquote>
@@ -4924,16 +4916,16 @@ By default the first page is returned.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<p>Updates petition content using an HTTP PUT request.</p>
+
+<p>We support several request formats for the data to be updated, but the most straightforward is to send the data as a json formatted PUT body.</p>
+
+<p>In the request body only include the fields that you would like to update to a new value. The slug in the URL defines which petition should be updated.</p>
+
+<p><code>PUT /api/v1/petitions/no-taxes-on-tea</code></p>
+
 <div></div>
 <h3 id='authenticated-rest-api-petitions-destroy'>Destroy</h3>
-<p>Permanently deletes the petition and all associated information including signature data via an HTTP DELETE request.</p>
-
-<p>This is an asynchronous task, so while API calls will return with a success message immediately
-it may take up to several minutes for the petition and all of its data to be completely
-destroyed.</p>
-
-<p><code>DELETE /api/v1/petitions/no-taxes-on-tea</code></p>
-
 <blockquote>
 <p>DELETE response body</p>
 </blockquote>
@@ -4945,8 +4937,23 @@ destroyed.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<p>Permanently deletes the petition and all associated information including signature data via an HTTP DELETE request.</p>
+
+<p>This is an asynchronous task, so while API calls will return with a success message immediately
+it may take up to several minutes for the petition and all of its data to be completely
+destroyed.</p>
+
+<p><code>DELETE /api/v1/petitions/no-taxes-on-tea</code></p>
+
 <div></div>
 <h3 id='authenticated-rest-api-petitions-apply-label'>Apply Label</h3>
+<blockquote>
+<p>POST request body</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We Love Tea!"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>Applies an existing Label to a specific Petition.</p>
 
 <p><strong>Note:</strong> Currently it is not possible to create Labels via the API. The Label needs to exists to allow tagging a Petition with it.</p>
@@ -4957,13 +4964,8 @@ destroyed.</p>
 
 <p>Response on success will not have a body, and status code will be <code>201 - Created</code></p>
 
-<blockquote>
-<p>POST request body</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We Love Tea!"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
+<p>This example would apply the &quot;We Love Tea!&quot; label to the petition.</p>
+
 <div></div>
 <h3 id='authenticated-rest-api-petitions-remove-label'>Remove Label</h3>
 <p>Removes a Label from the Petition.</p>
@@ -4973,6 +4975,8 @@ destroyed.</p>
 <p>Response on success will not have a body, and status code will be <code>200 - Ok</code></p>
 
 <p><code>DELETE /api/v1/petitions/no-taxes-on-tea/labelings/We%20Love%20Tea%21</code></p>
+
+<p>This example would remove the &quot;We Love Tea!&quot; label from the petition.</p>
 <h2 id='authenticated-rest-api-signatures'>Signatures</h2>
 <p>Signatures are actions that people have taken on Petitions. All signature actions are namespaced by URL underneath the petitions that the signature
 was recorded against.</p>
