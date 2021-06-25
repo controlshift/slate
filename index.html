@@ -575,13 +575,16 @@
                 <a href="#authenticated-rest-api-calendars" class="toc-h2 toc-link" data-title="Calendars">Calendars</a>
               </li>
               <li>
+                <a href="#authenticated-rest-api-local-groups" class="toc-h2 toc-link" data-title="Local Groups">Local Groups</a>
+              </li>
+              <li>
                 <a href="#authenticated-rest-api-webhook-endpoints" class="toc-h2 toc-link" data-title="Webhook Endpoints">Webhook Endpoints</a>
               </li>
           </ul>
       </li>
   </ul>
     <ul class="toc-footer">
-        <li><a href="http://www.controlshiftlabs.com/">Sign Up for ControlShift Labs</a></li>
+        <li><a href="https://www.controlshiftlabs.com/">Sign Up for ControlShift</a></li>
         <li><a href="https://github.com/tripit/slate">Documentation Powered by Slate</a></li>
     </ul>
 </div>
@@ -4812,6 +4815,8 @@ all associated signatures, attendee records, user accounts and other data held b
 <p>Find information about a petition by URL slug.</p>
 
 <p><code>GET /api/v1/petitions/no-taxes-on-tea</code></p>
+
+<div></div>
 <h3 id='authenticated-rest-api-petitions-list'>List</h3>
 <blockquote>
 <p>GET response body</p>
@@ -4844,6 +4849,8 @@ all associated signatures, attendee records, user accounts and other data held b
 <p>Get a paginated list of all petitions, including ones that are unlaunched or otherwise not visible to the public. Includes all the same data as the single-petition endpoint for each petition.</p>
 
 <p><code>GET /api/v1/petitions?page=1</code></p>
+
+<div></div>
 <h3 id='authenticated-rest-api-petitions-update'>Update</h3>
 <p>Updates petition content using an HTTP PUT request.</p>
 
@@ -4861,7 +4868,9 @@ all associated signatures, attendee records, user accounts and other data held b
     </span><span class="nl">"signature_count_add_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='authenticated-rest-api-petitions-destroy'>Destroy</h3>
+</span></code></pre></div>
+<div></div>
+<h3 id='authenticated-rest-api-petitions-destroy'>Destroy</h3>
 <p>Permanently deletes the petition and all associated information including signature data via an HTTP DELETE request.</p>
 
 <p>This is an asynchronous task, so while API calls will return with a success message immediately
@@ -4880,7 +4889,9 @@ destroyed.  </p>
     </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no-taxes-on-tea"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='authenticated-rest-api-petitions-apply-label'>Apply Label</h3>
+</span></code></pre></div>
+<div></div>
+<h3 id='authenticated-rest-api-petitions-apply-label'>Apply Label</h3>
 <p>Applies an existing Label to a specific Petition.</p>
 
 <p><strong>Note:</strong> Currently it is not possible to create Labels via the API. The Label needs to exists to allow tagging a Petition with it.</p>
@@ -4897,7 +4908,9 @@ destroyed.  </p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We Love Tea!"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='authenticated-rest-api-petitions-remove-label'>Remove Label</h3>
+</span></code></pre></div>
+<div></div>
+<h3 id='authenticated-rest-api-petitions-remove-label'>Remove Label</h3>
 <p>Removes a Label from the Petition.</p>
 
 <p>The name of the Label must be included in the URL and be correctly percent encoded as per RFC 3986.</p>
@@ -4909,10 +4922,6 @@ destroyed.  </p>
 <p>Signatures are actions that people have taken on Petitions. All signature actions are namespaced by URL underneath the petitions that the signature
 was recorded against.</p>
 <h3 id='authenticated-rest-api-signatures-lookup'>Lookup</h3>
-<p>Find a specific signature by email address. Once you have obtained a signature id you can use this identifier in other API calls.</p>
-
-<p><code>GET /api/v1/petitions/no-taxes-on-tea/signatures/lookup?email=foo@bar.com</code></p>
-
 <blockquote>
 <p>GET response body for Lookup</p>
 </blockquote>
@@ -4967,7 +4976,13 @@ was recorded against.</p>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='authenticated-rest-api-signatures-create'>Create</h3>
+</span></code></pre></div>
+<p>Find a specific signature by email address. Once you have obtained a signature id you can use this identifier in other API calls.</p>
+
+<p><code>GET /api/v1/petitions/no-taxes-on-tea/signatures/lookup?email=foo@bar.com</code></p>
+
+<div></div>
+<h3 id='authenticated-rest-api-signatures-create'>Create</h3>
 <p>Creates a new signature for the specified petition. This API endpoint can be used to record externally collected signatures for
 a particular petition within your instance of the ControlShift platform.</p>
 
@@ -5053,6 +5068,8 @@ will still be triggered, in the same way they are for normal signatures.</p>
 </tbody></table>
 
 <p><code>POST /api/v1/petitions/no-taxes-on-tea/signatures/</code></p>
+
+<div></div>
 <h4 id='authenticated-rest-api-signatures-create-post-body'>POST body</h4>
 <p><code>signature[first_name]=Ada&amp;signature[last_name]=Lovelave&amp;signature[email]=ada@lovelace.com&amp;signature[postcode]=12345</code></p>
 
@@ -5110,7 +5127,9 @@ will still be triggered, in the same way they are for normal signatures.</p>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='authenticated-rest-api-signatures-update-email-opt-in-type'>Update email opt in type</h3>
+</span></code></pre></div>
+<div></div>
+<h3 id='authenticated-rest-api-signatures-update-email-opt-in-type'>Update email opt in type</h3>
 <p>Updates the email opt in type associated with a single signature. This can be used to change the email opt in type
 if a more legally compliant form of consent was gathered elsewhere. The email opt in type for the signature is updated
 to the opt in type specified by <code>external_id</code>.</p>
@@ -5118,8 +5137,12 @@ to the opt in type specified by <code>external_id</code>.</p>
 <p>No history is stored recording the original consent type, it is replaced by the new one specified in the API call.</p>
 
 <p><code>POST /api/v1/petitions/no-taxes-on-tea/signatures/123</code></p>
+
+<div></div>
 <h4 id='authenticated-rest-api-signatures-update-email-opt-in-type-post-body'>POST body</h4>
 <p><code>external_id=foo</code></p>
+
+<div></div>
 <h3 id='authenticated-rest-api-signatures-destroy'>Destroy</h3>
 <blockquote>
 <p>DELETE response body for Destroy</p>
@@ -5135,34 +5158,9 @@ to the opt in type specified by <code>external_id</code>.</p>
 <p>Permanently deletes the signature with the specified ID. Note that this will decrement the signature count on the petition.</p>
 
 <p><code>DELETE /api/v1/petitions/no-taxes-on-tea/signatures/123</code></p>
+
+<div></div>
 <h3 id='authenticated-rest-api-signatures-list'>List</h3>
-<p>List the signatures that are part of a Petition.</p>
-
-<p>This is a paginated response. You can advance to the next page using the page parameter, which accepts a page number integer.
-By default the first page is returned.</p>
-
-<table><thead>
-<tr>
-<th>Hash</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>meta</td>
-<td>pagination information</td>
-</tr>
-<tr>
-<td>petition</td>
-<td>basic information about the petition</td>
-</tr>
-<tr>
-<td>signatures</td>
-<td>an array of signature results</td>
-</tr>
-</tbody></table>
-
-<p><code>GET /api/v1/petitions/no-taxes-on-tea/signatures?page=2</code></p>
-
 <blockquote>
 <p>GET response body for List</p>
 </blockquote>
@@ -5229,7 +5227,36 @@ By default the first page is returned.</p>
     </span><span class="nl">"next_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='authenticated-rest-api-signatures-unsubscribe'>Unsubscribe</h3>
+</span></code></pre></div>
+<p>List the signatures that are part of a Petition.</p>
+
+<p>This is a paginated response. You can advance to the next page using the page parameter, which accepts a page number integer.
+By default the first page is returned.</p>
+
+<table><thead>
+<tr>
+<th>Hash</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>meta</td>
+<td>pagination information</td>
+</tr>
+<tr>
+<td>petition</td>
+<td>basic information about the petition</td>
+</tr>
+<tr>
+<td>signatures</td>
+<td>an array of signature results</td>
+</tr>
+</tbody></table>
+
+<p><code>GET /api/v1/petitions/no-taxes-on-tea/signatures?page=2</code></p>
+
+<div></div>
+<h3 id='authenticated-rest-api-signatures-unsubscribe'>Unsubscribe</h3>
 <blockquote>
 <p>POST response body for Unsubscribe</p>
 </blockquote>
@@ -5245,6 +5272,8 @@ By default the first page is returned.</p>
 <p>Unsubscribes a member who has signed the petition from any emails sent by petition creator. They will still receive transactional emails.</p>
 
 <p><code>POST /api/v1/petitions/no-taxes-on-tea/signatures/123/unsubscribe</code></p>
+
+<div></div>
 <h2 id='authenticated-rest-api-partnerships'>Partnerships</h2>
 <p>Partnerships are other organisations you collaborate with using the platform.</p>
 <h3 id='authenticated-rest-api-partnerships-list'>List</h3>
@@ -5295,6 +5324,8 @@ By default the first page is returned.</p>
 <p>Get a paginated list of all partnerships.</p>
 
 <p><code>GET /api/v1/partnerships?page=1</code></p>
+
+<div></div>
 <h3 id='authenticated-rest-api-partnerships-show'>Show</h3>
 <blockquote>
 <p>GET response Body</p>
@@ -5321,6 +5352,8 @@ By default the first page is returned.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<div></div>
+
 <p>Find information about a partnership by URL slug.</p>
 
 <p><code>GET /api/v1/partnerships/fight-fascism</code></p>
@@ -5360,6 +5393,8 @@ By default the first page is returned.</p>
 <p>Retrieves a paginated list of a partnership&#39;s petitions.</p>
 
 <p><code>GET /api/v1/partnerships/fight-fascism/petitions</code></p>
+
+<div></div>
 <h3 id='authenticated-rest-api-partnerships-list-events'>List Events</h3>
 <blockquote>
 <p>GET response Body</p>
@@ -5396,6 +5431,8 @@ By default the first page is returned.</p>
 <p>Retrieves a paginated list of a partnership&#39;s events.</p>
 
 <p><code>GET /api/v1/partnerships/fight-fascism/events</code></p>
+
+<div></div>
 <h2 id='authenticated-rest-api-events'>Events</h2>
 <p>Events represent real-world or virtual meetings that members can RSVP to. RSVP records are called &quot;attendees&quot;.</p>
 <h3 id='authenticated-rest-api-events-list'>List</h3>
@@ -5465,7 +5502,11 @@ By default the first page is returned.</p>
 <p>Get a paginated list of all events, including ones that are unlaunched or otherwise not visible to the public. Includes all the same data as the single-event endpoint for each event.</p>
 
 <p><code>GET /api/v1/events?page=1</code></p>
+
+<div></div>
 <h3 id='authenticated-rest-api-events-show'>Show</h3>
+<p>Event show URLs are constructed using the slug field as a unique identifier.</p>
+
 <blockquote>
 <p>GET response Body</p>
 </blockquote>
@@ -5509,13 +5550,40 @@ By default the first page is returned.</p>
 <p>Find information about an event by URL slug.</p>
 
 <p><code>GET /api/v1/events/deliver-the-petition-to-the-wizard</code></p>
+
+<div></div>
+<h3 id='authenticated-rest-api-events-apply-label'>Apply Label</h3>
+<p>Applies an existing Label to a specific Event.</p>
+
+<p><strong>Note:</strong> Currently it is not possible to create Labels via the API. The Label needs to exists to allow tagging an Event with it.</p>
+
+<p>The request body must include a <code>name</code> attribute with the name of the label to be applied to the Event.</p>
+
+<p>Event show URLs are constructed using the slug field as a unique identifier for each event.</p>
+
+<p><code>POST /api/v1/events/deliver-the-petition-to-the-wizard/labelings</code></p>
+
+<p>Response on success will not have a body, and status code will be <code>201 - Created</code></p>
+
+<blockquote>
+<p>POST request body</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oz"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<div></div>
+<h3 id='authenticated-rest-api-events-remove-label'>Remove Label</h3>
+<p>Removes a Label from the Event.</p>
+
+<p>The name of the Label must be included in the URL and be correctly percent encoded as per RFC 3986.</p>
+
+<p>Response on success will not have a body, and status code will be <code>200 - Ok</code></p>
+
+<p><code>DELETE /api/v1/events/deliver-the-petition-to-the-wizard/labelings/Oz</code></p>
 <h2 id='authenticated-rest-api-attendees'>Attendees</h2>
 <p>Attendees are member RSVPs to an Event. All attendee actions are namespaced by URL underneath the events that the attendee was recorded against.</p>
 <h3 id='authenticated-rest-api-attendees-lookup'>Lookup</h3>
-<p>Find an attendee by email address. Once you have obtained the attendee&#39;s id you can use this identifier in other API calls.</p>
-
-<p><code>GET /api/v1/events/deliver-the-petition-to-the-wizard/attendees/lookup?email=foo@bar.com</code></p>
-
 <blockquote>
 <p>GET response body for Lookup</p>
 </blockquote>
@@ -5565,7 +5633,13 @@ By default the first page is returned.</p>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='authenticated-rest-api-attendees-create'>Create</h3>
+</span></code></pre></div>
+<p>Find an attendee by email address. Once you have obtained the attendee&#39;s id you can use this identifier in other API calls.</p>
+
+<p><code>GET /api/v1/events/deliver-the-petition-to-the-wizard/attendees/lookup?email=foo@bar.com</code></p>
+
+<div></div>
+<h3 id='authenticated-rest-api-attendees-create'>Create</h3>
 <p>Creates a new attendee for the specified event. This API endpoint can be used to record externally collected RSVPs for
 a particular event within your instance of the ControlShift platform.</p>
 
@@ -5651,6 +5725,8 @@ will still be triggered, in the same way they are for normal RSVPs.</p>
 </tbody></table>
 
 <p><code>POST /api/v1/events/deliver-the-petition-to-the-wizard/attendees/</code></p>
+
+<div></div>
 <h4 id='authenticated-rest-api-attendees-create-post-body'>POST body</h4>
 <p><code>attendee[first_name]=Ada&amp;attendee[last_name]=Lovelace&amp;attendee[email]=ada@lovelace.com&amp;attendee[postcode]=12345</code></p>
 
@@ -5710,7 +5786,9 @@ will still be triggered, in the same way they are for normal RSVPs.</p>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='authenticated-rest-api-attendees-update-email-opt-in-type'>Update email opt in type</h3>
+</span></code></pre></div>
+<div></div>
+<h3 id='authenticated-rest-api-attendees-update-email-opt-in-type'>Update email opt in type</h3>
 <p>Updates the email opt in type associated with a single attendee. This can be used to change the email opt in type
 if a more legally compliant form of consent was gathered elsewhere. The email opt in type for the attendee is updated
 to the opt in type specified by <code>external_id</code>.</p>
@@ -5720,6 +5798,8 @@ to the opt in type specified by <code>external_id</code>.</p>
 <p><code>POST /api/v1/events/deliver-the-petition-to-the-wizard/attendees/123</code></p>
 <h4 id='authenticated-rest-api-attendees-update-email-opt-in-type-post-body'>POST body</h4>
 <p><code>external_id=foo</code></p>
+
+<div></div>
 <h3 id='authenticated-rest-api-attendees-destroy'>Destroy</h3>
 <blockquote>
 <p>DELETE response body for Destroy</p>
@@ -5735,6 +5815,8 @@ to the opt in type specified by <code>external_id</code>.</p>
 <p>Permanently deletes the attendee with the specified ID.</p>
 
 <p><code>DELETE /api/v1/events/deliver-the-petition-to-the-wizard/attendees/123</code></p>
+
+<div></div>
 <h3 id='authenticated-rest-api-attendees-list'>List</h3>
 <p>List the attendees that have RSVPed to an Event.</p>
 
@@ -5762,6 +5844,8 @@ By default the first page is returned.</p>
 </tbody></table>
 
 <p><code>GET /api/v1/events/deliver-the-petition-to-the-wizard/attendees?page=2</code></p>
+
+<div></div>
 <h3 id='authenticated-rest-api-attendees-unsubscribe'>Unsubscribe</h3>
 <blockquote>
 <p>POST response body for Unsubscribe</p>
@@ -5778,6 +5862,8 @@ By default the first page is returned.</p>
 <p>Unsubscribes a member who has RSVPed to the event from any emails sent by event host. They will still receive transactional emails.</p>
 
 <p><code>POST /api/v1/events/deliver-the-petition-to-the-wizard/attendees/123/unsubscribe</code></p>
+
+<div></div>
 <h2 id='authenticated-rest-api-calendars'>Calendars</h2>
 <p>Calendars are collections of related events.</p>
 <h3 id='authenticated-rest-api-calendars-show'>Show</h3>
@@ -5797,6 +5883,8 @@ By default the first page is returned.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<div></div>
+
 <p>Find information about a calendar by URL slug.</p>
 
 <p><code>GET /api/v1/calendars/movie-screenings-for-healthcare-access</code></p>
@@ -5827,6 +5915,60 @@ By default the first page is returned. </p>
 </tbody></table>
 
 <p><code>GET /api/v1/calendars/movie-screenings-for-healthcare-access/events?page=2</code></p>
+<h2 id='authenticated-rest-api-local-groups'>Local Groups</h2>
+<p>Local Groups are groups of supporters that host events and create petitions. 
+They can exist either in a specific place, organize around a topic, or a geographic shape. </p>
+
+<p>Within the API and in other technical documentation Local Groups are often referred to as 
+Local Chapters. These are synonymous features, and simply a consequence of how the software is structured
+internally versus the way that Local Groups are described publicly. </p>
+<h3 id='authenticated-rest-api-local-groups-list'>List</h3>
+<p>Get a paginated list of all local groups.</p>
+
+<p><code>GET /api/v1/local_chapters/?page=1</code></p>
+<h3 id='authenticated-rest-api-local-groups-show'>Show</h3>
+<div></div>
+
+<p>Find information about an event by URL slug.</p>
+
+<p><code>GET /api/v1/local_chapters/save-gotham</code></p>
+<h3 id='authenticated-rest-api-local-groups-local-chapter-members'>Local Chapter Members</h3>
+<div></div>
+
+<p>Retrieve a paginated list of all of the people who are members of a particular local group.</p>
+
+<p><code>GET /api/v1/local_chapters/save-gotham/members</code></p>
+<h3 id='authenticated-rest-api-local-groups-apply-label'>Apply Label</h3>
+<div></div>
+
+<p>Applies an existing Label to a specific Local Group.</p>
+
+<p><strong>Note:</strong> Currently it is not possible to create Labels via the API. The Label needs to exists to allow tagging an Local Group with it.</p>
+
+<p>The request body must include a <code>name</code> attribute with the name of the label to be applied to the Local Group.</p>
+
+<p><code>POST /api/v1/local_chapters/save-gotham/labelings</code></p>
+
+<p>Response on success will not have a body, and status code will be <code>201 - Created</code></p>
+
+<blockquote>
+<p>POST request body</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"official"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>In this example we add the label &quot;official&quot; to the Local Group with slug <code>save-gotham</code></p>
+<h3 id='authenticated-rest-api-local-groups-remove-label'>Remove Label</h3>
+<p>Removes a Label from the Local Group.</p>
+
+<p>The name of the Label must be included in the URL and be correctly percent encoded as per RFC 3986.</p>
+
+<p>Response on success will not have a body, and status code will be <code>200 - Ok</code></p>
+
+<p><code>DELETE /api/v1/local_chapters/save-gotham/labelings/official</code></p>
+
+<p>In this example we remove the label &quot;official&quot; from the Local Group with slug <code>save-gotham</code></p>
 <h2 id='authenticated-rest-api-webhook-endpoints'>Webhook Endpoints</h2>
 <p>Webhooks can be used by software engineers to integrate ControlShift with third-party systems. They allow engineers to build software that is triggered by events that take place within ControlShift. This authenticated endpoint provides status information about webhook endpoints.</p>
 
