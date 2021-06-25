@@ -5,10 +5,6 @@ was recorded against.
 
 ### Lookup
 
-Find a specific signature by email address. Once you have obtained a signature id you can use this identifier in other API calls.
-
-`GET /api/v1/petitions/no-taxes-on-tea/signatures/lookup?email=foo@bar.com`
-
 > GET response body for Lookup
 
 ```json
@@ -65,6 +61,12 @@ Find a specific signature by email address. Once you have obtained a signature i
 }
 ```
 
+Find a specific signature by email address. Once you have obtained a signature id you can use this identifier in other API calls.
+
+`GET /api/v1/petitions/no-taxes-on-tea/signatures/lookup?email=foo@bar.com`
+
+<div></div>
+
 ### Create
 
 Creates a new signature for the specified petition. This API endpoint can be used to record externally collected signatures for
@@ -78,6 +80,9 @@ For organisations that require email confirmation, a confirmation email will be 
 <%= partial 'includes/create_action_fields.md.erb', locals: { action_name: 'signature' } %>
 
 `POST /api/v1/petitions/no-taxes-on-tea/signatures/`
+
+<div></div>
+
 
 #### POST body
 
@@ -139,6 +144,8 @@ For organisations that require email confirmation, a confirmation email will be 
 }
 ```
 
+<div></div>
+
 ### Update email opt in type
 
 Updates the email opt in type associated with a single signature. This can be used to change the email opt in type
@@ -149,9 +156,13 @@ No history is stored recording the original consent type, it is replaced by the 
 
 `POST /api/v1/petitions/no-taxes-on-tea/signatures/123`
 
+<div></div>
+
 #### POST body
 
 `external_id=foo`
+
+<div></div>
 
 ### Destroy
 
@@ -171,20 +182,9 @@ Permanently deletes the signature with the specified ID. Note that this will dec
 
 `DELETE /api/v1/petitions/no-taxes-on-tea/signatures/123`
 
+<div></div>
+
 ### List
-
-List the signatures that are part of a Petition.
-
-This is a paginated response. You can advance to the next page using the page parameter, which accepts a page number integer.
-By default the first page is returned.
-
-Hash     | Description
---------- | -------
-meta      | pagination information
-petition  | basic information about the petition
-signatures | an array of signature results
-
-`GET /api/v1/petitions/no-taxes-on-tea/signatures?page=2`
 
 > GET response body for List
 
@@ -254,6 +254,24 @@ signatures | an array of signature results
 }
 ```
 
+
+List the signatures that are part of a Petition.
+
+This is a paginated response. You can advance to the next page using the page parameter, which accepts a page number integer.
+By default the first page is returned.
+
+Hash     | Description
+--------- | -------
+meta      | pagination information
+petition  | basic information about the petition
+signatures | an array of signature results
+
+`GET /api/v1/petitions/no-taxes-on-tea/signatures?page=2`
+
+
+<div></div>
+
+
 ### Unsubscribe
 
 > POST response body for Unsubscribe
@@ -272,3 +290,5 @@ signatures | an array of signature results
 Unsubscribes a member who has signed the petition from any emails sent by petition creator. They will still receive transactional emails.
 
 `POST /api/v1/petitions/no-taxes-on-tea/signatures/123/unsubscribe`
+
+<div></div>

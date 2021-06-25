@@ -4,10 +4,6 @@ Attendees are member RSVPs to an Event. All attendee actions are namespaced by U
 
 ### Lookup
 
-Find an attendee by email address. Once you have obtained the attendee's id you can use this identifier in other API calls.
-
-`GET /api/v1/events/deliver-the-petition-to-the-wizard/attendees/lookup?email=foo@bar.com`
-
 > GET response body for Lookup
 
 ```json
@@ -59,6 +55,12 @@ Find an attendee by email address. Once you have obtained the attendee's id you 
 }
 ```
 
+Find an attendee by email address. Once you have obtained the attendee's id you can use this identifier in other API calls.
+
+`GET /api/v1/events/deliver-the-petition-to-the-wizard/attendees/lookup?email=foo@bar.com`
+
+<div></div>
+
 ### Create
 
 Creates a new attendee for the specified event. This API endpoint can be used to record externally collected RSVPs for
@@ -72,6 +74,8 @@ For organisations that require email confirmation, a confirmation email will be 
 <%= partial 'includes/create_action_fields.md.erb', locals: { action_name: 'attendee' } %>
 
 `POST /api/v1/events/deliver-the-petition-to-the-wizard/attendees/`
+
+<div></div>
 
 #### POST body
 
@@ -135,6 +139,7 @@ For organisations that require email confirmation, a confirmation email will be 
 }
 ```
 
+<div></div>
 
 ### Update email opt in type
 
@@ -149,6 +154,8 @@ No history is stored recording the original consent type, it is replaced by the 
 #### POST body
 
 `external_id=foo`
+
+<div></div>
 
 ### Destroy
 
@@ -168,6 +175,8 @@ Permanently deletes the attendee with the specified ID.
 
 `DELETE /api/v1/events/deliver-the-petition-to-the-wizard/attendees/123`
 
+<div></div>
+
 ### List
 
 List the attendees that have RSVPed to an Event.
@@ -182,6 +191,8 @@ event       | basic information about the event
 attendees   | an array of attendee results
 
 `GET /api/v1/events/deliver-the-petition-to-the-wizard/attendees?page=2`
+
+<div></div>
 
 ### Unsubscribe
 
@@ -201,3 +212,5 @@ attendees   | an array of attendee results
 Unsubscribes a member who has RSVPed to the event from any emails sent by event host. They will still receive transactional emails.
 
 `POST /api/v1/events/deliver-the-petition-to-the-wizard/attendees/123/unsubscribe`
+
+<div></div>
