@@ -4848,6 +4848,9 @@ all associated signatures, attendee records, user accounts and other data held b
 </span></code></pre></div>
 <p>Get a paginated list of all petitions, including ones that are unlaunched or otherwise not visible to the public. Includes all the same data as the single-petition endpoint for each petition.</p>
 
+<p>This is a paginated response. You can advance to the next page using the page parameter, which accepts a page number integer.
+By default the first page is returned.</p>
+
 <p><code>GET /api/v1/petitions?page=1</code></p>
 
 <div></div>
@@ -4874,8 +4877,8 @@ all associated signatures, attendee records, user accounts and other data held b
 <p>Permanently deletes the petition and all associated information including signature data via an HTTP DELETE request.</p>
 
 <p>This is an asynchronous task, so while API calls will return with a success message immediately
-it may take up to several minutes for the petition and all of its data to be completely 
-destroyed.  </p>
+it may take up to several minutes for the petition and all of its data to be completely
+destroyed.</p>
 
 <p><code>DELETE /api/v1/petitions/no-taxes-on-tea</code></p>
 
@@ -5499,7 +5502,10 @@ By default the first page is returned.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Get a paginated list of all events, including ones that are unlaunched or otherwise not visible to the public. Includes all the same data as the single-event endpoint for each event.</p>
+<p>Returns a paginated list of all events, including ones that are unlaunched or otherwise not visible to the public. Includes all the same data as the single-event endpoint for each event.</p>
+
+<p>This is a paginated response. You can advance to the next page using the page parameter, which accepts a page number integer.
+By default the first page is returned.</p>
 
 <p><code>GET /api/v1/events?page=1</code></p>
 
@@ -5916,16 +5922,35 @@ By default the first page is returned. </p>
 
 <p><code>GET /api/v1/calendars/movie-screenings-for-healthcare-access/events?page=2</code></p>
 <h2 id='authenticated-rest-api-local-groups'>Local Groups</h2>
-<p>Local Groups are groups of supporters that host events and create petitions. 
-They can exist either in a specific place, organize around a topic, or a geographic shape. </p>
+<p>Local Groups are groups of supporters that host events and create petitions.
+They can exist either in a specific place, organize around a topic, or a geographic shape.</p>
 
-<p>Within the API and in other technical documentation Local Groups are often referred to as 
+<p>Within the API and in other technical documentation Local Groups are often referred to as
 Local Chapters. These are synonymous features, and simply a consequence of how the software is structured
-internally versus the way that Local Groups are described publicly. </p>
+internally versus the way that Local Groups are described publicly.</p>
 <h3 id='authenticated-rest-api-local-groups-list'>List</h3>
-<p>Get a paginated list of all local groups.</p>
+<p>Get a paginated list of all local groups and information about each of them.</p>
+
+<p>This is a paginated response. You can advance to the next page using the page parameter, which accepts a page number integer.
+By default the first page is returned.</p>
 
 <p><code>GET /api/v1/local_chapters/?page=1</code></p>
+
+<table><thead>
+<tr>
+<th>Hash</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>meta</td>
+<td>pagination information</td>
+</tr>
+<tr>
+<td>local_chapters</td>
+<td>an array of information about the local chapters</td>
+</tr>
+</tbody></table>
 <h3 id='authenticated-rest-api-local-groups-show'>Show</h3>
 <div></div>
 
@@ -5938,6 +5963,26 @@ internally versus the way that Local Groups are described publicly. </p>
 <p>Retrieve a paginated list of all of the people who are members of a particular local group.</p>
 
 <p><code>GET /api/v1/local_chapters/save-gotham/members</code></p>
+
+<table><thead>
+<tr>
+<th>Hash</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>meta</td>
+<td>pagination information</td>
+</tr>
+<tr>
+<td>local_chapter</td>
+<td>Basic information about the local group</td>
+</tr>
+<tr>
+<td>members</td>
+<td>Array of information about each supporter in this group</td>
+</tr>
+</tbody></table>
 <h3 id='authenticated-rest-api-local-groups-apply-label'>Apply Label</h3>
 <div></div>
 
