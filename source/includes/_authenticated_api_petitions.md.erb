@@ -165,15 +165,6 @@ Get a paginated list of all petitions, including ones that are unlaunched or oth
 
 ### Update
 
-Updates petition content using an HTTP PUT request.
-
-We support several request formats for the data to be updated, but the most straightforward is to send the data as a json formatted PUT body.
-
-In the request body only include the fields that you would like to update to a new value. The slug in the URL defines which petition should be updated.
-
-
-`PUT /api/v1/petitions/no-taxes-on-tea`
-
 > PUT request body
 
 ```json
@@ -184,17 +175,19 @@ In the request body only include the fields that you would like to update to a n
 }
 ```
 
+Updates petition content using an HTTP PUT request.
+
+We support several request formats for the data to be updated, but the most straightforward is to send the data as a json formatted PUT body.
+
+In the request body only include the fields that you would like to update to a new value. The slug in the URL defines which petition should be updated.
+
+
+`PUT /api/v1/petitions/no-taxes-on-tea`
+
+
 <div></div>
 
 ### Destroy
-
-Permanently deletes the petition and all associated information including signature data via an HTTP DELETE request.
-
-This is an asynchronous task, so while API calls will return with a success message immediately
-it may take up to several minutes for the petition and all of its data to be completely
-destroyed.
-
-`DELETE /api/v1/petitions/no-taxes-on-tea`
 
 > DELETE response body
 
@@ -208,10 +201,28 @@ destroyed.
 }
 ```
 
+Permanently deletes the petition and all associated information including signature data via an HTTP DELETE request.
+
+This is an asynchronous task, so while API calls will return with a success message immediately
+it may take up to several minutes for the petition and all of its data to be completely
+destroyed.
+
+`DELETE /api/v1/petitions/no-taxes-on-tea`
+
+
+
 <div></div>
 
 
 ### Apply Label
+
+> POST request body
+
+```json
+{
+  "name": "We Love Tea!"
+}
+```
 
 Applies an existing Label to a specific Petition.
 
@@ -223,13 +234,7 @@ The request body must include a `name` attribute with the name of the label to b
 
 Response on success will not have a body, and status code will be `201 - Created`
 
-> POST request body
-
-```json
-{
-  "name": "We Love Tea!"
-}
-```
+This example would apply the "We Love Tea!" label to the petition.
 
 <div></div>
 
@@ -242,3 +247,5 @@ The name of the Label must be included in the URL and be correctly percent encod
 Response on success will not have a body, and status code will be `200 - Ok`
 
 `DELETE /api/v1/petitions/no-taxes-on-tea/labelings/We%20Love%20Tea%21`
+
+This example would remove the "We Love Tea!" label from the petition.
