@@ -6,6 +6,8 @@ We use [OAuth2](http://oauth.net/2/) to allow organizations to securely grant ac
 
 An *API Application* must be configured within your ControlShift instance before using the API. Access is then granted to this application, and exchanged for a token which is used to authenticate your access to API endpoints.
 
+If you're synchronizing data from ControlShift into another system then the Webhooks API is likely a better choice for that use case. 
+
 ## Rate Limits
 
 We apply the following per-domain rate limits on HTTP requests made to the API:
