@@ -370,6 +370,9 @@
                 <a href="#webhook-endpoints-bulk-data-columns-direct-aws-access" class="toc-h2 toc-link" data-title="Direct AWS Access">Direct AWS Access</a>
               </li>
               <li>
+                <a href="#webhook-endpoints-designing-a-data-sync" class="toc-h2 toc-link" data-title="Designing a data sync">Designing a data sync</a>
+              </li>
+              <li>
                 <a href="#webhook-endpoints-webhook-types-summary" class="toc-h2 toc-link" data-title="Webhook types summary">Webhook types summary</a>
               </li>
               <li>
@@ -2193,6 +2196,36 @@ passed in the <code>x-controlshift-webhook-signature</code> header. These values
 request, the Bulk Data API allows direct access to these files from within the same region where your ControlShift account
 resides (usually us-east-1). Direct AWS Access allows for high-performance access to files on AWS S3 without leaving the AWS
 Cloud for customers with a point of presence in the same AWS Region. Contact support if you would like to make use of this advanced feature.</p>
+<h2 id='webhook-endpoints-designing-a-data-sync'>Designing a data sync</h2>
+<p>The most common use case for the Webhooks API is synchronizing ControlShift to an organization&#39;s CRM of record when an out-of the-box CRM integration is not available as part of the ControlShift product.</p>
+
+<p>While designing a CRM integration sync, there are a few specific webhook events that a minimalist integration should respond to as a starting point depending on the ControlShift features that are in use. </p>
+
+<table><thead>
+<tr>
+<th>Webhook</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>signature.created</code></td>
+<td>a user signed a petition</td>
+</tr>
+<tr>
+<td><code>attendee.created</code></td>
+<td>a user signed up to attend an event</td>
+</tr>
+<tr>
+<td><code>local_chapter.member.created</code></td>
+<td>a user joined a local chapter</td>
+</tr>
+<tr>
+<td><code>unsubscribe.created</code></td>
+<td>a user unsubscribed and no longer wishes to receive email</td>
+</tr>
+</tbody></table>
+
+<p>Responding to these events is generally sufficient to keep an external mailing list up to date so that staff do not need to shuffle CSVs back and forth. </p>
 <h2 id='webhook-endpoints-webhook-types-summary'>Webhook types summary</h2>
 <p>You can configure ControlShift Labs Webhooks to return the following event types:</p>
 
