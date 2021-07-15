@@ -55,4 +55,6 @@ We offer several APIs to customers to cover different integration use cases.
 
 - __Bulk Data__ Integrate your ControlShift instance with a data warehouse like Redshift for SQL access and reporting.
 
-- __Authenticated REST__ Server Side API integration option for more advanced scenarios. Uses OAuth2 to allow third-party developers to create applications and customers to grant access.
+- __Authenticated REST__ Server Side API integration option for more advanced scenarios than are possible with the JSONP API. Uses OAuth2 to allow third-party developers to create applications and customers to grant access.
+
+It's important to choose the right API for the project you're undertaking. For example, the Webhooks API is almost always the right choice if you're syncing ControlShift data to a CRM. 
