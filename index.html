@@ -600,8 +600,14 @@
 <li><p><strong>JSONP API</strong> Unauthenticated API designed to be consumed by javascript clients written by front-end engineers. Quickly display public information about petitions, efforts, and users on external sites.</p></li>
 <li><p><strong>Webhooks</strong> Get notified when changes happen so external systems can react.</p></li>
 <li><p><strong>Bulk Data</strong> Integrate your ControlShift instance with a data warehouse like Redshift for SQL access and reporting.</p></li>
-<li><p><strong>Authenticated REST</strong> Server Side API integration option for more advanced scenarios. Uses OAuth2 to allow third-party developers to create applications and customers to grant access.</p></li>
+<li><p><strong>Authenticated REST</strong> Server Side API integration option for more advanced scenarios than are possible with the JSONP API. Uses OAuth2 to allow third-party developers to create applications and customers to grant access.</p></li>
 </ul>
+
+<p>It&#39;s important to choose the right API for the project you&#39;re undertaking. For example, the Webhooks API is almost always the right choice if you&#39;re syncing ControlShift data to a CRM.</p>
+
+<p>API Usage assistance is available via email at <a href="mailto:support@controlshiftlabs.com">support@controlshiftlabs.com</a> </p>
+
+<p>We publish various pieces of <a href="https://github.com/controlshift/">open source code on Github</a> which you may find useful.</p>
 <h1 id='json-api-endpoints'>JSON API Endpoints</h1>
 <p>The JSONP API is a simple way to embed ControlShift petition content in external sites. It&#39;s intended for use by a front-end developer embed content on web pages outside of the platform.  For example, a developer could:</p>
 
@@ -4427,6 +4433,8 @@ for customers configuring these tools via support@controlshiftlabs.com</p>
 <p>We use <a href="http://oauth.net/2/">OAuth2</a> to allow organizations to securely grant access to API Applications. OAuth2 is a standardized protocol that allows user credentials to be exchanged for a secret token which can then be used to access an API. There are OAuth2 implementations available for most common programming languages. You&#39;ll probably want to read some general documentation on how OAuth2 works before attempting to use this API.</p>
 
 <p>An <em>API Application</em> must be configured within your ControlShift instance before using the API. Access is then granted to this application, and exchanged for a token which is used to authenticate your access to API endpoints.</p>
+
+<p>If you&#39;re synchronizing data from ControlShift into another system then the Webhooks API is likely a better choice for that use case. </p>
 <h2 id='authenticated-rest-api-rate-limits'>Rate Limits</h2>
 <p>We apply the following per-domain rate limits on HTTP requests made to the API:</p>
 
