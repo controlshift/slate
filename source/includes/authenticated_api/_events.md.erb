@@ -128,6 +128,45 @@ Find information about an event by URL slug.
 
 <div></div>
 
+### Update
+
+> PUT request body
+
+```json
+{
+  "event": {
+    "description": "We're going to meet at the park and march to City Hall. Bring a sign!",
+    "max_attendees_count": null
+  }
+}
+```
+
+Updates the content and/or settings of the event whose slug is in the URL.
+
+`PUT /api/v1/events/march-against-gun-violence`
+
+The request body should contain only the fields you would like to update, in JSON format. All other fields will be left unchanged.
+
+The fields that can be changed this way are:
+
+Field | Type | Description
+------|------|------------
+campaigner_contactable | Boolean | Whether members of the public can contact the event host via the public event page
+description | String | Description of the event
+event_host_name_override | String | Name to display for the event host on the event page. Set to `null` to use the name from the event host's user account.
+extra_location_info | String | Additional non-address information about the event's location, e.g. "7th floor" or "Park in the back parking lot"
+forum_enabled | Boolean | Enables or disables the discussion forum feature for the event's attendees
+hidden_address | Boolean | Indicates that the event's address is private. The city/locality will be shown on the web, but the full address will only be provided to members who RSVP to the event.
+hide_recent_attendees | Boolean | Do not display the names of people who recently RSVPed in the post-RSVP sharing prompt.
+host_address | String | The mailing address of the event host. May be used to mail event materials.
+max_attendees_count | Integer | Limit on how many people, besides the host, may sign up for this event. Set to `null` for no limit.
+redirect_to | String | If set, visitors to the event page will be redirected to this URL
+sharing_disabled | Boolean | Turns off the social sharing prompts for the event
+title | String | Event title
+web_conference_url | String | Video call or web conference tool URL for attendees to access the event
+
+<div></div>
+
 ### Apply Label
 
 Applies an existing Label to a specific Event.
