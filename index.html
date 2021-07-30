@@ -5829,6 +5829,100 @@ By default the first page is returned.</p>
 <p><code>GET /api/v1/events/deliver-the-petition-to-the-wizard</code></p>
 
 <div></div>
+<h3 id='authenticated-rest-api-events-update'>Update</h3>
+<blockquote>
+<p>PUT request body</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We're going to meet at the park and march to City Hall. Bring a sign!"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"max_attendees_count"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Updates the content and/or settings of the event whose slug is in the URL.</p>
+
+<p><code>PUT /api/v1/events/march-against-gun-violence</code></p>
+
+<p>The request body should contain only the fields you would like to update, in JSON format. All other fields will be left unchanged.</p>
+
+<p>The fields that can be changed this way are:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>campaigner_contactable</td>
+<td>Boolean</td>
+<td>Whether members of the public can contact the event host via the public event page</td>
+</tr>
+<tr>
+<td>description</td>
+<td>String</td>
+<td>Description of the event</td>
+</tr>
+<tr>
+<td>event_host_name_override</td>
+<td>String</td>
+<td>Name to display for the event host on the event page. Set to <code>null</code> to use the name from the event host&#39;s user account.</td>
+</tr>
+<tr>
+<td>extra_location_info</td>
+<td>String</td>
+<td>Additional non-address information about the event&#39;s location, e.g. &quot;7th floor&quot; or &quot;Park in the back parking lot&quot;</td>
+</tr>
+<tr>
+<td>forum_enabled</td>
+<td>Boolean</td>
+<td>Enables or disables the discussion forum feature for the event&#39;s attendees</td>
+</tr>
+<tr>
+<td>hidden_address</td>
+<td>Boolean</td>
+<td>Indicates that the event&#39;s address is private. The city/locality will be shown on the web, but the full address will only be provided to members who RSVP to the event.</td>
+</tr>
+<tr>
+<td>hide_recent_attendees</td>
+<td>Boolean</td>
+<td>Do not display the names of people who recently RSVPed in the post-RSVP sharing prompt.</td>
+</tr>
+<tr>
+<td>host_address</td>
+<td>String</td>
+<td>The mailing address of the event host. May be used to mail event materials.</td>
+</tr>
+<tr>
+<td>max_attendees_count</td>
+<td>Integer</td>
+<td>Limit on how many people, besides the host, may sign up for this event. Set to <code>null</code> for no limit.</td>
+</tr>
+<tr>
+<td>redirect_to</td>
+<td>String</td>
+<td>If set, visitors to the event page will be redirected to this URL</td>
+</tr>
+<tr>
+<td>sharing_disabled</td>
+<td>Boolean</td>
+<td>Turns off the social sharing prompts for the event</td>
+</tr>
+<tr>
+<td>title</td>
+<td>String</td>
+<td>Event title</td>
+</tr>
+<tr>
+<td>web_conference_url</td>
+<td>String</td>
+<td>Video call or web conference tool URL for attendees to access the event</td>
+</tr>
+</tbody></table>
+
+<div></div>
 <h3 id='authenticated-rest-api-events-apply-label'>Apply Label</h3>
 <p>Applies an existing Label to a specific Event.</p>
 
