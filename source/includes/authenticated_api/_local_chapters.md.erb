@@ -44,3 +44,6 @@ members        | Array of information about each supporter in this group
 
 <%= partial "includes/authenticated_api/labelings.md.erb",
             locals: {campaign_type: 'local group', path_prefix: '/api/v1/local-chapters/tea-drinking-society'} %>
+
+<%= partial "includes/authenticated_api/mentor.md.erb",
+            locals: {campaign_type: 'local group', path_prefix: '/api/v1/local-chapters/tea-drinking-society'} %>
