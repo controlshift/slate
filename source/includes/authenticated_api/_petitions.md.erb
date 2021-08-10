@@ -238,39 +238,5 @@ destroyed.
 
 <div></div>
 
-
-### Apply Label
-
-> POST request body
-
-```json
-{
-  "name": "We Love Tea!"
-}
-```
-
-Applies an existing Label to a specific Petition.
-
-**Note:** Currently it is not possible to create Labels via the API. The Label needs to exists to allow tagging a Petition with it.
-
-The request body must include a `name` attribute with the name of the label to be applied to the Petition.
-
-`POST /api/v1/petitions/no-taxes-on-tea/labelings`
-
-Response on success will not have a body, and status code will be `201 - Created`
-
-This example would apply the "We Love Tea!" label to the petition.
-
-<div></div>
-
-### Remove Label
-
-Removes a Label from the Petition.
-
-The name of the Label must be included in the URL and be correctly percent encoded as per RFC 3986.
-
-Response on success will not have a body, and status code will be `200 - Ok`
-
-`DELETE /api/v1/petitions/no-taxes-on-tea/labelings/We%20Love%20Tea%21`
-
-This example would remove the "We Love Tea!" label from the petition.
+<%= partial "includes/authenticated_api/labelings.md.erb",
+            locals: {campaign_type: 'petition', path_prefix: '/api/v1/petitions/no-taxes-on-tea'} %>
