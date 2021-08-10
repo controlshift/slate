@@ -42,37 +42,5 @@ meta           | pagination information
 local_chapter  | Basic information about the local group
 members        | Array of information about each supporter in this group
 
-### Apply Label
-<div></div>
-
-Applies an existing Label to a specific Local Group.
-
-**Note:** Currently it is not possible to create Labels via the API. The Label needs to exists to allow tagging an Local Group with it.
-
-The request body must include a `name` attribute with the name of the label to be applied to the Local Group.
-
-`POST /api/v1/local_chapters/save-gotham/labelings`
-
-Response on success will not have a body, and status code will be `201 - Created`
-
-> POST request body
-
-```json
-{
-  "name": "official"
-}
-```
-
-In this example we add the label "official" to the Local Group with slug `save-gotham`
-
-### Remove Label
-
-Removes a Label from the Local Group.
-
-The name of the Label must be included in the URL and be correctly percent encoded as per RFC 3986.
-
-Response on success will not have a body, and status code will be `200 - Ok`
-
-`DELETE /api/v1/local_chapters/save-gotham/labelings/official`
-
-In this example we remove the label "official" from the Local Group with slug `save-gotham`
+<%= partial "includes/authenticated_api/labelings.md.erb",
+            locals: {campaign_type: 'local group', path_prefix: '/api/v1/local-chapters/tea-drinking-society'} %>

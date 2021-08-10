@@ -167,36 +167,5 @@ web_conference_url | String | Video call or web conference tool URL for attendee
 
 <div></div>
 
-### Apply Label
-
-Applies an existing Label to a specific Event.
-
-**Note:** Currently it is not possible to create Labels via the API. The Label needs to exists to allow tagging an Event with it.
-
-The request body must include a `name` attribute with the name of the label to be applied to the Event.
-
-Event show URLs are constructed using the slug field as a unique identifier for each event.
-
-`POST /api/v1/events/deliver-the-petition-to-the-wizard/labelings`
-
-Response on success will not have a body, and status code will be `201 - Created`
-
-> POST request body
-
-```json
-{
-  "name": "Oz"
-}
-```
-
-<div></div>
-
-### Remove Label
-
-Removes a Label from the Event.
-
-The name of the Label must be included in the URL and be correctly percent encoded as per RFC 3986.
-
-Response on success will not have a body, and status code will be `200 - Ok`
-
-`DELETE /api/v1/events/deliver-the-petition-to-the-wizard/labelings/Oz`
+<%= partial "includes/authenticated_api/labelings.md.erb",
+            locals: {campaign_type: 'event', path_prefix: '/api/v1/events/deliver-the-petition-to-the-wizard'} %>

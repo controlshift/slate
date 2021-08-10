@@ -1,0 +1,35 @@
+### Apply Label
+
+> POST request body
+
+```json
+{
+  "name": "We Love Tea!"
+}
+```
+
+Applies an existing Label to a specific <%= campaign_type %>.
+
+**Note:** Currently it is not possible to create Labels via the API. The Label needs to exists to allow tagging the <%= campaign_type %> with it.
+
+The request body must include a `name` attribute with the name of the label to be applied to the <%= campaign_type %>.
+
+`POST <%= path_prefix %>/labelings`
+
+Response on success will not have a body, and status code will be `201 - Created`
+
+This example would apply the "We Love Tea!" label to the <%= campaign_type %>.
+
+<div></div>
+
+### Remove Label
+
+Removes a Label from the <%= campaign_type %>.
+
+The name of the Label must be included in the URL and be correctly percent encoded as per RFC 3986.
+
+Response on success will not have a body, and status code will be `200 - Ok`
+
+`DELETE <%= path_prefix %>/labelings/We%20Love%20Tea%21`
+
+This example would remove the "We Love Tea!" label from the <%= campaign_type %>.
