@@ -189,7 +189,11 @@ admin_events_status | String | Whether the petition creator can create events as
 alias | String | Used for the petition's short URL. Setting `alias` to "foo" will result in a short URL of /p/foo
 campaigner_contactable | Boolean | Whether members of the public can contact the petition creator via the public petition page
 can_download_signers | Boolean | Whether the petition creator can download information about petition signers
+categories_locked | Boolean | Petition creator cannot change which categories the petition is in
 custom_goal | Integer | Signature goal displayed on the petition page. Set to `null` to automatically calculate the goal from the current signature total.
+delivery_details_locked | Boolean | Petition creator cannot change the delivery details
+external_facebook_page_locked | Boolean | Petition creator cannot change the Facebook page URL
+external_site_locked | Boolean | Petition creator cannot change the external site URL
 hide_petition_creator | Boolean | Do not display the petition creator's name or profile picture on the petition page
 hide_recent_signers | Boolean | Do not display the list of recent signers on the petition page
 hide_signature_form | Boolean | Turn off the form that allows people to sign the petition via the petition page
@@ -198,9 +202,13 @@ redirect_to | String | If set, visitors to the petition page will be redirected 
 show_progress_bar | Boolean | Whether to show the signature progress bar on the petition page
 signature_count_add_amount | Integer | If set, the displayed signature total on the petition page will be this much higher than the actual number of signatures recorded by the platform. This is usually used to reflect signatures that were gathered elsewhere and cannot be added to the platform, or signers whose data has been anonymized. A negative number can be specified to subtract from the total.
 title | String | Petition title
+title_locked | Boolean | Petition creator cannot change the title
 what | String | Petition text
+what_locked | Boolean | Petition creator cannot change the "what" field
 who | String | Name of the person this petition is targeting. Petitions associated with a decision maker will not necessarily use this setting.
+who_locked | Boolean | Petition creator cannot change the "who" field
 why | String | "Why is this important?" text
+why_locked | Boolean | Petition creator cannot change the "why" field
 
 <div></div>
 
