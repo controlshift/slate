@@ -5083,9 +5083,29 @@ By default the first page is returned.</p>
 <td>Whether the petition creator can download information about petition signers</td>
 </tr>
 <tr>
+<td>categories_locked</td>
+<td>Boolean</td>
+<td>Petition creator cannot change which categories the petition is in</td>
+</tr>
+<tr>
 <td>custom_goal</td>
 <td>Integer</td>
 <td>Signature goal displayed on the petition page. Set to <code>null</code> to automatically calculate the goal from the current signature total.</td>
+</tr>
+<tr>
+<td>delivery_details_locked</td>
+<td>Boolean</td>
+<td>Petition creator cannot change the delivery details</td>
+</tr>
+<tr>
+<td>external_facebook_page_locked</td>
+<td>Boolean</td>
+<td>Petition creator cannot change the Facebook page URL</td>
+</tr>
+<tr>
+<td>external_site_locked</td>
+<td>Boolean</td>
+<td>Petition creator cannot change the external site URL</td>
 </tr>
 <tr>
 <td>hide_petition_creator</td>
@@ -5128,9 +5148,19 @@ By default the first page is returned.</p>
 <td>Petition title</td>
 </tr>
 <tr>
+<td>title_locked</td>
+<td>Boolean</td>
+<td>Petition creator cannot change the title</td>
+</tr>
+<tr>
 <td>what</td>
 <td>String</td>
 <td>Petition text</td>
+</tr>
+<tr>
+<td>what_locked</td>
+<td>Boolean</td>
+<td>Petition creator cannot change the &quot;what&quot; field</td>
 </tr>
 <tr>
 <td>who</td>
@@ -5138,9 +5168,19 @@ By default the first page is returned.</p>
 <td>Name of the person this petition is targeting. Petitions associated with a decision maker will not necessarily use this setting.</td>
 </tr>
 <tr>
+<td>who_locked</td>
+<td>Boolean</td>
+<td>Petition creator cannot change the &quot;who&quot; field</td>
+</tr>
+<tr>
 <td>why</td>
 <td>String</td>
 <td>&quot;Why is this important?&quot; text</td>
+</tr>
+<tr>
+<td>why_locked</td>
+<td>Boolean</td>
+<td>Petition creator cannot change the &quot;why&quot; field</td>
 </tr>
 </tbody></table>
 
