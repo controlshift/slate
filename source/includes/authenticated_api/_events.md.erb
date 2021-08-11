@@ -169,3 +169,6 @@ web_conference_url | String | Video call or web conference tool URL for attendee
 
 <%= partial "includes/authenticated_api/labelings.md.erb",
             locals: {campaign_type: 'event', path_prefix: '/api/v1/events/deliver-the-petition-to-the-wizard'} %>
+
+<%= partial "includes/authenticated_api/mentor.md.erb",
+            locals: {campaign_type: 'event', path_prefix: '/api/v1/events/deliver-the-petition-to-the-wizard'} %>

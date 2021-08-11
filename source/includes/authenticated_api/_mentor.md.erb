@@ -1,0 +1,44 @@
+### Assign Mentor
+
+> PUT request body
+
+```json
+{
+  "mentor": {
+    "email": "suzie@example.com"
+  }
+}
+```
+
+> PUT request response
+
+```json
+{
+  "status": "success",
+  "data": {
+    "mentor": {
+      "email": "suzie@example.com",
+      "member_id": 123,
+      "full_name": "Suzie Greenberg",
+      "phone_number": "555-555-5555",
+      "postcode": "12345"
+    }
+  }
+}
+```
+
+Assigns an admin user as the mentor for the <%= campaign_type %>.
+
+The email address specified will be used to look up an admin user who will be assigned as the <%= campaign_type %>'s mentor.
+
+`PUT <%= path_prefix %>/mentor`
+
+> PUT request body
+
+```json
+{
+  "mentor": null
+}
+```
+
+To remove the mentor from the <%= campaign_type %>, the request body should include `null` instead of the email block.
