@@ -5093,14 +5093,29 @@ By default the first page is returned.</p>
 <td>Signature goal displayed on the petition page. Set to <code>null</code> to automatically calculate the goal from the current signature total.</td>
 </tr>
 <tr>
+<td>delivery_details</td>
+<td>String</td>
+<td>&quot;How do you plan to deliver the petition?&quot; text</td>
+</tr>
+<tr>
 <td>delivery_details_locked</td>
 <td>Boolean</td>
 <td>Petition creator cannot change the delivery details</td>
 </tr>
 <tr>
+<td>external_facebook_page</td>
+<td>String</td>
+<td>URL of a Facebook page associated with the petition</td>
+</tr>
+<tr>
 <td>external_facebook_page_locked</td>
 <td>Boolean</td>
 <td>Petition creator cannot change the Facebook page URL</td>
+</tr>
+<tr>
+<td>external_site</td>
+<td>String</td>
+<td>URL of a non-ControlShift page associated with the petition</td>
 </tr>
 <tr>
 <td>external_site_locked</td>
@@ -5206,19 +5221,23 @@ destroyed.</p>
 <p><code>DELETE /api/v1/petitions/no-taxes-on-tea</code></p>
 
 <div></div>
-<h3 id='authenticated-rest-api-petitions-apply-label'>Apply Label</h3>
+
+<h3 id='authenticated-rest-api-members-apply-label'>Apply Label</h3>
+
 <blockquote>
 <p>POST request body</p>
 </blockquote>
+
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We Love Tea!"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Applies an existing Label to a specific Petition.</p>
 
-<p><strong>Note:</strong> Currently it is not possible to create Labels via the API. The Label needs to exists to allow tagging a Petition with it.</p>
+<p>Applies an existing Label to a specific petition.</p>
 
-<p>The request body must include a <code>name</code> attribute with the name of the label to be applied to the Petition.</p>
+<p><strong>Note:</strong> Currently it is not possible to create Labels via the API. The Label needs to exists to allow tagging the petition with it.</p>
+
+<p>The request body must include a <code>name</code> attribute with the name of the label to be applied to the petition.</p>
 
 <p><code>POST /api/v1/petitions/no-taxes-on-tea/labelings</code></p>
 
@@ -5227,8 +5246,10 @@ destroyed.</p>
 <p>This example would apply the &quot;We Love Tea!&quot; label to the petition.</p>
 
 <div></div>
-<h3 id='authenticated-rest-api-petitions-remove-label'>Remove Label</h3>
-<p>Removes a Label from the Petition.</p>
+
+<h3 id='authenticated-rest-api-members-remove-label'>Remove Label</h3>
+
+<p>Removes a Label from the petition.</p>
 
 <p>The name of the Label must be included in the URL and be correctly percent encoded as per RFC 3986.</p>
 
@@ -5968,35 +5989,43 @@ By default the first page is returned.</p>
 </tbody></table>
 
 <div></div>
-<h3 id='authenticated-rest-api-events-apply-label'>Apply Label</h3>
-<p>Applies an existing Label to a specific Event.</p>
 
-<p><strong>Note:</strong> Currently it is not possible to create Labels via the API. The Label needs to exists to allow tagging an Event with it.</p>
+<h3 id='authenticated-rest-api-partnerships-apply-label'>Apply Label</h3>
 
-<p>The request body must include a <code>name</code> attribute with the name of the label to be applied to the Event.</p>
+<blockquote>
+<p>POST request body</p>
+</blockquote>
 
-<p>Event show URLs are constructed using the slug field as a unique identifier for each event.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We Love Tea!"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+<p>Applies an existing Label to a specific event.</p>
+
+<p><strong>Note:</strong> Currently it is not possible to create Labels via the API. The Label needs to exists to allow tagging the event with it.</p>
+
+<p>The request body must include a <code>name</code> attribute with the name of the label to be applied to the event.</p>
 
 <p><code>POST /api/v1/events/deliver-the-petition-to-the-wizard/labelings</code></p>
 
 <p>Response on success will not have a body, and status code will be <code>201 - Created</code></p>
 
-<blockquote>
-<p>POST request body</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oz"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
+<p>This example would apply the &quot;We Love Tea!&quot; label to the event.</p>
+
 <div></div>
-<h3 id='authenticated-rest-api-events-remove-label'>Remove Label</h3>
-<p>Removes a Label from the Event.</p>
+
+<h3 id='authenticated-rest-api-partnerships-remove-label'>Remove Label</h3>
+
+<p>Removes a Label from the event.</p>
 
 <p>The name of the Label must be included in the URL and be correctly percent encoded as per RFC 3986.</p>
 
 <p>Response on success will not have a body, and status code will be <code>200 - Ok</code></p>
 
-<p><code>DELETE /api/v1/events/deliver-the-petition-to-the-wizard/labelings/Oz</code></p>
+<p><code>DELETE /api/v1/events/deliver-the-petition-to-the-wizard/labelings/We%20Love%20Tea%21</code></p>
+
+<p>This example would remove the &quot;We Love Tea!&quot; label from the event.</p>
 <h2 id='authenticated-rest-api-attendees'>Attendees</h2>
 <p>Attendees are member RSVPs to an Event. All attendee actions are namespaced by URL underneath the events that the attendee was recorded against.</p>
 <h3 id='authenticated-rest-api-attendees-lookup'>Lookup</h3>
@@ -6393,37 +6422,43 @@ By default the first page is returned.</p>
 <td>Array of information about each supporter in this group</td>
 </tr>
 </tbody></table>
-<h3 id='authenticated-rest-api-local-groups-apply-label'>Apply Label</h3>
-<div></div>
 
-<p>Applies an existing Label to a specific Local Group.</p>
-
-<p><strong>Note:</strong> Currently it is not possible to create Labels via the API. The Label needs to exists to allow tagging an Local Group with it.</p>
-
-<p>The request body must include a <code>name</code> attribute with the name of the label to be applied to the Local Group.</p>
-
-<p><code>POST /api/v1/local_chapters/save-gotham/labelings</code></p>
-
-<p>Response on success will not have a body, and status code will be <code>201 - Created</code></p>
+<h3 id='authenticated-rest-api-calendars-apply-label'>Apply Label</h3>
 
 <blockquote>
 <p>POST request body</p>
 </blockquote>
+
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"official"</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We Love Tea!"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>In this example we add the label &quot;official&quot; to the Local Group with slug <code>save-gotham</code></p>
-<h3 id='authenticated-rest-api-local-groups-remove-label'>Remove Label</h3>
-<p>Removes a Label from the Local Group.</p>
+
+<p>Applies an existing Label to a specific local group.</p>
+
+<p><strong>Note:</strong> Currently it is not possible to create Labels via the API. The Label needs to exists to allow tagging the local group with it.</p>
+
+<p>The request body must include a <code>name</code> attribute with the name of the label to be applied to the local group.</p>
+
+<p><code>POST /api/v1/local-chapters/tea-drinking-society/labelings</code></p>
+
+<p>Response on success will not have a body, and status code will be <code>201 - Created</code></p>
+
+<p>This example would apply the &quot;We Love Tea!&quot; label to the local group.</p>
+
+<div></div>
+
+<h3 id='authenticated-rest-api-calendars-remove-label'>Remove Label</h3>
+
+<p>Removes a Label from the local group.</p>
 
 <p>The name of the Label must be included in the URL and be correctly percent encoded as per RFC 3986.</p>
 
 <p>Response on success will not have a body, and status code will be <code>200 - Ok</code></p>
 
-<p><code>DELETE /api/v1/local_chapters/save-gotham/labelings/official</code></p>
+<p><code>DELETE /api/v1/local-chapters/tea-drinking-society/labelings/We%20Love%20Tea%21</code></p>
 
-<p>In this example we remove the label &quot;official&quot; from the Local Group with slug <code>save-gotham</code></p>
+<p>This example would remove the &quot;We Love Tea!&quot; label from the local group.</p>
 <h2 id='authenticated-rest-api-webhook-endpoints'>Webhook Endpoints</h2>
 <p>Webhooks can be used by software engineers to integrate ControlShift with third-party systems. They allow engineers to build software that is triggered by events that take place within ControlShift. This authenticated endpoint provides status information about webhook endpoints.</p>
 
