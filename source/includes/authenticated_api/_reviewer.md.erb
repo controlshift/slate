@@ -1,0 +1,72 @@
+### Assign Reviewer
+
+> PUT request body
+
+```json
+{
+  "reviewer": {
+    "type": "User",
+    "email": "suzie@example.com"
+  }
+}
+```
+
+> PUT request response
+
+```json
+{
+  "status": "success",
+  "data": {
+    "reviewer": {
+      "type": "User",
+      "email": "suzie@example.com",
+      "full_name": "Suzie Greenberg",
+      "member_id": 123,
+      "phone_number": "555-555-5555",
+      "postcode": "12345"
+    }
+  }
+}
+```
+
+> PUT request body
+
+```json
+{
+  "reviewer": {
+    "type": "Team",
+    "slug": "moderation-helpers"
+  }
+}
+```
+
+> PUT request response
+
+```json
+{
+  "status": "success",
+  "data": {
+    "reviewer": {
+      "type": "Team",
+      "name": "Moderation Helpers",
+      "slug": "moderation-helpers"
+    }
+  }
+}
+```
+
+Assigns an admin user or team as the reviewer for the <%= campaign_type %> that is pending moderation.
+
+The email address or slug will be used to look up an admin user or team that will be assigned to review the <%= campaign_type %>.
+
+`PUT <%= path_prefix %>/reviewer`
+
+> PUT request body
+
+```json
+{
+  "reviewer": null
+}
+```
+
+To remove the reviewer from the <%= campaign_type %>, the request body should include `null` instead of the email or slug block.
