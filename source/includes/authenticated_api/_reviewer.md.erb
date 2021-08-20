@@ -1,5 +1,9 @@
 ### Assign Reviewer
 
+To allow delegation of moderation tasks to specific people or teams, the platform allows specifying a reviewer for each <%= campaign_type %>.
+
+Staff are able to filter the moderation queue to just the tasks that have been assigned to them through the ControlShift platform web interface. 
+
 > PUT request body
 
 ```json
@@ -57,7 +61,7 @@
 
 Assigns an admin user or team as the reviewer for the <%= campaign_type %> that is pending moderation.
 
-The email address or slug will be used to look up an admin user or team that will be assigned to review the <%= campaign_type %>.
+The email address or team slug will be used to look up an admin user or team that will be assigned to review the <%= campaign_type %>.
 
 `PUT <%= path_prefix %>/reviewer`
 
