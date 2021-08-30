@@ -222,6 +222,20 @@ why_locked | Boolean | Petition creator cannot change the "why" field
 
 <div></div>
 
+### Update images
+
+The image shown on the petition page can be updated by making a PUT request with the new image as the body of the request.
+
+`PUT /api/v1/petitions/no-taxes-on-tea/images/image`
+
+To remove the image without replacing it, perform a DELETE request to the same URL.
+
+`DELETE /api/v1/petitions/no-taxes-on-tea/images/image`
+
+It's possible to specify a different image that will be used when the petition page is shared on social media via a request to
+
+`PUT /api/v1/petitions/no-taxes-on-tea/images/social_share_image`
+
 ### Destroy
 
 > DELETE response body
