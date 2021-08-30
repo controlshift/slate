@@ -5207,6 +5207,18 @@ By default the first page is returned.</p>
 </tbody></table>
 
 <div></div>
+<h3 id='authenticated-rest-api-petitions-update-images'>Update images</h3>
+<p>The image shown on the petition page can be updated by making a PUT request with the new image as the body of the request.</p>
+
+<p><code>PUT /api/v1/petitions/no-taxes-on-tea/images/image</code></p>
+
+<p>To remove the image without replacing it, perform a DELETE request to the same URL.</p>
+
+<p><code>DELETE /api/v1/petitions/no-taxes-on-tea/images/image</code></p>
+
+<p>It&#39;s possible to specify a different image that will be used when the petition page is shared on social media via a request to</p>
+
+<p><code>PUT /api/v1/petitions/no-taxes-on-tea/images/social_share_image</code></p>
 <h3 id='authenticated-rest-api-petitions-destroy'>Destroy</h3>
 <blockquote>
 <p>DELETE response body</p>
@@ -6135,6 +6147,14 @@ By default the first page is returned.</p>
 </tbody></table>
 
 <div></div>
+<h3 id='authenticated-rest-api-events-update-image'>Update image</h3>
+<p>The image shown on the event page can be updated by making a PUT request with the new image as the body of the request.</p>
+
+<p><code>PUT /api/v1/events/march-against-gun-violence/images/image</code></p>
+
+<p>To remove the image without replacing it, perform a DELETE request to the same URL.</p>
+
+<p><code>DELETE /api/v1/events/march-against-gun-violence/images/image</code></p>
 
 <h3 id='authenticated-rest-api-partnerships-apply-label'>Apply Label</h3>
 
