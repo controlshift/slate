@@ -174,6 +174,17 @@ web_conference_url | String | Video call or web conference tool URL for attendee
 
 <div></div>
 
+### Update image
+
+The image shown on the event page can be updated by making a PUT request with the new image as the body of the request.
+
+`PUT /api/v1/events/march-against-gun-violence/images/image`
+
+To remove the image without replacing it, perform a DELETE request to the same URL.
+
+`DELETE /api/v1/events/march-against-gun-violence/images/image`
+
+
 <%= partial "includes/authenticated_api/labelings.md.erb",
             locals: {campaign_type: 'event', path_prefix: '/api/v1/events/deliver-the-petition-to-the-wizard'} %>
 
