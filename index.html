@@ -2,11 +2,11 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>ControlShift Labs API & Webhook Reference</title>
-  <link href="images/icon-0e69818e.png" rel="icon" type="image/png" />
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>ControlShift Labs API & Webhook Reference</title>
+    <link href="images/icon-0e69818e.png" rel="icon" type="image/png" />
     <style media="screen">
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -285,7 +285,7 @@
     <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/controlshift-54134136.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all-41cca24a.js"></script>
+      <script src="javascripts/all-13d0a142.js"></script>
 
   </head>
 
@@ -401,6 +401,9 @@
               </li>
               <li>
                 <a href="#webhook-endpoints-event-created" class="toc-h2 toc-link" data-title="event.created">event.created</a>
+              </li>
+              <li>
+                <a href="#webhook-endpoints-event-created-requires_moderation" class="toc-h2 toc-link" data-title="event.created.requires_moderation">event.created.requires_moderation</a>
               </li>
               <li>
                 <a href="#webhook-endpoints-event-updated" class="toc-h2 toc-link" data-title="event.updated">event.updated</a>
@@ -2272,6 +2275,10 @@ Cloud for customers with a point of presence in the same AWS Region. Contact sup
 <td>A new event is published</td>
 </tr>
 <tr>
+<td><a href="#webhook-endpoints-event-created-requires_moderation">event.created.requires_moderation</a></td>
+<td>A new event requires moderation</td>
+</tr>
+<tr>
 <td><a href="#webhook-endpoints-event-updated">event.updated</a></td>
 <td>An event is updated</td>
 </tr>
@@ -2637,6 +2644,73 @@ Cloud for customers with a point of presence in the same AWS Region. Contact sup
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>A new event is published</p>
+<h2 id='webhook-endpoints-event-created-requires_moderation'>event.created.requires_moderation</h2>
+<blockquote>
+<p>Example payload for <code>event.created.requires_moderation</code>:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"event.created.requires_moderation"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"petition-hand-in"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Petition Hand In"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-29T18:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-29T22:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"virtual"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40.7638667"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-73.8098213"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11354"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"locality"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"155-06 Roosevelt Ave, Flushing, NY 11354, États-Unis"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Roosevelt Avenue"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"155-06"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Queens Public Library at McGoldrick"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-23T19:09:41Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"host"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"annabelles@gmail.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Annabelle Smith"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Annabelle"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-28T16:06:43Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"email_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pre_checked_checkbox"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"mailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/events/petition-hand-in"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shifts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lunch"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-29T18:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-29T20:00:00Z"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"debrief"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-29T20:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-29T22:00:00Z"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/events/images/2656/hero/_uploads_7db6d361-d3a4-4ba3-8d82-7ec3d432eea6_gettyimages-469869876.jpg20210705-641506-dcm2y0.jpg?1625504128"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"030ee43a4fa9788e084d9cfc"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>A new event requires moderation</p>
 <h2 id='webhook-endpoints-event-updated'>event.updated</h2>
 <blockquote>
 <p>Example payload for <code>event.updated</code>:</p>
