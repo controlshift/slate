@@ -2,6 +2,7 @@
 # Fix for issue with header titles that are duplicated in different sections of the ToC
 # from: https://github.com/slatedocs/slate/issues/738#issuecomment-406353752
 require './lib/nesting_unique_head.rb'
+require './lib/bulk_data_schema.rb'
 
 # Markdown
 set :markdown_engine, :redcarpet
@@ -28,6 +29,8 @@ ready do
   require './lib/monokai_sublime_slate.rb'
   require './lib/multilang.rb'
 end
+
+activate :bulk_data_schema
 
 activate :sprockets
 
