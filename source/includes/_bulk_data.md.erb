@@ -35,6 +35,10 @@ to ingest data from this API it must process webhook notifications within 6 hour
 
 Once webhook data has expired, the download URLs will return a 403 error response.
 
+### Files compression
+
+When the **Compress bulk data exports** option is enabled (available at the Webhooks integration page), incremental and nightly bulk data export files will be compressed in [`bzip2` format](https://sourceware.org/bzip2/). This will improve the performance for fetching the files from S3 since they will be considerably smaller.
+
 ### Interpreting the share_clicks table
 
 The `share_clicks` table is designed to help you understand in detail how social media sharing influences member actions.
@@ -157,7 +161,18 @@ or [generate an up to date one using this script.](https://github.com/controlshi
 
 ### Configure ControlShift's Webhook
 
-Finally, you'll need to log into your admin panel.  Settings > Integrations > Webhooks.  Then add the bulk data webhook pointing at your Lambda endpoint output by the Terraform plan.
+Finally, you'll need to log into your admin panel.  Settings > Integrations > Webhooks. Then add the bulk data webhook pointing at your Lambda endpoint output by the Terraform plan.
+
+### Working with compressed bulk data files
+
+As described in [Bulk data files compression](#bulk-data-bulk-data-files-files-compression), you can enable compression for bulk data export files. Doing so has the additional benefit of allowing to horizontally scale up AWS Glue's processing of large files as detailed in [Best practices to scale Apache Spark jobs and partition data with AWS Glue](https://aws.amazon.com/blogs/big-data/best-practices-to-scale-apache-spark-jobs-and-partition-data-with-aws-glue/), improving greatly the performance of the process for importing large data exports.
+
+Small data exports, processed with the `controlshift-redshift-loader` Lambda function will also take advantage of the compression on source files by performing the correct [`COPY` command](https://docs.aws.amazon.com/redshift/latest/dg/copy-parameters-data-source-s3.html) on Redshift to process the compressed files directly without needing to decompress.
+
+<aside class="notice">
+Toggling the <strong>Compress bulk data exports</strong> setting requires updating the configuration for the <code>controlshift-redshift-loader</code> Lambda function that processes small data exports. To do this, you will need to manually delete all the items of the <code>LambdaRedshiftBatchLoadConfig</code> Dynamo table and then re-apply the Terraform plan to fetch the current configuration from your ControlShift instance and generate the correct configuration records for the lambda function.
+</aside>
+
 
 ### More information.
 
