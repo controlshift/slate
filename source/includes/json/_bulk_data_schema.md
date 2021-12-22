@@ -3,6 +3,8 @@
 This retrieves information on the underlying schemas of tables exported by the Bulk Data feature. It can be used
 in your ETL processes to automate the setup of tables in your data warehouse.
 
+If the _Compress bulk data exports_ option is enabled, the extra `compression_format` property will be included in the response with the format used for compressing the bulk data export CSVs.
+
 > Response format:
 
 ```json
@@ -31,7 +33,10 @@ in your ETL processes to automate the setup of tables in your data warehouse.
       }
     },
     ...
-  ]
+  ],
+  "settings": {
+    "compression_format": "BZIP2"
+  }
 }
 ```
 
