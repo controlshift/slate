@@ -1,10 +1,10 @@
-## Search petitions in a effort
+### Search petitions in a effort
 
 ```js
 $(document).ready(function(){
   var effortSlug = 'drivers-licenses-for-all';
   $.ajax({
-    url: 'https://demo.controlshiftlabs.com/efforts/'+effortSlug+'/'+'lookup/query.json',
+    url: 'https://demo.controlshiftlabs.com/efforts/'+effortSlug+'/lookup/query.json',
     dataType: 'jsonp',
     data: {
       'location_query': 'briarcliff manor, ny'
@@ -15,7 +15,6 @@ $(document).ready(function(){
   });
 });
 ```
-<!--slash in '/'+'lookup/query.json' above disappears if combined with lookup/query-->
 
 > The above code would return petitions, decision makers, or objectives data from the effort with the slug `drivers-licenses-for-all`. If returning decision makers, the JSON would be structured like this:
 
@@ -54,11 +53,11 @@ $(document).ready(function(){
 This JSON endpoint allows you to build an interface where users can search the petitions in an effort.
 Depending on how the effort is configured, you can search either by location, or by keyword.
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://demo.controlshiftlabs.com/efforts/<effort slug>/lookup/query.json`
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Required? | Description
 --------- | ------- | -----------
@@ -66,7 +65,7 @@ effort slug | yes | string - submitted as a part of the endpoint path, not as a 
 location_query | yes, if effort is configured for location search | string to search for (will be geocoded on the server)
 query | yes, if effort is configured for keyword search | string to search for
 
-### Working Example
+#### Working Example
 
 View and edit a working example on codepen.io:
 
@@ -138,3 +137,4 @@ View and edit a working example on codepen.io:
   <input type="hidden" name="data" class="js-data" value="">
   <input type="submit" value="Launch Example on CodePen">
 </form>
+<div></div>

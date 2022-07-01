@@ -1,4 +1,4 @@
-## List petitions in an effort
+### List petitions in an effort
 
 ```js
 $(document).ready(function(){
@@ -133,7 +133,7 @@ Additionally, successful petitions will have the `successful` attribute set to `
 
 * `ended_story`: with ended story from petition Settings / Admin pages.
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://demo.controlshiftlabs.com/efforts/<effort slug>.json`
 
@@ -141,7 +141,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 effort slug | null | string - required - submitted as a part of the endpoint path, not as a separate URL parameter
 
-### Working Example
+#### Working Example
 
 View and edit a working example on codepen.io:
 
@@ -193,3 +193,4 @@ View and edit a working example on codepen.io:
   <input type="hidden" name="data" class="js-data" value="">
   <input type="submit" value="Launch Example on CodePen">
 </form>
+<div></div>

@@ -1,4 +1,4 @@
-## Get organizing locations: details
+### Get organizing locations: details
 
 ```js
 $(document).ready(function(){
@@ -50,13 +50,15 @@ $(document).ready(function(){
 This JSON endpoint returns a paginated list of publicly listed events, groups, and external events in your organisation.
 It can be used alongside the `/api/local/points` endpoint; the criteria for inclusion are the same.
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://demo.controlshiftlabs.com/api/local.json`
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
 page      | 1       | (optional) Which page of results to fetch
 per_page  | 10      | (optional) How many results, maximum, should be included on each page
+
+<div></div>

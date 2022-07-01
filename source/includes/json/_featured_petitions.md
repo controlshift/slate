@@ -1,4 +1,4 @@
-## Get featured petitions
+### Get featured petitions
 
 ```js
 $(document).ready(function(){
@@ -150,17 +150,17 @@ This retrieves a JSON object compliant with the [JSON API](http://jsonapi.org/) 
 
 **Important Note:** The previous featured petitions API endpoint at `https://demo.controlshiftlabs.com/featured.json` (note the missing `/petitions` path) is being deprecated and **will be removed** in the near future. Please use this new endpoint for retrieving featured petitions from now on.
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://demo.controlshiftlabs.com/petitions/featured.json`
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
 locale | null | string - optional - Locale filter for petitions
 
-### Working Example
+#### Working Example
 
 View and edit a working example on codepen.io:
 
@@ -196,3 +196,5 @@ View and edit a working example on codepen.io:
   <input type="hidden" name="data" class="js-data" value="">
   <input type="submit" value="Launch Example on CodePen">
 </form>
+
+<div></div>

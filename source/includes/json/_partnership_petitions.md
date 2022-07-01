@@ -1,4 +1,4 @@
-## List petitions in a partnership
+### List petitions in a partnership
 
 ```js
 $(document).ready(function(){
@@ -146,18 +146,18 @@ $(document).ready(function(){
 
 This retrieves a paginated list of petitions in a partnership.
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://demo.controlshiftlabs.com/partnerships/<partnership slug>/petitions.json`
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
 partnership slug | null | string - required - submitted as a part of the endpoint path, not as a separate URL parameter
 page | 1 | integer - optional - The page number of results for the specified partnership. Minimum of 1.
 
-### Working Example
+#### Working Example
 
 View and edit a working example on codepen.io:
 
@@ -200,3 +200,4 @@ View and edit a working example on codepen.io:
   <input type="hidden" name="data" class="js-data" value="">
   <input type="submit" value="Launch Example on CodePen">
 </form>
+<div></div>

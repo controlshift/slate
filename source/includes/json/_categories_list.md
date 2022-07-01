@@ -1,4 +1,4 @@
-## Get list of categories
+### Get list of categories
 
 ```js
 $(document).ready(function(){
@@ -41,11 +41,11 @@ $(document).ready(function(){
 
 This retrieves a JSON array of category objects.
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://demo.controlshiftlabs.com/categories.json`
 
-### Working Example
+#### Working Example
 
 View and edit a working example on codepen.io:
 
@@ -81,3 +81,5 @@ View and edit a working example on codepen.io:
   <input type="hidden" name="data" class="js-data" value="">
   <input type="submit" value="Launch Example on CodePen">
 </form>
+
+<div></div>
