@@ -13,6 +13,7 @@ includes:
   - json/intro
   - json/single_petition
   - json/featured_petitions
+  - json/petitions_search
   - json/categories_list
   - json/category_petitions
   - json/partnership_petitions
