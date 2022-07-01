@@ -1,4 +1,4 @@
-## Get calendar data
+### Get calendar data
 
 ```js
 $(document).ready(function(){
@@ -31,8 +31,9 @@ $(document).ready(function(){
 
 This retrieves a JSON object representing a calendar.
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://demo.controlshiftlabs.com/calendars/slug.json`
 
 Where slug is the slug of the calendar you're retrieving. 
+<div></div>

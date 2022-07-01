@@ -1,4 +1,4 @@
-## Get a single petition
+### Get a single petition
 
 ```js
 $(document).ready(function(){
@@ -66,21 +66,20 @@ $(document).ready(function(){
 
 This retrieves a single petition object.
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://demo.controlshiftlabs.com/petitions/<slug>.json`
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
 slug | null | string - required - The petition's unique identification slug. If none is provided, you will get a 404 error. Note: submitted as a part of the endpoint path, not as a separate URL parameter
 
-### Working Example
+#### Working Example
 
 View and edit a working example on codepen.io:
 
-<div>
 <div class="js-codepen-data hidden" data-title="ControlShift Labs: Single Petition Example">
   <div class="codepen-html">
     <div id="js-content-wrapper" class="hidden">
@@ -118,4 +117,5 @@ View and edit a working example on codepen.io:
   <input type="hidden" name="data" class="js-data" value="">
   <input type="submit" value="Launch Example on CodePen">
 </form>
+<div>
 </div>

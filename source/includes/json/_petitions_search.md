@@ -1,4 +1,4 @@
-## Search petitions by keyword
+### Search petitions by keyword
 
 > JSON response example for the search using the `wizard` keyword:
 
@@ -122,13 +122,15 @@
 
 This JSON endpoint allows you to build an interface where users can search through all petitions by one or more keywords.
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://demo.controlshiftlabs.com/petitions/search.json`
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
 query | null | string to search for
 page | 1 | integer - optional - The page number of results for the specified search. Minimum of 1.
+
+<div></div>

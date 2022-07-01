@@ -11,20 +11,14 @@ toc_footers:
 
 includes:
   - json/intro
-  - json/single_petition
-  - json/featured_petitions
-  - json/petitions_search
-  - json/categories_list
-  - json/category_petitions
-  - json/partnership_petitions
-  - json/effort_petitions
-  - json/effort_petitions_near
-  - json/calendars
-  - json/local_points
-  - json/local
+  - json/petitions.md.erb
+  - json/categories.md.erb
+  - json/partnerships.md.erb
+  - json/efforts.md.erb
+  - json/calendars.md.erb
+  - json/local.md.erb
   - json/me
-  - json/bulk_data_schema
-  - json/bulk_data_columns
+  - json/bulk_data.md.erb
   - webhooks.md.erb
   - bulk_data.md.erb
   - authenticated_api/intro

@@ -1,4 +1,4 @@
-## Bulk data schema
+### Bulk data schema
 
 This retrieves information on the underlying schemas of tables exported by the Bulk Data feature. It can be used
 in your ETL processes to automate the setup of tables in your data warehouse.
@@ -40,6 +40,8 @@ If the _Compress bulk data exports_ option is enabled, the extra `compression_fo
 }
 ```
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://demo.controlshiftlabs.com/api/bulk_data/schema.json`
+
+<div></div>
