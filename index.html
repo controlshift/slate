@@ -311,43 +311,28 @@
         <a href="#json-api-endpoints" class="toc-h1 toc-link" data-title="JSON API Endpoints">JSON API Endpoints</a>
           <ul class="toc-list-h2">
               <li>
-                <a href="#json-api-endpoints-get-a-single-petition" class="toc-h2 toc-link" data-title="Get a single petition">Get a single petition</a>
+                <a href="#json-api-endpoints-petitions" class="toc-h2 toc-link" data-title="Petitions">Petitions</a>
               </li>
               <li>
-                <a href="#json-api-endpoints-get-featured-petitions" class="toc-h2 toc-link" data-title="Get featured petitions">Get featured petitions</a>
+                <a href="#json-api-endpoints-categories" class="toc-h2 toc-link" data-title="Categories">Categories</a>
               </li>
               <li>
-                <a href="#json-api-endpoints-get-list-of-categories" class="toc-h2 toc-link" data-title="Get list of categories">Get list of categories</a>
+                <a href="#json-api-endpoints-partnerships" class="toc-h2 toc-link" data-title="Partnerships">Partnerships</a>
               </li>
               <li>
-                <a href="#json-api-endpoints-list-petitions-in-a-category" class="toc-h2 toc-link" data-title="List petitions in a category">List petitions in a category</a>
+                <a href="#json-api-endpoints-efforts" class="toc-h2 toc-link" data-title="Efforts">Efforts</a>
               </li>
               <li>
-                <a href="#json-api-endpoints-list-petitions-in-a-partnership" class="toc-h2 toc-link" data-title="List petitions in a partnership">List petitions in a partnership</a>
+                <a href="#json-api-endpoints-calendars" class="toc-h2 toc-link" data-title="Calendars">Calendars</a>
               </li>
               <li>
-                <a href="#json-api-endpoints-list-petitions-in-an-effort" class="toc-h2 toc-link" data-title="List petitions in an effort">List petitions in an effort</a>
-              </li>
-              <li>
-                <a href="#json-api-endpoints-search-petitions-in-a-effort" class="toc-h2 toc-link" data-title="Search petitions in a effort">Search petitions in a effort</a>
-              </li>
-              <li>
-                <a href="#json-api-endpoints-get-calendar-data" class="toc-h2 toc-link" data-title="Get calendar data">Get calendar data</a>
-              </li>
-              <li>
-                <a href="#json-api-endpoints-get-organizing-locations-points" class="toc-h2 toc-link" data-title="Get organizing locations: points">Get organizing locations: points</a>
-              </li>
-              <li>
-                <a href="#json-api-endpoints-get-organizing-locations-details" class="toc-h2 toc-link" data-title="Get organizing locations: details">Get organizing locations: details</a>
+                <a href="#json-api-endpoints-local-map" class="toc-h2 toc-link" data-title="Local Map">Local Map</a>
               </li>
               <li>
                 <a href="#json-api-endpoints-logged-in-user" class="toc-h2 toc-link" data-title="Logged in user">Logged in user</a>
               </li>
               <li>
-                <a href="#json-api-endpoints-bulk-data-schema" class="toc-h2 toc-link" data-title="Bulk data schema">Bulk data schema</a>
-              </li>
-              <li>
-                <a href="#json-api-endpoints-bulk-data-columns" class="toc-h2 toc-link" data-title="Bulk data columns">Bulk data columns</a>
+                <a href="#json-api-endpoints-bulk-data" class="toc-h2 toc-link" data-title="Bulk Data">Bulk Data</a>
               </li>
           </ul>
       </li>
@@ -355,19 +340,19 @@
         <a href="#webhook-endpoints" class="toc-h1 toc-link" data-title="Webhook Endpoints">Webhook Endpoints</a>
           <ul class="toc-list-h2">
               <li>
-                <a href="#webhook-endpoints-bulk-data-columns-retries" class="toc-h2 toc-link" data-title="Retries">Retries</a>
+                <a href="#webhook-endpoints-bulk-data-retries" class="toc-h2 toc-link" data-title="Retries">Retries</a>
               </li>
               <li>
-                <a href="#webhook-endpoints-bulk-data-columns-security" class="toc-h2 toc-link" data-title="Security">Security</a>
+                <a href="#webhook-endpoints-bulk-data-security" class="toc-h2 toc-link" data-title="Security">Security</a>
               </li>
               <li>
-                <a href="#webhook-endpoints-bulk-data-columns-webhook-hmac-authenticity-signing" class="toc-h2 toc-link" data-title="Webhook HMAC Authenticity Signing">Webhook HMAC Authenticity Signing</a>
+                <a href="#webhook-endpoints-bulk-data-webhook-hmac-authenticity-signing" class="toc-h2 toc-link" data-title="Webhook HMAC Authenticity Signing">Webhook HMAC Authenticity Signing</a>
               </li>
               <li>
-                <a href="#webhook-endpoints-bulk-data-columns-ip-addresses" class="toc-h2 toc-link" data-title="IP Addresses">IP Addresses</a>
+                <a href="#webhook-endpoints-bulk-data-ip-addresses" class="toc-h2 toc-link" data-title="IP Addresses">IP Addresses</a>
               </li>
               <li>
-                <a href="#webhook-endpoints-bulk-data-columns-direct-aws-access" class="toc-h2 toc-link" data-title="Direct AWS Access">Direct AWS Access</a>
+                <a href="#webhook-endpoints-bulk-data-direct-aws-access" class="toc-h2 toc-link" data-title="Direct AWS Access">Direct AWS Access</a>
               </li>
               <li>
                 <a href="#webhook-endpoints-designing-a-data-sync" class="toc-h2 toc-link" data-title="Designing a data sync">Designing a data sync</a>
@@ -625,14 +610,15 @@
 <li>If a site visitor is logged in, show a users past actions and created petitions</li>
 </ul>
 
-<p>All of the endpoints can be consumed as JSONP instead of JSON by adding callback or variable parameters to the URLs.</p>
+<p>Many of the endpoints can be consumed as JSONP instead of JSON by adding callback or variable parameters to the URLs.</p>
 
 <p>The URL slugs through the API are the same as those that are used through the web to represent specific petitions or categories.  Many front-end libraries including jQuery make it easy to consume JSONP endpoints. Our examples below use jQuery to consume these resources.</p>
 
 <aside class="success">
 These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll need to replace this with the hostname of your instance.
 </aside>
-<h2 id='json-api-endpoints-get-a-single-petition'>Get a single petition</h2><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<h2 id='json-api-endpoints-petitions'>Petitions</h2>
+<h3 id='json-api-endpoints-get-a-single-petition'>Get a single petition</h3><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
   <span class="kd">var</span> <span class="nx">petitionSlug</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">repair-the-yellow-brick-road-1</span><span class="dl">'</span><span class="p">;</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
     <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://demo.controlshiftlabs.com/petitions/</span><span class="dl">'</span><span class="o">+</span><span class="nx">petitionSlug</span><span class="o">+</span><span class="dl">'</span><span class="s1">.json</span><span class="dl">'</span><span class="p">,</span>
@@ -696,9 +682,9 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 </blockquote>
 
 <p>This retrieves a single petition object.</p>
-<h3 id='json-api-endpoints-get-a-single-petition-http-request'>HTTP Request</h3>
+<h4 id='json-api-endpoints-get-a-single-petition-http-request'>HTTP Request</h4>
 <p><code>GET https://demo.controlshiftlabs.com/petitions/&lt;slug&gt;.json</code></p>
-<h3 id='json-api-endpoints-get-a-single-petition-query-parameters'>Query Parameters</h3>
+<h4 id='json-api-endpoints-get-a-single-petition-query-parameters'>Query Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -712,10 +698,9 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 <td>string - required - The petition&#39;s unique identification slug. If none is provided, you will get a 404 error. Note: submitted as a part of the endpoint path, not as a separate URL parameter</td>
 </tr>
 </tbody></table>
-<h3 id='json-api-endpoints-get-a-single-petition-working-example'>Working Example</h3>
+<h4 id='json-api-endpoints-get-a-single-petition-working-example'>Working Example</h4>
 <p>View and edit a working example on codepen.io:</p>
 
-<div>
 <div class="js-codepen-data hidden" data-title="ControlShift Labs: Single Petition Example">
   <div class="codepen-html">
     <div id="js-content-wrapper" class="hidden">
@@ -754,8 +739,10 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
   <input type="submit" value="Launch Example on CodePen">
 </form>
 
-<p></div></p>
-<h2 id='json-api-endpoints-get-featured-petitions'>Get featured petitions</h2><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<div>
+</div>
+
+<h3 id='json-api-endpoints-get-featured-petitions'>Get featured petitions</h3><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
     <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://demo.controlshiftlabs.com/petitions/featured.json</span><span class="dl">'</span><span class="p">,</span>
     <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">jsonp</span><span class="dl">'</span><span class="p">,</span>
@@ -901,9 +888,9 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 <p>This retrieves a JSON object compliant with the <a href="http://jsonapi.org/">JSON API</a> specification, containing an array of featured petitions objects on its data property.</p>
 
 <p><strong>Important Note:</strong> The previous featured petitions API endpoint at <code>https://demo.controlshiftlabs.com/featured.json</code> (note the missing <code>/petitions</code> path) is being deprecated and <strong>will be removed</strong> in the near future. Please use this new endpoint for retrieving featured petitions from now on.</p>
-<h3 id='json-api-endpoints-get-featured-petitions-http-request'>HTTP Request</h3>
+<h4 id='json-api-endpoints-get-featured-petitions-http-request'>HTTP Request</h4>
 <p><code>GET https://demo.controlshiftlabs.com/petitions/featured.json</code></p>
-<h3 id='json-api-endpoints-get-featured-petitions-query-parameters'>Query Parameters</h3>
+<h4 id='json-api-endpoints-get-featured-petitions-query-parameters'>Query Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -917,7 +904,7 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 <td>string - optional - Locale filter for petitions</td>
 </tr>
 </tbody></table>
-<h3 id='json-api-endpoints-get-featured-petitions-working-example'>Working Example</h3>
+<h4 id='json-api-endpoints-get-featured-petitions-working-example'>Working Example</h4>
 <p>View and edit a working example on codepen.io:</p>
 
 <div class="js-codepen-data hidden" data-title="ControlShift Labs: Featured Petitions Example">
@@ -952,10 +939,165 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
   <input type="hidden" name="data" class="js-data" value="">
   <input type="submit" value="Launch Example on CodePen">
 </form>
-<h2 id='json-api-endpoints-get-list-of-categories'>Get list of categories</h2><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+
+<div></div>
+
+<h3 id='json-api-endpoints-search-petitions-by-keyword'>Search petitions by keyword</h3>
+
+<blockquote>
+<p>JSON response example for the search using the <code>wizard</code> keyword:</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"total_entries"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"search_term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wizard"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"let-dorothy-go-home"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Let Dorothy Go Home!"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/let-dorothy-go-home"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Oz, the Great and Terrible, Wizard"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Oz, the Great and Terrible"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oz-the-great-and-terrible"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizard"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Land of Oz, Kensington Avenue, Buffalo, NY, United States"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42.9399637"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-78.8087571"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kensington Ave"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-10T19:13:19Z"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"successful"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ended_story"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Yellow Brick Road has been neglected; commit to repairing the damaged sections of the road in the next year!"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">223</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kristyn Arrighi"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-10-02T01:43:17Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-07T15:38:39Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Yellow Brick Road is the main road connecting Munchkin Country to the Emerald City and in its current state it's impassable."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Land of Oz, Kensington Avenue, Buffalo, NY, United States"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42.9399637"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-78.8087571"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kensington Ave"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-10T19:13:19Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stop-saruman-saruman-the-white"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stop Saruman"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/stop-saruman-saruman-the-white"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saruman The White (Wizard)"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"target"</span><span class="p">:</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saruman The White"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"saruman-the-white"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizard"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"location"</span><span class="p">:</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-44.7731846"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"168.325246"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9372"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NZ"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Glenorchy"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Denver"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Isengard Lookout"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Glenorchy-Routeburn Road"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Isengard Lookout"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-19T19:55:11Z"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"successful"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ended_story"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yay, we defeated Saruman! "</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yay, we defeated Saruman! "</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stop cutting down the woods"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">8780</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Treebeard"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-25T18:40:42Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-03-31T18:30:36Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ents want a place to live in peace"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location"</span><span class="p">:</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-26.3168162"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"139.4674535"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3091"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AU"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Victoria"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Denver"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fangorn forest"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yarrambat"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94C7+4R"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fangorn forest"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-19T19:55:11Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+<p>This JSON endpoint allows you to build an interface where users can search through all petitions by one or more keywords.</p>
+
+<h4 id='json-api-endpoints-search-petitions-by-keyword-http-request'>HTTP Request</h4>
+
+<p><code>GET https://demo.controlshiftlabs.com/petitions/search.json</code></p>
+
+<h4 id='json-api-endpoints-search-petitions-by-keyword-query-parameters'>Query Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>query</td>
+<td>null</td>
+<td>string to search for</td>
+</tr>
+<tr>
+<td>page</td>
+<td>1</td>
+<td>integer - optional - The page number of results for the specified search. Minimum of 1.</td>
+</tr>
+</tbody></table>
+
+<div></div>
+<h2 id='json-api-endpoints-categories'>Categories</h2>
+<p><h3 id='json-api-endpoints-petitions-get-list-of-categories'>Get list of categories</h3><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-    <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://demo.controlshiftlabs.com/categories.json</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">jsonp</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">:</span> <span class="dl">&#39;</span><span class="s1">https://demo.controlshiftlabs.com/categories.json</span><span class="dl">&#39;</span><span class="p">,</span>
+    <span class="na">dataType</span><span class="p">:</span> <span class="dl">&#39;</span><span class="s1">jsonp</span><span class="dl">&#39;</span><span class="p">,</span>
   <span class="p">})</span>
   <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
@@ -967,32 +1109,32 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"category_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Education"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"category_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"education-9"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/categories/education-9.json"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">421</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"locales"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"es"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Educación"</span><span class="w">
+    </span><span class="nl">&quot;category_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Education&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nl">&quot;category_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+    </span><span class="nl">&quot;slug&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;education-9&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nl">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.controlshiftlabs.com/categories/education-9.json&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nl">&quot;signature_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">421</span><span class="p">,</span><span class="w">
+    </span><span class="nl">&quot;locales&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">&quot;es&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Educación&quot;</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"category_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Environment"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"category_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">352</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"environment-6"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/categories/environment-6.json"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2606</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"locales"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"es"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Medio Ambiente"</span><span class="w">
+    </span><span class="nl">&quot;category_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Environment&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nl">&quot;category_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">352</span><span class="p">,</span><span class="w">
+    </span><span class="nl">&quot;slug&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;environment-6&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nl">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.controlshiftlabs.com/categories/environment-6.json&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nl">&quot;signature_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2606</span><span class="p">,</span><span class="w">
+    </span><span class="nl">&quot;locales&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">&quot;es&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Medio Ambiente&quot;</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This retrieves a JSON array of category objects.</p>
-<h3 id='json-api-endpoints-get-list-of-categories-http-request'>HTTP Request</h3>
+<h4 id='json-api-endpoints-petitions-get-list-of-categories-http-request'>HTTP Request</h4>
 <p><code>GET https://demo.controlshiftlabs.com/categories.json</code></p>
-<h3 id='json-api-endpoints-get-list-of-categories-working-example'>Working Example</h3>
-<p>View and edit a working example on codepen.io:</p>
+<h4 id='json-api-endpoints-petitions-get-list-of-categories-working-example'>Working Example</h4>
+<p>View and edit a working example on codepen.io:</p></p>
 
 <div class="js-codepen-data hidden" data-title="ControlShift Labs: Categories List Example">
   <div class="codepen-html">
@@ -1026,10 +1168,13 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
   <input type="hidden" name="data" class="js-data" value="">
   <input type="submit" value="Launch Example on CodePen">
 </form>
-<h2 id='json-api-endpoints-list-petitions-in-a-category'>List petitions in a category</h2><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+
+<div></div>
+
+<p><h3 id='json-api-endpoints-petitions-list-petitions-in-a-category'>List petitions in a category</h3><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-    <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://demo.controlshiftlabs.com/categories/oz.json</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">jsonp</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">:</span> <span class="dl">&#39;</span><span class="s1">https://demo.controlshiftlabs.com/categories/oz.json</span><span class="dl">&#39;</span><span class="p">,</span>
+    <span class="na">dataType</span><span class="p">:</span> <span class="dl">&#39;</span><span class="s1">jsonp</span><span class="dl">&#39;</span><span class="p">,</span>
   <span class="p">})</span>
   <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
@@ -1040,136 +1185,136 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 <p>The above code would return petitions data from the category with the slug <code>oz</code>.  The JSON would be structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"previous_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"next_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oz"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">&quot;current_page&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">&quot;total_pages&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+  </span><span class="nl">&quot;previous_page&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">&quot;next_page&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Oz&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="nl">&quot;results&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"let-dorothy-go-home"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/let-dorothy-go-home"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Let Dorothy Go Home!"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Oz, the Great and Terrible, Wizard"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Let poor Dorothy Gale go home to Kansas"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"There's no place like home."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tin Man"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"successful"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-12-02T01:43:17Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-07T15:38:39Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="nl">&quot;slug&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;let-dorothy-go-home&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://demo.controlshiftlabs.com/petitions/let-dorothy-go-home&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Let Dorothy Go Home!&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;who&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; Oz, the Great and Terrible, Wizard&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;what&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Let poor Dorothy Gale go home to Kansas&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;why&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;There&#39;s no place like home.&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;admin_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;good&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;signature_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;goal&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;creator_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Tin Man&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;successful&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;ended&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-12-02T01:43:17Z&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2017-05-07T15:38:39Z&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;image_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;additional_image_sizes_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+          </span><span class="nl">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;original&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741&quot;</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/form/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+          </span><span class="nl">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;form&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/form/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741&quot;</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"horizontal"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/horizontal/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+          </span><span class="nl">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;horizontal&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/horizontal/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741&quot;</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/open_graph/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+          </span><span class="nl">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;open_graph&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/open_graph/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741&quot;</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Oz, the Great and Terrible"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oz-the-great-and-terrible"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizard"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Land of Oz, Kensington Avenue, Buffalo, NY, United States"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42.9399637"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-78.8087571"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kensington Ave"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-10T19:13:19Z"</span><span class="w">
+      </span><span class="nl">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; Oz, the Great and Terrible&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;slug&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oz-the-great-and-terrible&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;context&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wizard&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Land of Oz, Kensington Avenue, Buffalo, NY, United States&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;latitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;42.9399637&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;longitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-78.8087571&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;street&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kensington Ave&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;postal_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;region&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NY&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;street_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;venue&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2016-06-10T19:13:19Z&quot;</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"repair-the-yellow-brick-road-1"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/repair-the-yellow-brick-road-1"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Repair the Yellow Brick Road"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Oz, the Great and Terrible, Wizard"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Yellow Brick Road has been neglected; commit to repairing the damaged sections of the road in the next year!"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Yellow Brick Road is the main road connecting Munchkin Country to the Emerald City and in its current state it's impassable."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">223</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kristyn Arrighi"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-10-02T01:43:17Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-07T15:38:39Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="nl">&quot;slug&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;repair-the-yellow-brick-road-1&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://demo.controlshiftlabs.com/petitions/repair-the-yellow-brick-road-1&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Repair the Yellow Brick Road&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;who&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; Oz, the Great and Terrible, Wizard&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;what&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The Yellow Brick Road has been neglected; commit to repairing the damaged sections of the road in the next year!&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;why&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The Yellow Brick Road is the main road connecting Munchkin Country to the Emerald City and in its current state it&#39;s impassable.&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;admin_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;good&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;signature_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">223</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;goal&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;creator_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kristyn Arrighi&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2014-10-02T01:43:17Z&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2018-05-07T15:38:39Z&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;image_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;additional_image_sizes_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+          </span><span class="nl">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;original&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741&quot;</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/form/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+          </span><span class="nl">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;form&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/form/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741&quot;</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"horizontal"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/horizontal/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+          </span><span class="nl">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;horizontal&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/horizontal/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741&quot;</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/open_graph/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+          </span><span class="nl">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;open_graph&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/open_graph/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741&quot;</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Oz, the Great and Terrible"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oz-the-great-and-terrible"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizard"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Land of Oz, Kensington Avenue, Buffalo, NY, United States"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42.9399637"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-78.8087571"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kensington Ave"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-10T19:13:19Z"</span><span class="w">
+      </span><span class="nl">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; Oz, the Great and Terrible&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;slug&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oz-the-great-and-terrible&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;context&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wizard&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Land of Oz, Kensington Avenue, Buffalo, NY, United States&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;latitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;42.9399637&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;longitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-78.8087571&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;street&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kensington Ave&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;postal_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;region&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NY&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;street_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;venue&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2016-06-10T19:13:19Z&quot;</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Land of Oz, Kensington Avenue, Buffalo, NY, United States"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42.9399637"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-78.8087571"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kensington Ave"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-10T19:13:19Z"</span><span class="w">
+      </span><span class="nl">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Land of Oz, Kensington Avenue, Buffalo, NY, United States&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;latitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;42.9399637&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;longitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-78.8087571&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;street&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kensington Ave&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;postal_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;region&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NY&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;street_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;venue&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2016-06-10T19:13:19Z&quot;</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w"></p>
 
-</span></code></pre></div>
+<p></span></code></pre></div>
 <p>This retrieves a paginated list of petitions in a category.</p>
-<h3 id='json-api-endpoints-list-petitions-in-a-category-http-request'>HTTP Request</h3>
+<h4 id='json-api-endpoints-petitions-list-petitions-in-a-category-http-request'>HTTP Request</h4>
 <p><code>GET https://demo.controlshiftlabs.com/categories/&lt;category slug&gt;.json</code></p>
-<h3 id='json-api-endpoints-list-petitions-in-a-category-query-parameters'>Query Parameters</h3>
+<h4 id='json-api-endpoints-petitions-list-petitions-in-a-category-query-parameters'>Query Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1188,8 +1333,8 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 <td>integer - optional - The page number of results for the specified category. Minimum of 1.</td>
 </tr>
 </tbody></table>
-<h3 id='json-api-endpoints-list-petitions-in-a-category-working-example'>Working Example</h3>
-<p>View and edit a working example on codepen.io:</p>
+<h4 id='json-api-endpoints-petitions-list-petitions-in-a-category-working-example'>Working Example</h4>
+<p>View and edit a working example on codepen.io:</p></p>
 
 <div class="js-codepen-data hidden"  data-title="ControlShift Labs: List of Petitions in a Category Example">
   <div class="codepen-html">
@@ -1230,10 +1375,13 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
   <input type="hidden" name="data" class="js-data" value="">
   <input type="submit" value="Launch Example on CodePen">
 </form>
-<h2 id='json-api-endpoints-list-petitions-in-a-partnership'>List petitions in a partnership</h2><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+
+<div></div>
+<h2 id='json-api-endpoints-partnerships'>Partnerships</h2>
+<p><h3 id='json-api-endpoints-categories-list-petitions-in-a-partnership'>List petitions in a partnership</h3><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-    <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://demo.controlshiftlabs.com/partnerships/our-awesome-partner/petitions.json</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">jsonp</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">:</span> <span class="dl">&#39;</span><span class="s1">https://demo.controlshiftlabs.com/partnerships/our-awesome-partner/petitions.json</span><span class="dl">&#39;</span><span class="p">,</span>
+    <span class="na">dataType</span><span class="p">:</span> <span class="dl">&#39;</span><span class="s1">jsonp</span><span class="dl">&#39;</span><span class="p">,</span>
   <span class="p">})</span>
   <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
@@ -1244,137 +1392,137 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 <p>The above code would return petitions data from the partnership with the slug <code>our-awesome-partner</code>.  The JSON would be structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"previous_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"next_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oz"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">&quot;current_page&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">&quot;total_pages&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+  </span><span class="nl">&quot;previous_page&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">&quot;next_page&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Oz&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="nl">&quot;results&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"let-dorothy-go-home"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/let-dorothy-go-home"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Let Dorothy Go Home!"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Oz, the Great and Terrible, Wizard"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Let poor Dorothy Gale go home to Kansas"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"There's no place like home."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tin Man"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"successful"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-12-02T01:43:17Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-07T15:38:39Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="nl">&quot;slug&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;let-dorothy-go-home&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://demo.controlshiftlabs.com/petitions/let-dorothy-go-home&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Let Dorothy Go Home!&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;who&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; Oz, the Great and Terrible, Wizard&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;what&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Let poor Dorothy Gale go home to Kansas&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;why&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;There&#39;s no place like home.&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;admin_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;good&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;signature_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;goal&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;creator_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Tin Man&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;successful&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;ended&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-12-02T01:43:17Z&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2017-05-07T15:38:39Z&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;image_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;additional_image_sizes_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+          </span><span class="nl">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;original&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741&quot;</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/form/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+          </span><span class="nl">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;form&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/form/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741&quot;</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"horizontal"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/horizontal/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+          </span><span class="nl">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;horizontal&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/horizontal/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741&quot;</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/open_graph/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+          </span><span class="nl">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;open_graph&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/open_graph/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741&quot;</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Oz, the Great and Terrible"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oz-the-great-and-terrible"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizard"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Land of Oz, Kensington Avenue, Buffalo, NY, United States"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42.9399637"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-78.8087571"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kensington Ave"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-10T19:13:19Z"</span><span class="w">
+      </span><span class="nl">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; Oz, the Great and Terrible&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;slug&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oz-the-great-and-terrible&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;context&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wizard&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Land of Oz, Kensington Avenue, Buffalo, NY, United States&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;latitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;42.9399637&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;longitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-78.8087571&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;street&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kensington Ave&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;postal_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;region&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NY&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;street_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;venue&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2016-06-10T19:13:19Z&quot;</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"repair-the-yellow-brick-road-1"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/repair-the-yellow-brick-road-1"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Repair the Yellow Brick Road"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Oz, the Great and Terrible, Wizard"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Yellow Brick Road has been neglected; commit to repairing the damaged sections of the road in the next year!"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Yellow Brick Road is the main road connecting Munchkin Country to the Emerald City and in its current state it's impassable."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">223</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kristyn Arrighi"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"successful"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-10-02T01:43:17Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-07T15:38:39Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="nl">&quot;slug&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;repair-the-yellow-brick-road-1&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://demo.controlshiftlabs.com/petitions/repair-the-yellow-brick-road-1&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Repair the Yellow Brick Road&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;who&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; Oz, the Great and Terrible, Wizard&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;what&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The Yellow Brick Road has been neglected; commit to repairing the damaged sections of the road in the next year!&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;why&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The Yellow Brick Road is the main road connecting Munchkin Country to the Emerald City and in its current state it&#39;s impassable.&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;admin_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;good&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;signature_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">223</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;goal&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;creator_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kristyn Arrighi&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;successful&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;ended&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2014-10-02T01:43:17Z&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2018-05-07T15:38:39Z&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;image_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;additional_image_sizes_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+          </span><span class="nl">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;original&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741&quot;</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/form/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+          </span><span class="nl">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;form&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/form/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741&quot;</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"horizontal"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/horizontal/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+          </span><span class="nl">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;horizontal&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/horizontal/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741&quot;</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/open_graph/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="w">
+          </span><span class="nl">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;open_graph&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/open_graph/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741&quot;</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Oz, the Great and Terrible"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oz-the-great-and-terrible"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wizard"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Land of Oz, Kensington Avenue, Buffalo, NY, United States"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42.9399637"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-78.8087571"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kensington Ave"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-10T19:13:19Z"</span><span class="w">
+      </span><span class="nl">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; Oz, the Great and Terrible&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;slug&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oz-the-great-and-terrible&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;context&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wizard&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Land of Oz, Kensington Avenue, Buffalo, NY, United States&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;latitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;42.9399637&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;longitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-78.8087571&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;street&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kensington Ave&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;postal_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;region&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NY&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;street_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;venue&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="nl">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2016-06-10T19:13:19Z&quot;</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Land of Oz, Kensington Avenue, Buffalo, NY, United States"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42.9399637"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-78.8087571"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kensington Ave"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-06-10T19:13:19Z"</span><span class="w">
+      </span><span class="nl">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Land of Oz, Kensington Avenue, Buffalo, NY, United States&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;latitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;42.9399637&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;longitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-78.8087571&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;street&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kensington Ave&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;postal_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;region&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NY&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;street_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;venue&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2016-06-10T19:13:19Z&quot;</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This retrieves a paginated list of petitions in a partnership.</p>
-<h3 id='json-api-endpoints-list-petitions-in-a-partnership-http-request'>HTTP Request</h3>
+<h4 id='json-api-endpoints-categories-list-petitions-in-a-partnership-http-request'>HTTP Request</h4>
 <p><code>GET https://demo.controlshiftlabs.com/partnerships/&lt;partnership slug&gt;/petitions.json</code></p>
-<h3 id='json-api-endpoints-list-petitions-in-a-partnership-query-parameters'>Query Parameters</h3>
+<h4 id='json-api-endpoints-categories-list-petitions-in-a-partnership-query-parameters'>Query Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1393,8 +1541,8 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 <td>integer - optional - The page number of results for the specified partnership. Minimum of 1.</td>
 </tr>
 </tbody></table>
-<h3 id='json-api-endpoints-list-petitions-in-a-partnership-working-example'>Working Example</h3>
-<p>View and edit a working example on codepen.io:</p>
+<h4 id='json-api-endpoints-categories-list-petitions-in-a-partnership-working-example'>Working Example</h4>
+<p>View and edit a working example on codepen.io:</p></p>
 
 <div class="js-codepen-data hidden"  data-title="ControlShift Labs: List of Petitions in a Partnership Example">
   <div class="codepen-html">
@@ -1435,7 +1583,48 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
   <input type="hidden" name="data" class="js-data" value="">
   <input type="submit" value="Launch Example on CodePen">
 </form>
-<h2 id='json-api-endpoints-list-petitions-in-an-effort'>List petitions in an effort</h2><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+
+<div></div>
+<h2 id='json-api-endpoints-efforts'>Efforts</h2>
+<h3 id='json-api-endpoints-partnerships-get-list-of-efforts'>Get list of efforts</h3>
+
+<blockquote>
+<p>JSON response example</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ranked-choice-voting-everywhere"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/efforts/ranked-choice-voting-everywhere.json"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"en-US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ranked Choice Voting Everywhere!"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"es"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Votación por Orden de Preferencia en Todo el Mundo!"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Call on your municipality to implement ranked-choice voting."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.cloudfront.net/efforts/123/image/voting_maching.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"petitions_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">9000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"search_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"closest"</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This JSON endpoint returns a paginated list of all Efforts and Landing Pages on the platform. The <code>url</code> returned for each effort can be used to retrieve information on that effort&#39;s petitions, as specified below.</p>
+<h4 id='json-api-endpoints-partnerships-get-list-of-efforts-http-request'>HTTP Request</h4>
+<p><code>GET https://demo.controlshiftlabs.com/efforts.json</code></p>
+
+<div></div>
+
+<h3 id='json-api-endpoints-partnerships-list-petitions-in-an-effort'>List petitions in an effort</h3><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
   <span class="kd">var</span> <span class="nx">effortSlug</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">drivers-licenses-for-all</span><span class="dl">'</span><span class="p">;</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
     <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://demo.controlshiftlabs.com/efforts/</span><span class="dl">'</span><span class="o">+</span><span class="nx">effortSlug</span><span class="o">+</span><span class="dl">'</span><span class="s1">.json</span><span class="dl">'</span><span class="p">,</span>
@@ -1568,7 +1757,7 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 <ul>
 <li><code>ended_story</code>: with ended story from petition Settings / Admin pages.</li>
 </ul>
-<h3 id='json-api-endpoints-list-petitions-in-an-effort-http-request'>HTTP Request</h3>
+<h4 id='json-api-endpoints-partnerships-list-petitions-in-an-effort-http-request'>HTTP Request</h4>
 <p><code>GET https://demo.controlshiftlabs.com/efforts/&lt;effort slug&gt;.json</code></p>
 
 <table><thead>
@@ -1584,7 +1773,7 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 <td>string - required - submitted as a part of the endpoint path, not as a separate URL parameter</td>
 </tr>
 </tbody></table>
-<h3 id='json-api-endpoints-list-petitions-in-an-effort-working-example'>Working Example</h3>
+<h4 id='json-api-endpoints-partnerships-list-petitions-in-an-effort-working-example'>Working Example</h4>
 <p>View and edit a working example on codepen.io:</p>
 
 <div class="js-codepen-data hidden" data-title="ControlShift Labs: List of Petitions in an Effort Example">
@@ -1635,13 +1824,16 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
   <input type="hidden" name="data" class="js-data" value="">
   <input type="submit" value="Launch Example on CodePen">
 </form>
-<h2 id='json-api-endpoints-search-petitions-in-a-effort'>Search petitions in a effort</h2><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-  <span class="kd">var</span> <span class="nx">effortSlug</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">drivers-licenses-for-all</span><span class="dl">'</span><span class="p">;</span>
+
+<div></div>
+
+<p><h3 id='json-api-endpoints-partnerships-search-petitions-in-a-effort'>Search petitions in a effort</h3><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="kd">var</span> <span class="nx">effortSlug</span> <span class="o">=</span> <span class="dl">&#39;</span><span class="s1">drivers-licenses-for-all</span><span class="dl">&#39;</span><span class="p">;</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-    <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://demo.controlshiftlabs.com/efforts/</span><span class="dl">'</span><span class="o">+</span><span class="nx">effortSlug</span><span class="o">+</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="o">+</span><span class="dl">'</span><span class="s1">lookup/query.json</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">jsonp</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">:</span> <span class="dl">&#39;</span><span class="s1">https://demo.controlshiftlabs.com/efforts/</span><span class="dl">&#39;</span><span class="o">+</span><span class="nx">effortSlug</span><span class="o">+</span><span class="dl">&#39;</span><span class="s1">/lookup/query.json</span><span class="dl">&#39;</span><span class="p">,</span>
+    <span class="na">dataType</span><span class="p">:</span> <span class="dl">&#39;</span><span class="s1">jsonp</span><span class="dl">&#39;</span><span class="p">,</span>
     <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-      <span class="dl">'</span><span class="s1">location_query</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">briarcliff manor, ny</span><span class="dl">'</span>
+      <span class="dl">&#39;</span><span class="s1">location_query</span><span class="dl">&#39;</span><span class="p">:</span> <span class="dl">&#39;</span><span class="s1">briarcliff manor, ny</span><span class="dl">&#39;</span>
     <span class="p">}</span>
   <span class="p">})</span>
   <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span> <span class="nx">data</span> <span class="p">)</span> <span class="p">{</span>
@@ -1649,46 +1841,44 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
   <span class="p">});</span>
 <span class="p">});</span>
 </code></pre></div>
-<!--slash in '/'+'lookup/query.json' above disappears if combined with lookup/query-->
-
 <blockquote>
 <p>The above code would return petitions, decision makers, or objectives data from the effort with the slug <code>drivers-licenses-for-all</code>. If returning decision makers, the JSON would be structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"closest_target"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ossining-village-board-of-trustees"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ossining Village Board of Trustees"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ossining, NY"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"target_petition_created"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"petition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ossining-support-drivers-licenses-for-all"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ossining: Support Drivers' Licenses For All"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://demo.controlshiftlabs.com/petitions/ossining-support-drivers-licenses-for-all"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ossining Village Board of Trustees"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">223</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-02T01:43:17Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-07T15:38:39Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">&quot;closest_target&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">&quot;slug&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ossining-village-board-of-trustees&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nl">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ossining Village Board of Trustees&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nl">&quot;context&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nl">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ossining, NY&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nl">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;target_petition_created&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nl">&quot;petition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">&quot;slug&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ossining-support-drivers-licenses-for-all&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ossining: Support Drivers&#39; Licenses For All&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://demo.controlshiftlabs.com/petitions/ossining-support-drivers-licenses-for-all&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;who&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ossining Village Board of Trustees&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;signature_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">223</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;goal&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2016-10-02T01:43:17Z&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2016-10-07T15:38:39Z&quot;</span><span class="p">,</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"other_targets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">&quot;other_targets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yorktown-town-council"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yorktown Town Council"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yorktown, NY"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"target_awaiting_petition"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"create_petition_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/efforts/drivers-licenses-for-all/petitions/creating?target_id=1234"</span><span class="w">
+      </span><span class="nl">&quot;slug&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;yorktown-town-council&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Yorktown Town Council&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;context&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Yorktown, NY&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;target_awaiting_petition&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;create_petition_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demo.controlshiftlabs.com/efforts/drivers-licenses-for-all/petitions/creating?target_id=1234&quot;</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This JSON endpoint allows you to build an interface where users can search the petitions in an effort.
 Depending on how the effort is configured, you can search either by location, or by keyword.</p>
-<h3 id='json-api-endpoints-search-petitions-in-a-effort-http-request'>HTTP Request</h3>
+<h4 id='json-api-endpoints-partnerships-search-petitions-in-a-effort-http-request'>HTTP Request</h4>
 <p><code>GET https://demo.controlshiftlabs.com/efforts/&lt;effort slug&gt;/lookup/query.json</code></p>
-<h3 id='json-api-endpoints-search-petitions-in-a-effort-query-parameters'>Query Parameters</h3>
+<h4 id='json-api-endpoints-partnerships-search-petitions-in-a-effort-query-parameters'>Query Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1712,8 +1902,8 @@ Depending on how the effort is configured, you can search either by location, or
 <td>string to search for</td>
 </tr>
 </tbody></table>
-<h3 id='json-api-endpoints-search-petitions-in-a-effort-working-example'>Working Example</h3>
-<p>View and edit a working example on codepen.io:</p>
+<h4 id='json-api-endpoints-partnerships-search-petitions-in-a-effort-working-example'>Working Example</h4>
+<p>View and edit a working example on codepen.io:</p></p>
 
 <div class="js-codepen-data hidden"
   data-js_external="https://maps.googleapis.com/maps/api/js?key=AIzaSyAY2t1MpsrZH3aH6wJqAiq4vAQUscMmjY0&libraries=places;https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
@@ -1783,10 +1973,13 @@ Depending on how the effort is configured, you can search either by location, or
   <input type="hidden" name="data" class="js-data" value="">
   <input type="submit" value="Launch Example on CodePen">
 </form>
-<h2 id='json-api-endpoints-get-calendar-data'>Get calendar data</h2><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+
+<div></div>
+<h2 id='json-api-endpoints-calendars'>Calendars</h2>
+<p><h3 id='json-api-endpoints-efforts-get-calendar-data'>Get calendar data</h3><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-    <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://demo.controlshiftlabs.com/calendars/national-day-of-action-against-fracking.json</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">jsonp</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">:</span> <span class="dl">&#39;</span><span class="s1">https://demo.controlshiftlabs.com/calendars/national-day-of-action-against-fracking.json</span><span class="dl">&#39;</span><span class="p">,</span>
+    <span class="na">dataType</span><span class="p">:</span> <span class="dl">&#39;</span><span class="s1">jsonp</span><span class="dl">&#39;</span><span class="p">,</span>
   <span class="p">})</span>
   <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
@@ -1798,26 +1991,28 @@ Depending on how the effort is configured, you can search either by location, or
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
 </span><span class="p">{</span><span class="w">
-   </span><span class="nl">"calendar"</span><span class="p">:{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"National Day of Action Against Fracking"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"description"</span><span class="p">:</span><span class="s2">"This is the description. It will be great."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"slug"</span><span class="p">:</span><span class="s2">"national-day-of-action-against-fracking"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"image_url"</span><span class="p">:</span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/calendars/images/26/hero/Oak-tree-in-field-007.jpg?1450370489"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"event_count"</span><span class="p">:</span><span class="mi">85</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"attendee_count"</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"events_upcoming"</span><span class="p">:</span><span class="mi">10</span><span class="w">
+   </span><span class="nl">&quot;calendar&quot;</span><span class="p">:{</span><span class="w">
+      </span><span class="nl">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;National Day of Action Against Fracking&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;description&quot;</span><span class="p">:</span><span class="s2">&quot;This is the description. It will be great.&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;slug&quot;</span><span class="p">:</span><span class="s2">&quot;national-day-of-action-against-fracking&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;image_url&quot;</span><span class="p">:</span><span class="s2">&quot;https://d8s293fyljwh4.cloudfront.net/calendars/images/26/hero/Oak-tree-in-field-007.jpg?1450370489&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;event_count&quot;</span><span class="p">:</span><span class="mi">85</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;attendee_count&quot;</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span><span class="w">
+      </span><span class="nl">&quot;events_upcoming&quot;</span><span class="p">:</span><span class="mi">10</span><span class="w">
    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This retrieves a JSON object representing a calendar.</p>
-<h3 id='json-api-endpoints-get-calendar-data-http-request'>HTTP Request</h3>
-<p><code>GET https://demo.controlshiftlabs.com/calendars/slug.json</code></p>
+<h4 id='json-api-endpoints-efforts-get-calendar-data-http-request'>HTTP Request</h4>
+<p><code>GET https://demo.controlshiftlabs.com/calendars/slug.json</code></p></p>
 
-<p>Where slug is the slug of the calendar you&#39;re retrieving. </p>
-<h2 id='json-api-endpoints-get-organizing-locations-points'>Get organizing locations: points</h2><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<p>Where slug is the slug of the calendar you&#39;re retrieving. 
+<div></div></p>
+<h2 id='json-api-endpoints-local-map'>Local Map</h2>
+<p><h3 id='json-api-endpoints-calendars-get-organizing-locations-points'>Get organizing locations: points</h3><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-    <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://demo.controlshiftlabs.com/api/local/points.json</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">jsonp</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">:</span> <span class="dl">&#39;</span><span class="s1">https://demo.controlshiftlabs.com/api/local/points.json</span><span class="dl">&#39;</span><span class="p">,</span>
+    <span class="na">dataType</span><span class="p">:</span> <span class="dl">&#39;</span><span class="s1">jsonp</span><span class="dl">&#39;</span><span class="p">,</span>
   <span class="p">})</span>
   <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
@@ -1829,32 +2024,34 @@ Depending on how the effort is configured, you can search either by location, or
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.7032775</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">-74.0170279</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Event"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"picnic-in-the-park"</span><span class="w">
+        </span><span class="nl">&quot;lat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">40.7032775</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;lon&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-74.0170279</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Event&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;picnic-in-the-park&quot;</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.2710078</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">148.0209055</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Group"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default-org-mariana-trench"</span><span class="w">
+        </span><span class="nl">&quot;lat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">8.2710078</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;lon&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">148.0209055</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Group&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default-org-mariana-trench&quot;</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">41.467116</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">-73.9992597</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ExternalEvent"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/sail-on-the-hudson"</span><span class="w">
+        </span><span class="nl">&quot;lat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">41.467116</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;lon&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-73.9992597</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ExternalEvent&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/sail-on-the-hudson&quot;</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This JSON endpoint returns a complete list of latitude/longitude coordinates for publicly listed events, groups, and external events in your organisation. It&#39;s intended to be used for plotting organizing activities on a map.</p>
-<h3 id='json-api-endpoints-get-organizing-locations-points-http-request'>HTTP Request</h3>
-<p><code>GET https://demo.controlshiftlabs.com/api/local/points.json</code></p>
-<h2 id='json-api-endpoints-get-organizing-locations-details'>Get organizing locations: details</h2><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<h4 id='json-api-endpoints-calendars-get-organizing-locations-points-http-request'>HTTP Request</h4>
+<p><code>GET https://demo.controlshiftlabs.com/api/local/points.json</code>
+<div></div></p></p>
+
+<p><h3 id='json-api-endpoints-calendars-get-organizing-locations-details'>Get organizing locations: details</h3><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-    <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://demo.controlshiftlabs.com/api/local.json?page=1&amp;per_page=3</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">jsonp</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">:</span> <span class="dl">&#39;</span><span class="s1">https://demo.controlshiftlabs.com/api/local.json?page=1&amp;per_page=3</span><span class="dl">&#39;</span><span class="p">,</span>
+    <span class="na">dataType</span><span class="p">:</span> <span class="dl">&#39;</span><span class="s1">jsonp</span><span class="dl">&#39;</span><span class="p">,</span>
   <span class="p">})</span>
   <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
@@ -1865,41 +2062,41 @@ Depending on how the effort is configured, you can search either by location, or
 <p>The above code would retrieve one page of location data and log it to the js console. The JSON would be structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+    </span><span class="nl">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;page&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;per_page&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nl">&quot;total_pages&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="nl">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Event"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"picnic-in-the-park"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Picnic in the Park"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We are having a picnic in the park and you are invited!"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-01T12:00:00Z"</span><span class="w">
+            </span><span class="nl">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Event&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="nl">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;picnic-in-the-park&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="nl">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Picnic in the Park&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="nl">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;We are having a picnic in the park and you are invited!&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="nl">&quot;start_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-03-01T12:00:00Z&quot;</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Group"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default-org-mariana-trench"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Org: Mariana Trench"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This group has the deepest conversations you will ever hear."</span><span class="w">
+            </span><span class="nl">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Group&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="nl">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default-org-mariana-trench&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="nl">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Default Org: Mariana Trench&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="nl">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This group has the deepest conversations you will ever hear.&quot;</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ExternalEvent"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/sail-on-the-hudson"</span><span class="w">
-            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sail on the Hudson"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Go for a sail on the Hudson river to promote environmentalism."</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-03T13:00:00Z"</span><span class="w">
+            </span><span class="nl">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ExternalEvent&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="nl">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/sail-on-the-hudson&quot;</span><span class="w">
+            </span><span class="nl">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sail on the Hudson&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="nl">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Go for a sail on the Hudson river to promote environmentalism.&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="nl">&quot;start_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-05-03T13:00:00Z&quot;</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This JSON endpoint returns a paginated list of publicly listed events, groups, and external events in your organisation.
 It can be used alongside the <code>/api/local/points</code> endpoint; the criteria for inclusion are the same.</p>
-<h3 id='json-api-endpoints-get-organizing-locations-details-http-request'>HTTP Request</h3>
+<h4 id='json-api-endpoints-calendars-get-organizing-locations-details-http-request'>HTTP Request</h4>
 <p><code>GET https://demo.controlshiftlabs.com/api/local.json</code></p>
-<h3 id='json-api-endpoints-get-organizing-locations-details-query-parameters'>Query Parameters</h3>
+<h4 id='json-api-endpoints-calendars-get-organizing-locations-details-query-parameters'>Query Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1917,7 +2114,9 @@ It can be used alongside the <code>/api/local/points</code> endpoint; the criter
 <td>10</td>
 <td>(optional) How many results, maximum, should be included on each page</td>
 </tr>
-</tbody></table>
+</tbody></table></p>
+
+<div></div>
 <h2 id='json-api-endpoints-logged-in-user'>Logged in user</h2><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
     <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://demo.controlshiftlabs.com/api/graph/me.json</span><span class="dl">'</span><span class="p">,</span>
@@ -2082,7 +2281,9 @@ You must whitelist your hostname prior to using this end point. Read more below.
 <p>The above should return a JSON blob indicating that the user is not signed in if localhost is whitelisted. Otherwise you&#39;ll get a not whitelisted error.</p>
 
 <p>For authenticated users we currently return their first and last names, email addresses, and lists of petitions they&#39;ve created, events they&#39;ve created and local groups they are a member of.</p>
-<h2 id='json-api-endpoints-bulk-data-schema'>Bulk data schema</h2>
+<h2 id='json-api-endpoints-bulk-data'>Bulk Data</h2>
+<h3 id='json-api-endpoints-logged-in-user-bulk-data-schema'>Bulk data schema</h3>
+
 <p>This retrieves information on the underlying schemas of tables exported by the Bulk Data feature. It can be used
 in your ETL processes to automate the setup of tables in your data warehouse.</p>
 
@@ -2091,6 +2292,7 @@ in your ETL processes to automate the setup of tables in your data warehouse.</p
 <blockquote>
 <p>Response format:</p>
 </blockquote>
+
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"tables"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -2121,9 +2323,13 @@ in your ETL processes to automate the setup of tables in your data warehouse.</p
     </span><span class="nl">"compression_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BZIP2"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='json-api-endpoints-bulk-data-schema-http-request'>HTTP Request</h3>
+</span></code></pre></div><h4 id='json-api-endpoints-logged-in-user-bulk-data-schema-http-request'>HTTP Request</h4>
 <p><code>GET https://demo.controlshiftlabs.com/api/bulk_data/schema.json</code></p>
-<h2 id='json-api-endpoints-bulk-data-columns'>Bulk data columns</h2>
+
+<div></div>
+
+<h3 id='json-api-endpoints-logged-in-user-bulk-data-columns'>Bulk data columns</h3>
+
 <p>This retrieves information on the tables exported by the Bulk Data API. For convenience when working with third-party data 
 warehouse tools like Amazon Redshift it can be useful to know the current columns for each table that the bulk data API exposes
 in CSV format. </p>
@@ -2134,10 +2340,11 @@ which table header row is returned.</p>
 <blockquote>
 <p>Response format:</p>
 </blockquote>
+
 <div class="highlight"><pre class="highlight plaintext"><code>id,petition_id,email,first_name,last_name,phone_number,postcode,created_at,join_organisation,deleted_at,unsubscribe_at,external_constituent_id,member_id,additional_fields,cached_organisation_slug,source,external_id,new_member,external_action_id,locale,bucket,country,updated_at,user_ip,confirmation_token,confirmed_at,confirmation_sent_at,last_signed_at,join_list_suppressed,old_daisy_chain_used,from_embed,user_agent,confirmed_reason,synced_to_crm_at,daisy_chain_experiment_slug,eu_data_processing_consent,from_one_click,consent_content_version_id,daisy_chain_id_used,email_opt_in_type_id,facebook_id,utm_params,postcode_id,referring_share_click_id,join_partnership,opt_in_sms,sms_opt_in_type_id,recaptcha_score,new_mobile_subscriber
-</code></pre></div><h3 id='json-api-endpoints-bulk-data-columns-http-request'>HTTP Request</h3>
+</code></pre></div><h4 id='json-api-endpoints-logged-in-user-bulk-data-columns-http-request'>HTTP Request</h4>
 <p><code>GET https://demo.controlshiftlabs.com/api/bulk_data/schema/columns?table=signatures</code></p>
-<h3 id='json-api-endpoints-bulk-data-columns-query-parameters'>Query Parameters</h3>
+<h4 id='json-api-endpoints-logged-in-user-bulk-data-columns-query-parameters'>Query Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2149,17 +2356,19 @@ which table header row is returned.</p>
 <td>Which table from the bulk data schema endpoint should be returned</td>
 </tr>
 </tbody></table>
+
+<div></div>
 <h1 id='webhook-endpoints'>Webhook Endpoints</h1>
 <p>Webhooks can be used by software engineers to integrate ControlShift with third-party systems. They allow engineers to build software that is triggered by events that take place within ControlShift. ControlShift executes HTTPS callbacks when certain events happen (e.g. a petition is launched; a category is changed).</p>
 
 <p>To begin using webhooks, visit the admin for your ControlShift Platform and choose Settings &gt; Integrations &gt; Webhooks.  To begin sending data, you&#39;ll need to add a &quot;New Webhook Endpoint.&quot; Each Webhook Endpoint URL you specify will receive a stream of all the hooks that occur within your ControlShift account.</p>
 
 <p>If you need additional information about webhooks or how to use them, please send us a support email <a href="mailto:support@controlshiftlabs.com">support@controlshiftlabs.com</a>.</p>
-<h3 id='webhook-endpoints-bulk-data-columns-retries'>Retries</h3>
+<h3 id='webhook-endpoints-bulk-data-retries'>Retries</h3>
 <p>For webhook notifications successfully processed the response should have an HTTP 2XX status code. Responses returning a different status code will be marked as failed and automatically retried up to 9 times with an exponential backoff (e.g.: after 15s, 30s, 90s, etc.).</p>
 
 <p>If after 9 retries the notification cannot be delivered, the webhook endpoint will be automatically disabled and will need to be re-enabled from the admin page to start receiving webhook notifications again.</p>
-<h3 id='webhook-endpoints-bulk-data-columns-security'>Security</h3>
+<h3 id='webhook-endpoints-bulk-data-security'>Security</h3>
 <p>Securing access to your endpoints where webhooks are sent is important. We recommend taking a variety of steps.</p>
 
 <ul>
@@ -2168,7 +2377,7 @@ which table header row is returned.</p>
 <li>Using basic HTTP authentication or an API token/secret in the URL.</li>
 <li>Verifying the signature hash of the message payload we send to authenticate ControlShift as the source of the webhook.</li>
 </ul>
-<h3 id='webhook-endpoints-bulk-data-columns-webhook-hmac-authenticity-signing'>Webhook HMAC Authenticity Signing</h3>
+<h3 id='webhook-endpoints-bulk-data-webhook-hmac-authenticity-signing'>Webhook HMAC Authenticity Signing</h3>
 <p>We send a special HTTP header along with webhook deliveries that allows customers to verify that the body of the
 webhook being delivered originated from within your ControlShift account. We use HMAC and SHA 256 along with a
 secret generated for each endpoint</p>
@@ -2192,14 +2401,14 @@ request body signed with the signing secret specified for your endpoint in the C
 
 <p>To verify the webhooks you receive are authentic, users should calculate the same digest value and compare it to the digest
 passed in the <code>x-controlshift-webhook-signature</code> header. These values should always be the same.</p>
-<h3 id='webhook-endpoints-bulk-data-columns-ip-addresses'>IP Addresses</h3>
+<h3 id='webhook-endpoints-bulk-data-ip-addresses'>IP Addresses</h3>
 <p>Webhooks will be delivered from a stable set of the IP addresses that will not change. It is a good idea to safe-list these addresses and block webhooks originating from unknown IP addresses.</p>
 
 <ul>
 <li>54.144.65.46</li>
 <li>54.208.56.53</li>
 </ul>
-<h3 id='webhook-endpoints-bulk-data-columns-direct-aws-access'>Direct AWS Access</h3>
+<h3 id='webhook-endpoints-bulk-data-direct-aws-access'>Direct AWS Access</h3>
 <p>The Bulk Data API notifies customers about new data files via webhook. In addition to allowing access via signed HTTPS
 request, the Bulk Data API allows direct access to these files from within the same region where your ControlShift account
 resides (usually us-east-1). Direct AWS Access allows for high-performance access to files on AWS S3 without leaving the AWS
