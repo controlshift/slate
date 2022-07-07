@@ -88,6 +88,10 @@ Find information about a partnership by URL slug.
 
 `GET /api/v1/partnerships/fight-fascism`
 
+The `slug` used to identify a partnership for API purposes is the same as the `slug` that appears in member-facing URLs.
+For example, for a partnership whose member-facing hub is at `https://demo.controlshiftlabs.com/partnerships/new-york-for-clean-water`,
+the partnership `slug` is `new-york-for-clean-water`.
+
 <div></div>
 
 ### List Petitions

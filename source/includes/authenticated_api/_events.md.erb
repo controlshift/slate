@@ -79,8 +79,6 @@ Returns a paginated list of all events, including ones that are unlaunched or ot
 
 ### Show
 
-Event show URLs are constructed using the slug field as a unique identifier.
-
 > GET response Body
 
 ```json
@@ -132,6 +130,10 @@ Event show URLs are constructed using the slug field as a unique identifier.
 Find information about an event by URL slug.
 
 `GET /api/v1/events/deliver-the-petition-to-the-wizard`
+
+The `slug` used to identify a event for API purposes is the same as the `slug` that appears in the member-facing event page URL.
+For example, for a event whose event page is at `https://demo.controlshiftlabs.com/events/chapter-meeting-1`,
+the event `slug` is `chapter-meeting-1`.
 
 <div></div>
 
