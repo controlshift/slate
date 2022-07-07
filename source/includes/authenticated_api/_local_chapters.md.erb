@@ -1,15 +1,13 @@
-## Local Groups
+## Groups
 
-Local Groups are groups of supporters that host events and create petitions.
-They can exist either in a specific place, organize around a topic, or a geographic shape.
+Groups are organized groups of supporters that host events and create petitions.
+They may be associated with a specific location or geographic region, or they may be "virtual" groups that organize around a topic.
 
-Within the API and in other technical documentation Local Groups are often referred to as
-Local Chapters. These are synonymous features, and simply a consequence of how the software is structured
-internally versus the way that Local Groups are described publicly.
+In API responses and other data sets, Groups are sometimes referred to as "local chapters". This is merely an artifact of how data is stored within the platform; the two terms can be used interchangeably.
 
 ### List
 
-Get a paginated list of all local groups and information about each of them.
+Get a paginated list of all groups and information about each of them.
 
 <%= partial "includes/shared/pagination.md" %>
 
@@ -20,30 +18,34 @@ Hash           | Description
 meta           | pagination information
 local_chapters | an array of information about the local chapters
 
-
-### Show
 <div></div>
 
-Find information about an event by URL slug.
+### Show
+
+Find information about a group by URL slug.
 
 `GET /api/v1/local_chapters/save-gotham`
 
+The `slug` used to identify a group for API purposes is the same as the `slug` that appears in the member-facing group page URL.
+For example, for a group whose group page is at `https://demo.controlshiftlabs.com/groups/brooklyn-for-bike-lanes`,
+the group `slug` is `brooklyn-for-bike-lanes`.
 
-### Local Chapter Members
 <div></div>
 
-Retrieve a paginated list of all of the people who are members of a particular local group.
+### Group Members
+
+Retrieve a paginated list of all of the people who are members of a particular group.
 
 `GET /api/v1/local_chapters/save-gotham/members`
 
 Hash           | Description
 -------------- | -----------
 meta           | pagination information
-local_chapter  | Basic information about the local group
+local_chapter  | Basic information about the group
 members        | Array of information about each supporter in this group
 
 <%= partial "includes/authenticated_api/labelings.md.erb",
-            locals: {campaign_type: 'local group', path_prefix: '/api/v1/local-chapters/tea-drinking-society'} %>
+            locals: {campaign_type: 'group', path_prefix: '/api/v1/local-chapters/tea-drinking-society'} %>
 
 <%= partial "includes/authenticated_api/mentor.md.erb",
-            locals: {campaign_type: 'local group', path_prefix: '/api/v1/local-chapters/tea-drinking-society'} %>
+            locals: {campaign_type: 'group', path_prefix: '/api/v1/local-chapters/tea-drinking-society'} %>
