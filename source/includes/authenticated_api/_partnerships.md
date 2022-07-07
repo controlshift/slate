@@ -84,11 +84,11 @@ Get a paginated list of all partnerships.
 }
 ```
 
-<div></div>
-
 Find information about a partnership by URL slug.
 
 `GET /api/v1/partnerships/fight-fascism`
+
+<div></div>
 
 ### List Petitions
 
