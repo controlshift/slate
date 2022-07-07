@@ -21,11 +21,15 @@ Calendars are collections of related events.
 }
 ```
 
-<div></div>
-
 Find information about a calendar by URL slug.
 
 `GET /api/v1/calendars/movie-screenings-for-healthcare-access`
+
+The `slug` used to identify a calendar for API purposes is the same as the `slug` that appears in member-facing URLs.
+For example, for a calendar whose member-facing hub is at `https://demo.controlshiftlabs.com/calendars/day-of-action-for-justice`,
+the calendar `slug` is `day-of-action-for-justice`.
+
+<div></div>
 
 ### List Events
 
