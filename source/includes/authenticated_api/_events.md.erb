@@ -258,11 +258,11 @@ extra_location_info | String | Information about the event’s location | no
 forum_enabled | Boolean | Whether the forum on the event page should be enabled | no; defaults to organisation setting
 group[slug] | String | Unique identifier for an existing group this event should be associated with | no
 hidden_address | Boolean | Whether the event’s full address should be obscured before RSVP | no; default is `false`
-hide_recent_attendees | Boolean | Whether to suppress the display of attendee’s names in the “recently shared” display. | no; default is `false`
-host | User block (see below) | User who will host the event. If a user account does not already exist with this email, we will create one. | yes
+hide_recent_attendees | Boolean | Whether to suppress the display of attendee’s names in the "recently shared" display. | no; default is `false`
+host | User block ([see above](#json-type-user)) | User who will host the event. If a user account does not already exist with this email, we will create one. | yes
 labels | List of Strings | Labels that should be applied to the new event. Any labels that do not already exist will be created | no
 locale | String | The ISO 639-1 two-letter code for the language the event content is in. Must be one of the languages supported by ControlShift. | no; defaults to organisation's default language
-location | Location block (see below) | Information about either the exact location of an in-person event, or the location a virtual event is relevant to. May be omitted entirely for a virtual event that doesn't have a specific audience location. If latitude and longitude are included, we’ll use them. Otherwise, we’ll geocode the fields provided. | only for in-person events
+location | Location block ([see above](#json-type-location)) | Information about either the exact location of an in-person event, or the location a virtual event is relevant to. May be omitted entirely for a virtual event that doesn't have a specific audience location. If latitude and longitude are included, we’ll use them. Otherwise, we’ll geocode the fields provided. | only for in-person events
 max_attendees_count | Integer | Maximum number of attendees allowed | no
 partnership[slug] | String | Unique identifier for an existing partnership this event should be associated with | no
 start_at | String | ISO 8601 date/time that the event starts | yes
@@ -271,33 +271,6 @@ title | String | Title of the event | yes
 virtual | Boolean | Whether this is a virtual event | no; defaults to the organisation default for new events
 web_conference_url | String | URL for a Zoom or other virtual meeting associated with this event | no
 
-A Location block is a JSON object with some or all of the following properties:
-
-Field | Type | Description
-------|------|------------
-country | String | ISO 3166-1 two-letter code for the country
-latitude | Floating-point number | Latitude
-locality | String | City
-longitude | Floating-point number | Longitude
-postal_code | String | Postcode / ZIP code
-region | String | State/province/etc.
-street | String | Street name
-street_number | String | Street number (e.g. "123" in "123 Main Street")
-venue | String | Venue name
-
-If the block does not include latitude and longitude, it must include country and at least one of locality, region, or postal code, so that we can geocode the location.
-
-
-A User block is a JSON object with some or all of the following properties:
-
-Field | Type | Description | Required?
-------|------|-------------|----------
-email | String | Email address | yes
-first_name | String | First/given name | no
-last_name | String | Last/family name | no
-locale | String | The ISO 639-1 two-letter code for the user's preferred language. Must be one of the languages supported by ControlShift. | no; defaults to organisation's default language
-phone_number | String | Phone number | no
-postcode | String | Postcode / ZIP code | no
 
 <div></div>
 

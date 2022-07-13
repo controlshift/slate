@@ -174,6 +174,94 @@ Get a paginated list of all petitions, including ones that are unlaunched or oth
 
 <div></div>
 
+### Create
+> POST /api/v1/petitions
+
+```json
+TODO
+```
+
+> Response body
+
+```json
+TODO
+```
+
+Create a new petition.
+
+`POST /api/v1/petitions`
+
+If a `creator` is specified, that user will become the petition's leader, and will receive an email asking them to confirm that they are leading the petition.
+Once the leader confirms, the petition will work the same way as a petition created via the web UI.
+The URL in the response is the public petition page where supporters can sign the petition.
+To update a petition after creation, use the returned `slug` with the Update endpoint described below.
+
+The request body should be a JSON block containing one `"petition"` object, which can have the following properties:
+
+Field | Type | Description | Required?
+------|------|-------------|----------
+campaigner_contactable | Boolean | Whether members of the public can contact the petition creator via the public petition page | no; default is `true`
+categories | List of Strings | Names of categories that should be applied to the new petition. Must be categories that already exist. If category names are translated, the original/main language names should be used here. | no
+creator | User block ([see below](#json-type-user)) | User who will be the petition leader. If a user account does not already exist with this email, we will create one. | no; default is no leader
+delivery_details | String | How the petition will be delivered | no
+external_facebook_page | String | URL of a facebook page for the campaign | no
+external_site | String | URL of a website about the campaign | no
+group[slug] | String | Unique identifier for an existing group this petition should be associated with | no
+hide_petition_creator | Boolean | Whether to suppress the display of the petition creator’s name on the petition page | no; default is `false`
+hide_recent_signers | Boolean | Whether to suppress the "recently signed" and "recently shared" display | no; default is `false`
+labels | List of Strings | Labels that should be applied to the new petition. Any labels that do not already exist will be created | no
+locale | String | The ISO 639-1 two-letter code for the language the petition content is in. Must be one of the languages supported by ControlShift. | no; defaults to organisation's default language
+location | Location block ([see below](#json-type-location)) | Information about the location associated with the petition. If latitude and longitude are included, we’ll use them. Otherwise, we’ll geocode the fields provided. | no
+partnership[slug] | String | Unique identifier for an existing partnership this petition should be associated with | no
+petition_creator_name_override | String | Name to display on the petition page instead of the creator's account name | no
+region[slug] | String | Unique identifier for an existing region this petition should be associated with | no
+source | String | Optional, open-ended string representing where this petition came from | no; will use "API" if the key is not present. Can specify an empty string/null explicitly.
+targets | List of 0-1 Target blocks ([see below](#json-type-target)) | Decision makers for this petition. If a block includes a `slug`, we’ll use it to look up an existing decision maker. Otherwise, we’ll try to create a new one. Any target created this way will be set to “published”. | no; default is no decision maker
+title | String | Title of the petition | yes
+what | String | Text of the petition ask | yes
+who | String | Who the petition is addressed to | yes, unless a `target` is specified
+why | String | Text explaining why the petition is important | yes
+
+
+<a name="json-type-location"></a>
+
+A Location block is a JSON object with some or all of the following properties:
+
+Field | Type | Description
+------|------|------------
+country | String | ISO 3166-1 two-letter code for the country
+latitude | Floating-point number | Latitude
+locality | String | City
+longitude | Floating-point number | Longitude
+postal_code | String | Postcode / ZIP code
+region | String | State/province/etc.
+street | String | Street name
+street_number | String | Street number (e.g. "123" in "123 Main Street")
+venue | String | Venue name
+
+If the block does not include latitude and longitude, it must include country and at least one of locality, region, or postal code, so that we can geocode the location.
+
+
+<a name="json-type-target"></a>
+TODO
+
+
+<a name="json-type-user"></a>
+
+A User block is a JSON object with some or all of the following properties:
+
+Field | Type | Description | Required?
+------|------|-------------|----------
+email | String | Email address | yes
+first_name | String | First/given name | no
+last_name | String | Last/family name | no
+locale | String | The ISO 639-1 two-letter code for the user's preferred language. Must be one of the languages supported by ControlShift. | no; defaults to organisation's default language
+phone_number | String | Phone number | no
+postcode | String | Postcode / ZIP code | no
+
+
+<div></div>
+
 ### Update
 
 > PUT request body
