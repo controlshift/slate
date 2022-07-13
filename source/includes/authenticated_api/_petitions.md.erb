@@ -215,11 +215,11 @@ location | Location block ([see below](#json-type-location)) | Information about
 partnership[slug] | String | Unique identifier for an existing partnership this petition should be associated with | no
 petition_creator_name_override | String | Name to display on the petition page instead of the creator's account name | no
 region[slug] | String | Unique identifier for an existing region this petition should be associated with | no
-source | String | Optional, open-ended string representing where this petition came from | no; will use "API" if the key is not present. Can specify an empty string/null explicitly.
-targets | List of 0-1 Target blocks ([see below](#json-type-target)) | Decision makers for this petition. If a block includes a `slug`, we’ll use it to look up an existing decision maker. Otherwise, we’ll try to create a new one. Any target created this way will be set to “published”. | no; default is no decision maker
+source | String | Optional, open-ended string representing where this petition came from | no; default is "API"
+targets | List of 0-1 Target blocks ([see below](#json-type-target)) | Decision makers for this petition. If a block includes a `slug`, we’ll use it to look up an existing decision maker. Otherwise, we’ll try to create a new one. Any decision maker created this way will be set to "published". Specifying more than one decision maker is not yet supported. | no; default is no decision maker
 title | String | Title of the petition | yes
 what | String | Text of the petition ask | yes
-who | String | Who the petition is addressed to | yes, unless a `target` is specified
+who | String | Who the petition is addressed to | yes, unless `targets` includes a decision maker
 why | String | Text explaining why the petition is important | yes
 
 
