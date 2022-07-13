@@ -178,13 +178,117 @@ Get a paginated list of all petitions, including ones that are unlaunched or oth
 > POST /api/v1/petitions
 
 ```json
-TODO
+{
+  "petition": {
+    "title": "No Taxes on Tea",
+    "what": "Stop taxing our tea",
+    "why": "No taxation without representation!",
+    "categories": ["Tax Policy", "End Colonialism"],
+    "creator": {
+      "first_name": "Patrick",
+      "last_name": "Henry",
+      "email": "patrick.henry@example.com",
+      "locale": "en-US"
+    },
+    "targets": [
+      {
+        "name": "George III",
+        "context": "King of Great Britain"
+      }
+    ],
+    "partnership": {
+      "slug": "american-whigs"
+    }
+  }
+}
 ```
 
 > Response body
 
 ```json
-TODO
+{
+  "status": "success",
+  "petition": {
+    "admin_events_status": "auto",
+    "admin_status": "good",
+    "alias": null,
+    "campaigner_contactable": true,
+    "can_download_signers": true,
+    "created_at": "1776-12-16T21:32Z",
+    "custom_goal": null,
+    "delivery_details": null,
+    "external_facebook_page": null,
+    "external_site": null,
+    "goal": 100,
+    "hide_petition_creator": false,
+    "hide_recent_signers": false,
+    "hide_signature_form": false,
+    "id": 123,
+    "launched": true,
+    "locale": "en",
+    "petition_creator_name_override": null,
+    "redirect_to": null,
+    "show_progress_bar": true,
+    "signature_count_add_amount": null,
+    "slug": "no-taxes-on-tea",
+    "source": "API",
+    "title": "No Taxes on Tea",
+    "updated_at": "1776-12-16T21:32Z",
+    "what": "Stop taxing our tea",
+    "who": null,
+    "why": "No taxation without representation!",
+    "title_locked": null,
+    "what_locked": null,
+    "who_locked": null,
+    "why_locked": null,
+    "delivery_details_locked": null,
+    "external_facebook_page_locked": null,
+    "external_site_locked": null,
+    "categories_locked": null,
+    "url": "https://demo.controlshiftlabs.com/petitions/no-taxes-on-tea",
+    "public_who": "George III, King of Great Britain",
+    "ended": false,
+    "successful": false,
+    "image": null,
+    "public_signature_count": 0,
+    "admin_notes": [],
+    "creator": {
+      "full_name": "Patrick Henry",
+      "first_name": "Patrick",
+      "last_name": "Henry",
+      "email": "patrick.henry@example.com",
+      "phone_number": null
+    },
+    "mentor": null,
+    "reviewer": null,
+    "location": null,
+    "decision_makers": [
+      {
+        "name": "George III",
+        "slug": "george-iii",
+        "context": "King of Great Britain",
+        "phone_number": null,
+        "email": null
+      }
+    ],
+    "effort": null,
+    "partnership": {
+      "slug": "american-whigs",
+      "title": "Whigs in the American Colonies"
+    },
+    "labels": [],
+    "categories": [
+      {
+        "slug": "tax-policy",
+        "name": "Tax Policy"
+      },
+      {
+        "slug": "end-colonialism-now",
+        "title": "End Colonialism"
+      }
+    ]
+  }
+}
 ```
 
 Create a new petition.
