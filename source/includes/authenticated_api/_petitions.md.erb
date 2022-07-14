@@ -327,53 +327,9 @@ who | String | Who the petition is addressed to | yes, unless `targets` includes
 why | String | Text explaining why the petition is important | yes
 
 
-<a name="json-type-location"></a>
-
-A Location block is a JSON object with some or all of the following properties:
-
-Field | Type | Description
-------|------|------------
-country | String | ISO 3166-1 two-letter code for the country
-latitude | Floating-point number | Latitude
-locality | String | City
-longitude | Floating-point number | Longitude
-postal_code | String | Postcode / ZIP code
-region | String | State/province/etc.
-street | String | Street name
-street_number | String | Street number (e.g. "123" in "123 Main Street")
-venue | String | Venue name
-
-If the block does not include latitude and longitude, it must include country and at least one of locality, region, or postal code, so that we can geocode the location.
-
-
-<a name="json-type-target"></a>
-A Target block is a JSON object that has either the unique **slug** of an existing decision maker, like this:
-
-`{"slug": "president-joe-biden"}`
-
-or a set of the following properties for creating a new decision maker:
-
-Field | Type | Description | Required?
-------|------|-------------|----------
-context | String | Job title or additional context about the decision maker | no
-email | String | Email address for contacting the decision maker | no
-name | String | Decision maker's name | yes
-phone_number | String | Phone number for contacting the decision maker | no
-
-
-<a name="json-type-user"></a>
-
-A User block is a JSON object with some or all of the following properties:
-
-Field | Type | Description | Required?
-------|------|-------------|----------
-email | String | Email address | yes
-first_name | String | First/given name | no
-last_name | String | Last/family name | no
-locale | String | The ISO 639-1 two-letter code for the user's preferred language. Must be one of the languages supported by ControlShift. | no; defaults to organisation's default language
-phone_number | String | Phone number | no
-postcode | String | Postcode / ZIP code | no
-
+<%= partial "includes/authenticated_api/json_type_location" %>
+<%= partial "includes/authenticated_api/json_type_target" %>
+<%= partial "includes/authenticated_api/json_type_user" %>
 
 <div></div>
 
