@@ -5542,6 +5542,420 @@ By default the first page is returned.</p>
 <p><code>GET /api/v1/petitions?page=1</code></p>
 
 <div></div>
+<h3 id='authenticated-rest-api-petitions-create'>Create</h3>
+<blockquote>
+<p>POST /api/v1/petitions</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"petition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No Taxes on Tea"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stop taxing our tea"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No taxation without representation!"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Tax Policy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"End Colonialism"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patrick"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Henry"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"patrick.henry@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"targets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"George III"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"King of Great Britain"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"american-whigs"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Response body</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"petition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"admin_events_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"alias"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"campaigner_contactable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"can_download_signers"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1776-12-16T21:32Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"custom_goal"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"delivery_details"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"external_facebook_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"external_site"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hide_petition_creator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hide_recent_signers"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hide_signature_form"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"launched"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"petition_creator_name_override"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"redirect_to"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"show_progress_bar"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signature_count_add_amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no-taxes-on-tea"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No Taxes on Tea"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1776-12-16T21:32Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stop taxing our tea"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"who"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No taxation without representation!"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title_locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"what_locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"who_locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"why_locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"delivery_details_locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"external_facebook_page_locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"external_site_locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"categories_locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/no-taxes-on-tea"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"public_who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"George III, King of Great Britain"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"successful"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"public_signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"admin_notes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patrick Henry"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patrick"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Henry"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"patrick.henry@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"mentor"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"reviewer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"decision_makers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"George III"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"george-iii"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"King of Great Britain"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"effort"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"american-whigs"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Whigs in the American Colonies"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tax-policy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tax Policy"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"end-colonialism-now"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"End Colonialism"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Create a new petition.</p>
+
+<p><code>POST /api/v1/petitions</code></p>
+
+<p>If a <code>creator</code> is specified, that user will become the petition&#39;s leader, and will receive an email asking them to confirm that they are leading the petition.
+Once the leader confirms, the petition will work the same way as a petition created via the web UI.
+The URL in the response is the public petition page where supporters can sign the petition.
+To update a petition after creation, use the returned <code>slug</code> with the Update endpoint described below.</p>
+
+<p>The request body should be a JSON block containing one <code>&quot;petition&quot;</code> object, which can have the following properties:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>campaigner_contactable</td>
+<td>Boolean</td>
+<td>Whether members of the public can contact the petition creator via the public petition page</td>
+<td>no; default is <code>true</code></td>
+</tr>
+<tr>
+<td>categories</td>
+<td>List of Strings</td>
+<td>Names of categories that should be applied to the new petition. Must be categories that already exist. If category names are translated, the original/main language names should be used here.</td>
+<td>no</td>
+</tr>
+<tr>
+<td>creator</td>
+<td>User block (<a href="#json-type-user">see below</a>)</td>
+<td>User who will be the petition leader. If a user account does not already exist with this email, we will create one.</td>
+<td>no; default is no leader</td>
+</tr>
+<tr>
+<td>delivery_details</td>
+<td>String</td>
+<td>How the petition will be delivered</td>
+<td>no</td>
+</tr>
+<tr>
+<td>external_facebook_page</td>
+<td>String</td>
+<td>URL of a facebook page for the campaign</td>
+<td>no</td>
+</tr>
+<tr>
+<td>external_site</td>
+<td>String</td>
+<td>URL of a website about the campaign</td>
+<td>no</td>
+</tr>
+<tr>
+<td>group[slug]</td>
+<td>String</td>
+<td>Unique identifier for an existing group this petition should be associated with</td>
+<td>no</td>
+</tr>
+<tr>
+<td>hide_petition_creator</td>
+<td>Boolean</td>
+<td>Whether to suppress the display of the petition creator’s name on the petition page</td>
+<td>no; default is <code>false</code></td>
+</tr>
+<tr>
+<td>hide_recent_signers</td>
+<td>Boolean</td>
+<td>Whether to suppress the &quot;recently signed&quot; and &quot;recently shared&quot; display</td>
+<td>no; default is <code>false</code></td>
+</tr>
+<tr>
+<td>labels</td>
+<td>List of Strings</td>
+<td>Labels that should be applied to the new petition. Any labels that do not already exist will be created</td>
+<td>no</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>String</td>
+<td>The ISO 639-1 two-letter code for the language the petition content is in. Must be one of the languages supported by ControlShift.</td>
+<td>no; defaults to organisation&#39;s default language</td>
+</tr>
+<tr>
+<td>location</td>
+<td>Location block (<a href="#json-type-location">see below</a>)</td>
+<td>Information about the location associated with the petition. If latitude and longitude are included, we’ll use them. Otherwise, we’ll geocode the fields provided.</td>
+<td>no</td>
+</tr>
+<tr>
+<td>partnership[slug]</td>
+<td>String</td>
+<td>Unique identifier for an existing partnership this petition should be associated with</td>
+<td>no</td>
+</tr>
+<tr>
+<td>petition_creator_name_override</td>
+<td>String</td>
+<td>Name to display on the petition page instead of the creator&#39;s account name</td>
+<td>no</td>
+</tr>
+<tr>
+<td>region[slug]</td>
+<td>String</td>
+<td>Unique identifier for an existing region this petition should be associated with</td>
+<td>no</td>
+</tr>
+<tr>
+<td>source</td>
+<td>String</td>
+<td>Optional, open-ended string representing where this petition came from</td>
+<td>no; default is &quot;API&quot;</td>
+</tr>
+<tr>
+<td>targets</td>
+<td>List of 0-1 Target blocks (<a href="#json-type-target">see below</a>)</td>
+<td>Decision makers for this petition. If a block includes a <code>slug</code>, we’ll use it to look up an existing decision maker. Otherwise, we’ll try to create a new one. Any decision maker created this way will be set to &quot;published&quot;. Specifying more than one decision maker is not yet supported.</td>
+<td>no; default is no decision maker</td>
+</tr>
+<tr>
+<td>title</td>
+<td>String</td>
+<td>Title of the petition</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>what</td>
+<td>String</td>
+<td>Text of the petition ask</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>who</td>
+<td>String</td>
+<td>Who the petition is addressed to</td>
+<td>yes, unless <code>targets</code> includes a decision maker</td>
+</tr>
+<tr>
+<td>why</td>
+<td>String</td>
+<td>Text explaining why the petition is important</td>
+<td>yes</td>
+</tr>
+</tbody></table>
+
+<p><a name="json-type-location"></a></p>
+
+<p>A Location block is a JSON object with some or all of the following properties:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>country</td>
+<td>String</td>
+<td>ISO 3166-1 two-letter code for the country</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Floating-point number</td>
+<td>Latitude</td>
+</tr>
+<tr>
+<td>locality</td>
+<td>String</td>
+<td>City</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Floating-point number</td>
+<td>Longitude</td>
+</tr>
+<tr>
+<td>postal_code</td>
+<td>String</td>
+<td>Postcode / ZIP code</td>
+</tr>
+<tr>
+<td>region</td>
+<td>String</td>
+<td>State/province/etc.</td>
+</tr>
+<tr>
+<td>street</td>
+<td>String</td>
+<td>Street name</td>
+</tr>
+<tr>
+<td>street_number</td>
+<td>String</td>
+<td>Street number (e.g. &quot;123&quot; in &quot;123 Main Street&quot;)</td>
+</tr>
+<tr>
+<td>venue</td>
+<td>String</td>
+<td>Venue name</td>
+</tr>
+</tbody></table>
+
+<p>If the block does not include latitude and longitude, it must include country and at least one of locality, region, or postal code, so that we can geocode the location.</p>
+
+<p><a name="json-type-target"></a>
+A Target block is a JSON object that has either the unique <strong>slug</strong> of an existing decision maker, like this:</p>
+
+<p><code>{&quot;slug&quot;: &quot;president-joe-biden&quot;}</code></p>
+
+<p>or a set of the following properties for creating a new decision maker:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>context</td>
+<td>String</td>
+<td>Job title or additional context about the decision maker</td>
+<td>no</td>
+</tr>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>Email address for contacting the decision maker</td>
+<td>no</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Decision maker&#39;s name</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>String</td>
+<td>Phone number for contacting the decision maker</td>
+<td>no</td>
+</tr>
+</tbody></table>
+
+<p><a name="json-type-user"></a></p>
+
+<p>A User block is a JSON object with some or all of the following properties:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>Email address</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>String</td>
+<td>First/given name</td>
+<td>no</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>String</td>
+<td>Last/family name</td>
+<td>no</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>String</td>
+<td>The ISO 639-1 two-letter code for the user&#39;s preferred language. Must be one of the languages supported by ControlShift.</td>
+<td>no; defaults to organisation&#39;s default language</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>String</td>
+<td>Phone number</td>
+<td>no</td>
+</tr>
+<tr>
+<td>postcode</td>
+<td>String</td>
+<td>Postcode / ZIP code</td>
+<td>no</td>
+</tr>
+</tbody></table>
+
+<div></div>
 <h3 id='authenticated-rest-api-petitions-update'>Update</h3>
 <blockquote>
 <p>PUT request body</p>
@@ -6730,12 +7144,12 @@ To update an event after creation, use the returned <code>slug</code> with the U
 <tr>
 <td>hide_recent_attendees</td>
 <td>Boolean</td>
-<td>Whether to suppress the display of attendee’s names in the “recently shared” display.</td>
+<td>Whether to suppress the display of attendee’s names in the &quot;recently shared&quot; display.</td>
 <td>no; default is <code>false</code></td>
 </tr>
 <tr>
 <td>host</td>
-<td>User block (see below)</td>
+<td>User block (<a href="#json-type-user">see above</a>)</td>
 <td>User who will host the event. If a user account does not already exist with this email, we will create one.</td>
 <td>yes</td>
 </tr>
@@ -6753,7 +7167,7 @@ To update an event after creation, use the returned <code>slug</code> with the U
 </tr>
 <tr>
 <td>location</td>
-<td>Location block (see below)</td>
+<td>Location block (<a href="#json-type-location">see above</a>)</td>
 <td>Information about either the exact location of an in-person event, or the location a virtual event is relevant to. May be omitted entirely for a virtual event that doesn&#39;t have a specific audience location. If latitude and longitude are included, we’ll use them. Otherwise, we’ll geocode the fields provided.</td>
 <td>only for in-person events</td>
 </tr>
@@ -6797,112 +7211,6 @@ To update an event after creation, use the returned <code>slug</code> with the U
 <td>web_conference_url</td>
 <td>String</td>
 <td>URL for a Zoom or other virtual meeting associated with this event</td>
-<td>no</td>
-</tr>
-</tbody></table>
-
-<p>A Location block is a JSON object with some or all of the following properties:</p>
-
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>country</td>
-<td>String</td>
-<td>ISO 3166-1 two-letter code for the country</td>
-</tr>
-<tr>
-<td>latitude</td>
-<td>Floating-point number</td>
-<td>Latitude</td>
-</tr>
-<tr>
-<td>locality</td>
-<td>String</td>
-<td>City</td>
-</tr>
-<tr>
-<td>longitude</td>
-<td>Floating-point number</td>
-<td>Longitude</td>
-</tr>
-<tr>
-<td>postal_code</td>
-<td>String</td>
-<td>Postcode / ZIP code</td>
-</tr>
-<tr>
-<td>region</td>
-<td>String</td>
-<td>State/province/etc.</td>
-</tr>
-<tr>
-<td>street</td>
-<td>String</td>
-<td>Street name</td>
-</tr>
-<tr>
-<td>street_number</td>
-<td>String</td>
-<td>Street number (e.g. &quot;123&quot; in &quot;123 Main Street&quot;)</td>
-</tr>
-<tr>
-<td>venue</td>
-<td>String</td>
-<td>Venue name</td>
-</tr>
-</tbody></table>
-
-<p>If the block does not include latitude and longitude, it must include country and at least one of locality, region, or postal code, so that we can geocode the location.</p>
-
-<p>A User block is a JSON object with some or all of the following properties:</p>
-
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-<th>Required?</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>email</td>
-<td>String</td>
-<td>Email address</td>
-<td>yes</td>
-</tr>
-<tr>
-<td>first_name</td>
-<td>String</td>
-<td>First/given name</td>
-<td>no</td>
-</tr>
-<tr>
-<td>last_name</td>
-<td>String</td>
-<td>Last/family name</td>
-<td>no</td>
-</tr>
-<tr>
-<td>locale</td>
-<td>String</td>
-<td>The ISO 639-1 two-letter code for the user&#39;s preferred language. Must be one of the languages supported by ControlShift.</td>
-<td>no; defaults to organisation&#39;s default language</td>
-</tr>
-<tr>
-<td>phone_number</td>
-<td>String</td>
-<td>Phone number</td>
-<td>no</td>
-</tr>
-<tr>
-<td>postcode</td>
-<td>String</td>
-<td>Postcode / ZIP code</td>
 <td>no</td>
 </tr>
 </tbody></table>
