@@ -6,11 +6,25 @@ To begin using webhooks, visit the admin for your ControlShift Platform and choo
 
 If you need additional information about webhooks or how to use them, please send us a support email [support@controlshiftlabs.com](mailto:support@controlshiftlabs.com).
 
+### What is a Webhook?
+
+Webhooks are HTTPS callbacks sent to a URL called an endpoint. Each time something happens in ControlShift an HTTPS POST request is made to the endpoints you've defined.
+
+Many platforms like Twilio, Github and Slack also use Webhooks.
+
+To handle a webhook you'll need a web application that can accept the HTTPS requests. If you already have a web application set up, handling a webhook 
+is usually as easy as adding a new URL to your application. If not you'll have to write a new web application. Most programming languages have frameworks 
+that can make this easy.  Webhooks can also be handled by serverless functions like AWS Lambda or Azure Functions. 
+
+Webhooks are just HTTP requests. Anything that can process requests from the web can process webhooks, if the application behind it is programmed properly. Webhooks are just a fancy name for using HTTP requests for event based integration between apps.
+
 ### Retries
 
 For webhook notifications successfully processed the response should have an HTTP 2XX status code. Responses returning a different status code will be marked as failed and automatically retried up to 9 times with an exponential backoff (e.g.: after 15s, 30s, 90s, etc.).
 
-If after 9 retries the notification cannot be delivered, the webhook endpoint will be automatically disabled and will need to be re-enabled from the admin page to start receiving webhook notifications again.
+If after 9 retries the notification cannot be delivered, the webhook endpoint will be automatically disabled and will need to be re-enabled from the admin page to start receiving webhook notifications again. We do this to protect our infrastructure and ability to deliver webhooks successfully. 
+
+We recommend making sure your webhook endpoint only returns non-2XX statuses if your service is temporarily down or experiencng a transient error. Applications that consistently return an error status when they recieve particular webhooks will inevitably end up disabled once retries are exhausted.
 
 ### Security
 
@@ -26,6 +40,9 @@ Securing access to your endpoints where webhooks are sent is important. We recom
 We send a special HTTP header along with webhook deliveries that allows customers to verify that the body of the
 webhook being delivered originated from within your ControlShift account. We use HMAC and SHA 256 along with a
 secret generated for each endpoint
+
+Using HMAC Authenticity signing is optional, but is a security best practice. Otherwise someone else could send requests to your webhook endpoint
+that impersonate ControlShift. HMAC signing guarantees that the webhooks you receive are authentic.
 
 You can retrieve the secret or generate a new one via Settings > Integrations > Webhooks within your ControlShift platform admin.
 
