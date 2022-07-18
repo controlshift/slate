@@ -340,6 +340,9 @@
         <a href="#webhook-endpoints" class="toc-h1 toc-link" data-title="Webhook Endpoints">Webhook Endpoints</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#webhook-endpoints-bulk-data-what-is-a-webhook" class="toc-h2 toc-link" data-title="What is a Webhook?">What is a Webhook?</a>
+              </li>
+              <li>
                 <a href="#webhook-endpoints-bulk-data-retries" class="toc-h2 toc-link" data-title="Retries">Retries</a>
               </li>
               <li>
@@ -2364,10 +2367,22 @@ which table header row is returned.</p>
 <p>To begin using webhooks, visit the admin for your ControlShift Platform and choose Settings &gt; Integrations &gt; Webhooks.  To begin sending data, you&#39;ll need to add a &quot;New Webhook Endpoint.&quot; Each Webhook Endpoint URL you specify will receive a stream of all the hooks that occur within your ControlShift account.</p>
 
 <p>If you need additional information about webhooks or how to use them, please send us a support email <a href="mailto:support@controlshiftlabs.com">support@controlshiftlabs.com</a>.</p>
+<h3 id='webhook-endpoints-bulk-data-what-is-a-webhook'>What is a Webhook?</h3>
+<p>Webhooks are HTTPS callbacks sent to a URL called an endpoint. Each time something happens in ControlShift an HTTPS POST request is made to the endpoints you&#39;ve defined.</p>
+
+<p>Many platforms like Twilio, Github and Slack also use Webhooks.</p>
+
+<p>To handle a webhook you&#39;ll need a web application that can accept the HTTPS requests. If you already have a web application set up, handling a webhook 
+is usually as easy as adding a new URL to your application. If not you&#39;ll have to write a new web application. Most programming languages have frameworks 
+that can make this easy.  Webhooks can also be handled by serverless functions like AWS Lambda or Azure Functions. </p>
+
+<p>Webhooks are just HTTP requests. Anything that can process requests from the web can process webhooks, if the application behind it is programmed properly. Webhooks are just a fancy name for using HTTP requests for event based integration between apps.</p>
 <h3 id='webhook-endpoints-bulk-data-retries'>Retries</h3>
 <p>For webhook notifications successfully processed the response should have an HTTP 2XX status code. Responses returning a different status code will be marked as failed and automatically retried up to 9 times with an exponential backoff (e.g.: after 15s, 30s, 90s, etc.).</p>
 
-<p>If after 9 retries the notification cannot be delivered, the webhook endpoint will be automatically disabled and will need to be re-enabled from the admin page to start receiving webhook notifications again.</p>
+<p>If after 9 retries the notification cannot be delivered, the webhook endpoint will be automatically disabled and will need to be re-enabled from the admin page to start receiving webhook notifications again. We do this to protect our infrastructure and ability to deliver webhooks successfully. </p>
+
+<p>We recommend making sure your webhook endpoint only returns non-2XX statuses if your service is temporarily down or experiencng a transient error. Applications that consistently return an error status when they recieve particular webhooks will inevitably end up disabled once retries are exhausted.</p>
 <h3 id='webhook-endpoints-bulk-data-security'>Security</h3>
 <p>Securing access to your endpoints where webhooks are sent is important. We recommend taking a variety of steps.</p>
 
@@ -2381,6 +2396,9 @@ which table header row is returned.</p>
 <p>We send a special HTTP header along with webhook deliveries that allows customers to verify that the body of the
 webhook being delivered originated from within your ControlShift account. We use HMAC and SHA 256 along with a
 secret generated for each endpoint</p>
+
+<p>Using HMAC Authenticity signing is optional, but is a security best practice. Otherwise someone else could send requests to your webhook endpoint
+that impersonate ControlShift. HMAC signing guarantees that the webhooks you receive are authentic.</p>
 
 <p>You can retrieve the secret or generate a new one via Settings &gt; Integrations &gt; Webhooks within your ControlShift platform admin.</p>
 
