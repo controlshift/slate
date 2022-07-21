@@ -1,0 +1,36 @@
+If the event is created successfully, the host will receive an email asking them to confirm that they are hosting.
+Once the host confirms, the event will work the same way as an event created via the web UI.
+The URL in the response is the public event page where members can RSVP.
+To update an event after creation, use the returned `slug` with the <a href="#authenticated-rest-api-events-update">Event Update</a> endpoint.
+
+The request body should be a JSON block containing one `"event"` object, which can have the following properties:
+
+Field | Type | Description | Required?
+------|------|-------------|----------
+campaigner_contactable | Boolean | Whether members of the public can contact the event host via the public event page | no; default is `true`
+description | String | Description of the event | yes
+end_at | String | ISO 8601 date/time that the event ends | no; default is no specific end time
+event_host_name_override | String | Name to display on the event page instead of the host’s account name | no
+event_type[id] | Integer | Unique ID of an existing Event Type that should be set on the event | no
+extra_location_info | String | Information about the event’s location | no
+forum_enabled | Boolean | Whether the forum on the event page should be enabled | no; <%= forum_enabled_default %>
+group[slug] | String | Unique identifier for an existing group this event should be associated with | no
+hidden_address | Boolean | Whether the event’s full address should be obscured before RSVP | no; default is `false`
+hide_recent_attendees | Boolean | Whether to suppress the display of attendee’s names in the "recently shared" display. | no; default is `false`
+host | User block ([see above](#json-type-user)) | User who will host the event. If a user account does not already exist with this email, we will create one. | yes
+<% if include_host_address %>
+  host_address | String | Host's mailing address | only if the calendar requires it
+<% end %>
+labels | List of Strings | Labels that should be applied to the new event. Any labels that do not already exist will be created | no
+locale | String | The ISO 639-1 two-letter code for the language the event content is in. Must be one of the languages supported by ControlShift. | no; defaults to organisation's default language
+location | Location block ([see above](#json-type-location)) | Information about either the exact location of an in-person event, or the location a virtual event is relevant to. May be omitted entirely for a virtual event that doesn't have a specific audience location. If latitude and longitude are included, we’ll use them. Otherwise, we’ll geocode the fields provided. | only for in-person events
+max_attendees_count | Integer | Maximum number of attendees allowed | no
+partnership[slug] | String | Unique identifier for an existing partnership this event should be associated with | no
+start_at | String | ISO 8601 date/time that the event starts | yes
+<% if include_target %>
+  target[slug] | String | Unique identifier for an existing decision maker this event should be associated with. Only relevant for constituency-bound calendars, where it must belong to the decision maker collection associated with the calendar. | only in constituency-bound calendars
+<% end %>
+time_zone | String | tz database code for the event’s time zone (e.g. "America/New_York") | yes
+title | String | Title of the event | yes
+virtual | Boolean | Whether this is a virtual event | no; defaults to the organisation default for new events
+web_conference_url | String | URL for a Zoom or other virtual meeting associated with this event | no

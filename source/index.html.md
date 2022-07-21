@@ -31,7 +31,7 @@ includes:
   - authenticated_api/partnerships
   - authenticated_api/events.md.erb
   - authenticated_api/attendees.md.erb
-  - authenticated_api/calendars
+  - authenticated_api/calendars.md.erb
   - authenticated_api/local_chapters.md.erb  
   - authenticated_api/webhook_endpoints
 

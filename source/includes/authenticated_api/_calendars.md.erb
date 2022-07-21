@@ -1,0 +1,145 @@
+## Calendars
+
+Calendars are collections of related events.
+
+### Show
+
+> GET response Body
+
+```json
+{
+  "calendar": {
+    "name": "Movie Screenings For Healthcare Access",
+    "description": "We're watching this amazing and powerful movie about the fight for health care for all.",
+    "slug": "movie-screenings-for-healthcare-access",
+    "url": "https://demo.controlshiftlabs.com/calendars/movie-screenings-for-healthcare-access",
+    "partnership": {
+      "slug": "space-captains-for-health-care",
+      "url": "https://demo.controlshiftlabs.com/partnerships/space-captains-for-health-care"
+    }
+  }
+}
+```
+
+Find information about a calendar by URL slug.
+
+`GET /api/v1/calendars/movie-screenings-for-healthcare-access`
+
+The `slug` used to identify a calendar for API purposes is the same as the `slug` that appears in member-facing URLs.
+For example, for a calendar whose member-facing hub is at `https://demo.controlshiftlabs.com/calendars/day-of-action-for-justice`,
+the calendar `slug` is `day-of-action-for-justice`.
+
+<div></div>
+
+### List Events
+
+List the events that are part of a Calendar. 
+
+This is a paginated response. You can advance to the next page using the page parameter, which accepts a page number integer.
+By default the first page is returned. 
+
+Hash     | Description
+--------- | ------- 
+meta      | pagination information
+calendar  | basic information about the calendar
+events | an array of event results
+
+`GET /api/v1/calendars/movie-screenings-for-healthcare-access/events?page=2`
+
+### Create Event
+> POST /api/v1/calendars/movie-screenings-for-healthcare-access/events
+
+```json
+{
+  "event": {
+    "title": "Movie Screening at the Community Center",
+    "description": "We're going to watch this amazing movie",
+    "start_at": "2025-06-01T15:00-05:00",
+    "end_at": "2025-06-01T17:30-05:00",
+    "time_zone": "America/Chicago",
+    "host": {
+      "first_name": "Cori",
+      "last_name": "Bush",
+      "email": "cori.bush@example.com"
+    },
+    "host_address": "Congressional Office, 6724-A Page Ave., St. Louis, MO 63133",
+    "location": {
+      "venue": "Community Center",
+      "street_number": "123",
+      "street": "Main Street",
+      "locality": "Kansas City",
+      "region": "KS",
+      "postal_code": "12345",
+      "country": "US"
+    },
+    "extra_location_info": "We'll be in the multi-purpose room on the first floor.",
+    "event_type": {
+      "id": 12
+    },
+    "labels": [
+      "health care"
+    ]
+  }
+}
+```
+
+> Response body
+
+```json
+{
+  "status": "success",
+  "event": {
+    "slug": "movie-screening-at-the-community-center-2",
+    "title": "Movie Screening at the Community Center",
+    "url": "https://demo.controlshiftlabs.com/events/movie-screening-at-the-community-center-2",
+    "description": "We're going to watch this amazing movie",
+    "start_at": "2025-06-01T20:00Z",
+    "end_at": "2025-06-01T22:30Z",
+    "start_in_zone": "2025-06-01T15:00-05:00",
+    "end_in_zone": "2025-06-01T17:30-05:00",
+    "time_zone": "America/Chicago",
+    "virtual": false,
+    "launched_at": "2025-05-23T21:32Z",
+    "locale": "en-US",
+    "host_address": "Congressional Office, 6724-A Page Ave., St. Louis, MO 63133",
+    "max_attendees_count": null,
+    "location": {
+      "latitude": 39.168100,
+      "longitude": -94.776063,
+      "postal_code": "12345",
+      "country": "US",
+      "region": "KS",
+      "locality": "Kansas City",
+      "query": "Community Center, 123 Main Street, Kansas City, KS 12345, US",
+      "street": "Main Street",
+      "street_number": "123",
+      "venue": "Community Center",
+      "created_at": "2025-05-23T21:32Z",
+      "extra_location_info": "We'll be in the multi-purpose room on the first floor."
+    },
+    "event_type": {
+      "name": "Movie Screening"
+    },
+    "shifts": [],
+    "calendar": {
+      "name": "Movie Screenings For Healthcare Access",
+      "slug": "movie-screenings-for-healthcare-access",
+      "url": "https://demo.controlshiftlabs.com/calendars/movie-screenings-for-healthcare-access"
+    },
+    "labels": [
+      "health care"
+    ]
+  }
+}
+```
+
+Create a new event in the calendar.
+
+`POST /api/v1/calendars/movie-screenings-for-healthcare-access/events`
+
+<%= partial "includes/authenticated_api/event_create.md.erb",
+    locals: {forum_enabled_default: 'defaults to calendar setting or organisation setting',
+             include_host_address: true, include_target: true} %>
+
+
+<div></div>
