@@ -71,7 +71,7 @@ CREATE TABLE members ("id" integer, "email" CHARACTER VARYING(max), "organisatio
 DROP TABLE IF EXISTS objective_collections;
 CREATE TABLE objective_collections ("id" bigint, "name" CHARACTER VARYING(max), "kind" CHARACTER VARYING(max), "file_upload_file_name" CHARACTER VARYING(max), "file_upload_content_type" CHARACTER VARYING(max), "file_upload_file_size" integer, "file_upload_updated_at" timestamp without time zone, "created_at" timestamp without time zone, "updated_at" timestamp without time zone);
 DROP TABLE IF EXISTS objectives;
-CREATE TABLE objectives ("id" bigint, "name" CHARACTER VARYING(max), "objective_collection_id" integer, "properties" CHARACTER VARYING(max), "location_id" integer, "created_at" timestamp without time zone, "updated_at" timestamp without time zone);
+CREATE TABLE objectives ("id" bigint, "name" CHARACTER VARYING(max), "objective_collection_id" integer, "properties" CHARACTER VARYING(max), "location_id" integer, "created_at" timestamp without time zone, "updated_at" timestamp without time zone, "slug" CHARACTER VARYING(max));
 DROP TABLE IF EXISTS partnership_subscriptions;
 CREATE TABLE partnership_subscriptions ("id" bigint, "partnership_id" bigint, "member_id" bigint, "token" CHARACTER VARYING(max), "signature_id" bigint, "unsubscribed_at" timestamp without time zone, "created_at" timestamp without time zone, "updated_at" timestamp without time zone);
 DROP TABLE IF EXISTS partnerships;

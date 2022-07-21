@@ -7059,6 +7059,7 @@ the event <code>slug</code> is <code>chapter-meeting-1</code>.</p>
       </span><span class="nl">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"City Park"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-05-23T21:32Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"extra_location_info"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"event_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Protest"</span><span class="w">
@@ -7093,7 +7094,7 @@ the event <code>slug</code> is <code>chapter-meeting-1</code>.</p>
 <p>If the event is created successfully, the host will receive an email asking them to confirm that they are hosting.
 Once the host confirms, the event will work the same way as an event created via the web UI.
 The URL in the response is the public event page where members can RSVP.
-To update an event after creation, use the returned <code>slug</code> with the Update endpoint described below.</p>
+To update an event after creation, use the returned <code>slug</code> with the <a href="#authenticated-rest-api-events-update">Event Update</a> endpoint.</p>
 
 <p>The request body should be a JSON block containing one <code>&quot;event&quot;</code> object, which can have the following properties:</p>
 
@@ -7234,6 +7235,8 @@ To update an event after creation, use the returned <code>slug</code> with the U
 </tbody></table>
 
 <div></div>
+
+<p><a name="authenticated-rest-api-events-update"></a></p>
 <h3 id='authenticated-rest-api-events-update'>Update</h3>
 <blockquote>
 <p>PUT request body</p>
@@ -7843,6 +7846,251 @@ By default the first page is returned. </p>
 </tbody></table>
 
 <p><code>GET /api/v1/calendars/movie-screenings-for-healthcare-access/events?page=2</code></p>
+<h3 id='authenticated-rest-api-calendars-create-event'>Create Event</h3>
+<blockquote>
+<p>POST /api/v1/calendars/movie-screenings-for-healthcare-access/events</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Movie Screening at the Community Center"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We're going to watch this amazing movie"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-06-01T15:00-05:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-06-01T17:30-05:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"time_zone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/Chicago"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"host"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cori"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bush"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cori.bush@example.com"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"host_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Congressional Office, 6724-A Page Ave., St. Louis, MO 63133"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Community Center"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Main Street"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kansas City"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KS"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"extra_location_info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We'll be in the multi-purpose room on the first floor."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"event_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"health care"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Response body</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"movie-screening-at-the-community-center-2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Movie Screening at the Community Center"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/events/movie-screening-at-the-community-center-2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We're going to watch this amazing movie"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-06-01T20:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-06-01T22:30Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"start_in_zone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-06-01T15:00-05:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"end_in_zone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-06-01T17:30-05:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"time_zone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/Chicago"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"virtual"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"launched_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-05-23T21:32Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"host_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Congressional Office, 6724-A Page Ave., St. Louis, MO 63133"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"max_attendees_count"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.168100</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-94.776063</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KS"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kansas City"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Community Center, 123 Main Street, Kansas City, KS 12345, US"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Main Street"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Community Center"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-05-23T21:32Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"extra_location_info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We'll be in the multi-purpose room on the first floor."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"event_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Movie Screening"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"shifts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"calendar"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Movie Screenings For Healthcare Access"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"movie-screenings-for-healthcare-access"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/calendars/movie-screenings-for-healthcare-access"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"health care"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Create a new event in the calendar.</p>
+
+<p><code>POST /api/v1/calendars/movie-screenings-for-healthcare-access/events</code></p>
+
+<p>If the event is created successfully, the host will receive an email asking them to confirm that they are hosting.
+Once the host confirms, the event will work the same way as an event created via the web UI.
+The URL in the response is the public event page where members can RSVP.
+To update an event after creation, use the returned <code>slug</code> with the <a href="#authenticated-rest-api-events-update">Event Update</a> endpoint.</p>
+
+<p>The request body should be a JSON block containing one <code>&quot;event&quot;</code> object, which can have the following properties:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>campaigner_contactable</td>
+<td>Boolean</td>
+<td>Whether members of the public can contact the event host via the public event page</td>
+<td>no; default is <code>true</code></td>
+</tr>
+<tr>
+<td>description</td>
+<td>String</td>
+<td>Description of the event</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>end_at</td>
+<td>String</td>
+<td>ISO 8601 date/time that the event ends</td>
+<td>no; default is no specific end time</td>
+</tr>
+<tr>
+<td>event_host_name_override</td>
+<td>String</td>
+<td>Name to display on the event page instead of the host’s account name</td>
+<td>no</td>
+</tr>
+<tr>
+<td>event_type[id]</td>
+<td>Integer</td>
+<td>Unique ID of an existing Event Type that should be set on the event</td>
+<td>no</td>
+</tr>
+<tr>
+<td>extra_location_info</td>
+<td>String</td>
+<td>Information about the event’s location</td>
+<td>no</td>
+</tr>
+<tr>
+<td>forum_enabled</td>
+<td>Boolean</td>
+<td>Whether the forum on the event page should be enabled</td>
+<td>no; defaults to calendar setting or organisation setting</td>
+</tr>
+<tr>
+<td>group[slug]</td>
+<td>String</td>
+<td>Unique identifier for an existing group this event should be associated with</td>
+<td>no</td>
+</tr>
+<tr>
+<td>hidden_address</td>
+<td>Boolean</td>
+<td>Whether the event’s full address should be obscured before RSVP</td>
+<td>no; default is <code>false</code></td>
+</tr>
+<tr>
+<td>hide_recent_attendees</td>
+<td>Boolean</td>
+<td>Whether to suppress the display of attendee’s names in the &quot;recently shared&quot; display.</td>
+<td>no; default is <code>false</code></td>
+</tr>
+<tr>
+<td>host</td>
+<td>User block (<a href="#json-type-user">see above</a>)</td>
+<td>User who will host the event. If a user account does not already exist with this email, we will create one.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>host_address</td>
+<td>String</td>
+<td>Host&#39;s mailing address</td>
+<td>only if the calendar requires it</td>
+</tr>
+<tr>
+<td>labels</td>
+<td>List of Strings</td>
+<td>Labels that should be applied to the new event. Any labels that do not already exist will be created</td>
+<td>no</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>String</td>
+<td>The ISO 639-1 two-letter code for the language the event content is in. Must be one of the languages supported by ControlShift.</td>
+<td>no; defaults to organisation&#39;s default language</td>
+</tr>
+<tr>
+<td>location</td>
+<td>Location block (<a href="#json-type-location">see above</a>)</td>
+<td>Information about either the exact location of an in-person event, or the location a virtual event is relevant to. May be omitted entirely for a virtual event that doesn&#39;t have a specific audience location. If latitude and longitude are included, we’ll use them. Otherwise, we’ll geocode the fields provided.</td>
+<td>only for in-person events</td>
+</tr>
+<tr>
+<td>max_attendees_count</td>
+<td>Integer</td>
+<td>Maximum number of attendees allowed</td>
+<td>no</td>
+</tr>
+<tr>
+<td>partnership[slug]</td>
+<td>String</td>
+<td>Unique identifier for an existing partnership this event should be associated with</td>
+<td>no</td>
+</tr>
+<tr>
+<td>start_at</td>
+<td>String</td>
+<td>ISO 8601 date/time that the event starts</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>target[slug]</td>
+<td>String</td>
+<td>Unique identifier for an existing decision maker this event should be associated with. Only relevant for constituency-bound calendars, where it must belong to the decision maker collection associated with the calendar.</td>
+<td>only in constituency-bound calendars</td>
+</tr>
+<tr>
+<td>time_zone</td>
+<td>String</td>
+<td>tz database code for the event’s time zone (e.g. &quot;America/New_York&quot;)</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>title</td>
+<td>String</td>
+<td>Title of the event</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>virtual</td>
+<td>Boolean</td>
+<td>Whether this is a virtual event</td>
+<td>no; defaults to the organisation default for new events</td>
+</tr>
+<tr>
+<td>web_conference_url</td>
+<td>String</td>
+<td>URL for a Zoom or other virtual meeting associated with this event</td>
+<td>no</td>
+</tr>
+</tbody></table>
+
+<div></div>
 <h2 id='authenticated-rest-api-groups'>Groups</h2>
 <p>Groups are organized groups of supporters that host events and create petitions.
 They may be associated with a specific location or geographic region, or they may be &quot;virtual&quot; groups that organize around a topic.</p>
