@@ -33,7 +33,90 @@ Within the API, both Efforts and Landing Pages use the `efforts` URLs.
 ```
 
 > Response body
-TK
+
+```json
+{
+  "status": "success",
+  "petition": {
+    "admin_events_status": "auto",
+    "admin_status": "good",
+    "alias": null,
+    "campaigner_contactable": true,
+    "can_download_signers": true,
+    "created_at": "2019-06-01T21:32Z",
+    "custom_goal": null,
+    "delivery_details": null,
+    "external_facebook_page": null,
+    "external_site": null,
+    "goal": 100,
+    "hide_petition_creator": false,
+    "hide_recent_signers": false,
+    "hide_signature_form": false,
+    "id": 123,
+    "launched": true,
+    "locale": "en",
+    "petition_creator_name_override": null,
+    "redirect_to": null,
+    "show_progress_bar": true,
+    "signature_count_add_amount": null,
+    "slug": "acme-hardware-stop-selling-bee-poison-23",
+    "source": "API",
+    "title": "Acme Hardware, Stop Selling Bee Poison!",
+    "updated_at": "2019-06-01T21:32Z",
+    "what": "Stop selling pesticides containing neonicotinoids, which the EPA has found harmful to bees.",
+    "who": null,
+    "why": "Pollinators are important.",
+    "title_locked": false,
+    "what_locked": true,
+    "who_locked": false,
+    "why_locked": false,
+    "delivery_details_locked": null,
+    "external_facebook_page_locked": null,
+    "external_site_locked": null,
+    "categories_locked": null,
+    "url": "https://demo.controlshiftlabs.com/petitions/acme-hardware-stop-selling-bee-poison-23",
+    "public_who": "Joe Hammer, Manager at Acme Hardware",
+    "ended": false,
+    "successful": false,
+    "image": null,
+    "public_signature_count": 0,
+    "creator": null,
+    "mentor": null,
+    "reviewer": null,
+    "location": {
+      "latitude": 12.345,
+      "longitude": -34.567,
+      "postal_code": "12345",
+      "country": "US",
+      "region": "IL",
+      "locality": "Chicago",
+      "query": "Acme Hardware, 123 Main St, Chicago, IL",
+      "street": "Main St",
+      "street_number": 123,
+      "venue": "Acme Hardware",
+      "created_at": "2019-06-01T21:32Z"
+    },
+    "decision_makers": [
+      {
+        "name": "Joe Hammer",
+        "slug": "joe-hammer",
+        "context": "Manager at Acme Hardware",
+      }
+    ],
+    "effort": {
+      "slug": "hardware-stores-stop-selling-bee-poison"
+    },
+    "partnership": null,
+    "labels": [],
+    "categories": [
+      {
+        "slug": "environment",
+        "name": "Environment"
+      }
+    ]
+  }
+}
+```
 
 Create a new petition in the effort or landing page.
 
