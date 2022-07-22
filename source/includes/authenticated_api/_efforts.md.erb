@@ -5,5 +5,76 @@ In efforts, each petition must be associated with a specific decision maker or o
 
 Within the API, both Efforts and Landing Pages use the `efforts` URLs.
 
+### Create Petition
+> POST /api/v1/efforts/hardware-stores-stop-selling-bee-poison/petitions
+
+```json
+{
+  "petition": {
+    "title": "Acme Hardware, Stop Selling Bee Poison!",
+    "targets": [
+      {
+        "name": "Joe Hammer",
+        "context": "Manager at Acme Hardware"
+      }
+    ],
+    "what": "Stop selling pesticides containing neonicotinoids, which the EPA has found harmful to bees.",
+    "why": "Pollinators are important.",
+    "categories": "Environment",
+    "location": {
+      "venue": "Acme Hardware",
+      "street_number": 123,
+      "street": "Main St",
+      "locality": "Chicago",
+      "region": "IL",
+    }
+  }
+}
+```
+
+> Response body
+TK
+
+Create a new petition in the effort or landing page.
+
+`POST /api/v1/efforts/hardware-stores-stop-selling-bee-poison/petitions`
+
+If a `creator` is specified, that user will become the petition's leader, and will receive an email asking them to confirm that they are leading the petition.
+Once the leader confirms, the petition will work the same way as a petition created via the web UI.
+The URL in the response is the public petition page where supporters can sign the petition.
+To update a petition after creation, use the returned `slug` with the <a href="#authenticated-rest-api-petitions-update">Petition Update</a> endpoint.
+
+Depending on how the effort or landing page is configured, several attributes may be set automatically on the created petition:
+
+- Image
+- Whether to show the progress bar
+- Whether any of the title, who, what, or why fields are locked
+
+The request body should be a JSON block containing one `"petition"` object, which can have the following properties:
+
+Field | Type | Description | Required?
+------|------|-------------|----------
+campaigner_contactable | Boolean | Whether members of the public can contact the petition creator via the public petition page | no; default is `true`
+categories | List of Strings | Names of categories that should be applied to the new petition, in addition to any default categories configured for the effort/landing page. Must be categories that already exist. If category names are translated, the original/main language names should be used here. | no; default is the categories configured on the effort/landing page
+creator | User block ([see above](#json-type-user)) | User who will be the petition leader. If a user account does not already exist with this email, we will create one. | no; default is no leader
+delivery_details | String | How the petition will be delivered | no
+external_facebook_page | String | URL of a facebook page for the campaign | no
+external_site | String | URL of a website about the campaign | no
+group[slug] | String | Unique identifier for an existing group this petition should be associated with | no
+hide_petition_creator | Boolean | Whether to suppress the display of the petition creator’s name on the petition page | no; default is `false`
+hide_recent_signers | Boolean | Whether to suppress the "recently signed" and "recently shared" display | no; default is `false`
+labels | List of Strings | Labels that should be applied to the new petition. Any labels that do not already exist will be created | no
+locale | String | The ISO 639-1 two-letter code for the language the petition content is in. Must be one of the languages supported by ControlShift. | no; defaults to organisation's default language
+location | Location block ([see above](#json-type-location)) | Information about the location associated with the petition. If latitude and longitude are included, we’ll use them. Otherwise, we’ll geocode the fields provided. | no; default is the location of the decision maker or objective in an effort, or no location in a landing page
+objective[slug] | String | Unique identifier for an existing objective this petition should be associated with. Only available within an "objectives" effort, and must be one of the objectives configured for that effort. | only if the effort is an objectives effort
+partnership[slug] | String | Unique identifier for an existing partnership this petition should be associated with | no
+petition_creator_name_override | String | Name to display on the petition page instead of the creator's account name | no
+region[slug] | String | Unique identifier for an existing region this petition should be associated with | no
+source | String | Optional, open-ended string representing where this petition came from | no; default is "API"
+targets | List of 0-1 Target blocks ([see above](#json-type-target)) | Decision makers for this petition. If a block includes a `slug`, we’ll use it to look up an existing decision maker. Otherwise, we’ll try to create a new one. In a decision-makers-based effort, the specified decision maker will be added to the effort if it is not already associated with it. Any decision maker created this way will be set to "published". Specifying more than one decision maker is not yet supported. | no; default is no decision maker
+title | String | Title of the petition. If a title is specified, it will be used, even if there is a different default. | yes, unless a default title has been specified for the effort/landing page
+what | String | Text of the petition ask. If a value is specified, it will be used, even if there is a different default. | yes, unless a default "what" has been specified for the effort/landing page
+who | String | Who the petition is addressed to. If a value is specified, it will be used, even if there is a different default. | yes, unless a default "who" has been specified for the effort/landing page or `targets` includes a decision maker
+why | String | Text explaining why the petition is important. If a value is specified, it will be used, even if there is a different default. | yes, unless a default "why" has been specified for the effort/landing page
 
 <div></div>
