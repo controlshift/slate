@@ -298,7 +298,7 @@ Create a new petition.
 If a `creator` is specified, that user will become the petition's leader, and will receive an email asking them to confirm that they are leading the petition.
 Once the leader confirms, the petition will work the same way as a petition created via the web UI.
 The URL in the response is the public petition page where supporters can sign the petition.
-To update a petition after creation, use the returned `slug` with the Update endpoint described below.
+To update a petition after creation, use the returned `slug` with the <a href="#authenticated-rest-api-petitions-update">Petition Update</a> endpoint.
 
 The request body should be a JSON block containing one `"petition"` object, which can have the following properties:
 
@@ -333,6 +333,7 @@ why | String | Text explaining why the petition is important | yes
 
 <div></div>
 
+<a name="authenticated-rest-api-petitions-update"></a>
 ### Update
 
 > PUT request body

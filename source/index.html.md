@@ -28,6 +28,7 @@ includes:
   - authenticated_api/members.md.erb
   - authenticated_api/petitions.md.erb
   - authenticated_api/signatures.md.erb
+  - authenticated_api/efforts.md.erb
   - authenticated_api/partnerships
   - authenticated_api/events.md.erb
   - authenticated_api/attendees.md.erb
