@@ -1,0 +1,68 @@
+## Event Types
+
+### List
+
+> GET /api/v1/event_types
+
+```json
+{
+  "event_types": [
+    {
+      "id": 123,
+      "name": "Training",
+      "localized_names": {
+        "es": "Capacitación",
+        "fr": "Entraînement"
+      },
+      "created_at": "2020-02-01T10:00:00Z",
+      "updated_at": "2020-02-01T10:00:00Z",
+      "external_id": "abc-123",
+    },
+    {
+      "id": 125,
+      "name": "Canvassing",
+      "localized_names": {
+        "es": "Campaña puerta a puerta",
+        "fr": "Démarchage"
+      },
+      "created_at": "2020-03-15T12:30:00Z",
+      "updated_at": "2021-05-01T11:28:13Z",
+      "external_id": "fde-953",
+    },
+    ...
+  ],
+
+  "meta": {
+    "current_page": 1,
+    "total_pages": 3,
+    "previous_page": null,
+    "next_page": 2
+  }
+}
+```
+
+Get a list of the event types that have been configured for this organisation. Event types are used for categorizing events (e.g.: House Parties, Fundraising, Training, etc.), and for CRMs supporting event type synchronization, we include the the event's type while syncing.
+
+<%= partial "includes/shared/pagination.md" %>
+
+`GET /api/v1/event_types/?page=1`
+
+Hash           | Description
+-------------- | -----------
+meta           | pagination information
+event_types    | an array of information about the event types
+
+The `external_id` field will only be included if an integration with a CRM supporting event types synchronization is in place.
+
+If the integration with EveryAction/VAN is set up for the organization, the following fields will also be included in the response:
+
+Field     | Description
+--------- | -------
+attendee_attended_status_id | ID of the status for attendees marked as Attended
+attendee_attending_status_id | ID of the status for attendees marked as Attending
+attendee_confirmed_status_id | ID of the status for attendees marked as Confirmed
+attendee_default_role_id | ID of the default role for event attendees
+attendee_not_attending_status_id | ID of the status for attendees marked as Not Coming
+attendee_no_show_status_id | ID of the status for attendees marked as No Show
+attendee_waiting_list_status_id | ID of the status for attendees marked as On Waiting List
+host_default_role_id | ID of the default role for event hosts
