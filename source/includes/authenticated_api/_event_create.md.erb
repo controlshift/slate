@@ -26,6 +26,7 @@ locale | String | The ISO 639-1 two-letter code for the language the event conte
 location | Location block ([see above](#json-type-location)) | Information about either the exact location of an in-person event, or the location a virtual event is relevant to. May be omitted entirely for a virtual event that doesn't have a specific audience location. If latitude and longitude are included, we’ll use them. Otherwise, we’ll geocode the fields provided. | only for in-person events
 max_attendees_count | Integer | Maximum number of attendees allowed | no
 partnership[slug] | String | Unique identifier for an existing partnership this event should be associated with | no
+region[slug] | String | Unique identifier for an existing region this event should be associated with | no
 start_at | String | ISO 8601 date/time that the event starts | yes
 <% if include_target %>
   target[slug] | String | Unique identifier for an existing decision maker this event should be associated with. Only relevant for constituency-bound calendars, where it must belong to the decision maker collection associated with the calendar. | only in constituency-bound calendars
