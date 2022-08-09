@@ -9,19 +9,60 @@ Petition are pieces of content that can be signed by members.
 ```json
 {
   "petition": {
-    "id": 123,
-    "slug": "no-taxes-on-tea",
-    "title": "No Taxes on Tea",
-    "who": "King George",
-    "what": "Stop taxing our tea",
-    "why": "It is unjust.",
-    "locale": "en",
+    "admin_events_status": "auto",
     "admin_status": "good",
-    "created_at": "2018-01-22T19:01:44Z",
-    "updated_at": "2018-03-05T15:02:02Z",
+    "alias": "teatime",
+    "campaigner_contactable": true,
+    "can_download_signers": true,
+    "created_at": "1776-12-16T21:32Z",
+    "custom_goal": 500,
+    "delivery_details": "We will throw the petition into the harbor.",
+    "external_facebook_page": "https://facebook.com/example",
+    "external_site": "https://example.com/do-not-tax-our-tea",
+    "goal": 500,
+    "hide_petition_creator": false,
+    "hide_recent_signers": false,
+    "hide_signature_form": false,
+    "id": 123,
     "launched": true,
-    "signature_count_add_amount": 100
-    "source": "effort_near",
+    "locale": "en-US",
+    "petition_creator_name_override": "Anonymous Tea Enthusiast",
+    "redirect_to": null,
+    "show_progress_bar": true,
+    "signature_count_add_amount": 100,
+    "slug": "no-taxes-on-tea",
+    "source": "homepage",
+    "title": "No Taxes on Tea",
+    "updated_at": "1776-12-16T21:32Z",
+    "what": "Stop taxing our tea",
+    "who": "King George",
+    "why": "No taxation without representation!",
+    "title_locked": false,
+    "what_locked": true,
+    "who_locked": false,
+    "why_locked": false,
+    "delivery_details_locked": false,
+    "external_facebook_page_locked": false,
+    "external_site_locked": false,
+    "categories_locked": false,
+    "url": "https://demo.controlshiftlabs.com/petitions/no-taxes-on-tea",
+    "public_who": "George III, King of Great Britain",
+    "ended": true,
+    "successful": true,
+    "ended_type": "won",
+    "ended_reason": "We overthrew the government and they don't tax our tea anymore.",
+    "ended_story": "This was an overwhelming success!",
+    "image": {
+      "urls": {
+        "open_graph": "http://cdn.example.com/petitions/images/25/open_graph/a-little-teapot.png?1516647704",
+        "horizontal": "http://cdn.example.com/petitions/images/25/horizontal/a-little-teapot.png?1516647704",
+        "hero": "http://cdn.example.com/petitions/images/25/hero/a-little-teapot.png?1516647704",
+        "original": "http://cdn.example.com/petitions/images/25/original/a-little-teapot.png?1516647704",
+        "form": "http://cdn.example.com/petitions/images/25/form/a-little-teapot.png?1516647704"
+      },
+      "description": "Picture of a small teapot with flowers on it and money tucked under the lid"
+    },
+    "public_signature_count": 234,
     "admin_notes": [
       {
         "source": "legacy",
@@ -39,25 +80,6 @@ Petition are pieces of content that can be signed by members.
         }
       }
     ],
-    "url": "https://demo.controlshiftlabs.com/petitions/no-taxes-on-tea",
-    "public_who": "King George",
-    "public_signature_count": 234,
-    "goal": 500,
-    "ended": true,
-    "ended_type": "won",
-    "ended_reason": "We overthrew the government and they don't tax our tea anymore.",
-    "successful": true,
-    "ended_story": "This was an overwhelming success!",
-    "image": {
-      "urls": {
-        "open_graph": "http://cdn.example.com/petitions/images/25/open_graph/a-little-teapot.png?1516647704",
-        "horizontal": "http://cdn.example.com/petitions/images/25/horizontal/a-little-teapot.png?1516647704",
-        "hero": "http://cdn.example.com/petitions/images/25/hero/a-little-teapot.png?1516647704",
-        "original": "http://cdn.example.com/petitions/images/25/original/a-little-teapot.png?1516647704",
-        "form": "http://cdn.example.com/petitions/images/25/form/a-little-teapot.png?1516647704"
-      },
-      "description": "Picture of a small teapot with flowers on it and money tucked under the lid"
-    },
     "creator": {
       "full_name": "Patrick Henry",
       "first_name": "Patrick",
@@ -71,6 +93,13 @@ Petition are pieces of content that can be signed by members.
       "email": "alex.hamilton@example.com",
       "phone_number": null,
       "postcode": "12345"
+    },
+    "reviewer": {
+      "member_id": 234,
+      "full_name": "Thomas Jefferson",
+      "email": "thomas.jefferson@example.com",
+      "phone_number": "555-444-3333",
+      "postcode": null
     },
     "location": {
       "query": "boston harbor",
@@ -87,8 +116,8 @@ Petition are pieces of content that can be signed by members.
     "decision_makers": [
       {
         "slug": "king-george",
-        "name": "George",
-        "context": "King of England",
+        "name": "George III",
+        "context": "King of Great Britain",
         "phone_number": "",
         "email": "",
         "location": {
@@ -109,8 +138,13 @@ Petition are pieces of content that can be signed by members.
       "slug": "no-taxation-without-representation"
     },
     "partnership": {
-      "slug": "the-american-revolution"
+      "slug": "the-american-revolution",
+      "title": "The American Revolution!"
     },
+    "labels": [
+      "Tea related",
+      "taxes"
+    ],
     "categories": [
       {
         "slug": "avoidingtaxes",
