@@ -665,7 +665,9 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
   </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"repair-the-yellow-brick-road-1"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oz, the Great and Terrible, Wizard"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Yellow Brick Road has been neglected; commit to repairing the damaged sections of the road in the next year!"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"what_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"plain"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Yellow Brick Road is the main road connecting Munchkin Country to the Emerald City and in its current state it's impassable."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"why_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"plain"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-10-02T01:43:17Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-07T15:38:39Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"delivery_details"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We're off to see the wizard!"</span><span class="p">,</span><span class="w">
@@ -681,7 +683,6 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
   </span><span class="nl">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
   </span><span class="nl">"effort"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"resized_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"creator_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kristyn Arrighi"</span><span class="p">,</span><span class="w">
@@ -704,10 +705,6 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<blockquote>
-<p>Note: The &quot;group&quot; key is deprecated and will be removed soon. Code should be updated to use the &quot;partnership&quot; key instead.</p>
-</blockquote>
-
 <p>This retrieves a single petition object.</p>
 <h4 id='json-api-endpoints-get-a-single-petition-http-request'>HTTP Request</h4>
 <p><code>GET https://demo.controlshiftlabs.com/petitions/&lt;slug&gt;.json</code></p>
