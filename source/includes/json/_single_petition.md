@@ -22,7 +22,9 @@ $(document).ready(function(){
   "slug": "repair-the-yellow-brick-road-1",
   "who": "Oz, the Great and Terrible, Wizard",
   "what": "The Yellow Brick Road has been neglected; commit to repairing the damaged sections of the road in the next year!",
+  "what_format": "plain",
   "why": "The Yellow Brick Road is the main road connecting Munchkin Country to the Emerald City and in its current state it's impassable.",
+  "why_format": "plain",
   "created_at": "2014-10-02T01:43:17Z",
   "updated_at": "2018-05-07T15:38:39Z",
   "delivery_details": "We're off to see the wizard!",
@@ -38,7 +40,6 @@ $(document).ready(function(){
   "goal": 500,
   "effort": null,
   "partnership": null,
-  "group": null,
   "resized_image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741",
   "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741",
   "creator_name": "Kristyn Arrighi",
@@ -61,8 +62,6 @@ $(document).ready(function(){
   }
 }
 ```
-
-> Note: The "group" key is deprecated and will be removed soon. Code should be updated to use the "partnership" key instead.
 
 This retrieves a single petition object.
 
