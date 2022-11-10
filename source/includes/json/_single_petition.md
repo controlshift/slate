@@ -37,6 +37,9 @@ $(document).ready(function(){
       "slug": "oz"
     }
   ],
+  "ended": true,
+  "successful": true,
+  "ended_story": "After we met with the wizard, he agreed to a timeline for repairing the road!",
   "goal": 500,
   "effort": null,
   "partnership": null,
