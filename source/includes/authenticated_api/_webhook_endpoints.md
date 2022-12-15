@@ -31,6 +31,32 @@ Show information about all of the webhook endpoints configured for organisation
     "updated_at":"2019-06-19T15:45:47Z",
     "disabled_at":"2019-06-19T15:45:47Z",
     "last_failure":"2019-06-19T15:45:01Z"
-  },
+  }
 ]
+```
+
+### Create Webhook Endpoint
+
+Creates a new webhook endpoint that will receive webhooks from the platform.
+
+`POST /api/v1/webhook_endpoints`
+
+The request body should be a JSON block containing one `"endpoint"` object, which can have the following properties:
+
+Field | Type   | Description                                                  | Required?
+------|--------|--------------------------------------------------------------|----------
+url | string | URL webhook will be POSTed to.                               | yes
+basic_auth_username | string | Optional. HTTP Basic Auth credential to use with your endpoint | no
+basic_auth_password | string |                                                              | no
+aws_account_id | string | Optional. Advanced feature. See Bulk Data API docs           | no
+
+Successful response
+```json
+{
+  "status": "success",
+  "endpoint": {
+    "url": "https://example.com",
+    "signing_secret": "abc122"
+  }
+}
 ```
