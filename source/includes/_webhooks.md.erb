@@ -12,9 +12,9 @@ Webhooks are HTTPS callbacks sent to a URL called an endpoint. Each time somethi
 
 Many platforms like Twilio, Github and Slack also use Webhooks.
 
-To handle a webhook you'll need a web application that can accept the HTTPS requests. If you already have a web application set up, handling a webhook 
-is usually as easy as adding a new URL to your application. If not you'll have to write a new web application. Most programming languages have frameworks 
-that can make this easy.  Webhooks can also be handled by serverless functions like AWS Lambda or Azure Functions. 
+To handle a webhook you'll need a web application that can accept the HTTPS requests. If you already have a web application set up, handling a webhook
+is usually as easy as adding a new URL to your application. If not you'll have to write a new web application. Most programming languages have frameworks
+that can make this easy.  Webhooks can also be handled by serverless functions like AWS Lambda or Azure Functions.
 
 Webhooks are just HTTP requests. Anything that can process requests from the web can process webhooks, if the application behind it is programmed properly. Webhooks are just a fancy name for using HTTP requests for event based integration between apps.
 
@@ -22,7 +22,7 @@ Webhooks are just HTTP requests. Anything that can process requests from the web
 
 For webhook notifications successfully processed the response should have an HTTP 2XX status code. Responses returning a different status code will be marked as failed and automatically retried up to 9 times with an exponential backoff (e.g.: after 15s, 30s, 90s, etc.).
 
-If after 9 retries the notification cannot be delivered, the webhook endpoint will be automatically disabled and will need to be re-enabled from the admin page to start receiving webhook notifications again. We do this to protect our infrastructure and ability to deliver webhooks successfully. 
+If after 9 retries the notification cannot be delivered, the webhook endpoint will be automatically disabled and will need to be re-enabled from the admin page to start receiving webhook notifications again. We do this to protect our infrastructure and ability to deliver webhooks successfully.
 
 We recommend making sure your webhook endpoint only returns non-2XX statuses if your service is temporarily down or experiencng a transient error. Applications that consistently return an error status when they recieve particular webhooks will inevitably end up disabled once retries are exhausted.
 
@@ -56,6 +56,15 @@ request body signed with the signing secret specified for your endpoint in the C
 To verify the webhooks you receive are authentic, users should calculate the same digest value and compare it to the digest
 passed in the `x-controlshift-webhook-signature` header. These values should always be the same.
 
+In a Ruby on Rails application, the code for verifying the HMAC signature while processing the webhook in your code might use an implementation like:
+
+```ruby
+your_hmac_secret = 'abc123' # store this securely!
+secure_hash = "sha256:#{OpenSSL::HMAC.hexdigest('SHA256', your_hmac_secret, request.raw_post)}"
+if secure_hash != request.headers['x-controlshift-webhook-signature']
+  raise "Incorrect HMAC signature header"
+end
+```
 
 ### IP Addresses
 
@@ -75,7 +84,7 @@ Cloud for customers with a point of presence in the same AWS Region. Contact sup
 
 The most common use case for the Webhooks API is synchronizing ControlShift to an organization's CRM of record when an out-of the-box CRM integration is not available as part of the ControlShift product.
 
-While designing a CRM integration sync, there are a few specific webhook events that a minimalist integration should respond to as a starting point depending on the ControlShift features that are in use. 
+While designing a CRM integration sync, there are a few specific webhook events that a minimalist integration should respond to as a starting point depending on the ControlShift features that are in use.
 
 Webhook | Description
 ---------- | -------
@@ -85,7 +94,7 @@ Webhook | Description
 `unsubscribe.created` | a user unsubscribed and no longer wishes to receive email
 
 
-Responding to these events is generally sufficient to keep an external mailing list up to date so that staff do not need to shuffle CSVs back and forth. 
+Responding to these events is generally sufficient to keep an external mailing list up to date so that staff do not need to shuffle CSVs back and forth.
 
 
 
