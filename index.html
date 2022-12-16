@@ -329,9 +329,6 @@
                 <a href="#json-api-endpoints-local-map" class="toc-h2 toc-link" data-title="Local Map">Local Map</a>
               </li>
               <li>
-                <a href="#json-api-endpoints-logged-in-user" class="toc-h2 toc-link" data-title="Logged in user">Logged in user</a>
-              </li>
-              <li>
                 <a href="#json-api-endpoints-bulk-data" class="toc-h2 toc-link" data-title="Bulk Data">Bulk Data</a>
               </li>
           </ul>
@@ -2144,172 +2141,8 @@ It can be used alongside the <code>/api/local/points</code> endpoint; the criter
 </tbody></table></p>
 
 <div></div>
-<h2 id='json-api-endpoints-logged-in-user'>Logged in user</h2><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-  <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-    <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://demo.controlshiftlabs.com/api/graph/me.json</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">jsonp</span><span class="dl">'</span><span class="p">,</span>
-  <span class="p">})</span>
-  <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-  <span class="p">});</span>
-<span class="p">});</span>
-</code></pre></div>
-<blockquote>
-<p>The above code would user details for a signed in user. The returned JSON would be structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="s2">"authenticated"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"me"</span><span class="p">:{</span><span class="w">
-    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="s2">"John"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"email"</span><span class="p">:</span><span class="s2">"john@smith.com"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"petitions"</span><span class="p">:[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-       </span><span class="nl">"slug"</span><span class="p">:</span><span class="s2">"sample-campaign"</span><span class="p">,</span><span class="w">
-       </span><span class="nl">"title"</span><span class="p">:</span><span class="s2">"Sample Campaign"</span><span class="p">,</span><span class="w">
-       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="s2">"2016-03-25T15:37:28Z"</span><span class="p">,</span><span class="w">
-       </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="s2">"2016-03-25T15:37:35Z"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"events"</span><span class="p">:[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-       </span><span class="nl">"slug"</span><span class="p">:</span><span class="s2">"sample-campaign"</span><span class="p">,</span><span class="w">
-       </span><span class="nl">"title"</span><span class="p">:</span><span class="s2">"Sample Campaign"</span><span class="p">,</span><span class="w">
-       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="s2">"2016-03-25T15:37:28Z"</span><span class="p">,</span><span class="w">
-       </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="s2">"2016-03-25T15:37:35Z"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"chapters"</span><span class="p">:[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-       </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Brooklyn bruisers"</span><span class="p">,</span><span class="w">
-       </span><span class="nl">"slug"</span><span class="p">:</span><span class="s2">"brooklyn-bruisers"</span><span class="p">,</span><span class="w">
-       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="s2">"2015-05-14T15:53:03Z"</span><span class="p">,</span><span class="w">
-       </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="s2">"2016-03-25T15:40:44Z"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>Response for a visitor who is not logged in:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="s2">"not_authenticated"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"message"</span><span class="p">:</span><span class="s2">"user is not signed in"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>Response for a hostname that is not whitelisted:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"errors"</span><span class="p">:[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"field"</span><span class="p">:</span><span class="s2">"referer"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"messages"</span><span class="p">:[</span><span class="w">
-        </span><span class="s2">"host name not whitelisted"</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>We provide a specialized jsonp endpoint to return information about the currently signed in user. Customers can use this endpoint to power features where information about the current user&#39;s petitions, sign in status, and other information about their account is displayed on external sites. Some examples of the sorts of functionality that this could be used to provide include:</p>
-
-<ul>
-<li>Conditionally show either a login link for unauthenticated users or a link to the user&#39;s my account page in the header of external pages.</li>
-<li>Show information about a user&#39;s campaigns when someone visits an external site, or a prompt to start a campaign if the currently signed in user has none.</li>
-<li>Show a direct link to a user&#39;s local group from an external site rather than linking to a generic search for your group page.</li>
-</ul>
-
-<aside class="notice">
-You must whitelist your hostname prior to using this end point. Read more below.
-</aside>
-<h3 id='json-api-endpoints-logged-in-user-http-request'>HTTP Request</h3>
-<p><code>GET http://demo.controlshiftlabs.com/api/graph/me.json</code></p>
-<h3 id='json-api-endpoints-logged-in-user-working-example'>Working Example</h3>
-<p>View and edit a working example on codepen.io.  Note: codepen.io is <em>whitelisted</em> for the demo account.</p>
-
-<div class="js-codepen-data hidden" data-title="ControlShift Labs: Logged in User Example">
-  <div class="codepen-html">
-    <strong>Logged in User</strong>
-    <p class="js-not-logged-in hidden">The user is not logged in.</p>
-    <ul class="js-logged-in hidden">
-      <li><strong>First Name:</strong> <span id="first_name"></span></li>
-      <li><strong>First Name:</strong> <span id="last_name"></span></li>
-      <li><strong>Email:</strong> <span id="email"></span></li>
-      <li><strong>Petitions:</strong> <ul id="petitions"></ul></li>
-      <li><strong>Events:</strong> <ul id="events"></ul></li>
-      <li><strong>Chapters:</strong> <ul id="chapters"></ul></li>
-    </ul>
-  </div>
-  <pre class="codepen-js">
-    $(document).ready(function(){
-      $.ajax({
-        url: 'https://demo.controlshiftlabs.com/api/graph/me.json',
-        dataType: 'jsonp',
-      })
-      .done(function(data) {
-        if(data.status == 'authenticated'){
-          // Populate data for logged in user
-          $('#first_name').html(data.me.first_name);
-          $('#last_name').html(data.me.last_name);
-          $('#email').html(data.me.email);
-
-          var $petitionsPlaceholder = $('#petitions');
-          $.each(data.petitions, function(index, petition){
-            $petitionsPlaceholder.append('<li>'+petition.title+'</li>');
-          });
-
-          var $eventsPlaceholder = $('#events');
-          $.each(data.events, function(index, event){
-            $eventsPlaceholder.append('<li>'+event.title+'</li>');
-          });
-
-          var $chaptersPlaceholder = $('#chapters');
-          $.each(data.chapters, function(index, chapter){
-            $chaptersPlaceholder.append('<li>'+chapter.name+'</li>');
-          });
-
-          $('.js-logged-in').removeClass('hidden');
-        }else if(data.status == 'not_authenticated'){
-          // Show "not logged in" for users who aren't logged in
-          $('.js-not-logged-in').removeClass('hidden');
-        }else if(data.status == 'error'){
-          // Show known error messages
-          $('body').append('<strong>Errors</strong><ul>')
-          $.each(data.errors, function(index, error){
-            $('body').append('<li><strong>'+error.field+'</strong> '+error.messages.join('; ')+'</li>')
-          });
-          $('body').append('</ul>')
-        }
-      });
-    })
-    .error(function(data){
-      $('body').append('<strong>Errors</strong><p>Unknown Error</p>');
-    });
-  </pre>
-</div>
-
-<form action="https://codepen.io/pen/define" method="POST" target="_blank" class="hidden">
-  <input type="hidden" name="data" class="js-data" value="">
-  <input type="submit" value="Launch Example on CodePen">
-</form>
-<h3 id='json-api-endpoints-logged-in-user-whitelisting-a-hostname'>Whitelisting a Hostname</h3>
-<p>We authenticate requests to the current user endpoint by validating the hostname set in the HTTP referrer header against a whitelist. The whitelist is set of hostnames that scripts can be served from. If you request the endpoint from a script served from a non-whitelisted hostname you&#39;ll get an error message. This is necessary to prevent cross site scripting attacks that would allow someone to display logged in user information on unauthorized sites.</p>
-
-<p>You can add hostnames to the whitelist through a self-serve interface in the &quot;Settings&quot; area of your instance. Settings &gt; Add Hostname &gt; enter a Hostname, and click save.</p>
-
-<p>The hostname must be a hostname string like &quot;localhost&quot; &quot;www.google.com&quot; or the like. Wildcards or full HTTP URLs are not supported.</p>
-
-<p>When you access the graph API endpoint from a page served from a whitelisted hostname the browser will automatically set a referrer header on those requests. We use this referrer header to validate the server the script was served from against the whitelist. You can verify that a whitelisted hostname is working properly with the curl command line tool:</p>
-
-<p><code>curl --referer http://localhost/ http://demo.controlshiftlabs.com/api/graph/me.json</code></p>
-
-<p>The above should return a JSON blob indicating that the user is not signed in if localhost is whitelisted. Otherwise you&#39;ll get a not whitelisted error.</p>
-
-<p>For authenticated users we currently return their first and last names, email addresses, and lists of petitions they&#39;ve created, events they&#39;ve created and local groups they are a member of.</p>
 <h2 id='json-api-endpoints-bulk-data'>Bulk Data</h2>
-<h3 id='json-api-endpoints-logged-in-user-bulk-data-schema'>Bulk data schema</h3>
+<h3 id='json-api-endpoints-local-map-bulk-data-schema'>Bulk data schema</h3>
 
 <p>This retrieves information on the underlying schemas of tables exported by the Bulk Data feature. It can be used
 in your ETL processes to automate the setup of tables in your data warehouse.</p>
@@ -2350,12 +2183,12 @@ in your ETL processes to automate the setup of tables in your data warehouse.</p
     </span><span class="nl">"compression_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BZIP2"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h4 id='json-api-endpoints-logged-in-user-bulk-data-schema-http-request'>HTTP Request</h4>
+</span></code></pre></div><h4 id='json-api-endpoints-local-map-bulk-data-schema-http-request'>HTTP Request</h4>
 <p><code>GET https://demo.controlshiftlabs.com/api/bulk_data/schema.json</code></p>
 
 <div></div>
 
-<h3 id='json-api-endpoints-logged-in-user-bulk-data-columns'>Bulk data columns</h3>
+<h3 id='json-api-endpoints-local-map-bulk-data-columns'>Bulk data columns</h3>
 
 <p>This retrieves information on the tables exported by the Bulk Data API. For convenience when working with third-party data 
 warehouse tools like Amazon Redshift it can be useful to know the current columns for each table that the bulk data API exposes
@@ -2369,9 +2202,9 @@ which table header row is returned.</p>
 </blockquote>
 
 <div class="highlight"><pre class="highlight plaintext"><code>id,petition_id,email,first_name,last_name,phone_number,postcode,created_at,join_organisation,deleted_at,unsubscribe_at,external_constituent_id,member_id,additional_fields,cached_organisation_slug,source,external_id,new_member,external_action_id,locale,bucket,country,updated_at,user_ip,confirmation_token,confirmed_at,confirmation_sent_at,last_signed_at,join_list_suppressed,old_daisy_chain_used,from_embed,user_agent,confirmed_reason,synced_to_crm_at,daisy_chain_experiment_slug,eu_data_processing_consent,from_one_click,consent_content_version_id,daisy_chain_id_used,email_opt_in_type_id,facebook_id,utm_params,postcode_id,referring_share_click_id,join_partnership,opt_in_sms,sms_opt_in_type_id,recaptcha_score,new_mobile_subscriber
-</code></pre></div><h4 id='json-api-endpoints-logged-in-user-bulk-data-columns-http-request'>HTTP Request</h4>
+</code></pre></div><h4 id='json-api-endpoints-local-map-bulk-data-columns-http-request'>HTTP Request</h4>
 <p><code>GET https://demo.controlshiftlabs.com/api/bulk_data/schema/columns?table=signatures</code></p>
-<h4 id='json-api-endpoints-logged-in-user-bulk-data-columns-query-parameters'>Query Parameters</h4>
+<h4 id='json-api-endpoints-local-map-bulk-data-columns-query-parameters'>Query Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
