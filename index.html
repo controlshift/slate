@@ -2396,15 +2396,15 @@ which table header row is returned.</p>
 
 <p>Many platforms like Twilio, Github and Slack also use Webhooks.</p>
 
-<p>To handle a webhook you&#39;ll need a web application that can accept the HTTPS requests. If you already have a web application set up, handling a webhook 
-is usually as easy as adding a new URL to your application. If not you&#39;ll have to write a new web application. Most programming languages have frameworks 
-that can make this easy.  Webhooks can also be handled by serverless functions like AWS Lambda or Azure Functions. </p>
+<p>To handle a webhook you&#39;ll need a web application that can accept the HTTPS requests. If you already have a web application set up, handling a webhook
+is usually as easy as adding a new URL to your application. If not you&#39;ll have to write a new web application. Most programming languages have frameworks
+that can make this easy.  Webhooks can also be handled by serverless functions like AWS Lambda or Azure Functions.</p>
 
 <p>Webhooks are just HTTP requests. Anything that can process requests from the web can process webhooks, if the application behind it is programmed properly. Webhooks are just a fancy name for using HTTP requests for event based integration between apps.</p>
 <h3 id='webhook-endpoints-bulk-data-retries'>Retries</h3>
 <p>For webhook notifications successfully processed the response should have an HTTP 2XX status code. Responses returning a different status code will be marked as failed and automatically retried up to 9 times with an exponential backoff (e.g.: after 15s, 30s, 90s, etc.).</p>
 
-<p>If after 9 retries the notification cannot be delivered, the webhook endpoint will be automatically disabled and will need to be re-enabled from the admin page to start receiving webhook notifications again. We do this to protect our infrastructure and ability to deliver webhooks successfully. </p>
+<p>If after 9 retries the notification cannot be delivered, the webhook endpoint will be automatically disabled and will need to be re-enabled from the admin page to start receiving webhook notifications again. We do this to protect our infrastructure and ability to deliver webhooks successfully.</p>
 
 <p>We recommend making sure your webhook endpoint only returns non-2XX statuses if your service is temporarily down or experiencng a transient error. Applications that consistently return an error status when they recieve particular webhooks will inevitably end up disabled once retries are exhausted.</p>
 <h3 id='webhook-endpoints-bulk-data-security'>Security</h3>
@@ -2443,7 +2443,14 @@ request body signed with the signing secret specified for your endpoint in the C
 
 <p>To verify the webhooks you receive are authentic, users should calculate the same digest value and compare it to the digest
 passed in the <code>x-controlshift-webhook-signature</code> header. These values should always be the same.</p>
-<h3 id='webhook-endpoints-bulk-data-ip-addresses'>IP Addresses</h3>
+
+<p>In a Ruby on Rails application, the code for verifying the HMAC signature while processing the webhook in your code might use an implementation like:</p>
+<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="n">your_hmac_secret</span> <span class="o">=</span> <span class="s1">'abc123'</span> <span class="c1"># store this securely!</span>
+<span class="n">secure_hash</span> <span class="o">=</span> <span class="s2">"sha256:</span><span class="si">#{</span><span class="no">OpenSSL</span><span class="o">::</span><span class="no">HMAC</span><span class="p">.</span><span class="nf">hexdigest</span><span class="p">(</span><span class="s1">'SHA256'</span><span class="p">,</span> <span class="n">your_hmac_secret</span><span class="p">,</span> <span class="n">request</span><span class="p">.</span><span class="nf">raw_post</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">if</span> <span class="n">secure_hash</span> <span class="o">!=</span> <span class="n">request</span><span class="p">.</span><span class="nf">headers</span><span class="p">[</span><span class="s1">'x-controlshift-webhook-signature'</span><span class="p">]</span>
+  <span class="k">raise</span> <span class="s2">"Incorrect HMAC signature header"</span>
+<span class="k">end</span>
+</code></pre></div><h3 id='webhook-endpoints-bulk-data-ip-addresses'>IP Addresses</h3>
 <p>Webhooks will be delivered from a stable set of the IP addresses that will not change. It is a good idea to safe-list these addresses and block webhooks originating from unknown IP addresses.</p>
 
 <ul>
@@ -2458,7 +2465,7 @@ Cloud for customers with a point of presence in the same AWS Region. Contact sup
 <h2 id='webhook-endpoints-designing-a-data-sync'>Designing a data sync</h2>
 <p>The most common use case for the Webhooks API is synchronizing ControlShift to an organization&#39;s CRM of record when an out-of the-box CRM integration is not available as part of the ControlShift product.</p>
 
-<p>While designing a CRM integration sync, there are a few specific webhook events that a minimalist integration should respond to as a starting point depending on the ControlShift features that are in use. </p>
+<p>While designing a CRM integration sync, there are a few specific webhook events that a minimalist integration should respond to as a starting point depending on the ControlShift features that are in use.</p>
 
 <table><thead>
 <tr>
@@ -2484,7 +2491,7 @@ Cloud for customers with a point of presence in the same AWS Region. Contact sup
 </tr>
 </tbody></table>
 
-<p>Responding to these events is generally sufficient to keep an external mailing list up to date so that staff do not need to shuffle CSVs back and forth. </p>
+<p>Responding to these events is generally sufficient to keep an external mailing list up to date so that staff do not need to shuffle CSVs back and forth.</p>
 <h2 id='webhook-endpoints-webhook-types-summary'>Webhook types summary</h2>
 <p>You can configure ControlShift Labs Webhooks to return the following event types:</p>
 
@@ -5494,7 +5501,7 @@ Toggling the <strong>Compress bulk data exports</strong> setting requires updati
 
 <p><strong>Note</strong>: Access tokens have a 2 hours expiration, after that period you can use the old token to generate a new one.</p>
 <h2 id='authenticated-rest-api-organisation'>Organisation</h2><h3 id='authenticated-rest-api-organisation-retrieve'>Retrieve</h3>
-<p>Get up to date statistics about the current organisation.</p>
+<p>Get up to date statistics and basic information about the current organisation.</p>
 
 <blockquote>
 <p>GET /api/v1/organisation</p>
@@ -5502,6 +5509,7 @@ Toggling the <strong>Compress bulk data exports</strong> setting requires updati
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"organisation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"An Organisation Name"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"petitions_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
     </span><span class="nl">"signatures_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
     </span><span class="nl">"blast_emails_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -9078,11 +9086,11 @@ the group <code>slug</code> is <code>brooklyn-for-bike-lanes</code>.</p>
 
 <p>To remove the mentor from the group, the request body should include <code>null</code> instead of the email block.</p>
 <h2 id='authenticated-rest-api-webhook-endpoints'>Webhook Endpoints</h2>
-<p>Webhooks can be used by software engineers to integrate ControlShift with third-party systems. They allow engineers to build software that is triggered by events that take place within ControlShift. This authenticated endpoint provides status information about webhook endpoints.</p>
+<p>Webhooks can be used by software engineers to integrate ControlShift with third-party systems. They allow engineers to build software that is triggered by events that take place within ControlShift. This authenticated endpoint provides information about webhook endpoints and allows for the creation of new ones.</p>
 
 <p>This is useful for customers who would like to build automated reporting to detect when webhooks have been disabled or are setup incorrectly. </p>
 <h3 id='authenticated-rest-api-webhook-endpoints-list-webhook-endpoints'>List Webhook Endpoints</h3>
-<p>Show information about all of the webhook endpoints configured for organisation</p>
+<p>Show information about all of the webhook endpoints configured for organisation.</p>
 
 <p><code>GET /api/v1/webhook_endpoints</code></p>
 
@@ -9107,9 +9115,60 @@ the group <code>slug</code> is <code>brooklyn-for-bike-lanes</code>.</p>
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="s2">"2019-06-19T15:45:47Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"disabled_at"</span><span class="p">:</span><span class="s2">"2019-06-19T15:45:47Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"last_failure"</span><span class="p">:</span><span class="s2">"2019-06-19T15:45:01Z"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div>
+</span></code></pre></div><h3 id='authenticated-rest-api-webhook-endpoints-create-webhook-endpoint'>Create Webhook Endpoint</h3>
+<p>Creates a new webhook endpoint that will receive webhooks from the platform.</p>
+
+<p><code>POST /api/v1/webhook_endpoints</code></p>
+
+<p>The request body should be a JSON block containing one <code>&quot;endpoint&quot;</code> object, which can have the following properties:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>URL webhook will be POSTed to.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>basic_auth_username</td>
+<td>string</td>
+<td>Optional. HTTP Basic Auth credential to use with your endpoint</td>
+<td>no</td>
+</tr>
+<tr>
+<td>basic_auth_password</td>
+<td>string</td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td>aws_account_id</td>
+<td>string</td>
+<td>Optional. Advanced feature. See Bulk Data API docs</td>
+<td>no</td>
+</tr>
+</tbody></table>
+
+<p>Successful response
+<code>json
+{
+  &quot;status&quot;: &quot;success&quot;,
+  &quot;endpoint&quot;: {
+    &quot;url&quot;: &quot;https://example.com&quot;,
+    &quot;signing_secret&quot;: &quot;abc122&quot;
+  }
+}
+</code></p>
+
   </div>
   <div class="dark-box">
   </div>
