@@ -17,7 +17,6 @@ includes:
   - json/efforts.md.erb
   - json/calendars.md.erb
   - json/local.md.erb
-  - json/me
   - json/bulk_data.md.erb
   - webhooks.md.erb
   - bulk_data.md.erb
