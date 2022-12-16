@@ -1,7 +1,7 @@
 ## Organisation
 
 ### Retrieve
-Get up to date statistics about the current organisation.
+Get up to date statistics and basic information about the current organisation.
 
 > GET /api/v1/organisation
 
@@ -9,6 +9,7 @@ Get up to date statistics about the current organisation.
 {
   "organisation": {
     "slug": "foo",
+    "name": "An Organisation Name",
     "petitions_count": 3,
     "signatures_count": 4,
     "blast_emails_count": 0,
