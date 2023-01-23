@@ -294,6 +294,8 @@ web_conference_url | String | Video call or web conference tool URL for attendee
 ### Update image
 
 The image shown on the event page can be updated by making a PUT request with the new image as the body of the request.
+The request body should be the image file itself, not a link or other metadata.
+The Content-type header should be an appropriate MIME type for the image, such as `image/jpeg`.
 
 `PUT /api/v1/events/march-against-gun-violence/images/image`
 
