@@ -6970,7 +6970,9 @@ A Target block is a JSON object that has either the unique <strong>slug</strong>
 
 <div></div>
 <h3 id='authenticated-rest-api-petitions-update-images'>Update images</h3>
-<p>The image shown on the petition page can be updated by making a PUT request with the new image as the body of the request.</p>
+<p>The image shown on the petition page can be updated by making a PUT request with the new image as the body of the request.
+The request body should be the image file itself, not a link or other metadata.
+The Content-type header should be an appropriate MIME type for the image, such as <code>image/jpeg</code>.</p>
 
 <p><code>PUT /api/v1/petitions/no-taxes-on-tea/images/image</code></p>
 
@@ -8452,7 +8454,9 @@ To update an event after creation, use the returned <code>slug</code> with the <
 
 <div></div>
 <h3 id='authenticated-rest-api-events-update-image'>Update image</h3>
-<p>The image shown on the event page can be updated by making a PUT request with the new image as the body of the request.</p>
+<p>The image shown on the event page can be updated by making a PUT request with the new image as the body of the request.
+The request body should be the image file itself, not a link or other metadata.
+The Content-type header should be an appropriate MIME type for the image, such as <code>image/jpeg</code>.</p>
 
 <p><code>PUT /api/v1/events/march-against-gun-violence/images/image</code></p>
 
