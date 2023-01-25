@@ -426,6 +426,8 @@ why_locked | Boolean | Petition creator cannot change the "why" field
 ### Update images
 
 The image shown on the petition page can be updated by making a PUT request with the new image as the body of the request.
+The request body should be the image file itself, not a link or other metadata.
+The Content-type header should be an appropriate MIME type for the image, such as `image/jpeg`.
 
 `PUT /api/v1/petitions/no-taxes-on-tea/images/image`
 
