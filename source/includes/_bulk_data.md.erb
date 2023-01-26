@@ -154,7 +154,7 @@ We need to prep tables in your Redshift Data Warehouse to receive our ControlShi
 
 1. Install `psql` if you don't have it already.
 2. Download the current SQL DDL for ControlShift's tables <a href="/data/tables.sql" target="_blank">tables.sql</a>
-or [generate an up to date one using this script.](https://github.com/controlshift/bulk-data-example/blob/master/create_tables.rb) that uses our Schema API.
+or [generate an up to date one using this script.](https://github.com/controlshift/bulk-data-example/blob/main/create_tables.rb) that uses our Schema API.
 3. Finally, you'll need to load that set of tables into your Redshift instance with the following command:
 
 ```psql -h <cluster_endpoint> -U <database_user> -d <database_name> -p <cluster_port> -f petitions_schema.sql```
