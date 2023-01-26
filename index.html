@@ -5837,7 +5837,7 @@ your ControlShift platform settings.</p>
 <ol>
 <li>Install <code>psql</code> if you don&#39;t have it already.</li>
 <li>Download the current SQL DDL for ControlShift&#39;s tables <a href="/data/tables.sql" target="_blank">tables.sql</a>
-or <a href="https://github.com/controlshift/bulk-data-example/blob/master/create_tables.rb">generate an up to date one using this script.</a> that uses our Schema API.</li>
+or <a href="https://github.com/controlshift/bulk-data-example/blob/main/create_tables.rb">generate an up to date one using this script.</a> that uses our Schema API.</li>
 <li>Finally, you&#39;ll need to load that set of tables into your Redshift instance with the following command:</li>
 </ol>
 
@@ -7282,7 +7282,7 @@ will still be triggered, in the same way they are for normal signatures.</p>
 </tr>
 <tr>
 <td><code>signature[email_opt_in_type_external_id]</code></td>
-<td>The External ID for the ControlShift email opt in type to use for this action. The email opt in type must have &quot;external&quot; context. You can list available email opt in types with <a href="https://developers.controlshiftlabs.com/#email-opt-in-types">this endpoint</a>. This is a required field.</td>
+<td>The External ID for the ControlShift email opt in type to use for this action. The email opt in type must have &quot;external&quot; context. You can list available email opt in types with <a href="https://developers.controlshiftlabs.com/#authenticated-rest-api-email-opt-in-types">this endpoint</a>. This is a required field.</td>
 </tr>
 <tr>
 <td><code>signature[join_organisation]</code></td>
@@ -7298,7 +7298,7 @@ will still be triggered, in the same way they are for normal signatures.</p>
 </tr>
 <tr>
 <td><code>signature[consent_content_version_external_id]</code></td>
-<td>The External ID for the data processing consent content version the member has consented to on this action. The consent content version tracks what the privacy policy, terms of service, and checkbox label were at the time of this action. You can list available consent content versions via <a href="https://developers.controlshiftlabs.com/#consent-content-versions">this endpoint</a>. This field is required if the organisation requires data processing consent for user actions <code>use_eu_data_processing_consent = true</code>.</td>
+<td>The External ID for the data processing consent content version the member has consented to on this action. The consent content version tracks what the privacy policy, terms of service, and checkbox label were at the time of this action. You can list available consent content versions via <a href="https://developers.controlshiftlabs.com/#authenticated-rest-api-consent-content-versions">this endpoint</a>. This field is required if the organisation requires data processing consent for user actions <code>use_eu_data_processing_consent = true</code>.</td>
 </tr>
 <tr>
 <td><code>signature[utm_source]</code></td>
@@ -8735,7 +8735,7 @@ will still be triggered, in the same way they are for normal RSVPs.</p>
 </tr>
 <tr>
 <td><code>attendee[email_opt_in_type_external_id]</code></td>
-<td>The External ID for the ControlShift email opt in type to use for this action. The email opt in type must have &quot;external&quot; context. You can list available email opt in types with <a href="https://developers.controlshiftlabs.com/#email-opt-in-types">this endpoint</a>. This is a required field.</td>
+<td>The External ID for the ControlShift email opt in type to use for this action. The email opt in type must have &quot;external&quot; context. You can list available email opt in types with <a href="https://developers.controlshiftlabs.com/#authenticated-rest-api-email-opt-in-types">this endpoint</a>. This is a required field.</td>
 </tr>
 <tr>
 <td><code>attendee[join_organisation]</code></td>
@@ -8751,7 +8751,7 @@ will still be triggered, in the same way they are for normal RSVPs.</p>
 </tr>
 <tr>
 <td><code>attendee[consent_content_version_external_id]</code></td>
-<td>The External ID for the data processing consent content version the member has consented to on this action. The consent content version tracks what the privacy policy, terms of service, and checkbox label were at the time of this action. You can list available consent content versions via <a href="https://developers.controlshiftlabs.com/#consent-content-versions">this endpoint</a>. This field is required if the organisation requires data processing consent for user actions <code>use_eu_data_processing_consent = true</code>.</td>
+<td>The External ID for the data processing consent content version the member has consented to on this action. The consent content version tracks what the privacy policy, terms of service, and checkbox label were at the time of this action. You can list available consent content versions via <a href="https://developers.controlshiftlabs.com/#authenticated-rest-api-consent-content-versions">this endpoint</a>. This field is required if the organisation requires data processing consent for user actions <code>use_eu_data_processing_consent = true</code>.</td>
 </tr>
 <tr>
 <td><code>attendee[utm_source]</code></td>
