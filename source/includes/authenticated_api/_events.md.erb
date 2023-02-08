@@ -293,9 +293,26 @@ web_conference_url | String | Video call or web conference tool URL for attendee
 
 ### Update image
 
-The image shown on the event page can be updated by making a PUT request with the new image as the body of the request.
-The request body should be the image file itself, not a link or other metadata.
-The Content-type header should be an appropriate MIME type for the image, such as `image/jpeg`.
+> PUT request headers
+
+```
+...
+Content-Type: "multipart/form-data; boundary=-----------314550593530941214802297487787"
+...
+```
+
+> PUT request body
+
+```
+-----------------------------314550593530941214802297487787
+Content-Disposition: form-data; name="file"; filename="save_the_whales.jpg"
+Content-Type: image/jpeg
+Content-Length: 249206
+<ENCODED BINARY DATA>
+-----------------------------314550593530941214802297487787--
+```
+
+The image shown on the event page can be updated by making a multipart PUT request with the image file attached on the `file` field.
 
 `PUT /api/v1/events/march-against-gun-violence/images/image`
 
@@ -303,6 +320,7 @@ To remove the image without replacing it, perform a DELETE request to the same U
 
 `DELETE /api/v1/events/march-against-gun-violence/images/image`
 
+<div></div>
 
 <%= partial "includes/authenticated_api/labelings.md.erb",
             locals: {campaign_type: 'event', path_prefix: '/api/v1/events/deliver-the-petition-to-the-wizard'} %>
