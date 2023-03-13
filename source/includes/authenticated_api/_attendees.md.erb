@@ -21,7 +21,6 @@ Attendees are member RSVPs to an Event. All attendee actions are namespaced by U
     "confirmed_at": null,
     "confirmed_reason": null,
     "first_name": "Foo",
-    "join_partnership": true,
     "join_organisation": true,
     "last_name": "Bar",
     "phone_number": "123-456",
@@ -36,6 +35,20 @@ Attendees are member RSVPs to an Event. All attendee actions are namespaced by U
     "utm_term": "",
     "eu_data_processing_consent": false,
     "consent_content_version": null,
+    "partnership_opt_ins": [
+      {
+        "partnership": {
+          "slug": "the-lollipop-guild"
+        },
+        "opted_in": true
+      },
+      {
+        "partnership": {
+          "slug": "scarecrows-for-infrastructure-improvements"
+        },
+        "opted_in": false
+      }
+    ],
     "email_opt_in_type": {
       "context": "web_form",
       "kind": "radio_sure",
@@ -99,7 +112,6 @@ For organisations that require email confirmation, a confirmation email will be 
     "confirmed_reason": null,
     "first_name": "Ada",
     "join_organisation": true,
-    "join_partnership": null,
     "last_name": "Lovelace",
     "new_mobile_subscriber": null,
     "phone_number": null,
@@ -114,6 +126,7 @@ For organisations that require email confirmation, a confirmation email will be 
     "utm_term": null,
     "join_group": null,
     "eu_data_processing_consent": true,
+    "partnership_opt_ins": [],
     "consent_content_version": {
       "id": 55,
       "external_id": null,
