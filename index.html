@@ -2201,7 +2201,7 @@ which table header row is returned.</p>
 <p>Response format:</p>
 </blockquote>
 
-<div class="highlight"><pre class="highlight plaintext"><code>id,petition_id,email,first_name,last_name,phone_number,postcode,created_at,join_organisation,deleted_at,unsubscribe_at,external_constituent_id,member_id,additional_fields,cached_organisation_slug,source,external_id,new_member,external_action_id,locale,bucket,country,updated_at,user_ip,confirmation_token,confirmed_at,confirmation_sent_at,last_signed_at,join_list_suppressed,old_daisy_chain_used,from_embed,user_agent,confirmed_reason,synced_to_crm_at,daisy_chain_experiment_slug,eu_data_processing_consent,from_one_click,consent_content_version_id,daisy_chain_id_used,email_opt_in_type_id,facebook_id,utm_params,postcode_id,referring_share_click_id,join_partnership,opt_in_sms,sms_opt_in_type_id,recaptcha_score,new_mobile_subscriber
+<div class="highlight"><pre class="highlight plaintext"><code>id,petition_id,email,first_name,last_name,phone_number,postcode,created_at,join_organisation,deleted_at,unsubscribe_at,external_constituent_id,member_id,additional_fields,cached_organisation_slug,source,external_id,new_member,external_action_id,locale,bucket,country,updated_at,user_ip,confirmation_token,confirmed_at,confirmation_sent_at,last_signed_at,join_list_suppressed,old_daisy_chain_used,from_embed,user_agent,confirmed_reason,synced_to_crm_at,daisy_chain_experiment_slug,eu_data_processing_consent,from_one_click,consent_content_version_id,daisy_chain_id_used,email_opt_in_type_id,facebook_id,utm_params,postcode_id,referring_share_click_id,opt_in_sms,sms_opt_in_type_id,recaptcha_score,new_mobile_subscriber,partnership_opt_ins
 </code></pre></div><h4 id='json-api-endpoints-local-map-bulk-data-columns-http-request'>HTTP Request</h4>
 <p><code>GET https://demo.controlshiftlabs.com/api/bulk_data/schema/columns?table=signatures</code></p>
 <h4 id='json-api-endpoints-local-map-bulk-data-columns-query-parameters'>Query Parameters</h4>
@@ -3210,7 +3210,6 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"notification_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all_messages"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"attending_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attending"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"new_mobile_subscriber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"opt_in_sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
@@ -3218,6 +3217,14 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"friends-of-the-new-york-library"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"opted_in"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="nl">"email_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pre_checked_checkbox"</span><span class="p">,</span><span class="w">
@@ -3272,7 +3279,6 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"notification_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all_messages"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"attending_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attending"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"new_mobile_subscriber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"opt_in_sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
@@ -3280,6 +3286,14 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"friends-of-the-new-york-library"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"opted_in"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="nl">"email_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pre_checked_checkbox"</span><span class="p">,</span><span class="w">
@@ -3334,7 +3348,6 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"notification_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all_messages"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"attending_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attending"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"new_mobile_subscriber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"opt_in_sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
@@ -3342,6 +3355,14 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"friends-of-the-new-york-library"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"opted_in"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="nl">"email_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pre_checked_checkbox"</span><span class="p">,</span><span class="w">
@@ -3396,7 +3417,6 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"notification_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all_messages"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"attending_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attending"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"new_mobile_subscriber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"opt_in_sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
@@ -3404,6 +3424,14 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"friends-of-the-new-york-library"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"opted_in"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="nl">"email_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pre_checked_checkbox"</span><span class="p">,</span><span class="w">
@@ -5076,7 +5104,6 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"country_without_fallback"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"new_mobile_subscriber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"opt_in_sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
@@ -5096,6 +5123,14 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"last_signed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"friends-of-the-new-york-library"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"opted_in"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="nl">"email_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pre_checked_checkbox"</span><span class="p">,</span><span class="w">
@@ -5166,7 +5201,6 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"country_without_fallback"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"new_mobile_subscriber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"opt_in_sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
@@ -5186,6 +5220,14 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"last_signed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"friends-of-the-new-york-library"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"opted_in"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="nl">"email_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pre_checked_checkbox"</span><span class="p">,</span><span class="w">
@@ -5256,7 +5298,6 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"country_without_fallback"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"new_mobile_subscriber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"opt_in_sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
@@ -5276,6 +5317,14 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"last_signed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"friends-of-the-new-york-library"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"opted_in"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="nl">"email_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pre_checked_checkbox"</span><span class="p">,</span><span class="w">
@@ -5346,7 +5395,6 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"country_without_fallback"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"new_mobile_subscriber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"opt_in_sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
@@ -5366,6 +5414,14 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"last_signed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"friends-of-the-new-york-library"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"opted_in"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="nl">"email_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pre_checked_checkbox"</span><span class="p">,</span><span class="w">
@@ -7216,7 +7272,6 @@ was recorded against.</p>
     </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bar"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123-456"</span><span class="p">,</span><span class="w">
@@ -7232,6 +7287,20 @@ was recorded against.</p>
     </span><span class="nl">"eu_data_processing_consent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"consent_content_version"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"data_processing_consent_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"explicit"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tea-drinkers-for-freedom"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"opted_in"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"american-revolution"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"opted_in"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="nl">"email_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"radio_sure"</span><span class="p">,</span><span class="w">
@@ -7307,8 +7376,8 @@ will still be triggered, in the same way they are for normal signatures.</p>
 <td>Whether or not the member has opted in to email communications from this campaign and organisation. This may be optional if you are using email confirmation for members actions.</td>
 </tr>
 <tr>
-<td><code>signature[join_partnership]</code></td>
-<td>For partnership campaigns, whether or not this member has opted into communication from the partnership, optional.</td>
+<td><code>signature[partnership_opt_ins]</code></td>
+<td>For partnership campaigns, whether or not this member has opted into communication from each partnership. This should be a JSON object like <code>{&quot;123&quot;: true, &quot;456&quot;: false}</code>, mapping partnership IDs to the opt-in status.</td>
 </tr>
 <tr>
 <td><code>signature[eu_data_processing_consent]</code></td>
@@ -7367,7 +7436,6 @@ will still be triggered, in the same way they are for normal signatures.</p>
     </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bar"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123-456"</span><span class="p">,</span><span class="w">
@@ -7383,6 +7451,7 @@ will still be triggered, in the same way they are for normal signatures.</p>
     </span><span class="nl">"eu_data_processing_consent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"consent_content_version"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"data_processing_consent_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"explicit"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="nl">"email_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"radio_sure"</span><span class="p">,</span><span class="w">
@@ -7460,7 +7529,6 @@ to the opt in type specified by <code>external_id</code>.</p>
       </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bar"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123-456"</span><span class="p">,</span><span class="w">
@@ -7476,6 +7544,7 @@ to the opt in type specified by <code>external_id</code>.</p>
       </span><span class="nl">"eu_data_processing_consent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nl">"consent_content_version"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"data_processing_consent_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"explicit"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
       </span><span class="nl">"email_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"radio_sure"</span><span class="p">,</span><span class="w">
@@ -8687,7 +8756,6 @@ Content-Length: 249206
     </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bar"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123-456"</span><span class="p">,</span><span class="w">
@@ -8702,6 +8770,20 @@ Content-Length: 249206
     </span><span class="nl">"utm_term"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"eu_data_processing_consent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"consent_content_version"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"the-lollipop-guild"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"opted_in"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"scarecrows-for-infrastructure-improvements"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"opted_in"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="nl">"email_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"radio_sure"</span><span class="p">,</span><span class="w">
@@ -8777,8 +8859,8 @@ will still be triggered, in the same way they are for normal RSVPs.</p>
 <td>Whether or not the member has opted in to email communications from this campaign and organisation. This may be optional if you are using email confirmation for members actions.</td>
 </tr>
 <tr>
-<td><code>attendee[join_partnership]</code></td>
-<td>For partnership campaigns, whether or not this member has opted into communication from the partnership, optional.</td>
+<td><code>attendee[partnership_opt_ins]</code></td>
+<td>For partnership campaigns, whether or not this member has opted into communication from each partnership. This should be a JSON object like <code>{&quot;123&quot;: true, &quot;456&quot;: false}</code>, mapping partnership IDs to the opt-in status.</td>
 </tr>
 <tr>
 <td><code>attendee[eu_data_processing_consent]</code></td>
@@ -8834,7 +8916,6 @@ will still be triggered, in the same way they are for normal RSVPs.</p>
     </span><span class="nl">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ada"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"join_partnership"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lovelace"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"new_mobile_subscriber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -8849,6 +8930,7 @@ will still be triggered, in the same way they are for normal RSVPs.</p>
     </span><span class="nl">"utm_term"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"join_group"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"eu_data_processing_consent"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="nl">"consent_content_version"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w">
       </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
