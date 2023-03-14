@@ -26,7 +26,6 @@ was recorded against.
     "confirmed_at": null,
     "confirmed_reason": null,
     "first_name": "Foo",
-    "join_partnership": null,
     "join_organisation": true,
     "last_name": "Bar",
     "phone_number": "123-456",
@@ -42,6 +41,20 @@ was recorded against.
     "eu_data_processing_consent": false,
     "consent_content_version": null,
     "data_processing_consent_type": "explicit",
+    "partnership_opt_ins": [
+      {
+        "partnership": {
+          "slug": "tea-drinkers-for-freedom"
+        },
+        "opted_in": false
+      },
+      {
+        "partnership": {
+          "slug": "american-revolution"
+        },
+        "opted_in": true
+      }
+    ],
     "email_opt_in_type": {
       "context": "web_form",
       "kind": "radio_sure",
@@ -109,7 +122,6 @@ For organisations that require email confirmation, a confirmation email will be 
     "confirmed_at": null,
     "confirmed_reason": null,
     "first_name": "Foo",
-    "join_partnership": null,
     "join_organisation": true,
     "last_name": "Bar",
     "phone_number": "123-456",
@@ -125,6 +137,7 @@ For organisations that require email confirmation, a confirmation email will be 
     "eu_data_processing_consent": false,
     "consent_content_version": null,
     "data_processing_consent_type": "explicit",
+    "partnership_opt_ins": [],
     "email_opt_in_type": {
       "context": "web_form",
       "kind": "radio_sure",
@@ -212,7 +225,6 @@ Permanently deletes the signature with the specified ID. Note that this will dec
       "confirmed_at": null,
       "confirmed_reason": null,
       "first_name": "Foo",
-      "join_partnership": null,
       "join_organisation": true,
       "last_name": "Bar",
       "phone_number": "123-456",
@@ -228,6 +240,7 @@ Permanently deletes the signature with the specified ID. Note that this will dec
       "eu_data_processing_consent": false,
       "consent_content_version": null,
       "data_processing_consent_type": "explicit",
+      "partnership_opt_ins": [],
       "email_opt_in_type": {
         "context": "web_form",
         "kind": "radio_sure",
