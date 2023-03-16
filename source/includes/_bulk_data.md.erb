@@ -1,10 +1,21 @@
 # Bulk Data
 
-To perform advanced reporting or analytics on your ControlShift data, you can mirror all your data into an external database. This can be a helpful tool for answering high-level questions about member engagement.
+To perform advanced reporting or analytics on your ControlShift data, you can mirror all your data into an external database.
+This can be a helpful tool for answering high-level questions about member engagement. Once your data is in an external data warehouse replica
+analysts can use SQL to answer questions about your organization's data.
 
 We provide a set of automated bulk exports and webhooks, along with examples (linked below) on how to use them.
 
-This service was built in a database agnostic way, but it is possible to build a ControlShift &rarr; Amazon Redshift data pipeline using the [ControlShift to Redshift Pipeline](#bulk-data-controlshift-to-redshift-pipeline) technique outlined below.
+It's possible to consume the Bulk Data API in their underlying format as CSV files in an S3 bucket or as a higher level
+HTTPS Webhook API that is not specific to AWS or S3. Many data warehouse integration technologies like [BigQuery S3 Transfers](#https://cloud.google.com/bigquery/docs/s3-transfer),
+[Airbyte](https://docs.airbyte.com/integrations/sources/s3/) or [AWS Data Glue](https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/build-an-etl-service-pipeline-to-load-data-incrementally-from-amazon-s3-to-amazon-redshift-using-aws-glue.html)
+are able to natively process files in S3 buckets. However, if you are using a different technology or want to implement a custom integration
+you can use our webhook events to get the same data in a cloud platform agnostic way.
+
+We provide an [ControlShift to Redshift Pipeline](#bulk-data-controlshift-to-redshift-pipeline) as an example of sample code that demonstrates how to use the high-level webhooks to mirror your ControlShift data into Redshift.
+Similar strategies can be used to mirror your data into other data warehouses. We've designed the underlying APIs to work flexibly regardless of
+your technical architecture. Since we expose the file events as standard HTTPS webhooks they should be compatible with any programming language.
+
 
 ## Export schedule and webhooks
 
@@ -176,5 +187,5 @@ Toggling the <strong>Compress bulk data exports</strong> setting requires updati
 
 ### More information
 
-More information is available in the READMEs of the various projects that this integration uses. For help with troubleshooting your Redshift sync, please see <a href="https://support.controlshiftlabs.com/hc/en-us/articles/5696304685839"> our help center</a>. We can also provide assistance for customers configuring these tools via support@controlshiftlabs.com. 
+More information is available in the READMEs of the various projects that this integration uses. For help with troubleshooting your Redshift sync, please see <a href="https://support.controlshiftlabs.com/hc/en-us/articles/5696304685839"> our help center</a>. We can also provide assistance for customers configuring these tools via support@controlshiftlabs.com.
 
