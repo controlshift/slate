@@ -66,6 +66,13 @@ was recorded against.
       "id": 111222333,
       "created_at": "2020-02-01T10:00:00Z"
     },
+    "message_to_target": {
+      "admin_reason": null,
+      "admin_status": "approved",
+      "administered_at": "2020-02-01T10:00:19Z",
+      "subject": "King George, Don't Tax our Tea!",
+      "text": "We don't want taxation without representation."
+    },
     "petition": {
       "url": "https://your-organisation.controlshiftlabs.com/petitions/no-taxes-on-tea",
       "slug": "no-taxes-on-tea"
@@ -77,6 +84,50 @@ was recorded against.
 Find a specific signature by email address. Once you have obtained a signature id you can use this identifier in other API calls.
 
 `GET /api/v1/petitions/no-taxes-on-tea/signatures/lookup?email=foo@bar.com`
+
+The JSON response has a single "signature" object, which may include the following fields:
+
+| Field                     |   Explanation                                                              |
+| ------------------------- | ------------------------------------------------------------------------ |
+| additional_fields | A json object with the signer's responses to any custom fields |
+| bucket | Legacy tracking field; `bucket` parameter that was in the petition page URL when the member signed |
+| confirmed_at | When the member confirmed their signature. A `null` here indicates that the signature has not been confirmed. |
+| confirmed_reason | For a confirmed signature, how it was confirmed. The most common values are `authenticated` (meaning a logged-in user with a confirmed account signed), `double_opt_in` (meaning the signer clicked through a confirmation email), and `facebook` (meaning the member signed with Facebook, and Facebook indicated that the email address was confirmed).
+| consent_content_version | For signers that consented to data processing, this identifies the exact terms they agreed to. Only present for organisations that use data processing consent. |
+| country | Signer's country, if it was explicitly included on the signature form. Otherwise, the organisation's country, if one is set. |
+| country_without_fallback | Signer's country, if it was explicitly included on the signature form. Otherwise, `null`. |
+| created_at | When the member signed the petition |
+| deleted_at | If the signer clicked the "This wasn't me" link to delete their signature, this records the time when that happened. A `null` indicates the signature was not deleted. |
+| email | Signer's email address |
+| email_opt_in_type | Details on the way in which the signer was asked to opt in to email updates from the petition and organisation. May be omitted only if `join_organisation` is `null`. |
+| eu_data_processing_consent | Whether the signer consented to having their data processed as part of this signature. A `false` or `null` likely indicates that the member had already consented under the current terms and did not need to give additional consent for data processing. Only present for organisations that use data processing consent. |
+| first_name | Signer's first or given name |
+| from_embed | Boolean, true if the member signed via an embedded form |
+| id | Unique internal ID for this signature. This ID can be used in certain other API calls. |
+| join_organisation | Whether the signer opted in to email updates from the petition and organisation |
+| last_name | Signer's last or family name |
+| last_signed_at | When the member signed the petition |
+| member | Unique ID and creation time of the member record for the signer's email address |
+| message_to_target | If the petition was configured to ask members to write messages to a decision maker, this includes the subject line, text, and moderation information about the signer's message. May be omitted if the petition is not configured for messages to a decision maker. |
+| new_mobile_subscriber | If this is true, it means the signature resulted in the member being subscribed to SMS messages, and they were not previously subscribed. |
+| opt_in_sms | Whether the signer opted in to SMS updates from the organisation |
+| partnership_opt_ins | Array of objects describing whether the signer opted in to email updates from partnerships associated with the petition. Each object in the array identifies a `partnership` by unique `slug`, and indicates whether the signer `opted_in`.
+| petition | Basic identifying information about the petition this signature belongs to, including its `slug` and the petition page URL. May also include identifying information on any effort, landing page, or partnerships the petition is associated with. |
+| phone_number | Signer's phone number |
+| postcode | Signer's postal or zip code |
+| sms_opt_in_type | Details on the way in which the signer was asked to opt in to SMS updates. May be omitted only if `opt_in_sms` is `null`. |
+| source | Legacy tracking field; `source` parameter that was in the petition page URL when the member signed |
+| token | Unique token identifier for this signature, used in some URLs |
+| unsubscribe_at | If the signer has unsubscribed from petition updates, this records the time when that happened. A `null` indicates that the signer has not unsubscribed. |
+| updated_at | When the signature record was last updated. If it has never been updated, this will be the same as `created_at`. |
+| user_agent | User Agent string indicating what kind of web browser the member signed from |
+| user_ip | IP address the member signed from |
+| utm_campaign | Tracking field; `utm_campaign` parameter that was in the petition page URL when the member signed |
+| utm_content | Tracking field; `utm_content` parameter that was in the petition page URL when the member signed |
+| utm_medium | Tracking field; `utm_medium` parameter that was in the petition page URL when the member signed |
+| utm_source | Tracking field; `utm_source` parameter that was in the petition page URL when the member signed |
+| utm_term | Tracking field; `utm_term` parameter that was in the petition page URL when the member signed |
+
 
 <div></div>
 
@@ -251,6 +302,13 @@ Permanently deletes the signature with the specified ID. Note that this will dec
       "member": {
         "id": 111222333,
         "created_at": "2020-02-01T10:00:00Z"
+      },
+      "message_to_target": {
+        "admin_reason": null,
+        "admin_status": "approved",
+        "administered_at": "2020-02-01T10:00:19Z",
+        "subject": "King George, Don't Tax our Tea!",
+        "text": "We don't want taxation without representation."
       },
       "petition": {
         "url": "https://your-organisation.controlshiftlabs.com/petitions/no-taxes-on-tea",
