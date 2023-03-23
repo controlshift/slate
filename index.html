@@ -5635,11 +5635,22 @@ The <strong>discussable.discussable_type</strong> field can take any of the foll
 </div>
 </div></p>
 <h1 id='bulk-data'>Bulk Data</h1>
-<p>To perform advanced reporting or analytics on your ControlShift data, you can mirror all your data into an external database. This can be a helpful tool for answering high-level questions about member engagement.</p>
+<p>To perform advanced reporting or analytics on your ControlShift data, you can mirror all your data into an external database.
+This can be a helpful tool for answering high-level questions about member engagement or integrating activity with data from other tools.
+Once your data is in an external data warehouse replica analysts can use SQL to answer questions about activity or join it
+with data from other sources.</p>
 
 <p>We provide a set of automated bulk exports and webhooks, along with examples (linked below) on how to use them.</p>
 
-<p>This service was built in a database agnostic way, but it is possible to build a ControlShift &rarr; Amazon Redshift data pipeline using the <a href="#bulk-data-controlshift-to-redshift-pipeline">ControlShift to Redshift Pipeline</a> technique outlined below.</p>
+<p>It&#39;s possible to consume the Bulk Data API in its underlying format as CSV files in an S3 bucket or as a higher level
+HTTPS Webhook API that is not specific to AWS or S3. Many data warehouse integration technologies like <a href="#https://cloud.google.com/bigquery/docs/s3-transfer">BigQuery S3 Transfers</a>,
+<a href="https://docs.airbyte.com/integrations/sources/s3/">Airbyte</a> or <a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/build-an-etl-service-pipeline-to-load-data-incrementally-from-amazon-s3-to-amazon-redshift-using-aws-glue.html">AWS Data Glue</a>
+are able to natively process files in S3 buckets. However, if you are using a different technology or want to implement a custom integration
+you can use our webhook events to get the same data in a cloud platform agnostic way.</p>
+
+<p>We provide a <a href="#bulk-data-controlshift-to-redshift-pipeline">ControlShift to Redshift Pipeline</a> as an example of sample code that demonstrates how to use the high-level webhooks to mirror your ControlShift data into Redshift.
+Similar strategies can be used to mirror your data into other data warehouses. We&#39;ve designed the underlying APIs to work flexibly regardless of
+your technical architecture. Since we expose the file events as standard HTTPS webhooks they should be compatible with any programming language.</p>
 <h2 id='bulk-data-export-schedule-and-webhooks'>Export schedule and webhooks</h2>
 <p>Every night, we&#39;ll export the most up-to-date version of all of your data into a set of CSV files, one for each internal ControlShift table. The <a href="#webhook-endpoints-data-full_table_exported">data.full_table_exported</a> indicates such an export. These full CSV files should <em>replace</em> the existing data in your mirror database.</p>
 
@@ -5688,6 +5699,7 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 <li>locales</li>
 <li>locations</li>
 <li>members</li>
+<li>messages_to_target</li>
 <li>model_contents</li>
 <li>objective_collections</li>
 <li>objectives</li>
@@ -5910,7 +5922,7 @@ or <a href="https://github.com/controlshift/bulk-data-example/blob/main/create_t
 Toggling the <strong>Compress bulk data exports</strong> setting requires updating the configuration for the <code>controlshift-redshift-loader</code> Lambda function that processes small data exports. To do this, you will need to manually delete all the items of the <code>LambdaRedshiftBatchLoadConfig</code> Dynamo table and then re-apply the Terraform plan to fetch the current configuration from your ControlShift instance and generate the correct configuration records for the lambda function.
 </aside>
 <h3 id='bulk-data-controlshift-to-redshift-pipeline-more-information'>More information</h3>
-<p>More information is available in the READMEs of the various projects that this integration uses. For help with troubleshooting your Redshift sync, please see <a href="https://support.controlshiftlabs.com/hc/en-us/articles/5696304685839"> our help center</a>. We can also provide assistance for customers configuring these tools via support@controlshiftlabs.com. </p>
+<p>More information is available in the READMEs of the various projects that this integration uses. For help with troubleshooting your Redshift sync, please see <a href="https://support.controlshiftlabs.com/hc/en-us/articles/5696304685839"> our help center</a>. We can also provide assistance for customers configuring these tools via support@controlshiftlabs.com.</p>
 <h1 id='authenticated-rest-api'>Authenticated REST API</h1>
 <p>The Authenticated REST API allows customers to build applications that interact with their own data or securely grant access to third-party app developers without exposing administrative credentials. It is designed to be consumed server-side, in contrast to the JSONP API which is designed for unauthenticated javascript integrations.</p>
 
