@@ -5762,6 +5762,25 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 to ingest data from this API it must process webhook notifications within 6 hours.</p>
 
 <p>Once webhook data has expired, the download URLs will return a 403 error response.</p>
+
+<p>The files on S3 can be accessed directly before they are expired by using the following URL format:</p>
+
+<p><strong>Incremental table export:</strong><br>
+<code>https://&lt;data exports bucket&gt;.s3.amazonaws.com/&lt;your organization slug&gt;/incremental/&lt;table name&gt;/&lt;date in YYYYMMDD format&gt;/&lt;table name&gt;_&lt;timestamp&gt;.csv</code></p>
+
+<p><strong>Full table export:</strong><br>
+<code>https://&lt;data exports bucket&gt;.s3.amazonaws.com/&lt;your organization slug&gt;/full/&lt;table name&gt;/&lt;date in YYYYMMDD format&gt;/&lt;table name&gt;_&lt;timestamp&gt;.csv</code></p>
+
+<p>Where <code>&lt;data exports bucket&gt;</code> depends on which data center your organization is hosted on:</p>
+
+<ul>
+<li>For organizations hosted in the <strong>US</strong> the bucket is: <code>agra-data-exports-production</code></li>
+<li>For organizations hosted in the <strong>EU</strong> the bucket is: <code>agra-data-exports-production-eu-central-1</code></li>
+</ul>
+
+<p>The value for <code>&lt;your organization slug&gt;</code> is the identifier for your organization within the ControlShift platform. You can find this value using the <a href="#authenticated-rest-api-organisation">Organization Retrieve API endpoint</a> or by contacting our team at <a href="mailto:support@controlshiftlabs.com">support@controlshiftlabs.com</a>.</p>
+
+<p>Finally, when the compression for data exports is enabled the filename includes an additional <code>.bz2</code> suffix.</p>
 <h3 id='bulk-data-bulk-data-files-files-compression'>Files compression</h3>
 <p>When the <strong>Compress bulk data exports</strong> option is enabled (available at the Webhooks integration page), incremental and nightly bulk data export files will be compressed in <a href="https://sourceware.org/bzip2/"><code>bzip2</code> format</a>. This will improve the performance for fetching the files from S3 since they will be considerably smaller.</p>
 <h3 id='bulk-data-bulk-data-files-interpreting-the-share_clicks-table'>Interpreting the share_clicks table</h3>
