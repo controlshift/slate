@@ -46,6 +46,23 @@ to ingest data from this API it must process webhook notifications within 6 hour
 
 Once webhook data has expired, the download URLs will return a 403 error response.
 
+The files on S3 can be accessed directly before they are expired by using the following URL format:
+
+**Incremental table export:**<br>
+`https://<data exports bucket>.s3.amazonaws.com/<your organization slug>/incremental/<table name>/<date in YYYYMMDD format>/<table name>_<timestamp>.csv`
+
+**Full table export:**<br>
+`https://<data exports bucket>.s3.amazonaws.com/<your organization slug>/full/<table name>/<date in YYYYMMDD format>/<table name>_<timestamp>.csv`
+
+Where `<data exports bucket>` depends on which data center your organization is hosted on:
+
+- For organizations hosted in the **US** the bucket is: `agra-data-exports-production`
+- For organizations hosted in the **EU** the bucket is: `agra-data-exports-production-eu-central-1`
+
+The value for `<your organization slug>` is the identifier for your organization within the ControlShift platform. You can find this value using the [Organization Retrieve API endpoint](#authenticated-rest-api-organisation) or by contacting our team at [support@controlshiftlabs.com](mailto:support@controlshiftlabs.com).
+
+Finally, when the compression for data exports is enabled the filename includes an additional `.bz2` suffix.
+
 ### Files compression
 
 When the **Compress bulk data exports** option is enabled (available at the Webhooks integration page), incremental and nightly bulk data export files will be compressed in [`bzip2` format](https://sourceware.org/bzip2/). This will improve the performance for fetching the files from S3 since they will be considerably smaller.
