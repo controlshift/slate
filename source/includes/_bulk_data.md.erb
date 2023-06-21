@@ -8,7 +8,7 @@ with data from other sources.
 We provide a set of automated bulk exports and webhooks, along with examples (linked below) on how to use them.
 
 It's possible to consume the Bulk Data API in its underlying format as CSV files in an S3 bucket or as a higher level
-HTTPS Webhook API that is not specific to AWS or S3. Many data warehouse integration technologies like [BigQuery S3 Transfers](#https://cloud.google.com/bigquery/docs/s3-transfer),
+HTTPS Webhook API that is not specific to AWS or S3. Many data warehouse integration technologies like [BigQuery S3 Transfers](https://cloud.google.com/bigquery/docs/s3-transfer),
 [Airbyte](https://docs.airbyte.com/integrations/sources/s3/) or [AWS Data Glue](https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/build-an-etl-service-pipeline-to-load-data-incrementally-from-amazon-s3-to-amazon-redshift-using-aws-glue.html)
 are able to natively process files in S3 buckets. However, if you are using a different technology or want to implement a custom integration
 you can use our webhook events to get the same data in a cloud platform agnostic way.
