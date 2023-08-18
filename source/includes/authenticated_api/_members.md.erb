@@ -94,6 +94,9 @@ Deletes are synchronous and may take several seconds depending on how many resou
 
 Ownership of Petitions and Events created by the deleted member will be re-assigned to the user account specified in the organisation's settings.
 
+Note that if the member has a user account that is associated with one or more REST API Apps, the member cannot be deleted unless those apps are first deleted through the web UI.
+If the member cannot be deleted for any reason, the JSON response will contain error messages explaining the problem.
+
 <div></div>
 
 
@@ -118,6 +121,9 @@ Anonymizes the member with specified id. This permanently deletes the member and
 Anonymization is synchronous and may take several seconds depending on how many resources are owned by the member.
 
 Ownership of Petitions and Events created by the deleted member will be re-assigned to the user account specified in the organisation's settings.
+
+Note that if the member has a user account that is associated with one or more REST API Apps, the member cannot be anonymized unless those apps are first deleted through the web UI.
+If the member cannot be anonymized for any reason, the response will have a 422 Unprocessable Entity status and the JSON body will contain error messages explaining the problem.
 
 <div></div>
 
