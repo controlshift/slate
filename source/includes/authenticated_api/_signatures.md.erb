@@ -133,26 +133,7 @@ The JSON response has a single "signature" object, which may include the followi
 
 ### Create
 
-Creates a new signature for the specified petition. This API endpoint can be used to record externally collected signatures for
-a particular petition within your instance of the ControlShift platform.
-
-All of the same post-signature actions that the platform usually supports including webhooks, CRM syncs, and other integrations
-will still be triggered, in the same way they are for normal signatures.
-
-For organisations that require email confirmation, a confirmation email will be sent to the action taker.
-
-<%= partial 'includes/create_action_fields.md.erb', locals: { action_name: 'signature' } %>
-
-`POST /api/v1/petitions/no-taxes-on-tea/signatures/`
-
-<div></div>
-
-
-#### POST body
-
-`signature[first_name]=Ada&signature[last_name]=Lovelave&signature[email]=ada@lovelace.com&signature[postcode]=12345`
-
-> POST response body for create
+> Response body
 
 ```json
 {
@@ -207,6 +188,22 @@ For organisations that require email confirmation, a confirmation email will be 
   }
 }
 ```
+
+Creates a new signature for the specified petition. This API endpoint can be used to record externally collected signatures for
+a particular petition within your instance of the ControlShift platform.
+
+`POST /api/v1/petitions/no-taxes-on-tea/signatures/`
+
+All of the same post-signature actions that the platform usually supports including webhooks, CRM syncs, and other integrations
+will still be triggered, in the same way they are for normal signatures.
+
+For organisations that require email confirmation, a confirmation email will be sent to the action taker.
+
+The request body should be a JSON block containing one `"signature"` object, which can have the following properties:
+
+| Field                     |   Description                                                            | Required? |
+| ------------------------- | ------------------------------------------------------------------------ | --------- |
+<%= partial 'includes/authenticated_api/common_action_fields.md.erb'  %>
 
 <div></div>
 

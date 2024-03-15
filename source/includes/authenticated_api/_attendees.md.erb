@@ -75,26 +75,38 @@ Find an attendee by email address. Once you have obtained the attendee's id you 
 <div></div>
 
 ### Create
+> POST /api/v1/events/deliver-the-petition-to-the-wizard/attendees
 
-Creates a new attendee for the specified event. This API endpoint can be used to record externally collected RSVPs for
-a particular event within your instance of the ControlShift platform.
+```json
+{
+  "attendee": {
+    "attending_status": "attending",
+    "notification_level": "all_messages",
+    "first_name": "Ada",
+    "last_name": "Lovelace",
+    "email": "ada@lovelace.com",
+    "postcode": "12345",
+    "phone_number": "555-555-555",
+    "locale": "en-GB",
+    "country": "GB",
+    "email_opt_in_type_external_id": "canvass-signature-2022",
+    "join_organisation": true,
+    "partnership_opt_ins": {
+      "123": true,
+      "456": false
+    },
+    "eu_data_processing_consent": true,
+    "consent_content_version_external_id": "revised-terms-2022-february",
+    "utm_source": "facebook",
+    "utm_medium": "button",
+    "utm_campaign": "infrastructure-petition-delivery-2022",
+    "utm_term": null,
+    "utm_content": null
+  }
+}
+```
 
-All of the same post-RSVP actions that the platform usually supports including webhooks, CRM syncs, and other integrations
-will still be triggered, in the same way they are for normal RSVPs.
-
-For organisations that require email confirmation, a confirmation email will be sent to the action taker.
-
-<%= partial 'includes/create_action_fields.md.erb', locals: { action_name: 'attendee' } %>
-
-`POST /api/v1/events/deliver-the-petition-to-the-wizard/attendees/`
-
-<div></div>
-
-#### POST body
-
-`attendee[first_name]=Ada&attendee[last_name]=Lovelace&attendee[email]=ada@lovelace.com&attendee[postcode]=12345`
-
-> POST response body for create
+> Response body
 
 ```json
 {
@@ -151,6 +163,24 @@ For organisations that require email confirmation, a confirmation email will be 
   }
 }
 ```
+
+Creates a new attendee for the specified event. This API endpoint can be used to record externally collected RSVPs for
+a particular event within your instance of the ControlShift platform.
+
+`POST /api/v1/events/deliver-the-petition-to-the-wizard/attendees/`
+
+All of the same post-RSVP actions that the platform usually supports including webhooks, CRM syncs, and other integrations
+will still be triggered, in the same way they are for normal RSVPs.
+
+For organisations that require email confirmation, a confirmation email will be sent to the action taker.
+
+The request body should be a JSON block containing one `"attendee"` object, which can have the following properties:
+
+| Field                     |   Description                                                            | Required? |
+| ------------------------- | ------------------------------------------------------------------------ | --------- |
+| attending_status | Whether the member is attending the event. One of `attending`, `not_attending`, `attended`, `confirmed`, or `no_show`. | yes
+| notification_level | Email notification preference for the event forum. One of `all_messages` (an email for every post), `none` (no emails), or `pending` (preference will be determined during email confirmation). | yes
+<%= partial 'includes/authenticated_api/common_action_fields.md.erb'  %>
 
 <div></div>
 
