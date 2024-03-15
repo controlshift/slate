@@ -5633,6 +5633,9 @@ The <strong>admin_status</strong> field can take any of the following values:
 <em>unreviewed</em>
 </li>
 <li>
+<em>unreviewed_contains_obscenity</em>
+</li>
+<li>
 <em>flagged</em>
 </li>
 <li>
@@ -5646,6 +5649,9 @@ The <strong>admin_status</strong> field can take any of the following values:
 </li>
 <li>
 <em>inappropriate</em>
+</li>
+<li>
+<em>inappropriate_contains_obscenity</em>
 </li>
 </ul>
 Though on the <em>forum.message.requires_moderation</em> notification type it will always be set to <em>unreviewed</em>
@@ -7584,98 +7590,8 @@ was recorded against.</p>
 
 <div></div>
 <h3 id='authenticated-rest-api-signatures-create'>Create</h3>
-<p>Creates a new signature for the specified petition. This API endpoint can be used to record externally collected signatures for
-a particular petition within your instance of the ControlShift platform.</p>
-
-<p>All of the same post-signature actions that the platform usually supports including webhooks, CRM syncs, and other integrations
-will still be triggered, in the same way they are for normal signatures.</p>
-
-<p>For organisations that require email confirmation, a confirmation email will be sent to the action taker.</p>
-
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Explanation</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>signature[first_name]</code></td>
-<td>The first name of the member who took action, required.</td>
-</tr>
-<tr>
-<td><code>signature[last_name]</code></td>
-<td>The last name of the member who took action, required.</td>
-</tr>
-<tr>
-<td><code>signature[email]</code></td>
-<td>The email address of the member who took action, required.</td>
-</tr>
-<tr>
-<td><code>signature[postcode]</code></td>
-<td>The postal or zip code of the member. Depending on your platform settings this may be a required field. Depending on your configuration, this may be validated for your country.</td>
-</tr>
-<tr>
-<td><code>signature[phone_number]</code></td>
-<td>The phone number of the member who took action. Depending on your platform settings this may be a required field.</td>
-</tr>
-<tr>
-<td><code>signature[locale]</code></td>
-<td>The language and localization setting of the member who has taken action. This is specified as an <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO_639-1</a> two-character language code combined with an optional <a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes">ISO 3166</a> two character country code. For eg <code>en-US</code> or <code>en</code>. This is an optional field, if not provided will be set to <code>en</code> by default.</td>
-</tr>
-<tr>
-<td><code>signature[country]</code></td>
-<td>The country specified as an <a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes">ISO 3166</a> two character country code. This may be optional or required depending on your platform configuration.</td>
-</tr>
-<tr>
-<td><code>signature[email_opt_in_type_external_id]</code></td>
-<td>The External ID for the ControlShift email opt in type to use for this action. The email opt in type must have &quot;external&quot; context. You can list available email opt in types with <a href="https://developers.controlshiftlabs.com/#authenticated-rest-api-email-opt-in-types">this endpoint</a>. This is a required field.</td>
-</tr>
-<tr>
-<td><code>signature[join_organisation]</code></td>
-<td>Whether or not the member has opted in to email communications from this campaign and organisation. This may be optional if you are using email confirmation for members actions.</td>
-</tr>
-<tr>
-<td><code>signature[partnership_opt_ins]</code></td>
-<td>For partnership campaigns, whether or not this member has opted into communication from each partnership. This should be a JSON object like <code>{&quot;123&quot;: true, &quot;456&quot;: false}</code>, mapping partnership IDs to the opt-in status.</td>
-</tr>
-<tr>
-<td><code>signature[eu_data_processing_consent]</code></td>
-<td>Whether or not member has given consent for GDPR data processing. This field must be true if the organisation requires data processing consent for user actions with <code>use_eu_data_processing_consent = true</code>.</td>
-</tr>
-<tr>
-<td><code>signature[consent_content_version_external_id]</code></td>
-<td>The External ID for the data processing consent content version the member has consented to on this action. The consent content version tracks what the privacy policy, terms of service, and checkbox label were at the time of this action. You can list available consent content versions via <a href="https://developers.controlshiftlabs.com/#authenticated-rest-api-consent-content-versions">this endpoint</a>. This field is required if the organisation requires data processing consent for user actions <code>use_eu_data_processing_consent = true</code>.</td>
-</tr>
-<tr>
-<td><code>signature[utm_source]</code></td>
-<td>UTM tracking field, optional.</td>
-</tr>
-<tr>
-<td><code>signature[utm_campaign]</code></td>
-<td>UTM tracking field, optional.</td>
-</tr>
-<tr>
-<td><code>signature[utm_content]</code></td>
-<td>UTM tracking field, optional.</td>
-</tr>
-<tr>
-<td><code>signature[utm_medium]</code></td>
-<td>UTM tracking field, optional.</td>
-</tr>
-<tr>
-<td><code>signature[utm_term]</code></td>
-<td>UTM tracking field, optional.</td>
-</tr>
-</tbody></table>
-
-<p><code>POST /api/v1/petitions/no-taxes-on-tea/signatures/</code></p>
-
-<div></div>
-<h4 id='authenticated-rest-api-signatures-create-post-body'>POST body</h4>
-<p><code>signature[first_name]=Ada&amp;signature[last_name]=Lovelave&amp;signature[email]=ada@lovelace.com&amp;signature[postcode]=12345</code></p>
-
 <blockquote>
-<p>POST response body for create</p>
+<p>Response body</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"signature"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -7729,6 +7645,112 @@ will still be triggered, in the same way they are for normal signatures.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<p>Creates a new signature for the specified petition. This API endpoint can be used to record externally collected signatures for
+a particular petition within your instance of the ControlShift platform.</p>
+
+<p><code>POST /api/v1/petitions/no-taxes-on-tea/signatures/</code></p>
+
+<p>All of the same post-signature actions that the platform usually supports including webhooks, CRM syncs, and other integrations
+will still be triggered, in the same way they are for normal signatures.</p>
+
+<p>For organisations that require email confirmation, a confirmation email will be sent to the action taker.</p>
+
+<p>The request body should be a JSON block containing one <code>&quot;signature&quot;</code> object, which can have the following properties:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Required?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><p>first_name</td>
+<td>The first name of the member who took action</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>The last name of the member who took action</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>email</td>
+<td>The email address of the member who took action</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>postcode</td>
+<td>The postal or zip code of the member. Depending on your configuration, this may be validated for your country.</td>
+<td>Depends on platform settings</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>The phone number of the member who took action</td>
+<td>Depends on platform settings</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>The language and localization setting of the member who has taken action. This is specified as an <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO_639-1</a> two-character language code combined with an optional <a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes">ISO 3166</a> two character country code. For eg <code>en-US</code> or <code>en</code>.</td>
+<td>no; default is <code>en</code></td>
+</tr>
+<tr>
+<td>country</td>
+<td>The country specified as an <a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes">ISO 3166</a> two character country code.</td>
+<td>Depends on platform settings</td>
+</tr>
+<tr>
+<td>email_opt_in_type_external_id</td>
+<td>The External ID for the ControlShift email opt in type to use for this action. The email opt in type must have &quot;external&quot; context. You can list available email opt in types with <a href="https://developers.controlshiftlabs.com/#authenticated-rest-api-email-opt-in-types">this endpoint</a>.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>join_organisation</td>
+<td>Whether or not the member has opted in to email communications from this campaign and organisation.</td>
+<td>yes, unless &quot;defer opt-in to confirmation email&quot; is enabled</td>
+</tr>
+<tr>
+<td>partnership_opt_ins</td>
+<td>For partnership campaigns, whether or not this member has opted into communication from each partnership. This should be a JSON object like <code>{&quot;123&quot;: true, &quot;456&quot;: false}</code>, mapping partnership IDs to the opt-in status.</td>
+<td>no</td>
+</tr>
+<tr>
+<td>eu_data_processing_consent</td>
+<td>Whether or not member has given consent for GDPR data processing. This field must be true if the organisation requires data processing consent for user actions with <code>use_eu_data_processing_consent = true</code>.</td>
+<td>yes, if data processing consent is enabled</td>
+</tr>
+<tr>
+<td>consent_content_version_external_id</td>
+<td>The External ID for the data processing consent content version the member has consented to on this action. The consent content version tracks what the privacy policy, terms of service, and checkbox label were at the time of this action. You can list available consent content versions via <a href="https://developers.controlshiftlabs.com/#authenticated-rest-api-consent-content-versions">this endpoint</a>.</td>
+<td>yes, if data processing consent is enabled</td>
+</tr>
+<tr>
+<td>utm_source</td>
+<td>UTM tracking field</td>
+<td>no</td>
+</tr>
+<tr>
+<td>utm_campaign</td>
+<td>UTM tracking field</td>
+<td>no</td>
+</tr>
+<tr>
+<td>utm_content</td>
+<td>UTM tracking field</td>
+<td>no</td>
+</tr>
+<tr>
+<td>utm_medium</td>
+<td>UTM tracking field</td>
+<td>no</td>
+</tr>
+<tr>
+<td>utm_term</td>
+<td>UTM tracking field</td>
+<td>no</p></td>
+</tr>
+</tbody></table>
+
 <div></div>
 <h3 id='authenticated-rest-api-signatures-update-email-opt-in-type'>Update email opt in type</h3>
 <p>Updates the email opt in type associated with a single signature. This can be used to change the email opt in type
@@ -9074,98 +9096,38 @@ Content-Length: 249206
 
 <div></div>
 <h3 id='authenticated-rest-api-attendees-create'>Create</h3>
-<p>Creates a new attendee for the specified event. This API endpoint can be used to record externally collected RSVPs for
-a particular event within your instance of the ControlShift platform.</p>
-
-<p>All of the same post-RSVP actions that the platform usually supports including webhooks, CRM syncs, and other integrations
-will still be triggered, in the same way they are for normal RSVPs.</p>
-
-<p>For organisations that require email confirmation, a confirmation email will be sent to the action taker.</p>
-
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Explanation</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>attendee[first_name]</code></td>
-<td>The first name of the member who took action, required.</td>
-</tr>
-<tr>
-<td><code>attendee[last_name]</code></td>
-<td>The last name of the member who took action, required.</td>
-</tr>
-<tr>
-<td><code>attendee[email]</code></td>
-<td>The email address of the member who took action, required.</td>
-</tr>
-<tr>
-<td><code>attendee[postcode]</code></td>
-<td>The postal or zip code of the member. Depending on your platform settings this may be a required field. Depending on your configuration, this may be validated for your country.</td>
-</tr>
-<tr>
-<td><code>attendee[phone_number]</code></td>
-<td>The phone number of the member who took action. Depending on your platform settings this may be a required field.</td>
-</tr>
-<tr>
-<td><code>attendee[locale]</code></td>
-<td>The language and localization setting of the member who has taken action. This is specified as an <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO_639-1</a> two-character language code combined with an optional <a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes">ISO 3166</a> two character country code. For eg <code>en-US</code> or <code>en</code>. This is an optional field, if not provided will be set to <code>en</code> by default.</td>
-</tr>
-<tr>
-<td><code>attendee[country]</code></td>
-<td>The country specified as an <a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes">ISO 3166</a> two character country code. This may be optional or required depending on your platform configuration.</td>
-</tr>
-<tr>
-<td><code>attendee[email_opt_in_type_external_id]</code></td>
-<td>The External ID for the ControlShift email opt in type to use for this action. The email opt in type must have &quot;external&quot; context. You can list available email opt in types with <a href="https://developers.controlshiftlabs.com/#authenticated-rest-api-email-opt-in-types">this endpoint</a>. This is a required field.</td>
-</tr>
-<tr>
-<td><code>attendee[join_organisation]</code></td>
-<td>Whether or not the member has opted in to email communications from this campaign and organisation. This may be optional if you are using email confirmation for members actions.</td>
-</tr>
-<tr>
-<td><code>attendee[partnership_opt_ins]</code></td>
-<td>For partnership campaigns, whether or not this member has opted into communication from each partnership. This should be a JSON object like <code>{&quot;123&quot;: true, &quot;456&quot;: false}</code>, mapping partnership IDs to the opt-in status.</td>
-</tr>
-<tr>
-<td><code>attendee[eu_data_processing_consent]</code></td>
-<td>Whether or not member has given consent for GDPR data processing. This field must be true if the organisation requires data processing consent for user actions with <code>use_eu_data_processing_consent = true</code>.</td>
-</tr>
-<tr>
-<td><code>attendee[consent_content_version_external_id]</code></td>
-<td>The External ID for the data processing consent content version the member has consented to on this action. The consent content version tracks what the privacy policy, terms of service, and checkbox label were at the time of this action. You can list available consent content versions via <a href="https://developers.controlshiftlabs.com/#authenticated-rest-api-consent-content-versions">this endpoint</a>. This field is required if the organisation requires data processing consent for user actions <code>use_eu_data_processing_consent = true</code>.</td>
-</tr>
-<tr>
-<td><code>attendee[utm_source]</code></td>
-<td>UTM tracking field, optional.</td>
-</tr>
-<tr>
-<td><code>attendee[utm_campaign]</code></td>
-<td>UTM tracking field, optional.</td>
-</tr>
-<tr>
-<td><code>attendee[utm_content]</code></td>
-<td>UTM tracking field, optional.</td>
-</tr>
-<tr>
-<td><code>attendee[utm_medium]</code></td>
-<td>UTM tracking field, optional.</td>
-</tr>
-<tr>
-<td><code>attendee[utm_term]</code></td>
-<td>UTM tracking field, optional.</td>
-</tr>
-</tbody></table>
-
-<p><code>POST /api/v1/events/deliver-the-petition-to-the-wizard/attendees/</code></p>
-
-<div></div>
-<h4 id='authenticated-rest-api-attendees-create-post-body'>POST body</h4>
-<p><code>attendee[first_name]=Ada&amp;attendee[last_name]=Lovelace&amp;attendee[email]=ada@lovelace.com&amp;attendee[postcode]=12345</code></p>
-
 <blockquote>
-<p>POST response body for create</p>
+<p>POST /api/v1/events/deliver-the-petition-to-the-wizard/attendees</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"attendee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"attending_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attending"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"notification_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all_messages"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ada"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lovelace"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ada@lovelace.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-555-555"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-GB"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GB"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email_opt_in_type_external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"canvass-signature-2022"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"123"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"456"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"eu_data_processing_consent"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"consent_content_version_external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"revised-terms-2022-february"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"utm_source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facebook"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"utm_medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"button"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"utm_campaign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"infrastructure-petition-delivery-2022"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"utm_term"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"utm_content"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Response body</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"attendee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9221,6 +9183,122 @@ will still be triggered, in the same way they are for normal RSVPs.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<p>Creates a new attendee for the specified event. This API endpoint can be used to record externally collected RSVPs for
+a particular event within your instance of the ControlShift platform.</p>
+
+<p><code>POST /api/v1/events/deliver-the-petition-to-the-wizard/attendees/</code></p>
+
+<p>All of the same post-RSVP actions that the platform usually supports including webhooks, CRM syncs, and other integrations
+will still be triggered, in the same way they are for normal RSVPs.</p>
+
+<p>For organisations that require email confirmation, a confirmation email will be sent to the action taker.</p>
+
+<p>The request body should be a JSON block containing one <code>&quot;attendee&quot;</code> object, which can have the following properties:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Required?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>attending_status</td>
+<td>Whether the member is attending the event. One of <code>attending</code>, <code>not_attending</code>, <code>attended</code>, <code>confirmed</code>, or <code>no_show</code>.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>notification_level</td>
+<td>Email notification preference for the event forum. One of <code>all_messages</code> (an email for every post), <code>none</code> (no emails), or <code>pending</code> (preference will be determined during email confirmation).</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><p>first_name</td>
+<td>The first name of the member who took action</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>The last name of the member who took action</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>email</td>
+<td>The email address of the member who took action</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>postcode</td>
+<td>The postal or zip code of the member. Depending on your configuration, this may be validated for your country.</td>
+<td>Depends on platform settings</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>The phone number of the member who took action</td>
+<td>Depends on platform settings</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>The language and localization setting of the member who has taken action. This is specified as an <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO_639-1</a> two-character language code combined with an optional <a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes">ISO 3166</a> two character country code. For eg <code>en-US</code> or <code>en</code>.</td>
+<td>no; default is <code>en</code></td>
+</tr>
+<tr>
+<td>country</td>
+<td>The country specified as an <a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes">ISO 3166</a> two character country code.</td>
+<td>Depends on platform settings</td>
+</tr>
+<tr>
+<td>email_opt_in_type_external_id</td>
+<td>The External ID for the ControlShift email opt in type to use for this action. The email opt in type must have &quot;external&quot; context. You can list available email opt in types with <a href="https://developers.controlshiftlabs.com/#authenticated-rest-api-email-opt-in-types">this endpoint</a>.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>join_organisation</td>
+<td>Whether or not the member has opted in to email communications from this campaign and organisation.</td>
+<td>yes, unless &quot;defer opt-in to confirmation email&quot; is enabled</td>
+</tr>
+<tr>
+<td>partnership_opt_ins</td>
+<td>For partnership campaigns, whether or not this member has opted into communication from each partnership. This should be a JSON object like <code>{&quot;123&quot;: true, &quot;456&quot;: false}</code>, mapping partnership IDs to the opt-in status.</td>
+<td>no</td>
+</tr>
+<tr>
+<td>eu_data_processing_consent</td>
+<td>Whether or not member has given consent for GDPR data processing. This field must be true if the organisation requires data processing consent for user actions with <code>use_eu_data_processing_consent = true</code>.</td>
+<td>yes, if data processing consent is enabled</td>
+</tr>
+<tr>
+<td>consent_content_version_external_id</td>
+<td>The External ID for the data processing consent content version the member has consented to on this action. The consent content version tracks what the privacy policy, terms of service, and checkbox label were at the time of this action. You can list available consent content versions via <a href="https://developers.controlshiftlabs.com/#authenticated-rest-api-consent-content-versions">this endpoint</a>.</td>
+<td>yes, if data processing consent is enabled</td>
+</tr>
+<tr>
+<td>utm_source</td>
+<td>UTM tracking field</td>
+<td>no</td>
+</tr>
+<tr>
+<td>utm_campaign</td>
+<td>UTM tracking field</td>
+<td>no</td>
+</tr>
+<tr>
+<td>utm_content</td>
+<td>UTM tracking field</td>
+<td>no</td>
+</tr>
+<tr>
+<td>utm_medium</td>
+<td>UTM tracking field</td>
+<td>no</td>
+</tr>
+<tr>
+<td>utm_term</td>
+<td>UTM tracking field</td>
+<td>no</p></td>
+</tr>
+</tbody></table>
+
 <div></div>
 <h3 id='authenticated-rest-api-attendees-update-email-opt-in-type'>Update email opt in type</h3>
 <p>Updates the email opt in type associated with a single attendee. This can be used to change the email opt in type
