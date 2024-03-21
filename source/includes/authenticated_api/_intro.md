@@ -2,11 +2,11 @@
 
 The Authenticated REST API allows customers to build applications that interact with their own data or securely grant access to third-party app developers without exposing administrative credentials. It is designed to be consumed server-side, in contrast to the JSONP API which is designed for unauthenticated javascript integrations.
 
-We support both API keys and OAuth2 for authenticating with the API. API keys are the recommended approach, because they are simpler to set up. See below for instructions on how to start using either method.
-
 If you're synchronizing data from ControlShift into another system then the Webhooks API is likely a better choice for that use case. 
 
 ## Getting Started
+We support both API keys and OAuth2 for authenticating with the API. API keys are the recommended approach, because they are simpler to set up.
+
 ### Using API Keys
 We support Bearer Authentication, using API keys that can be configured through the platform.
 
