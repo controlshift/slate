@@ -20,7 +20,7 @@ We use [OAuth2](http://oauth.net/2/) to allow organizations to securely grant ac
 
 An *API Application* must be configured within your ControlShift instance before using the API. Access is then granted to this application, and exchanged for a token which is used to authenticate your access to API endpoints.
 
-1. **Set up a new API Application** Log in as an Organisation Owner and navigate to Settings > Integrations > REST API Apps. Add a New Application. Use `urn:ietf:wg:oauth:2.0:oob` as the callback URL unless you plan to allow self-service application authorization.
+1. **Set up a new API Application** Log in as an Organisation Owner and navigate to Settings > Integrations > Legacy OAuth Apps. Add a New Application. Use `urn:ietf:wg:oauth:2.0:oob` as the callback URL unless you plan to allow self-service application authorization.
 
 2. Clone the [oauth-api-example](https://github.com/controlshift/oauth-api-example) github repo.
 
