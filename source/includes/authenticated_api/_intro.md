@@ -5,7 +5,8 @@ The Authenticated REST API allows customers to build applications that interact 
 If you're synchronizing data from ControlShift into another system then the Webhooks API is likely a better choice for that use case. 
 
 ## Getting Started
-We support both API keys and OAuth2 for authenticating with the API. API keys are the recommended approach, because they are simpler to set up.
+We support both API keys and OAuth2 for authenticating with the API. API keys are the recommended approach, because they are simpler to set up and use.
+OAuth2 is supported for now, but may be deprecated in the future, so we do not recommend using it for new applications.
 
 ### Using API Keys
 We support Bearer Authentication, using API keys that can be configured through the platform.
