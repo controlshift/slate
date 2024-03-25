@@ -548,10 +548,10 @@
         <a href="#authenticated-rest-api" class="toc-h1 toc-link" data-title="Authenticated REST API">Authenticated REST API</a>
           <ul class="toc-list-h2">
               <li>
-                <a href="#authenticated-rest-api-rate-limits" class="toc-h2 toc-link" data-title="Rate Limits">Rate Limits</a>
+                <a href="#authenticated-rest-api-getting-started" class="toc-h2 toc-link" data-title="Getting Started">Getting Started</a>
               </li>
               <li>
-                <a href="#authenticated-rest-api-quickstart-guide" class="toc-h2 toc-link" data-title="Quickstart Guide">Quickstart Guide</a>
+                <a href="#authenticated-rest-api-rate-limits" class="toc-h2 toc-link" data-title="Rate Limits">Rate Limits</a>
               </li>
               <li>
                 <a href="#authenticated-rest-api-organisation" class="toc-h2 toc-link" data-title="Organisation">Organisation</a>
@@ -5979,11 +5979,32 @@ Toggling the <strong>Compress bulk data exports</strong> setting requires updati
 <h1 id='authenticated-rest-api'>Authenticated REST API</h1>
 <p>The Authenticated REST API allows customers to build applications that interact with their own data or securely grant access to third-party app developers without exposing administrative credentials. It is designed to be consumed server-side, in contrast to the JSONP API which is designed for unauthenticated javascript integrations.</p>
 
-<p>We use <a href="http://oauth.net/2/">OAuth2</a> to allow organizations to securely grant access to API Applications. OAuth2 is a standardized protocol that allows user credentials to be exchanged for a secret token which can then be used to access an API. There are OAuth2 implementations available for most common programming languages. You&#39;ll probably want to read some general documentation on how OAuth2 works before attempting to use this API.</p>
+<p>If you&#39;re synchronizing data from ControlShift into another system then the Webhooks API is likely a better choice for that use case. </p>
+<h2 id='authenticated-rest-api-getting-started'>Getting Started</h2>
+<p>We support both API keys and OAuth2 for authenticating with the API. API keys are the recommended approach, because they are simpler to set up and use.
+OAuth2 is supported for now, but may be deprecated in the future, so we do not recommend using it for new applications.</p>
+<h3 id='authenticated-rest-api-getting-started-using-api-keys'>Using API Keys</h3>
+<p>We support Bearer Authentication, using API keys that can be configured through the platform.</p>
+
+<ol>
+<li><strong>Add a new API key</strong> Log in as an Organisation Owner and navigate to Settings &gt; Integrations &gt; API Keys. Add a new API key and give it a name. Copy down the full key.</li>
+<li>Include your key in an Authorization HTTP header on your API request, like this:</li>
+</ol>
+
+<p><code>curl https://demo.controlshiftlabs.com/api/v1/organisation -H &quot;Authorization: Bearer cs_aBcDeFgHiJ0123456789kLmNoPqRsT&quot;</code></p>
+<h3 id='authenticated-rest-api-getting-started-using-oauth2'>Using OAuth2</h3>
+<p>We use <a href="http://oauth.net/2/">OAuth2</a> to allow organizations to securely grant access to API Applications. OAuth2 is a standardized protocol that allows user credentials to be exchanged for a secret token which can then be used to access an API. There are OAuth2 implementations available for most common programming languages. You&#39;ll probably want to read some general documentation on how OAuth2 works before attempting to use OAuth2 to access the API.</p>
 
 <p>An <em>API Application</em> must be configured within your ControlShift instance before using the API. Access is then granted to this application, and exchanged for a token which is used to authenticate your access to API endpoints.</p>
 
-<p>If you&#39;re synchronizing data from ControlShift into another system then the Webhooks API is likely a better choice for that use case. </p>
+<ol>
+<li><p><strong>Set up a new API Application</strong> Log in as an Organisation Owner and navigate to Settings &gt; Integrations &gt; Legacy OAuth Apps. Add a New Application. Use <code>urn:ietf:wg:oauth:2.0:oob</code> as the callback URL unless you plan to allow self-service application authorization.</p></li>
+<li><p>Clone the <a href="https://github.com/controlshift/oauth-api-example">oauth-api-example</a> github repo.</p></li>
+<li><p>Follow the instructions in the README.md file to get that example working with your credentials.</p></li>
+<li><p>Do something similar in your actual code.</p></li>
+</ol>
+
+<p><strong>Note</strong>: Access tokens have a 2 hours expiration, after that period you can use the old token to generate a new one.</p>
 <h2 id='authenticated-rest-api-rate-limits'>Rate Limits</h2>
 <p>We apply the following per-domain rate limits on HTTP requests made to the API:</p>
 
@@ -5999,15 +6020,6 @@ Toggling the <strong>Compress bulk data exports</strong> setting requires updati
 <li><code>RateLimit-Remaining</code>: this header will always have <code>0</code> as value, since this response is only returned when the rate limit has been reached.</li>
 <li><code>RateLimit-Reset</code>: returns the number of seconds until the current rate limit is reset.</li>
 </ul>
-<h2 id='authenticated-rest-api-quickstart-guide'>Quickstart Guide</h2>
-<ol>
-<li><p><strong>Set up a new API Application</strong> Log in as an Organisation Owner and navigate to Settings &gt; Integrations &gt; REST API Apps. Add a New Application. Use <code>urn:ietf:wg:oauth:2.0:oob</code> as the callback URL unless you plan to allow self-service application authorization.</p></li>
-<li><p>Clone the <a href="https://github.com/controlshift/oauth-api-example">oauth-api-example</a> github repo.</p></li>
-<li><p>Follow the instructions in the README.md file to get that example working with your credentials.</p></li>
-<li><p>Do something similar in your actual code.</p></li>
-</ol>
-
-<p><strong>Note</strong>: Access tokens have a 2 hours expiration, after that period you can use the old token to generate a new one.</p>
 <h2 id='authenticated-rest-api-organisation'>Organisation</h2><h3 id='authenticated-rest-api-organisation-retrieve'>Retrieve</h3>
 <p>Get up to date statistics and basic information about the current organisation.</p>
 
@@ -6277,7 +6289,7 @@ person before.</p>
 
 <p>Ownership of Petitions and Events created by the deleted member will be re-assigned to the user account specified in the organisation&#39;s settings.</p>
 
-<p>Note that if the member has a user account that is associated with one or more REST API Apps, the member cannot be deleted unless those apps are first deleted through the web UI.
+<p>Note that if the member has a user account that is associated with one or more Legacy OAuth Apps, the member cannot be deleted unless those apps are first deleted through the web UI.
 If the member cannot be deleted for any reason, the JSON response will contain error messages explaining the problem.</p>
 
 <div></div>
@@ -6301,7 +6313,7 @@ If the member cannot be deleted for any reason, the JSON response will contain e
 
 <p>Ownership of Petitions and Events created by the deleted member will be re-assigned to the user account specified in the organisation&#39;s settings.</p>
 
-<p>Note that if the member has a user account that is associated with one or more REST API Apps, the member cannot be anonymized unless those apps are first deleted through the web UI.
+<p>Note that if the member has a user account that is associated with one or more Legacy OAuth Apps, the member cannot be anonymized unless those apps are first deleted through the web UI.
 If the member cannot be anonymized for any reason, the response will have a 422 Unprocessable Entity status and the JSON body will contain error messages explaining the problem.</p>
 
 <div></div>
