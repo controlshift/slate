@@ -35,8 +35,10 @@ Petition are pieces of content that can be signed by members.
     "title": "No Taxes on Tea",
     "updated_at": "1776-12-16T21:32Z",
     "what": "Stop taxing our tea",
+    "rich_what": "<div>Stop taxing our tea</div>",
     "who": "King George",
     "why": "No taxation without representation!",
+    "rich_why": "<div><strong>No taxation without representation!</strong></div>",
     "title_locked": false,
     "what_locked": true,
     "who_locked": false,
@@ -216,7 +218,7 @@ Get a paginated list of all petitions, including ones that are unlaunched or oth
   "petition": {
     "title": "No Taxes on Tea",
     "what": "Stop taxing our tea",
-    "why": "No taxation without representation!",
+    "why": "<strong>No taxation without representation!</strong>",
     "categories": ["Tax Policy", "End Colonialism"],
     "creator": {
       "first_name": "Patrick",
@@ -272,8 +274,10 @@ Get a paginated list of all petitions, including ones that are unlaunched or oth
     "title": "No Taxes on Tea",
     "updated_at": "1776-12-16T21:32Z",
     "what": "Stop taxing our tea",
+    "rich_what": "<div>Stop taxing our tea</div>",
     "who": null,
     "why": "No taxation without representation!",
+    "rich_why": "<div><strong>No taxation without representation!</strong></div>",
     "title_locked": null,
     "what_locked": null,
     "who_locked": null,
@@ -359,9 +363,9 @@ region[slug] | String | Unique identifier for an existing region this petition s
 source | String | Optional, open-ended string representing where this petition came from | no; default is "API"
 targets | List of 0-1 Target blocks ([see below](#json-type-target)) | Decision makers for this petition. If a block includes a `slug`, we’ll use it to look up an existing decision maker. Otherwise, we’ll try to create a new one. Any decision maker created this way will be set to "published". Specifying more than one decision maker is not yet supported. | no; default is no decision maker
 title | String | Title of the petition | yes
-what | String | Text of the petition ask | yes
+what | String | Text of the petition ask in HTML format | yes
 who | String | Who the petition is addressed to | yes, unless `targets` includes a decision maker
-why | String | Text explaining why the petition is important | yes
+why | String | Text explaining why the petition is important in HTML format | yes
 
 
 <%= partial "includes/authenticated_api/json_type_location" %>
@@ -414,11 +418,11 @@ show_progress_bar | Boolean | Whether to show the signature progress bar on the 
 signature_count_add_amount | Integer | If set, the displayed signature total on the petition page will be this much higher than the actual number of signatures recorded by the platform. This is usually used to reflect signatures that were gathered elsewhere and cannot be added to the platform, or signers whose data has been anonymized. A negative number can be specified to subtract from the total.
 title | String | Petition title
 title_locked | Boolean | Petition creator cannot change the title
-what | String | Petition text
+what | String | Petition text in HTML format
 what_locked | Boolean | Petition creator cannot change the "what" field
 who | String | Name of the person this petition is targeting. Petitions associated with a decision maker will not necessarily use this setting.
 who_locked | Boolean | Petition creator cannot change the "who" field
-why | String | "Why is this important?" text
+why | String | "Why is this important?" text in HTML format
 why_locked | Boolean | Petition creator cannot change the "why" field
 
 <div></div>

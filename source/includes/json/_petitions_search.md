@@ -42,6 +42,7 @@
         "ended_type": null,
         "ended_reason": null,
         "what": "The Yellow Brick Road has been neglected; commit to repairing the damaged sections of the road in the next year!",
+        "rich_what": "<div>The Yellow Brick Road has been neglected; commit to repairing the damaged sections of the road in the next year!</div>",
         "goal": 500,
         "signature_count": 223,
         "creator_name": "Kristyn Arrighi",
@@ -49,6 +50,7 @@
         "created_at": "2014-10-02T01:43:17Z",
         "updated_at": "2018-05-07T15:38:39Z",
         "why": "The Yellow Brick Road is the main road connecting Munchkin Country to the Emerald City and in its current state it's impassable.",
+        "rich_why": "<div>The Yellow Brick Road is the main road connecting Munchkin Country to the Emerald City and in its current state it's impassable.</div>",
         "location": {
           "query": "Land of Oz, Kensington Avenue, Buffalo, NY, United States",
           "latitude": "42.9399637",
@@ -94,6 +96,7 @@
         "ended_type": "won",
         "ended_reason": "Yay, we defeated Saruman! ",
         "what": "Stop cutting down the woods",
+        "rich_what": "<div>Stop cutting down the woods</div>",
         "goal": 100,
         "signature_count": 8780,
         "creator_name": "Treebeard",
@@ -101,6 +104,7 @@
         "created_at": "2016-10-25T18:40:42Z",
         "updated_at": "2022-03-31T18:30:36Z",
         "why": "Ents want a place to live in peace",
+        "rich_why": "<div>Ents want a place to live in peace</div>",
         "location":
         {
           "latitude": "-26.3168162",
