@@ -20,7 +20,7 @@ Within the API, both Efforts and Landing Pages use the `efforts` URLs.
       }
     ],
     "what": "Stop selling pesticides containing neonicotinoids, which the EPA has found harmful to bees.",
-    "why": "Pollinators are important.",
+    "why": "<strong>Pollinators are important.</strong>",
     "categories": "Environment",
     "location": {
       "venue": "Acme Hardware",
@@ -65,8 +65,10 @@ Within the API, both Efforts and Landing Pages use the `efforts` URLs.
     "title": "Acme Hardware, Stop Selling Bee Poison!",
     "updated_at": "2019-06-01T21:32Z",
     "what": "Stop selling pesticides containing neonicotinoids, which the EPA has found harmful to bees.",
+    "rich_what": "<div>Stop selling pesticides containing neonicotinoids, which the EPA has found harmful to bees.</div>",
     "who": null,
     "why": "Pollinators are important.",
+    "rich_why": "<div><strong>Pollinators are important.</strong></div>",
     "title_locked": false,
     "what_locked": true,
     "who_locked": false,
@@ -157,8 +159,8 @@ region[slug] | String | Unique identifier for an existing region this petition s
 source | String | Optional, open-ended string representing where this petition came from | no; default is "API"
 targets | List of 0-1 Target blocks ([see above](#json-type-target)) | Decision makers for this petition. If a block includes a `slug`, we’ll use it to look up an existing decision maker. Otherwise, we’ll try to create a new one. In a decision-makers-based effort, the specified decision maker will be added to the effort if it is not already associated with it. Any decision maker created this way will be set to "published". Specifying more than one decision maker is not yet supported. | no; default is no decision maker
 title | String | Title of the petition. If a title is specified, it will be used, even if there is a different default. | yes, unless a default title has been specified for the effort/landing page
-what | String | Text of the petition ask. If a value is specified, it will be used, even if there is a different default. | yes, unless a default "what" has been specified for the effort/landing page
+what | String | Text of the petition ask in HTML format. If a value is specified, it will be used, even if there is a different default. | yes, unless a default "what" has been specified for the effort/landing page
 who | String | Who the petition is addressed to. If a value is specified, it will be used, even if there is a different default. | yes, unless a default "who" has been specified for the effort/landing page or `targets` includes a decision maker
-why | String | Text explaining why the petition is important. If a value is specified, it will be used, even if there is a different default. | yes, unless a default "why" has been specified for the effort/landing page
+why | String | Text explaining why the petition is important in HTML format. If a value is specified, it will be used, even if there is a different default. | yes, unless a default "why" has been specified for the effort/landing page
 
 <div></div>
