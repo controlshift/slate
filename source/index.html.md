@@ -45,7 +45,7 @@ Welcome to the [ControlShift Labs](http://www.controlshiftlabs.com/) Developer d
 
 We offer several APIs to customers to cover different integration use cases.
 
-- __JSONP API__ Unauthenticated API designed to be consumed by javascript clients written by front-end engineers. Quickly display public information about petitions, efforts, and users on external sites.
+- __JSONP API__ Unauthenticated API designed to be consumed by javascript clients written by front-end engineers. Quickly display public information about petitions, efforts, and events on external sites.
 
 - __Webhooks__ Get notified when changes happen so external systems can react.
 
