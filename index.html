@@ -612,7 +612,7 @@
 <p>We offer several APIs to customers to cover different integration use cases.</p>
 
 <ul>
-<li><p><strong>JSONP API</strong> Unauthenticated API designed to be consumed by javascript clients written by front-end engineers. Quickly display public information about petitions, efforts, and users on external sites.</p></li>
+<li><p><strong>JSONP API</strong> Unauthenticated API designed to be consumed by javascript clients written by front-end engineers. Quickly display public information about petitions, efforts, and events on external sites.</p></li>
 <li><p><strong>Webhooks</strong> Get notified when changes happen so external systems can react.</p></li>
 <li><p><strong>Bulk Data</strong> Integrate your ControlShift instance with a data warehouse like Redshift for SQL access and reporting.</p></li>
 <li><p><strong>Authenticated REST</strong> Server Side API integration option for more advanced scenarios than are possible with the JSONP API. Uses OAuth2 to allow third-party developers to create applications and customers to grant access.</p></li>
@@ -624,14 +624,13 @@
 
 <p>We publish various pieces of <a href="https://github.com/controlshift/">open source code on Github</a> which you may find useful.</p>
 <h1 id='json-api-endpoints'>JSON API Endpoints</h1>
-<p>The JSONP API is a simple way to embed ControlShift petition content in external sites. It&#39;s intended for use by a front-end developer embed content on web pages outside of the platform.  For example, a developer could:</p>
+<p>The JSONP API is a simple way to embed ControlShift petition content in external sites. It&#39;s intended for use by a front-end developer to embed content on web pages outside of the platform.  For example, a developer could:</p>
 
 <ul>
 <li>Show petitions</li>
 <li>Allow a user to search for near by petitions</li>
 <li>List petition categories</li>
 <li>Show petitions within an effort</li>
-<li>If a site visitor is logged in, show a users past actions and created petitions</li>
 </ul>
 
 <p>Many of the endpoints can be consumed as JSONP instead of JSON by adding callback or variable parameters to the URLs.</p>
