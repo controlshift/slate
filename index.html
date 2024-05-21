@@ -311,6 +311,9 @@
         <a href="#json-api-endpoints" class="toc-h1 toc-link" data-title="JSON API Endpoints">JSON API Endpoints</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#json-api-endpoints-using-the-json-api-from-an-external-site" class="toc-h2 toc-link" data-title="Using the JSON API from an external site">Using the JSON API from an external site</a>
+              </li>
+              <li>
                 <a href="#json-api-endpoints-petitions" class="toc-h2 toc-link" data-title="Petitions">Petitions</a>
               </li>
               <li>
@@ -624,7 +627,9 @@
 
 <p>We publish various pieces of <a href="https://github.com/controlshift/">open source code on Github</a> which you may find useful.</p>
 <h1 id='json-api-endpoints'>JSON API Endpoints</h1>
-<p>The JSONP API is a simple way to embed ControlShift petition content in external sites. It&#39;s intended for use by a front-end developer to embed content on web pages outside of the platform.  For example, a developer could:</p>
+<p>The public JSON API is a simple way to access non-sensitive ControlShift data.
+Many of the JSON API endpoints are intended for use by a front-end developer to embed content on web pages outside of the platform.
+For example, a developer could:</p>
 
 <ul>
 <li>Show petitions</li>
@@ -633,15 +638,32 @@
 <li>Show petitions within an effort</li>
 </ul>
 
-<p>Many of the endpoints can be consumed as JSONP instead of JSON by adding callback or variable parameters to the URLs.</p>
-
-<p>The URL slugs through the API are the same as those that are used through the web to represent specific petitions or categories.  Many front-end libraries including jQuery make it easy to consume JSONP endpoints. Our examples below use jQuery to consume these resources.</p>
+<p>The URL slugs through the API are the same as those that are used through the web to represent specific petitions or categories.</p>
 
 <aside class="success">
 These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll need to replace this with the hostname of your instance.
 </aside>
+<h2 id='json-api-endpoints-using-the-json-api-from-an-external-site'>Using the JSON API from an external site</h2>
+<p>When one website includes a call to retrieve JSON data from another website, that is considered a <strong>cross-origin</strong> request.
+For security reasons, browsers usually block this type of request by default.
+There are two different ways to get around this restriction to allow calling public ControlShift JSON API endpoints from external sites: CORS and JSONP.
+The documentation for each endpoint indicates which options are supported.</p>
+<h3 id='json-api-endpoints-using-the-json-api-from-an-external-site-cors'>CORS</h3>
+<p>CORS allows the ControlShift platform to specify that certain URLs are allowed to be requested cross-origin from certain domains.</p>
+
+<p>For JSON requests relying on CORS to work, you&#39;ll need to configure the allowed domains from <strong>Settings &gt; Integrations &gt; CORS Hostnames</strong>.
+Once a hostname is safe-listed there, any of the endpoints that support CORS can be used on pages on that domain.</p>
+
+<p>For example, to embed petition content from a ControlShift website <strong>demo.controlshiftlabs.com</strong> on your external website <strong>hq.example.org</strong>,
+you&#39;d want to add <strong>hq.example.org</strong> to your CORS Hostnames.</p>
+<h3 id='json-api-endpoints-using-the-json-api-from-an-external-site-jsonp'>JSONP</h3>
+<p>JSONP is an older way to allow cross-origin requests for JSON data.
+The way it works is by specifying a Javascript callback that will handle the JSON data. The server wraps that callback around the data it returns.
+This allows the call to technically be a Javascript request instead of a JSON request, and so the browser allows it.</p>
+
+<p>Many front-end libraries, including jQuery, make it easy to consume JSONP endpoints. Our examples below use jQuery when demonstrating JSONP calls.</p>
 <h2 id='json-api-endpoints-petitions'>Petitions</h2>
-<h3 id='json-api-endpoints-get-a-single-petition'>Get a single petition</h3><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<h3 id='json-api-endpoints-using-the-json-api-from-an-external-site-get-a-single-petition'>Get a single petition</h3><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
   <span class="kd">var</span> <span class="nx">petitionSlug</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">repair-the-yellow-brick-road-1</span><span class="dl">'</span><span class="p">;</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
     <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://demo.controlshiftlabs.com/petitions/</span><span class="dl">'</span><span class="o">+</span><span class="nx">petitionSlug</span><span class="o">+</span><span class="dl">'</span><span class="s1">.json</span><span class="dl">'</span><span class="p">,</span>
@@ -707,9 +729,14 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This retrieves a single petition object.</p>
-<h4 id='json-api-endpoints-get-a-single-petition-http-request'>HTTP Request</h4>
+<h4 id='json-api-endpoints-using-the-json-api-from-an-external-site-get-a-single-petition-http-request'>HTTP Request</h4>
 <p><code>GET https://demo.controlshiftlabs.com/petitions/&lt;slug&gt;.json</code></p>
-<h4 id='json-api-endpoints-get-a-single-petition-query-parameters'>Query Parameters</h4>
+
+<ul>
+<li>&times; CORS not supported</li>
+<li>&check; JSONP supported</li>
+</ul>
+<h4 id='json-api-endpoints-using-the-json-api-from-an-external-site-get-a-single-petition-query-parameters'>Query Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -723,7 +750,7 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 <td>string - required - The petition&#39;s unique identification slug. If none is provided, you will get a 404 error. Note: submitted as a part of the endpoint path, not as a separate URL parameter</td>
 </tr>
 </tbody></table>
-<h4 id='json-api-endpoints-get-a-single-petition-working-example'>Working Example</h4>
+<h4 id='json-api-endpoints-using-the-json-api-from-an-external-site-get-a-single-petition-working-example'>Working Example</h4>
 <p>View and edit a working example on codepen.io:</p>
 
 <div class="js-codepen-data hidden" data-title="ControlShift Labs: Single Petition Example">
@@ -767,7 +794,37 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 <div>
 </div>
 
-<h3 id='json-api-endpoints-get-featured-petitions'>Get featured petitions</h3><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<h3 id='json-api-endpoints-using-the-json-api-from-an-external-site-get-petition-content'>Get petition content</h3><div class="highlight"><pre class="highlight javascript"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://demo.controlshiftlabs.com/api/petitions/repair-the-yellow-brick-road-1/what.json</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">jsonData</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">)</span>
+    <span class="p">})</span>
+  <span class="p">})</span>
+</code></pre></div>
+<blockquote>
+<p>JSON response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"plain_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Yellow Brick Road has been neglected. Commit to repairing the damaged sections of the road in the next year!"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"rich_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;The &lt;strong&gt;Yellow Brick Road&lt;/strong&gt; has been neglected. &lt;em&gt;Commit to repairing the damaged sections of the road in the next year!&lt;/em&gt;&lt;/div&gt;"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Retrieve the formatted &quot;What&quot; or &quot;Why&quot; text of a petition.</p>
+<h4 id='json-api-endpoints-using-the-json-api-from-an-external-site-get-petition-content-http-request'>HTTP Request</h4>
+<p><code>GET https://demo.controlshiftlabs.com/api/petitions/&lt;slug&gt;/what.json</code></p>
+
+<p><code>GET https://demo.controlshiftlabs.com/api/petitions/&lt;slug&gt;/why.json</code></p>
+
+<ul>
+<li>&check; CORS supported</li>
+<li>&times; JSONP not supported</li>
+</ul>
+
+<p>If the petition does not exist or is not visible to the public, the response will be 404 Not Found.</p>
+
+<div></div>
+
+<h3 id='json-api-endpoints-using-the-json-api-from-an-external-site-get-featured-petitions'>Get featured petitions</h3><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
     <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://demo.controlshiftlabs.com/petitions/featured.json</span><span class="dl">'</span><span class="p">,</span>
     <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">jsonp</span><span class="dl">'</span><span class="p">,</span>
@@ -917,9 +974,14 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 <p>This retrieves a JSON object compliant with the <a href="http://jsonapi.org/">JSON API</a> specification, containing an array of featured petitions objects on its data property.</p>
 
 <p><strong>Important Note:</strong> The previous featured petitions API endpoint at <code>https://demo.controlshiftlabs.com/featured.json</code> (note the missing <code>/petitions</code> path) is being deprecated and <strong>will be removed</strong> in the near future. Please use this new endpoint for retrieving featured petitions from now on.</p>
-<h4 id='json-api-endpoints-get-featured-petitions-http-request'>HTTP Request</h4>
+<h4 id='json-api-endpoints-using-the-json-api-from-an-external-site-get-featured-petitions-http-request'>HTTP Request</h4>
 <p><code>GET https://demo.controlshiftlabs.com/petitions/featured.json</code></p>
-<h4 id='json-api-endpoints-get-featured-petitions-query-parameters'>Query Parameters</h4>
+
+<ul>
+<li>&times; CORS not supported</li>
+<li>&check; JSONP supported</li>
+</ul>
+<h4 id='json-api-endpoints-using-the-json-api-from-an-external-site-get-featured-petitions-query-parameters'>Query Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -933,7 +995,7 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 <td>string - optional - Locale filter for petitions</td>
 </tr>
 </tbody></table>
-<h4 id='json-api-endpoints-get-featured-petitions-working-example'>Working Example</h4>
+<h4 id='json-api-endpoints-using-the-json-api-from-an-external-site-get-featured-petitions-working-example'>Working Example</h4>
 <p>View and edit a working example on codepen.io:</p>
 
 <div class="js-codepen-data hidden" data-title="ControlShift Labs: Featured Petitions Example">
@@ -971,7 +1033,7 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 
 <div></div>
 
-<h3 id='json-api-endpoints-search-petitions-by-keyword'>Search petitions by keyword</h3>
+<h3 id='json-api-endpoints-using-the-json-api-from-an-external-site-search-petitions-by-keyword'>Search petitions by keyword</h3>
 
 <blockquote>
 <p>JSON response example for the search using the <code>wizard</code> keyword:</p>
@@ -1100,11 +1162,16 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 
 <p>This JSON endpoint allows you to build an interface where users can search through all petitions by one or more keywords.</p>
 
-<h4 id='json-api-endpoints-search-petitions-by-keyword-http-request'>HTTP Request</h4>
+<h4 id='json-api-endpoints-using-the-json-api-from-an-external-site-search-petitions-by-keyword-http-request'>HTTP Request</h4>
 
 <p><code>GET https://demo.controlshiftlabs.com/petitions/search.json</code></p>
 
-<h4 id='json-api-endpoints-search-petitions-by-keyword-query-parameters'>Query Parameters</h4>
+<ul>
+<li>&times; CORS not supported</li>
+<li>&check; JSONP supported</li>
+</ul>
+
+<h4 id='json-api-endpoints-using-the-json-api-from-an-external-site-search-petitions-by-keyword-query-parameters'>Query Parameters</h4>
 
 <table><thead>
 <tr>
@@ -1165,9 +1232,16 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 </span></code></pre></div>
 <p>This retrieves a JSON array of category objects.</p>
 <h4 id='json-api-endpoints-petitions-get-list-of-categories-http-request'>HTTP Request</h4>
-<p><code>GET https://demo.controlshiftlabs.com/categories.json</code></p>
+<p><code>GET https://demo.controlshiftlabs.com/categories.json</code></p></p>
+
+<ul>
+<li>&times; CORS not supported</li>
+<li>&check; JSONP supported</li>
+</ul>
+
 <h4 id='json-api-endpoints-petitions-get-list-of-categories-working-example'>Working Example</h4>
-<p>View and edit a working example on codepen.io:</p></p>
+
+<p>View and edit a working example on codepen.io:</p>
 
 <div class="js-codepen-data hidden" data-title="ControlShift Labs: Categories List Example">
   <div class="codepen-html">
@@ -1350,8 +1424,15 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 <p></span></code></pre></div>
 <p>This retrieves a paginated list of petitions in a category.</p>
 <h4 id='json-api-endpoints-petitions-list-petitions-in-a-category-http-request'>HTTP Request</h4>
-<p><code>GET https://demo.controlshiftlabs.com/categories/&lt;category slug&gt;.json</code></p>
+<p><code>GET https://demo.controlshiftlabs.com/categories/&lt;category slug&gt;.json</code></p></p>
+
+<ul>
+<li>&times; CORS not supported</li>
+<li>&check; JSONP supported</li>
+</ul>
+
 <h4 id='json-api-endpoints-petitions-list-petitions-in-a-category-query-parameters'>Query Parameters</h4>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1370,8 +1451,10 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 <td>integer - optional - The page number of results for the specified category. Minimum of 1.</td>
 </tr>
 </tbody></table>
+
 <h4 id='json-api-endpoints-petitions-list-petitions-in-a-category-working-example'>Working Example</h4>
-<p>View and edit a working example on codepen.io:</p></p>
+
+<p>View and edit a working example on codepen.io:</p>
 
 <div class="js-codepen-data hidden"  data-title="ControlShift Labs: List of Petitions in a Category Example">
   <div class="codepen-html">
@@ -1562,8 +1645,15 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 </span></code></pre></div>
 <p>This retrieves a paginated list of petitions in a partnership.</p>
 <h4 id='json-api-endpoints-categories-list-petitions-in-a-partnership-http-request'>HTTP Request</h4>
-<p><code>GET https://demo.controlshiftlabs.com/partnerships/&lt;partnership slug&gt;/petitions.json</code></p>
+<p><code>GET https://demo.controlshiftlabs.com/partnerships/&lt;partnership slug&gt;/petitions.json</code></p></p>
+
+<ul>
+<li>&times; CORS not supported</li>
+<li>&check; JSONP supported</li>
+</ul>
+
 <h4 id='json-api-endpoints-categories-list-petitions-in-a-partnership-query-parameters'>Query Parameters</h4>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1582,8 +1672,10 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 <td>integer - optional - The page number of results for the specified partnership. Minimum of 1.</td>
 </tr>
 </tbody></table>
+
 <h4 id='json-api-endpoints-categories-list-petitions-in-a-partnership-working-example'>Working Example</h4>
-<p>View and edit a working example on codepen.io:</p></p>
+
+<p>View and edit a working example on codepen.io:</p>
 
 <div class="js-codepen-data hidden"  data-title="ControlShift Labs: List of Petitions in a Partnership Example">
   <div class="codepen-html">
@@ -1662,6 +1754,11 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 <p>This JSON endpoint returns a paginated list of all Efforts and Landing Pages on the platform. The <code>url</code> returned for each effort can be used to retrieve information on that effort&#39;s petitions, as specified below.</p>
 <h4 id='json-api-endpoints-partnerships-get-list-of-efforts-http-request'>HTTP Request</h4>
 <p><code>GET https://demo.controlshiftlabs.com/efforts.json</code></p>
+
+<ul>
+<li>&times; CORS not supported</li>
+<li>&times; JSONP not supported</li>
+</ul>
 
 <div></div>
 
@@ -1805,6 +1902,11 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 <h4 id='json-api-endpoints-partnerships-list-petitions-in-an-effort-http-request'>HTTP Request</h4>
 <p><code>GET https://demo.controlshiftlabs.com/efforts/&lt;effort slug&gt;.json</code></p>
 
+<ul>
+<li>&times; CORS not supported</li>
+<li>&check; JSONP supported</li>
+</ul>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1922,8 +2024,15 @@ These examples use the domain <code>demo.controlshiftlabs.com</code>. You'll nee
 <p>This JSON endpoint allows you to build an interface where users can search the petitions in an effort.
 Depending on how the effort is configured, you can search either by location, or by keyword.</p>
 <h4 id='json-api-endpoints-partnerships-search-petitions-in-a-effort-http-request'>HTTP Request</h4>
-<p><code>GET https://demo.controlshiftlabs.com/efforts/&lt;effort slug&gt;/lookup/query.json</code></p>
+<p><code>GET https://demo.controlshiftlabs.com/efforts/&lt;effort slug&gt;/lookup/query.json</code></p></p>
+
+<ul>
+<li>&times; CORS not supported</li>
+<li>&check; JSONP supported</li>
+</ul>
+
 <h4 id='json-api-endpoints-partnerships-search-petitions-in-a-effort-query-parameters'>Query Parameters</h4>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1947,8 +2056,10 @@ Depending on how the effort is configured, you can search either by location, or
 <td>string to search for</td>
 </tr>
 </tbody></table>
+
 <h4 id='json-api-endpoints-partnerships-search-petitions-in-a-effort-working-example'>Working Example</h4>
-<p>View and edit a working example on codepen.io:</p></p>
+
+<p>View and edit a working example on codepen.io:</p>
 
 <div class="js-codepen-data hidden"
   data-js_external="https://maps.googleapis.com/maps/api/js?key=AIzaSyAY2t1MpsrZH3aH6wJqAiq4vAQUscMmjY0&libraries=places;https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
@@ -2051,8 +2162,14 @@ Depending on how the effort is configured, you can search either by location, or
 <h4 id='json-api-endpoints-efforts-get-calendar-data-http-request'>HTTP Request</h4>
 <p><code>GET https://demo.controlshiftlabs.com/calendars/slug.json</code></p></p>
 
-<p>Where slug is the slug of the calendar you&#39;re retrieving. 
-<div></div></p>
+<p>Where slug is the slug of the calendar you&#39;re retrieving. </p>
+
+<ul>
+<li>&times; CORS not supported</li>
+<li>&check; JSONP supported</li>
+</ul>
+
+<div></div>
 <h2 id='json-api-endpoints-local-map'>Local Map</h2>
 <p><h3 id='json-api-endpoints-calendars-get-organizing-locations-points'>Get organizing locations: points</h3><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
@@ -2090,8 +2207,14 @@ Depending on how the effort is configured, you can search either by location, or
 </span></code></pre></div>
 <p>This JSON endpoint returns a complete list of latitude/longitude coordinates for publicly listed events, groups, and external events in your organisation. It&#39;s intended to be used for plotting organizing activities on a map.</p>
 <h4 id='json-api-endpoints-calendars-get-organizing-locations-points-http-request'>HTTP Request</h4>
-<p><code>GET https://demo.controlshiftlabs.com/api/local/points.json</code>
-<div></div></p></p>
+<p><code>GET https://demo.controlshiftlabs.com/api/local/points.json</code></p></p>
+
+<ul>
+<li>&times; CORS not supported</li>
+<li>&times; JSONP not supported</li>
+</ul>
+
+<div></div>
 
 <p><h3 id='json-api-endpoints-calendars-get-organizing-locations-details'>Get organizing locations: details</h3><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
@@ -2140,8 +2263,15 @@ Depending on how the effort is configured, you can search either by location, or
 <p>This JSON endpoint returns a paginated list of publicly listed events, groups, and external events in your organisation.
 It can be used alongside the <code>/api/local/points</code> endpoint; the criteria for inclusion are the same.</p>
 <h4 id='json-api-endpoints-calendars-get-organizing-locations-details-http-request'>HTTP Request</h4>
-<p><code>GET https://demo.controlshiftlabs.com/api/local.json</code></p>
+<p><code>GET https://demo.controlshiftlabs.com/api/local.json</code></p></p>
+
+<ul>
+<li>&times; CORS not supported</li>
+<li>&times; JSONP not supported</li>
+</ul>
+
 <h4 id='json-api-endpoints-calendars-get-organizing-locations-details-query-parameters'>Query Parameters</h4>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2159,7 +2289,7 @@ It can be used alongside the <code>/api/local/points</code> endpoint; the criter
 <td>10</td>
 <td>(optional) How many results, maximum, should be included on each page</td>
 </tr>
-</tbody></table></p>
+</tbody></table>
 
 <div></div>
 <h2 id='json-api-endpoints-bulk-data'>Bulk Data</h2>
@@ -2207,6 +2337,11 @@ in your ETL processes to automate the setup of tables in your data warehouse.</p
 </span></code></pre></div><h4 id='json-api-endpoints-local-map-bulk-data-schema-http-request'>HTTP Request</h4>
 <p><code>GET https://demo.controlshiftlabs.com/api/bulk_data/schema.json</code></p>
 
+<ul>
+<li>&times; CORS not supported</li>
+<li>&times; JSONP not supported</li>
+</ul>
+
 <div></div>
 
 <h3 id='json-api-endpoints-local-map-bulk-data-columns'>Bulk data columns</h3>
@@ -2225,6 +2360,11 @@ which table header row is returned.</p>
 <div class="highlight"><pre class="highlight plaintext"><code>id,petition_id,email,first_name,last_name,phone_number,postcode,created_at,join_organisation,deleted_at,unsubscribe_at,external_constituent_id,member_id,additional_fields,cached_organisation_slug,source,external_id,new_member,external_action_id,locale,bucket,country,updated_at,user_ip,confirmation_token,confirmed_at,confirmation_sent_at,last_signed_at,join_list_suppressed,old_daisy_chain_used,from_embed,user_agent,confirmed_reason,synced_to_crm_at,daisy_chain_experiment_slug,eu_data_processing_consent,from_one_click,consent_content_version_id,daisy_chain_id_used,email_opt_in_type_id,facebook_id,utm_params,postcode_id,referring_share_click_id,opt_in_sms,sms_opt_in_type_id,recaptcha_score,new_mobile_subscriber,partnership_opt_ins
 </code></pre></div><h4 id='json-api-endpoints-local-map-bulk-data-columns-http-request'>HTTP Request</h4>
 <p><code>GET https://demo.controlshiftlabs.com/api/bulk_data/schema/columns?table=signatures</code></p>
+
+<ul>
+<li>&times; CORS not supported</li>
+<li>&times; JSONP not supported</li>
+</ul>
 <h4 id='json-api-endpoints-local-map-bulk-data-columns-query-parameters'>Query Parameters</h4>
 <table><thead>
 <tr>
@@ -3877,6 +4017,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown City Council"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="nl">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3917,6 +4058,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -3965,6 +4107,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown City Council"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="nl">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4005,6 +4148,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -4053,6 +4197,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown City Council"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="nl">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4093,6 +4238,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -4141,6 +4287,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown City Council"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="nl">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4181,6 +4328,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -4229,6 +4377,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown City Council"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="nl">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4269,6 +4418,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -4314,6 +4464,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown City Council"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="nl">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4354,6 +4505,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -4402,6 +4554,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown City Council"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="nl">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4442,6 +4595,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -4490,6 +4644,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown City Council"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="nl">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4530,6 +4685,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -4578,6 +4734,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown City Council"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="nl">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4618,6 +4775,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -4689,6 +4847,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown City Council"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="nl">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4729,6 +4888,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -4777,6 +4937,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown City Council"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="nl">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4817,6 +4978,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -4865,6 +5027,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown City Council"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="nl">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4905,6 +5068,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
