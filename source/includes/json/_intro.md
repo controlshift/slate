@@ -32,7 +32,7 @@ you'd want to add **hq.example.org** to your CORS Hostnames.
 
 ### JSONP
 JSONP is an older approach to allowing cross-origin requests for JSON data.
-The way is works is by specifying a Javascript callback that will handle the JSON data. The server wraps that callback around the data it returns.
+The way it works is by specifying a Javascript callback that will handle the JSON data. The server wraps that callback around the data it returns.
 This allows the call to technically be a Javascript request instead of a JSON request, and so the browser allows it.
 
 Many front-end libraries, including jQuery, make it easy to consume JSONP endpoints. Our examples below use jQuery when demonstrating JSONP calls.
