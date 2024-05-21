@@ -54,6 +54,9 @@ It can be used alongside the `/api/local/points` endpoint; the criteria for incl
 
 `GET https://demo.controlshiftlabs.com/api/local.json`
 
+- &times; CORS not supported
+- &times; JSONP not supported
+
 #### Query Parameters
 
 Parameter | Default | Description

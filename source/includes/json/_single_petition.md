@@ -74,6 +74,9 @@ This retrieves a single petition object.
 
 `GET https://demo.controlshiftlabs.com/petitions/<slug>.json`
 
+- &times; CORS not supported
+- &check; JSONP supported
+
 #### Query Parameters
 
 Parameter | Default | Description

@@ -36,4 +36,7 @@ This JSON endpoint returns a paginated list of all Efforts and Landing Pages on 
 
 `GET https://demo.controlshiftlabs.com/efforts.json`
 
+- &times; CORS not supported
+- &times; JSONP not supported
+
 <div></div>

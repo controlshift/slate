@@ -57,6 +57,9 @@ Depending on how the effort is configured, you can search either by location, or
 
 `GET https://demo.controlshiftlabs.com/efforts/<effort slug>/lookup/query.json`
 
+- &times; CORS not supported
+- &check; JSONP supported
+
 #### Query Parameters
 
 Parameter | Required? | Description

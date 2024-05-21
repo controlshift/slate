@@ -153,6 +153,9 @@ This retrieves a paginated list of petitions in a category.
 
 `GET https://demo.controlshiftlabs.com/categories/<category slug>.json`
 
+- &times; CORS not supported
+- &check; JSONP supported
+
 #### Query Parameters
 
 Parameter | Default | Description

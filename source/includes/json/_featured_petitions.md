@@ -158,6 +158,9 @@ This retrieves a JSON object compliant with the [JSON API](http://jsonapi.org/) 
 
 `GET https://demo.controlshiftlabs.com/petitions/featured.json`
 
+- &times; CORS not supported
+- &check; JSONP supported
+
 #### Query Parameters
 
 Parameter | Default | Description
