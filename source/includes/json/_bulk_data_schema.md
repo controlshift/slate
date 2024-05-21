@@ -44,4 +44,7 @@ If the _Compress bulk data exports_ option is enabled, the extra `compression_fo
 
 `GET https://demo.controlshiftlabs.com/api/bulk_data/schema.json`
 
+- &times; CORS not supported
+- &times; JSONP not supported
+
 <div></div>

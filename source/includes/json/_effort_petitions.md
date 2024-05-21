@@ -141,6 +141,9 @@ Additionally, successful petitions will have the `successful` attribute set to `
 
 `GET https://demo.controlshiftlabs.com/efforts/<effort slug>.json`
 
+- &times; CORS not supported
+- &check; JSONP supported
+
 Parameter | Default | Description
 --------- | ------- | -----------
 effort slug | null | string - required - submitted as a part of the endpoint path, not as a separate URL parameter

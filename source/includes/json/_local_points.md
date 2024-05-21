@@ -42,4 +42,8 @@ This JSON endpoint returns a complete list of latitude/longitude coordinates for
 #### HTTP Request
 
 `GET https://demo.controlshiftlabs.com/api/local/points.json`
+
+- &times; CORS not supported
+- &times; JSONP not supported
+
 <div></div>

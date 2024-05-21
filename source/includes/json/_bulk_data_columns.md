@@ -17,6 +17,9 @@ id,petition_id,email,first_name,last_name,phone_number,postcode,created_at,join_
 
 `GET https://demo.controlshiftlabs.com/api/bulk_data/schema/columns?table=signatures`
 
+- &times; CORS not supported
+- &times; JSONP not supported
+
 #### Query Parameters
 
 Parameter |  Description

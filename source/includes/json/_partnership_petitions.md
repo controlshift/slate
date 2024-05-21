@@ -154,6 +154,9 @@ This retrieves a paginated list of petitions in a partnership.
 
 `GET https://demo.controlshiftlabs.com/partnerships/<partnership slug>/petitions.json`
 
+- &times; CORS not supported
+- &check; JSONP supported
+
 #### Query Parameters
 
 Parameter | Default | Description

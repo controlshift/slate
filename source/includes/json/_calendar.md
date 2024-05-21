@@ -36,4 +36,8 @@ This retrieves a JSON object representing a calendar.
 `GET https://demo.controlshiftlabs.com/calendars/slug.json`
 
 Where slug is the slug of the calendar you're retrieving. 
+
+- &times; CORS not supported
+- &check; JSONP supported
+
 <div></div>
