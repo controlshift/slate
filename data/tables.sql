@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS action_text_rich_texts;
+CREATE TABLE action_text_rich_texts ("id" bigint, "name" CHARACTER VARYING(max), "body" CHARACTER VARYING(max), "record_type" CHARACTER VARYING(max), "record_id" bigint, "created_at" timestamp without time zone, "updated_at" timestamp without time zone);
 DROP TABLE IF EXISTS admin_notes;
 CREATE TABLE admin_notes ("id" bigint, "parent_type" CHARACTER VARYING(max), "parent_id" bigint, "source" CHARACTER VARYING(max), "user_id" bigint, "body" CHARACTER VARYING(max), "created_at" timestamp without time zone, "updated_at" timestamp without time zone);
 DROP TABLE IF EXISTS attendee_shifts;
