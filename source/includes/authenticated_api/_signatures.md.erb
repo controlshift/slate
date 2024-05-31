@@ -28,7 +28,7 @@ was recorded against.
     "first_name": "Foo",
     "join_organisation": true,
     "last_name": "Bar",
-    "phone_number": "123-456",
+    "phone_number": "555-555-5555",
     "postcode": "10010",
     "source": "",
     "token": "abcDEFghi123456789jklMNO",
@@ -132,6 +132,22 @@ The JSON response has a single "signature" object, which may include the followi
 <div></div>
 
 ### Create
+> POST /api/v1/petitions/no-taxes-on-tea/signatures/
+
+```json
+{
+  "signature": {
+    "first_name": "Foo",
+    "last_name": "Bar",
+    "email": "foo@bar.com",
+    "postcode": "10010",
+    "phone_number": "555-555-5555",
+    "country": "US",
+    "email_opt_in_type_external_id": "abcd12345",
+    "join_organisation": true
+  }
+}
+```
 
 > Response body
 
@@ -156,7 +172,7 @@ The JSON response has a single "signature" object, which may include the followi
     "first_name": "Foo",
     "join_organisation": true,
     "last_name": "Bar",
-    "phone_number": "123-456",
+    "phone_number": "555-555-5555",
     "postcode": "10010",
     "source": "",
     "token": "abcDEFghi123456789jklMNO",
@@ -171,11 +187,11 @@ The JSON response has a single "signature" object, which may include the followi
     "data_processing_consent_type": "explicit",
     "partnership_opt_ins": [],
     "email_opt_in_type": {
-      "context": "web_form",
-      "kind": "radio_sure",
+      "context": "external",
+      "kind": "external",
       "mailable": true,
-      "external_id": null,
-      "active": true
+      "external_id": "abcd12345",
+      "active": false
     },
     "member": {
       "id": 111222333,
@@ -275,7 +291,7 @@ Permanently deletes the signature with the specified ID. Note that this will dec
       "first_name": "Foo",
       "join_organisation": true,
       "last_name": "Bar",
-      "phone_number": "123-456",
+      "phone_number": "555-555-5555",
       "postcode": "10010",
       "source": "",
       "token": "abcDEFghi123456789jklMNO",
