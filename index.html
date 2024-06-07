@@ -10159,7 +10159,7 @@ the group <code>slug</code> is <code>brooklyn-for-bike-lanes</code>.</p>
 <h2 id='authenticated-rest-api-webhook-endpoints'>Webhook Endpoints</h2>
 <p>Webhooks can be used by software engineers to integrate ControlShift with third-party systems. They allow engineers to build software that is triggered by events that take place within ControlShift. This authenticated endpoint provides information about webhook endpoints and allows for the creation of new ones.</p>
 
-<p>This is useful for customers who would like to build automated reporting to detect when webhooks have been disabled or are setup incorrectly. </p>
+<p>This is useful for customers who would like to build automated reporting to detect when webhooks have been disabled or are setup incorrectly.</p>
 <h3 id='authenticated-rest-api-webhook-endpoints-list-webhook-endpoints'>List Webhook Endpoints</h3>
 <p>Show information about all of the webhook endpoints configured for organisation.</p>
 
@@ -10188,7 +10188,32 @@ the group <code>slug</code> is <code>brooklyn-for-bike-lanes</code>.</p>
     </span><span class="nl">"last_failure"</span><span class="p">:</span><span class="s2">"2019-06-19T15:45:01Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='authenticated-rest-api-webhook-endpoints-create-webhook-endpoint'>Create Webhook Endpoint</h3>
+</span></code></pre></div>
+<div></div>
+<h3 id='authenticated-rest-api-webhook-endpoints-create-webhook-endpoint'>Create Webhook Endpoint</h3>
+<blockquote>
+<p>POST /api/v1/webhook_endpoints</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"endpoint"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/test1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"basic_auth_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my_secret_user"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"basic_auth_password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"passw0rd"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"aws_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"355687156842"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Response body</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"endpoint"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/test1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signing_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc122"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>Creates a new webhook endpoint that will receive webhooks from the platform.</p>
 
 <p><code>POST /api/v1/webhook_endpoints</code></p>
@@ -10228,17 +10253,6 @@ the group <code>slug</code> is <code>brooklyn-for-bike-lanes</code>.</p>
 <td>no</td>
 </tr>
 </tbody></table>
-
-<p>Successful response
-<code>json
-{
-  &quot;status&quot;: &quot;success&quot;,
-  &quot;endpoint&quot;: {
-    &quot;url&quot;: &quot;https://example.com&quot;,
-    &quot;signing_secret&quot;: &quot;abc122&quot;
-  }
-}
-</code></p>
 
   </div>
   <div class="dark-box">
