@@ -72,7 +72,6 @@ $(document).ready(function(){
           "country": "US",
           "region": "NY",
           "street_number": "",
-          "venue": "",
           "created_at": "2016-06-10T19:13:19Z"
         }
       }
@@ -127,7 +126,6 @@ $(document).ready(function(){
           "country": "US",
           "region": "NY",
           "street_number": "",
-          "venue": "",
           "created_at": "2016-06-10T19:13:19Z"
         }
       },
@@ -140,7 +138,6 @@ $(document).ready(function(){
         "country": "US",
         "region": "NY",
         "street_number": "",
-        "venue": "",
         "created_at": "2016-06-10T19:13:19Z"
       }
     }

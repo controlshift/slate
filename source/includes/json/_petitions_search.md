@@ -32,7 +32,6 @@
             "country": "US",
             "region": "NY",
             "street_number": "",
-            "venue": "",
             "created_at": "2016-06-10T19:13:19Z"
           }
         },
@@ -60,7 +59,6 @@
           "country": "US",
           "region": "NY",
           "street_number": "",
-          "venue": "",
           "created_at": "2016-06-10T19:13:19Z"
         }
       },
@@ -86,7 +84,6 @@
             "query": "Isengard Lookout",
             "street": "Glenorchy-Routeburn Road",
             "street_number": null,
-            "venue": "Isengard Lookout",
             "created_at": "2021-07-19T19:55:11Z"
           }
         },
@@ -116,7 +113,6 @@
           "query": "Fangorn forest",
           "street": "Yarrambat",
           "street_number": "94C7+4R",
-          "venue": "Fangorn forest",
           "created_at": "2021-07-19T19:55:11Z"
         }
       }
