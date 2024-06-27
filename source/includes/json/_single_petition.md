@@ -51,7 +51,6 @@ $(document).ready(function(){
     "latitude":"36.1946827",
     "longitude":"-78.8087571",
     "query":"Land of Oz",
-    "venue":"Land of OZ",
     "street_number":"1007",
     "street":"Beech Mountain Pkwy",
     "street_address":"1007 Beech Mountain Pkwy",
