@@ -118,12 +118,11 @@ Anonymizes the member with specified id. This permanently deletes the member and
 
 `POST /api/v1/members/123/anonymize`
 
-Anonymization is synchronous and may take several seconds depending on how many resources are owned by the member.
+Anonymization is an asynchronous process which can take some time to complete depending on how many resources are owned by the member. If the anonymization process is correctly triggered by the API request, the HTTP response will have a `202 Accepted` status code and will not include any payload. If the member instead, cannot be anonymized for any reason, the response will have a `422 Unprocessable Entity` status and the JSON body will contain error messages explaining the problem.
 
 Ownership of Petitions and Events created by the deleted member will be re-assigned to the user account specified in the organisation's settings.
 
 Note that if the member has a user account that is associated with one or more Legacy OAuth Apps, the member cannot be anonymized unless those apps are first deleted through the web UI.
-If the member cannot be anonymized for any reason, the response will have a 422 Unprocessable Entity status and the JSON body will contain error messages explaining the problem.
 
 <div></div>
 
