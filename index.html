@@ -6145,10 +6145,12 @@ Toggling the <strong>Compress bulk data exports</strong> setting requires updati
 <h1 id='authenticated-rest-api'>Authenticated REST API</h1>
 <p>The Authenticated REST API allows customers to build applications that interact with their own data or securely grant access to third-party app developers without exposing administrative credentials. It is designed to be consumed server-side, in contrast to the JSONP API which is designed for unauthenticated javascript integrations.</p>
 
-<p>If you&#39;re synchronizing data from ControlShift into another system then the Webhooks API is likely a better choice for that use case. </p>
+<p>If you&#39;re synchronizing data from ControlShift into another system then the Webhooks API is likely a better choice for that use case.</p>
 <h2 id='authenticated-rest-api-getting-started'>Getting Started</h2>
 <p>We support both API keys and OAuth2 for authenticating with the API. API keys are the recommended approach, because they are simpler to set up and use.
 OAuth2 is supported for now, but may be deprecated in the future, so we do not recommend using it for new applications.</p>
+<h3 id='authenticated-rest-api-getting-started-http-requests-format'>HTTP Requests Format</h3>
+<p>The Authenticated REST API expects payloads in JSON format when submitting <code>POST</code> and <code>PUT</code> requests. Additionally, all responses will also be returned in this format. To ensure compatibility, the requests made to these endpoints should include the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept"><code>Accept</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type"><code>Content-Type</code></a> headers with the value <code>application/json</code>.</p>
 <h3 id='authenticated-rest-api-getting-started-using-api-keys'>Using API Keys</h3>
 <p>We support Bearer Authentication, using API keys that can be configured through the platform.</p>
 
@@ -6475,12 +6477,11 @@ If the member cannot be deleted for any reason, the JSON response will contain e
 
 <p><code>POST /api/v1/members/123/anonymize</code></p>
 
-<p>Anonymization is synchronous and may take several seconds depending on how many resources are owned by the member.</p>
+<p>Anonymization is an asynchronous process which can take some time to complete depending on how many resources are owned by the member. If the anonymization process is correctly triggered by the API request, the HTTP response will have a <code>202 Accepted</code> status code and will not include any payload. If the member instead, cannot be anonymized for any reason, the response will have a <code>422 Unprocessable Entity</code> status and the JSON body will contain error messages explaining the problem.</p>
 
 <p>Ownership of Petitions and Events created by the deleted member will be re-assigned to the user account specified in the organisation&#39;s settings.</p>
 
-<p>Note that if the member has a user account that is associated with one or more Legacy OAuth Apps, the member cannot be anonymized unless those apps are first deleted through the web UI.
-If the member cannot be anonymized for any reason, the response will have a 422 Unprocessable Entity status and the JSON body will contain error messages explaining the problem.</p>
+<p>Note that if the member has a user account that is associated with one or more Legacy OAuth Apps, the member cannot be anonymized unless those apps are first deleted through the web UI.</p>
 
 <div></div>
 <h3 id='authenticated-rest-api-members-unsubscribe'>Unsubscribe</h3>
