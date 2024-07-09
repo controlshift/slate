@@ -24,6 +24,7 @@ host | User block ([see above](#json-type-user)) | User who will host the event.
 labels | List of Strings | Labels that should be applied to the new event. Any labels that do not already exist will be created | no
 locale | String | The ISO 639-1 two-letter code for the language the event content is in. Must be one of the languages supported by ControlShift. | no; defaults to organisation's default language
 location | Location block ([see above](#json-type-location)) | Information about either the exact location of an in-person event, or the location a virtual event is relevant to. May be omitted entirely for a virtual event that doesn't have a specific audience location. If latitude and longitude are included, we’ll use them. Otherwise, we’ll geocode the fields provided. | only for in-person events
+location_venue | String | Venue name. Only relevant for in-person events | no
 max_attendees_count | Integer | Maximum number of attendees allowed | no
 partnership[slug] | String | Unique identifier for an existing partnership this event should be associated with | no
 region[slug] | String | Unique identifier for an existing region this event should be associated with | no

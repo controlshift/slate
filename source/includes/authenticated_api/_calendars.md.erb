@@ -33,13 +33,13 @@ the calendar `slug` is `day-of-action-for-justice`.
 
 ### List Events
 
-List the events that are part of a Calendar. 
+List the events that are part of a Calendar.
 
 This is a paginated response. You can advance to the next page using the page parameter, which accepts a page number integer.
-By default the first page is returned. 
+By default the first page is returned.
 
 Hash     | Description
---------- | ------- 
+--------- | -------
 meta      | pagination information
 calendar  | basic information about the calendar
 events | an array of event results
@@ -64,7 +64,6 @@ events | an array of event results
     },
     "host_address": "Congressional Office, 6724-A Page Ave., St. Louis, MO 63133",
     "location": {
-      "venue": "Community Center",
       "street_number": "123",
       "street": "Main Street",
       "locality": "Kansas City",
@@ -72,6 +71,7 @@ events | an array of event results
       "postal_code": "12345",
       "country": "US"
     },
+    "location_venue": "Community Center",
     "extra_location_info": "We'll be in the multi-purpose room on the first floor.",
     "event_type": {
       "id": 12
@@ -113,10 +113,10 @@ events | an array of event results
       "query": "Community Center, 123 Main Street, Kansas City, KS 12345, US",
       "street": "Main Street",
       "street_number": "123",
-      "venue": "Community Center",
       "created_at": "2025-05-23T21:32Z",
       "extra_location_info": "We'll be in the multi-purpose room on the first floor."
     },
+    "location_venue": "Community Center",
     "event_type": {
       "name": "Movie Screening"
     },
