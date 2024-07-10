@@ -29,7 +29,6 @@ Events represent real-world or virtual meetings that members can RSVP to. RSVP r
         "query": "wizard room",
         "latitude": "42.3376368",
         "longitude": "-70.99304",
-        "venue": "The Wizard's Throne Room",
         "street_number": "",
         "street": "",
         "region": "MA",
@@ -37,6 +36,7 @@ Events represent real-world or virtual meetings that members can RSVP to. RSVP r
         "country": "US",
         "created_at": "2017-11-16T22:38:29Z"
       },
+      "location_venue": "The Wizard's Throne Room",
       "shifts": [
         {
           "id": "103",
@@ -103,7 +103,6 @@ Returns a paginated list of all events, including ones that are unlaunched or ot
       "query": "wizard room",
       "latitude": "42.3376368",
       "longitude": "-70.99304",
-      "venue": "The Wizard's Throne Room",
       "street_number": "",
       "street": "",
       "region": "MA",
@@ -111,6 +110,7 @@ Returns a paginated list of all events, including ones that are unlaunched or ot
       "country": "US",
       "created_at": "2017-11-16T22:38:29Z"
     },
+    "location_venue": "The Wizard's Throne Room",
     "mentor": {
       "member_id": 456,
       "full_name": "Glinda the Good",
@@ -154,7 +154,6 @@ the event `slug` is `chapter-meeting-1`.
       "email": "gabrielle.giffords@example.com"
     },
     "location": {
-      "venue": "City Park",
       "street_number": "123",
       "street": "Main Street",
       "locality": "Kansas City",
@@ -162,6 +161,7 @@ the event `slug` is `chapter-meeting-1`.
       "postal_code": "12345",
       "country": "US"
     },
+    "location_venue": "City Park",
     "event_type": {
       "id": 12
     },
@@ -209,10 +209,10 @@ the event `slug` is `chapter-meeting-1`.
       "query": "City Park, 123 Main Street, Kansas City, KS 12345, US",
       "street": "Main Street",
       "street_number": "123",
-      "venue": "City Park",
       "created_at": "2025-05-23T21:32Z",
       "extra_location_info": null
     },
+    "location_venue": "City Park",
     "event_type": {
       "name": "Protest"
     },
@@ -283,6 +283,7 @@ forum_enabled | Boolean | Enables or disables the discussion forum feature for t
 hidden_address | Boolean | Indicates that the event's address is private. The city/locality will be shown on the web, but the full address will only be provided to members who RSVP to the event.
 hide_recent_attendees | Boolean | Do not display the names of people who recently RSVPed in the post-RSVP sharing prompt.
 host_address | String | The mailing address of the event host. May be used to mail event materials.
+location_venue | String | Venue name. Only relevant for in-person events.
 max_attendees_count | Integer | Limit on how many people, besides the host, may sign up for this event. Set to `null` for no limit.
 redirect_to | String | If set, visitors to the event page will be redirected to this URL
 sharing_disabled | Boolean | Turns off the social sharing prompts for the event
