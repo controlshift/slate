@@ -126,7 +126,7 @@ This JSON endpoint allows you to build an interface where users can search throu
 
 `GET https://demo.controlshiftlabs.com/petitions/search.json`
 
-- &times; CORS not supported
+- &check; CORS supported
 - &check; JSONP supported
 
 #### Query Parameters
