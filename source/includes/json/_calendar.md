@@ -37,7 +37,7 @@ This retrieves a JSON object representing a calendar.
 
 Where slug is the slug of the calendar you're retrieving. 
 
-- &times; CORS not supported
+- &check; CORS supported
 - &check; JSONP supported
 
 <div></div>

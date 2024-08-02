@@ -45,7 +45,7 @@ This retrieves a JSON array of category objects.
 
 `GET https://demo.controlshiftlabs.com/categories.json`
 
-- &times; CORS not supported
+- &check; CORS supported
 - &check; JSONP supported
 
 #### Working Example
