@@ -59,7 +59,7 @@ filter[geography_slugs]  | null (no filter)       | Alternative way of filtering
 filter[labels]           | null (no filter)       | List of label IDs. If specified, only events/groups with at least one of those labels will be returned.
 filter[location]         | null                   | Searched location query. Should be a string such as "New York" or "90210".
 filter[regions]          | null (no filter)       | List of region IDs. If specified, only events/groups assigned to those regions will be returned.
-filter[start_date_range] | null (no filter)       | JSON object with a `start_date` and `end_date` representing a range of time. Events will only be returned if their start times are within the range, but the returned groups will not be affected.
+filter[start_date_range] | JSON object with a `start_date` and `end_date`, each in ISO-8601 string format, representing a range of time. Events will only be returned if their start times are within the range, but the returned groups will not be affected.
 filter[types]            | null (no filter)       | List of types of results to return. Should contain at least one of `event` or `group`.
 page                     | 1                      | Which page of results to fetch
 per_page                 | 10                     | How many results, maximum, should be included on each page
