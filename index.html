@@ -2154,99 +2154,149 @@ Depending on how the effort is configured, you can search either by location, or
 
 <div></div>
 <h2 id='json-api-endpoints-local-map'>Local Map</h2>
-<p><h3 id='json-api-endpoints-calendars-get-organizing-locations-points'>Get organizing locations: points</h3><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-  <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-    <span class="na">url</span><span class="p">:</span> <span class="dl">&#39;</span><span class="s1">https://demo.controlshiftlabs.com/api/local/points.json</span><span class="dl">&#39;</span><span class="p">,</span>
-    <span class="na">dataType</span><span class="p">:</span> <span class="dl">&#39;</span><span class="s1">jsonp</span><span class="dl">&#39;</span><span class="p">,</span>
-  <span class="p">})</span>
-  <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-  <span class="p">});</span>
-<span class="p">});</span>
-</code></pre></div>
+<p>The Local Map API endpoints are primarily used to power the
+<a href="https://demo.controlshiftlabs.com/local">local map</a>
+and embedded maps, but they can also be called independently,
+for example if you want to include the data on a different map.</p>
+
+<p>These endpoints include information on events created through ControlShift,
+events imported into ControlShift from external systems (a.k.a. &quot;external events&quot;),
+and ControlShift groups.</p>
+
+<p>Events and groups are only included if they are visible to the public.
+For events created in ControlShift, that means that they must be moderated as Good, not hidden, and not cancelled.
+External events are always visible to the public.
+For groups, they must have at least one member or organiser, and not be archived or unlisted.</p>
+
+<h3 id='json-api-endpoints-calendars-get-organizing-locations-points'>Get organizing locations: points</h3>
+
 <blockquote>
-<p>The above code would retrieve point locations and log them to the js console. The JSON would be structured like this:</p>
+<p>Example response</p>
 </blockquote>
+
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="nl">&quot;lat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">40.7032775</span><span class="p">,</span><span class="w">
-        </span><span class="nl">&quot;lon&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-74.0170279</span><span class="p">,</span><span class="w">
-        </span><span class="nl">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Event&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="nl">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;picnic-in-the-park&quot;</span><span class="w">
+        </span><span class="nl">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.7032775</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">-74.0170279</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Event"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"picnic-in-the-park"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="nl">&quot;lat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">8.2710078</span><span class="p">,</span><span class="w">
-        </span><span class="nl">&quot;lon&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">148.0209055</span><span class="p">,</span><span class="w">
-        </span><span class="nl">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Group&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="nl">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default-org-mariana-trench&quot;</span><span class="w">
+        </span><span class="nl">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.2710078</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">148.0209055</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Group"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default-org-mariana-trench"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="nl">&quot;lat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">41.467116</span><span class="p">,</span><span class="w">
-        </span><span class="nl">&quot;lon&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-73.9992597</span><span class="p">,</span><span class="w">
-        </span><span class="nl">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ExternalEvent&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="nl">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/sail-on-the-hudson&quot;</span><span class="w">
+        </span><span class="nl">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">41.467116</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">-73.9992597</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ExternalEvent"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/sail-on-the-hudson"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
+
 <p>This JSON endpoint returns a complete list of latitude/longitude coordinates for publicly listed events, groups, and external events in your organisation. It&#39;s intended to be used for plotting organizing activities on a map.</p>
+
 <h4 id='json-api-endpoints-calendars-get-organizing-locations-points-http-request'>HTTP Request</h4>
-<p><code>GET https://demo.controlshiftlabs.com/api/local/points.json</code></p></p>
+
+<p><code>GET https://demo.controlshiftlabs.com/api/local/points.json</code></p>
 
 <ul>
 <li>&check; CORS supported</li>
 <li>&times; JSONP not supported</li>
 </ul>
 
+<h4 id='json-api-endpoints-calendars-get-organizing-locations-points-query-parameters'>Query Parameters</h4>
+
+<p>All parameters are optional and default to null (no filter).</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>filter[calendars]</td>
+<td>List of calendar slugs. If specified, only events in those calendars will be returned.</td>
+</tr>
+<tr>
+<td>filter[event_types]</td>
+<td>List of event type IDs. If specified, only events of those types will be returned.</td>
+</tr>
+<tr>
+<td>filter[geographies]</td>
+<td>List of geographic shape IDs. If specified, only events/groups whose locations fall within those geographies will be returned.</td>
+</tr>
+<tr>
+<td>filter[geography_slugs]</td>
+<td>Alternative way of filtering by geographic shapes. Works like <code>filter[geographies]</code>, but accepts a list of geography slugs instead of a list of geography IDs.</td>
+</tr>
+<tr>
+<td>filter[labels]</td>
+<td>List of label IDs. If specified, only events/groups with at least one of those labels will be returned.</td>
+</tr>
+<tr>
+<td>filter[regions]</td>
+<td>List of region IDs. If specified, only events/groups assigned to those regions will be returned.</td>
+</tr>
+<tr>
+<td>filter[start_date_range]</td>
+<td>JSON object with a <code>start_date</code> and <code>end_date</code>, each in ISO-8601 string format, representing a range of time. Events will only be returned if their start times are within the range, but the returned groups will not be affected.</td>
+</tr>
+<tr>
+<td>filter[types]</td>
+<td>List of types of results to return. Should contain at least one of <code>event</code> or <code>group</code>.</td>
+</tr>
+</tbody></table>
+
 <div></div>
 
-<p><h3 id='json-api-endpoints-calendars-get-organizing-locations-details'>Get organizing locations: details</h3><div class="highlight"><pre class="highlight javascript"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-  <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-    <span class="na">url</span><span class="p">:</span> <span class="dl">&#39;</span><span class="s1">https://demo.controlshiftlabs.com/api/local.json?page=1&amp;per_page=3</span><span class="dl">&#39;</span><span class="p">,</span>
-    <span class="na">dataType</span><span class="p">:</span> <span class="dl">&#39;</span><span class="s1">jsonp</span><span class="dl">&#39;</span><span class="p">,</span>
-  <span class="p">})</span>
-  <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-  <span class="p">});</span>
-<span class="p">});</span>
-</code></pre></div>
+<h3 id='json-api-endpoints-calendars-get-organizing-locations-details'>Get organizing locations: details</h3>
+
 <blockquote>
-<p>The above code would retrieve one page of location data and log it to the js console. The JSON would be structured like this:</p>
+<p>Example response</p>
 </blockquote>
+
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
-        </span><span class="nl">&quot;page&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">&quot;per_page&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-        </span><span class="nl">&quot;total_pages&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nl">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Event&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nl">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;picnic-in-the-park&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nl">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Picnic in the Park&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nl">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;We are having a picnic in the park and you are invited!&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nl">&quot;start_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-03-01T12:00:00Z&quot;</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Event"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"picnic-in-the-park"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Picnic in the Park"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We are having a picnic in the park and you are invited!"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-01T12:00:00Z"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Group&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nl">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default-org-mariana-trench&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nl">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Default Org: Mariana Trench&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nl">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This group has the deepest conversations you will ever hear.&quot;</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Group"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default-org-mariana-trench"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Org: Mariana Trench"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This group has the deepest conversations you will ever hear."</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ExternalEvent&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nl">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/sail-on-the-hudson&quot;</span><span class="w">
-            </span><span class="nl">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sail on the Hudson&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nl">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Go for a sail on the Hudson river to promote environmentalism.&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nl">&quot;start_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2019-05-03T13:00:00Z&quot;</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ExternalEvent"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/sail-on-the-hudson"</span><span class="w">
+            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sail on the Hudson"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Go for a sail on the Hudson river to promote environmentalism."</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-03T13:00:00Z"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+
 <p>This JSON endpoint returns a paginated list of publicly listed events, groups, and external events in your organisation.
 It can be used alongside the <code>/api/local/points</code> endpoint; the criteria for inclusion are the same.</p>
+
 <h4 id='json-api-endpoints-calendars-get-organizing-locations-details-http-request'>HTTP Request</h4>
-<p><code>GET https://demo.controlshiftlabs.com/api/local.json</code></p></p>
+
+<p><code>GET https://demo.controlshiftlabs.com/api/local.json</code></p>
 
 <ul>
 <li>&check; CORS supported</li>
@@ -2254,6 +2304,8 @@ It can be used alongside the <code>/api/local/points</code> endpoint; the criter
 </ul>
 
 <h4 id='json-api-endpoints-calendars-get-organizing-locations-details-query-parameters'>Query Parameters</h4>
+
+<p>All parameters are optional.</p>
 
 <table><thead>
 <tr>
@@ -2263,14 +2315,74 @@ It can be used alongside the <code>/api/local/points</code> endpoint; the criter
 </tr>
 </thead><tbody>
 <tr>
+<td>filter[boundary_box]</td>
+<td>null</td>
+<td>If there is a location filter, bounding box to use for geocoding the location query.</td>
+</tr>
+<tr>
+<td>filter[calendars]</td>
+<td>null (no filter)</td>
+<td>List of calendar slugs. If specified, only events in those calendars will be returned.</td>
+</tr>
+<tr>
+<td>filter[event_types]</td>
+<td>null (no filter)</td>
+<td>List of event type IDs. If specified, only events of those types will be returned.</td>
+</tr>
+<tr>
+<td>filter[geographies]</td>
+<td>null (no filter)</td>
+<td>List of geographic shape IDs. If specified, only events/groups whose locations fall within those geographies will be returned.</td>
+</tr>
+<tr>
+<td>filter[geography_slugs]</td>
+<td>null (no filter)</td>
+<td>Alternative way of filtering by geographic shapes. Works like <code>filter[geographies]</code>, but accepts a list of geography slugs instead of a list of geography IDs.</td>
+</tr>
+<tr>
+<td>filter[labels]</td>
+<td>null (no filter)</td>
+<td>List of label IDs. If specified, only events/groups with at least one of those labels will be returned.</td>
+</tr>
+<tr>
+<td>filter[location]</td>
+<td>null</td>
+<td>Searched location query. Should be a string such as &quot;New York&quot; or &quot;90210&quot;.</td>
+</tr>
+<tr>
+<td>filter[regions]</td>
+<td>null (no filter)</td>
+<td>List of region IDs. If specified, only events/groups assigned to those regions will be returned.</td>
+</tr>
+<tr>
+<td>filter[start_date_range]</td>
+<td>JSON object with a <code>start_date</code> and <code>end_date</code>, each in ISO-8601 string format, representing a range of time. Events will only be returned if their start times are within the range, but the returned groups will not be affected.</td>
+<td></td>
+</tr>
+<tr>
+<td>filter[types]</td>
+<td>null (no filter)</td>
+<td>List of types of results to return. Should contain at least one of <code>event</code> or <code>group</code>.</td>
+</tr>
+<tr>
 <td>page</td>
 <td>1</td>
-<td>(optional) Which page of results to fetch</td>
+<td>Which page of results to fetch</td>
 </tr>
 <tr>
 <td>per_page</td>
 <td>10</td>
-<td>(optional) How many results, maximum, should be included on each page</td>
+<td>How many results, maximum, should be included on each page</td>
+</tr>
+<tr>
+<td>search_strategy</td>
+<td>distance_from_location</td>
+<td>When there is a location filter, determines which results match: <code>distance_from_location</code> finds all points within a certain radius, vs. <code>geography_for_location</code> finds all geographic shapes that contain the searched location</td>
+</tr>
+<tr>
+<td>user_country</td>
+<td>null</td>
+<td>When there is a location filter, in which country should the location query be interpreted?</td>
 </tr>
 </tbody></table>
 
