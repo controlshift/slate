@@ -1,4 +1,18 @@
 ## Local Map
 
+The Local Map API endpoints are primarily used to power the
+<a href="https://demo.controlshiftlabs.com/local">local map</a>
+and embedded maps, but they can also be called independently,
+for example if you want to include the data on a different map.
+
+These endpoints include information on events created through ControlShift,
+events imported into ControlShift from external systems (a.k.a. "external events"),
+and ControlShift groups.
+
+Events and groups are only included if they are visible to the public.
+For events created in ControlShift, that means that they must be moderated as Good, not hidden, and not cancelled.
+External events are always visible to the public.
+For groups, they must have at least one member or organiser, and not be archived or unlisted.
+
 <%= partial "includes/json/local_points.md" %>
 <%= partial "includes/json/local_details.md" %>
