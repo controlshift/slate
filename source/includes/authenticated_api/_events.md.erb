@@ -2,6 +2,8 @@
 
 Events represent real-world or virtual meetings that members can RSVP to. RSVP records are called "attendees".
 
+The authenticated REST API endpoints for events only deal with events created in ControlShift, whether through the web or the API. Events imported from another system (such as Mobilize America or EveryAction/VAN) are not included.
+
 ### List
 
 > GET response body
@@ -68,7 +70,9 @@ Events represent real-world or virtual meetings that members can RSVP to. RSVP r
 }
 ```
 
-Returns a paginated list of all events, including ones that are unlaunched or otherwise not visible to the public. Includes all the same data as the single-event endpoint for each event.
+Returns a paginated list of all events, including ones that are unlaunched or otherwise not visible to the public. External events are not included.
+
+The response includes all the same data as the single-event endpoint for each event.
 
 <%= partial "includes/shared/pagination.md" %>
 
