@@ -8690,6 +8690,8 @@ the partnership <code>slug</code> is <code>new-york-for-clean-water</code>.</p>
 <div></div>
 <h2 id='authenticated-rest-api-events'>Events</h2>
 <p>Events represent real-world or virtual meetings that members can RSVP to. RSVP records are called &quot;attendees&quot;.</p>
+
+<p>The authenticated REST API endpoints for events only deal with events created in ControlShift, whether through the web or the API. Events imported from another system (such as Mobilize America or EveryAction/VAN) are not included.</p>
 <h3 id='authenticated-rest-api-events-list'>List</h3>
 <blockquote>
 <p>GET response body</p>
@@ -8754,7 +8756,9 @@ the partnership <code>slug</code> is <code>new-york-for-clean-water</code>.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Returns a paginated list of all events, including ones that are unlaunched or otherwise not visible to the public. Includes all the same data as the single-event endpoint for each event.</p>
+<p>Returns a paginated list of all events, including ones that are unlaunched or otherwise not visible to the public. External events are not included.</p>
+
+<p>The response includes all the same data as the single-event endpoint for each event.</p>
 
 <p>This is a paginated response. You can advance to the next page using the page parameter, which accepts a page number integer.
 By default the first page is returned.</p>
