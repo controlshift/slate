@@ -1,18 +1,6 @@
 ### Get organizing locations: details
 
-```js
-$(document).ready(function(){
-  $.ajax({
-    url: 'https://demo.controlshiftlabs.com/api/local.json?page=1&per_page=3',
-    dataType: 'jsonp',
-  })
-  .done(function(data) {
-    console.log(data);
-  });
-});
-```
-
-> The above code would retrieve one page of location data and log it to the js console. The JSON would be structured like this:
+> Example response
 
 ```json
 {

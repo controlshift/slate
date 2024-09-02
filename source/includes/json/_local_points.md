@@ -1,18 +1,6 @@
 ### Get organizing locations: points
 
-```js
-$(document).ready(function(){
-  $.ajax({
-    url: 'https://demo.controlshiftlabs.com/api/local/points.json',
-    dataType: 'jsonp',
-  })
-  .done(function(data) {
-    console.log(data);
-  });
-});
-```
-
-> The above code would retrieve point locations and log them to the js console. The JSON would be structured like this:
+> Example response
 
 ```json
 [
