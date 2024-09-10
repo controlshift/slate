@@ -433,6 +433,9 @@
                 <a href="#webhook-endpoints-local_chapter-last_organiser-deleted" class="toc-h2 toc-link" data-title="local_chapter.last_organiser.deleted">local_chapter.last_organiser.deleted</a>
               </li>
               <li>
+                <a href="#webhook-endpoints-local_chapter-member_email_reply_received" class="toc-h2 toc-link" data-title="local_chapter.member_email_reply_received">local_chapter.member_email_reply_received</a>
+              </li>
+              <li>
                 <a href="#webhook-endpoints-local_chapter-mentor_assigned" class="toc-h2 toc-link" data-title="local_chapter.mentor_assigned">local_chapter.mentor_assigned</a>
               </li>
               <li>
@@ -2689,6 +2692,10 @@ Cloud for customers with a point of presence in the same AWS Region. Contact sup
 <td>A local chapter&#39;s last organiser leaves the group</td>
 </tr>
 <tr>
+<td><a href="#webhook-endpoints-local_chapter-member_email_reply_received">local_chapter.member_email_reply_received</a></td>
+<td>A member replied to a group email</td>
+</tr>
+<tr>
 <td><a href="#webhook-endpoints-local_chapter-mentor_assigned">local_chapter.mentor_assigned</a></td>
 <td>Mentor was assigned to the local chapter</td>
 </tr>
@@ -3837,6 +3844,36 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>A local chapter&#39;s last organiser leaves the group</p>
+<h2 id='webhook-endpoints-local_chapter-member_email_reply_received'>local_chapter.member_email_reply_received</h2>
+<blockquote>
+<p>Example payload for <code>local_chapter.member_email_reply_received</code>:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local_chapter.member_email_reply_received"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">359</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"campaign_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Event"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"campaign_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8268</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"replied_email_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blast_email"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"verified_pending_delivery"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Doe &lt;jane@example.com&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-organization+reply-abcde123456@cslemails.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Re: We made it!"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"body_plain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hi Jane, I'm so glad we made it! I can't wait to see you at the event. Best, John"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"body_html"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Hi Jane, I'm so glad we made it! I can't wait to see you at the event.&lt;/p&gt;&lt;p&gt;Best, John&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"headers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Message-ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;abcde-098765&gt;"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"blast_email_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">87</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"member_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"reject_reasons"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-09-12T15:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-09-12T16:30:00Z"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"030ee43a4fa9788e084d9cfc"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>A member replied to a group email</p>
 <h2 id='webhook-endpoints-local_chapter-mentor_assigned'>local_chapter.mentor_assigned</h2>
 <blockquote>
 <p>Example payload for <code>local_chapter.mentor_assigned</code>:</p>
@@ -8714,6 +8751,13 @@ the partnership <code>slug</code> is <code>new-york-for-clean-water</code>.</p>
       </span><span class="nl">"host_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"max_attendees_count"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"control-shift-deliver-the-petition-to-the-wizard"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"host"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"member_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dorothy of Kansas"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dorothy@example.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-555-5555"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66012"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wizard room"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42.3376368"</span><span class="p">,</span><span class="w">
@@ -8787,6 +8831,13 @@ By default the first page is returned.</p>
     </span><span class="nl">"host_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"max_attendees_count"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"control-shift-deliver-the-petition-to-the-wizard"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"host"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"member_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dorothy of Kansas"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dorothy@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-555-5555"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66012"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wizard room"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42.3376368"</span><span class="p">,</span><span class="w">
@@ -8884,6 +8935,13 @@ the event <code>slug</code> is <code>chapter-meeting-1</code>.</p>
     </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"host_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"max_attendees_count"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"host"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"member_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">234</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gabrielle Giffords"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gabrielle.giffords@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.168100</span><span class="p">,</span><span class="w">
       </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-94.776063</span><span class="p">,</span><span class="w">
