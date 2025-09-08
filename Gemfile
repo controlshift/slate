@@ -1,6 +1,9 @@
 ruby '>= 3.1'
 source 'https://rubygems.org'
 
+gem 'bigdecimal'
+gem 'mutex_m'
+
 # Middleman
 gem 'middleman', '~> 4.4'
 gem 'middleman-syntax', '~> 3.2'
