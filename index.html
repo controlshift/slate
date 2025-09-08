@@ -406,6 +406,9 @@
                 <a href="#webhook-endpoints-event-updated" class="toc-h2 toc-link" data-title="event.updated">event.updated</a>
               </li>
               <li>
+                <a href="#webhook-endpoints-event-deleted" class="toc-h2 toc-link" data-title="event.deleted">event.deleted</a>
+              </li>
+              <li>
                 <a href="#webhook-endpoints-attendee-created" class="toc-h2 toc-link" data-title="attendee.created">attendee.created</a>
               </li>
               <li>
@@ -428,6 +431,9 @@
               </li>
               <li>
                 <a href="#webhook-endpoints-local_chapter-created" class="toc-h2 toc-link" data-title="local_chapter.created">local_chapter.created</a>
+              </li>
+              <li>
+                <a href="#webhook-endpoints-local_chapter-join_request-requires_moderation" class="toc-h2 toc-link" data-title="local_chapter.join_request.requires_moderation">local_chapter.join_request.requires_moderation</a>
               </li>
               <li>
                 <a href="#webhook-endpoints-local_chapter-last_organiser-deleted" class="toc-h2 toc-link" data-title="local_chapter.last_organiser.deleted">local_chapter.last_organiser.deleted</a>
@@ -503,6 +509,9 @@
               </li>
               <li>
                 <a href="#webhook-endpoints-petition-target-response" class="toc-h2 toc-link" data-title="petition.target.response">petition.target.response</a>
+              </li>
+              <li>
+                <a href="#webhook-endpoints-petition-deleted" class="toc-h2 toc-link" data-title="petition.deleted">petition.deleted</a>
               </li>
               <li>
                 <a href="#webhook-endpoints-user-created" class="toc-h2 toc-link" data-title="user.created">user.created</a>
@@ -2659,6 +2668,10 @@ Cloud for customers with a point of presence in the same AWS Region. Contact sup
 <td>An event is updated</td>
 </tr>
 <tr>
+<td><a href="#webhook-endpoints-event-deleted">event.deleted</a></td>
+<td>An event has been permanently deleted</td>
+</tr>
+<tr>
 <td><a href="#webhook-endpoints-attendee-created">attendee.created</a></td>
 <td>Member RSVP to event</td>
 </tr>
@@ -2689,6 +2702,10 @@ Cloud for customers with a point of presence in the same AWS Region. Contact sup
 <tr>
 <td><a href="#webhook-endpoints-local_chapter-created">local_chapter.created</a></td>
 <td>A local group has been created.</td>
+</tr>
+<tr>
+<td><a href="#webhook-endpoints-local_chapter-join_request-requires_moderation">local_chapter.join_request.requires_moderation</a></td>
+<td>A join request requires review by an admin</td>
 </tr>
 <tr>
 <td><a href="#webhook-endpoints-local_chapter-last_organiser-deleted">local_chapter.last_organiser.deleted</a></td>
@@ -2789,6 +2806,10 @@ Cloud for customers with a point of presence in the same AWS Region. Contact sup
 <tr>
 <td><a href="#webhook-endpoints-petition-target-response">petition.target.response</a></td>
 <td>Decision maker responded to a petition notification</td>
+</tr>
+<tr>
+<td><a href="#webhook-endpoints-petition-deleted">petition.deleted</a></td>
+<td>A petition has been deleted</td>
 </tr>
 <tr>
 <td><a href="#webhook-endpoints-user-created">user.created</a></td>
@@ -3512,6 +3533,101 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>An event is updated</p>
+<h2 id='webhook-endpoints-event-deleted'>event.deleted</h2>
+<blockquote>
+<p>Example payload for <code>event.deleted</code>:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"event.deleted"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"petition-hand-in"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Petition Hand In"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-29T18:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-29T22:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"virtual"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40.7638667"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-73.8098213"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11354"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"locality"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"155-06 Roosevelt Ave, Flushing, NY 11354, États-Unis"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Roosevelt Avenue"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"155-06"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-23T19:09:41Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"location_venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Queens Public Library at McGoldrick"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unconfirmed_location"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"host"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jenny@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jennifer Goines"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jennifer"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Goines"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"opt_in_sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-555-5555"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pre_checked_checkbox"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"mailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcd12345"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"sms_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unchecked_checkbox"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone_number_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"eu_data_processing_consent"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"consent_content_version"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc345"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"consent_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"explicit"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/events/petition-hand-in"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unreviewed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"administered_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"admin_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-25T13:11:02Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-26T17:32:15Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shifts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lunch"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-29T18:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-29T20:00:00Z"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"debrief"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-29T20:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-29T22:00:00Z"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"staff_led_organiser_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organisation"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/events/images/2656/hero/_uploads_7db6d361-d3a4-4ba3-8d82-7ec3d432eea6_gettyimages-469869876.jpg20210705-641506-dcm2y0.jpg?1625504128"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"image_caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The library at Roosevelt Avenue"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"petition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"brighter-lights-for-library"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"mentor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Richard Rodriguez"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"richard@dogooders.org"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"030ee43a4fa9788e084d9cfc"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>An event has been permanently deleted</p>
 <h2 id='webhook-endpoints-attendee-created'>attendee.created</h2>
 <blockquote>
 <p>Example payload for <code>attendee.created</code>:</p>
@@ -3534,8 +3650,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3603,8 +3718,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3672,8 +3786,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3741,8 +3854,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3847,6 +3959,67 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>A local group has been created.</p>
+<h2 id='webhook-endpoints-local_chapter-join_request-requires_moderation'>local_chapter.join_request.requires_moderation</h2>
+<blockquote>
+<p>Example payload for <code>local_chapter.join_request.requires_moderation</code>:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local_chapter.join_request.requires_moderation"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"notification_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all_messages"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unreviewed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"administered_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-06-25T15:03:14Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-06-25T15:03:14Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"new_member_question_responses"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"introduction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I want to save the world!"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"utm_campaign"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"utm_content"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"utm_medium"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"utm_source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"utm_term"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">114062803</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"robert@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robert"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robert Perez"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Perez"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"opt_in_sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123-456-7890"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10015"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="nl">"email_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"radio_sure"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"mailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"eu_data_processing_consent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"consent_content_version"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"local_chapter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"springfield-members"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Springfield Members"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/local_chapters/springfield-members"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"eu_data_processing_consent"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"consent_content_version"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">621</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"consent_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"explicit"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5151701599f57158df5ac367"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>A join request requires review by an admin</p>
 <h2 id='webhook-endpoints-local_chapter-last_organiser-deleted'>local_chapter.last_organiser.deleted</h2>
 <blockquote>
 <p>Example payload for <code>local_chapter.last_organiser.deleted</code>:</p>
@@ -3939,8 +4112,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local_chapter.organiser_request.created"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"new_organiser_question_responses"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"new_organiser_question_responses"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T12:38:46Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unreviewed"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"administered_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -3975,8 +4147,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local_chapter.organiser_request.approved"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"new_organiser_question_responses"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"new_organiser_question_responses"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T12:38:46Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"administered_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T08:15:46Z"</span><span class="p">,</span><span class="w">
@@ -5421,6 +5592,106 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Decision maker responded to a petition notification</p>
+<h2 id='webhook-endpoints-petition-deleted'>petition.deleted</h2>
+<blockquote>
+<p>Example payload for <code>petition.deleted</code>:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"petition.deleted"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"don-t-destroy-our-park"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Don't destroy our park!"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/don-t-destroy-our-park"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"good"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"admin_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"administered_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/hero/imag0945.jpg?1438621934"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"additional_image_sizes_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"form"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/form/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"large"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/large/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_graph"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/open_graph/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/petitions/images/788/original/imag0945.jpg?1438621934"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"image_caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The park with its lovely trees"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"who"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anytown City Council"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_what"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;The park on Main Street is an important community space.  Don't approve the proposal to sell it to office building developers.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signature_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jenny@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jennifer Goines"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jennifer"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Goines"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"opt_in_sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-555-5555"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pre_checked_checkbox"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"mailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcd12345"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"sms_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unchecked_checkbox"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone_number_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"eu_data_processing_consent"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"consent_content_version"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc345"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"consent_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"explicit"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"parks"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:11:02Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:12:15Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"staff_led_organiser_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"successful"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ended_story"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won! Thanks to your support, the city council has agreed to protect the Main Street park from development."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mentor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Richard Rodriguez"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"richard@dogooders.org"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9fccc1957d7d7ebc93fb0f05"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>A petition has been deleted</p>
 <h2 id='webhook-endpoints-user-created'>user.created</h2>
 <blockquote>
 <p>Example payload for <code>user.created</code>:</p>
@@ -5644,8 +5915,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"last_signed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -5748,8 +6018,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"last_signed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -5852,8 +6121,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"last_signed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -5956,8 +6224,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T09:01:23Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"double_opt_in"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"last_signed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6252,6 +6519,7 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 <li>import_batches</li>
 <li>labelings</li>
 <li>labels</li>
+<li>local_chapter_member_invitations</li>
 <li>local_chapter_members</li>
 <li>local_chapters</li>
 <li>locales</li>
