@@ -25,3 +25,7 @@ doc/
 
 # Vagrant artifacts
 ubuntu-*-console.log
+
+# Mise files
+mise.toml
+.vscode/
