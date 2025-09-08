@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 gem 'bigdecimal'
 gem 'mutex_m'
+gem 'base64'
 
 # Middleman
 gem 'middleman', '~> 4.4'
