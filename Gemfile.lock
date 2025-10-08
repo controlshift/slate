@@ -12,7 +12,7 @@ GEM
       execjs (~> 2)
     backports (3.24.1)
     base64 (0.3.0)
-    bigdecimal (3.2.3)
+    bigdecimal (3.3.0)
     borrower (0.10.0)
     coffee-script (2.4.1)
       coffee-script-source
