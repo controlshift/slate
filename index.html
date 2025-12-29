@@ -538,6 +538,15 @@
                 <a href="#webhook-endpoints-signature-confirmed" class="toc-h2 toc-link" data-title="signature.confirmed">signature.confirmed</a>
               </li>
               <li>
+                <a href="#webhook-endpoints-timeline_post-created" class="toc-h2 toc-link" data-title="timeline_post.created">timeline_post.created</a>
+              </li>
+              <li>
+                <a href="#webhook-endpoints-timeline_post-updated" class="toc-h2 toc-link" data-title="timeline_post.updated">timeline_post.updated</a>
+              </li>
+              <li>
+                <a href="#webhook-endpoints-timeline_post-deleted" class="toc-h2 toc-link" data-title="timeline_post.deleted">timeline_post.deleted</a>
+              </li>
+              <li>
                 <a href="#webhook-endpoints-unsubscribe-created" class="toc-h2 toc-link" data-title="unsubscribe.created">unsubscribe.created</a>
               </li>
               <li>
@@ -2841,7 +2850,19 @@ Cloud for customers with a point of presence in the same AWS Region. Contact sup
 </tr>
 <tr>
 <td><a href="#webhook-endpoints-signature-confirmed">signature.confirmed</a></td>
-<td></td>
+<td>Signature has been confirmed by the member. This event is only emitted for organisations who have signature confirmation turned on. This event is only emitted for explicit signature confirmations, not implicit confirmations eg: for logged in users.</td>
+</tr>
+<tr>
+<td><a href="#webhook-endpoints-timeline_post-created">timeline_post.created</a></td>
+<td>Timeline post has been created</td>
+</tr>
+<tr>
+<td><a href="#webhook-endpoints-timeline_post-updated">timeline_post.updated</a></td>
+<td>Timeline post has been updated</td>
+</tr>
+<tr>
+<td><a href="#webhook-endpoints-timeline_post-deleted">timeline_post.deleted</a></td>
+<td>Timeline post has been deleted</td>
 </tr>
 <tr>
 <td><a href="#webhook-endpoints-unsubscribe-created">unsubscribe.created</a></td>
@@ -3650,7 +3671,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3718,7 +3740,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3786,7 +3809,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3854,7 +3878,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3967,7 +3992,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local_chapter.join_request.requires_moderation"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"notification_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all_messages"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unreviewed"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"administered_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-06-25T15:03:14Z"</span><span class="p">,</span><span class="w">
@@ -3993,7 +4019,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
       </span><span class="nl">"opt_in_sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123-456-7890"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10015"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="nl">"email_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"radio_sure"</span><span class="p">,</span><span class="w">
@@ -4112,7 +4139,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local_chapter.organiser_request.created"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"new_organiser_question_responses"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"new_organiser_question_responses"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T12:38:46Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unreviewed"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"administered_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -4147,7 +4175,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local_chapter.organiser_request.approved"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"new_organiser_question_responses"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"new_organiser_question_responses"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T12:38:46Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"administered_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T08:15:46Z"</span><span class="p">,</span><span class="w">
@@ -4428,6 +4457,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"staff_led_organiser_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"launched"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -4528,6 +4558,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"staff_led_organiser_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"launched"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -4628,6 +4659,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"staff_led_organiser_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"launched"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -4758,6 +4790,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"staff_led_organiser_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"launched"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -4858,6 +4891,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"staff_led_organiser_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"launched"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -4955,6 +4989,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"staff_led_organiser_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"launched"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -5055,6 +5090,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"staff_led_organiser_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"launched"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -5155,6 +5191,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"staff_led_organiser_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"launched"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -5255,6 +5292,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"staff_led_organiser_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"launched"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -5378,6 +5416,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"staff_led_organiser_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"launched"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -5478,6 +5517,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"staff_led_organiser_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"launched"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -5578,6 +5618,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"staff_led_organiser_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"launched"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -5678,6 +5719,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"staff_led_organiser_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Studies have shown that green space is important to child development and community well-being."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"rich_why"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Studies have shown that green space is important to child development and community well-being.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"launched"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"won"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ended_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We won the campaign! The Main Street park will be protected for years to come."</span><span class="p">,</span><span class="w">
@@ -5915,7 +5957,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"last_signed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -5963,7 +6006,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
 <p>Member signs a petition</p>
 
 <p><p>We also include optional partnership or effort slugs nested under the petition resource for signatures that take place on petitions associated with those objects.</p>
-<table class='table'>
+<table class="table">
 <tr>
 <th>Field</th>
 <th>Help</th>
@@ -6018,7 +6061,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"last_signed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6066,7 +6110,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
 <p>Existing signature updated. This can happen when member unsubscribes or reasserts their opt in for receiving emails</p>
 
 <p><p>We also include optional partnership or effort slugs nested under the petition resource for signatures that take place on petitions associated with those objects.</p>
-<table class='table'>
+<table class="table">
 <tr>
 <th>Field</th>
 <th>Help</th>
@@ -6121,7 +6165,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"last_signed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6169,7 +6214,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
 <p>Signature permanently deleted. Signature deletions are distinct from unsubscribes and should be treated as if the signature never happened</p>
 
 <p><p>We also include optional partnership or effort slugs nested under the petition resource for signatures that take place on petitions associated with those objects.</p>
-<table class='table'>
+<table class="table">
 <tr>
 <th>Field</th>
 <th>Help</th>
@@ -6224,7 +6269,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T09:01:23Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"double_opt_in"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"last_signed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6269,8 +6315,10 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
   </span><span class="nl">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1ebf2eb10c3d8939f42dff68"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<p>Signature has been confirmed by the member. This event is only emitted for organisations who have signature confirmation turned on. This event is only emitted for explicit signature confirmations, not implicit confirmations eg: for logged in users.</p>
+
 <p><p>We also include optional partnership or effort slugs nested under the petition resource for signatures that take place on petitions associated with those objects.</p>
-<table class='table'>
+<table class="table">
 <tr>
 <th>Field</th>
 <th>Help</th>
@@ -6292,6 +6340,24 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
 <td>A representation of the mechanism that the member used while opting in or out of email.</td>
 </tr>
 </table></p>
+<h2 id='webhook-endpoints-timeline_post-created'>timeline_post.created</h2>
+<blockquote>
+<p>Example payload for <code>timeline_post.created</code>:</p>
+</blockquote>
+
+<p>Timeline post has been created</p>
+<h2 id='webhook-endpoints-timeline_post-updated'>timeline_post.updated</h2>
+<blockquote>
+<p>Example payload for <code>timeline_post.updated</code>:</p>
+</blockquote>
+
+<p>Timeline post has been updated</p>
+<h2 id='webhook-endpoints-timeline_post-deleted'>timeline_post.deleted</h2>
+<blockquote>
+<p>Example payload for <code>timeline_post.deleted</code>:</p>
+</blockquote>
+
+<p>Timeline post has been deleted</p>
 <h2 id='webhook-endpoints-unsubscribe-created'>unsubscribe.created</h2>
 <blockquote>
 <p>Example payload for <code>unsubscribe.created</code>:</p>
@@ -6414,7 +6480,7 @@ property will only be included if member unsubscribed by clicking on the link in
 </span></code></pre></div>
 <p>A new message requires moderation</p>
 
-<p><div class='mt10'>
+<p><div class="mt10">
 <b>Note</b>
 <div>
 The <strong>admin_status</strong> field can take any of the following values:
@@ -6446,7 +6512,7 @@ The <strong>admin_status</strong> field can take any of the following values:
 </ul>
 Though on the <em>forum.message.requires_moderation</em> notification type it will always be set to <em>unreviewed</em>
 </div>
-<div class='mt5'>
+<div class="mt5">
 The <strong>discussable.discussable_type</strong> field can take any of the following values:
 <ul>
 <li>
@@ -6516,6 +6582,7 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 <li>events</li>
 <li>export_download_logs</li>
 <li>external_events</li>
+<li>flags</li>
 <li>import_batches</li>
 <li>labelings</li>
 <li>labels</li>
@@ -7776,7 +7843,8 @@ A Target block is a JSON object that has either the unique <strong>slug</strong>
 
 <p><code>PUT /api/v1/petitions/no-taxes-on-tea</code></p>
 
-<p>The request body should contain only the fields you would like to update, in JSON format. All other fields will be left unchanged.</p>
+<p>The JSON request body should contain one &quot;petition&quot; object, with only the fields you would like to update.
+All other fields will be left unchanged.</p>
 
 <p>The fields that can be changed this way are:</p>
 
