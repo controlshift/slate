@@ -389,7 +389,8 @@ Updates the content and/or settings of the petition whose slug is in the URL.
 
 `PUT /api/v1/petitions/no-taxes-on-tea`
 
-The request body should contain only the fields you would like to update, in JSON format. All other fields will be left unchanged.
+The JSON request body should contain one "petition" object, with only the fields you would like to update.
+All other fields will be left unchanged.
 
 The fields that can be changed this way are:
 
