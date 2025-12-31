@@ -25,6 +25,7 @@ includes:
   - authenticated_api/email_opt_in_types
   - authenticated_api/consent_content_versions
   - authenticated_api/members.md.erb
+  - authenticated_api/users.md.erb
   - authenticated_api/petitions.md.erb
   - authenticated_api/signatures.md.erb
   - authenticated_api/efforts.md.erb
