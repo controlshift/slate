@@ -1,0 +1,45 @@
+## User Accounts
+
+A user account is created when someone signs up with an email address and password on the web, or when they log in via Google or Facebook.
+
+User accounts are unique by email address. Each member has either 0 or 1 user account.
+
+<div></div>
+
+### Lookup by Facebook ID
+
+> GET response body for Lookup
+
+```json
+{
+  "user": {
+    "id": 123,
+    "email": "foo@bar.com",
+    "created_at": "2015-06-01T15:37:47Z",
+    "updated_at": "2017-07-01T11:23:45Z",
+    "member_id": 345,
+    "active_directory_id": null,
+    "facebook_id": "12345678901234",
+    "google_id": null,
+    "last_sign_in_at": "2018-07-02T12:23:12Z",
+    "current_sign_in_at": "2023-03-01T09:03:17Z",
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "phone_number": "555-555-5555",
+    "postcode": "12345",
+    "country": "US",
+    "locale": "en-US",
+    "activated": true,
+    "locked": false
+  }
+}
+```
+
+Find a user account by Facebook User ID.
+Note that a user account will only have a `facebook_id` if the user has used the "Log in with Facebook" feature.
+This does not necessarily mean that the account was _created_ via "Log in with Facebook";
+it is possible to use Facebook to log in to an existing user account.
+
+`GET /api/v1/users/lookup?facebook_id=12345678901234`
+
+<div></div>
