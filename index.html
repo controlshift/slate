@@ -596,6 +596,9 @@
                 <a href="#authenticated-rest-api-members" class="toc-h2 toc-link" data-title="Members">Members</a>
               </li>
               <li>
+                <a href="#authenticated-rest-api-user-accounts" class="toc-h2 toc-link" data-title="User Accounts">User Accounts</a>
+              </li>
+              <li>
                 <a href="#authenticated-rest-api-petitions" class="toc-h2 toc-link" data-title="Petitions">Petitions</a>
               </li>
               <li>
@@ -7210,6 +7213,47 @@ all associated signatures, attendee records, user accounts and other data held b
 <p><code>POST /api/v1/members/123/update_email_opt_in_type</code></p>
 
 <div></div>
+<h2 id='authenticated-rest-api-user-accounts'>User Accounts</h2>
+<p>A user account is created when someone signs up with an email address and password on the web, or when they log in via Google or Facebook.</p>
+
+<p>User accounts are unique by email address. Each member has either 0 or 1 user account.</p>
+
+<div></div>
+<h3 id='authenticated-rest-api-user-accounts-lookup-by-facebook-id'>Lookup by Facebook ID</h3>
+<blockquote>
+<p>GET response body for Lookup</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo@bar.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-01T15:37:47Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-01T11:23:45Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"member_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">345</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"active_directory_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"facebook_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"google_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_sign_in_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-02T12:23:12Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"current_sign_in_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-03-01T09:03:17Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-555-5555"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"activated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Find a user account by Facebook User ID.
+Note that a user account will only have a <code>facebook_id</code> if the user has used the &quot;Log in with Facebook&quot; feature.
+This does not necessarily mean that the account was <em>created</em> via &quot;Log in with Facebook&quot;;
+it is possible to use Facebook to log in to an existing user account.</p>
+
+<p><code>GET /api/v1/users/lookup?facebook_id=12345678901234</code></p>
+
+<div></div>
 <h2 id='authenticated-rest-api-petitions'>Petitions</h2>
 <p>Petition are pieces of content that can be signed by members.</p>
 <h3 id='authenticated-rest-api-petitions-show'>Show</h3>
@@ -8051,7 +8095,7 @@ destroyed.</p>
 
 <div></div>
 
-<h3 id='authenticated-rest-api-members-apply-label'>Apply Label</h3>
+<h3 id='authenticated-rest-api-user-accounts-apply-label'>Apply Label</h3>
 
 <blockquote>
 <p>POST request body</p>
@@ -8076,7 +8120,7 @@ destroyed.</p>
 
 <div></div>
 
-<h3 id='authenticated-rest-api-members-remove-label'>Remove Label</h3>
+<h3 id='authenticated-rest-api-user-accounts-remove-label'>Remove Label</h3>
 
 <p>Removes a Label from the petition.</p>
 
@@ -8088,7 +8132,7 @@ destroyed.</p>
 
 <p>This example would remove the &quot;We Love Tea!&quot; label from the petition.</p>
 
-<h3 id='authenticated-rest-api-members-assign-mentor'>Assign Mentor</h3>
+<h3 id='authenticated-rest-api-user-accounts-assign-mentor'>Assign Mentor</h3>
 
 <blockquote>
 <p>PUT request body</p>
@@ -8138,7 +8182,7 @@ destroyed.</p>
 
 <div></div>
 
-<h3 id='authenticated-rest-api-members-assign-reviewer'>Assign Reviewer</h3>
+<h3 id='authenticated-rest-api-user-accounts-assign-reviewer'>Assign Reviewer</h3>
 
 <p>To allow delegation of moderation tasks to specific people or teams, the platform allows specifying a reviewer for each petition.</p>
 
