@@ -154,7 +154,17 @@ Petition are pieces of content that can be signed by members.
         "slug": "boats",
         "name": "Boats"
       }
-    ]
+    ],
+    "bluesky_share_message": "Join us in supporting this petition!",
+    "facebook_share_description": "Help us stop the taxation of tea",
+    "facebook_share_title": "No Taxes on Tea",
+    "meta_title": "No Taxes on Tea - ControlShift",
+    "meta_description": "Sign our petition to stop tea taxation",
+    "twitter_share_description": "Stop taxing our tea!",
+    "twitter_share_message": "Sign this petition to end tea taxes",
+    "twitter_share_title": "No Taxes on Tea",
+    "web_share_api_share_message": "Check out this petition about tea taxes",
+    "whatsapp_share_message": "I just signed a petition about tea taxes. Join me!"
   }
 }
 ```
@@ -325,7 +335,17 @@ Get a paginated list of all petitions, including ones that are unlaunched or oth
         "slug": "end-colonialism-now",
         "title": "End Colonialism"
       }
-    ]
+    ],
+    "bluesky_share_message": null,
+    "facebook_share_description": null,
+    "facebook_share_title": null,
+    "meta_title": null,
+    "meta_description": null,
+    "twitter_share_description": null,
+    "twitter_share_message": null,
+    "twitter_share_title": null,
+    "web_share_api_share_message": null,
+    "whatsapp_share_message": null
   }
 }
 ```
@@ -398,6 +418,7 @@ Field | Type | Description
 ------|------|------------
 admin_events_status | String | Whether the petition creator can create events associated with the petition. Must be one of "on" (events can be created), "off" (events cannot be created), or "auto" (use the default setting based on moderation status and number of signatures).
 alias | String | Used for the petition's short URL. Setting `alias` to "foo" will result in a short URL of /p/foo
+bluesky_share_message | String | Custom message used when sharing the petition on Bluesky
 campaigner_contactable | Boolean | Whether members of the public can contact the petition creator via the public petition page
 can_download_signers | Boolean | Whether the petition creator can download information about petition signers
 categories_locked | Boolean | Petition creator cannot change which categories the petition is in
@@ -408,9 +429,13 @@ external_facebook_page | String | URL of a Facebook page associated with the pet
 external_facebook_page_locked | Boolean | Petition creator cannot change the Facebook page URL
 external_site | String | URL of a non-ControlShift page associated with the petition
 external_site_locked | Boolean | Petition creator cannot change the external site URL
+facebook_share_description | String | Custom description used when sharing the petition on Facebook
+facebook_share_title | String | Custom title used when sharing the petition on Facebook
 hide_petition_creator | Boolean | Do not display the petition creator's name or profile picture on the petition page
 hide_recent_signers | Boolean | Do not display the list of recent signers on the petition page
 hide_signature_form | Boolean | Turn off the form that allows people to sign the petition via the petition page
+meta_description | String | Custom meta description for the petition page (used for SEO and social media previews)
+meta_title | String | Custom meta title for the petition page (used for SEO and social media previews)
 partnerships | Array | List of partnerships this petition should be associated with, formatted like `[{"slug": "foo"}, {"slug": "bar"}]`. If the petition was associated with any partnerships that are not included in the list, it will be removed from those partnerships.
 petition_creator_name_override | String | Name to display for the petition creator on the petition page. Set to `null` to use the name from the petition creator's user account.
 redirect_to | String | If set, visitors to the petition page will be redirected to this URL
@@ -418,8 +443,13 @@ show_progress_bar | Boolean | Whether to show the signature progress bar on the 
 signature_count_add_amount | Integer | If set, the displayed signature total on the petition page will be this much higher than the actual number of signatures recorded by the platform. This is usually used to reflect signatures that were gathered elsewhere and cannot be added to the platform, or signers whose data has been anonymized. A negative number can be specified to subtract from the total.
 title | String | Petition title
 title_locked | Boolean | Petition creator cannot change the title
+twitter_share_description | String | Custom description used when sharing the petition on Twitter/X
+twitter_share_message | String | Custom message used when sharing the petition on Twitter/X
+twitter_share_title | String | Custom title used when sharing the petition on Twitter/X
+web_share_api_share_message | String | Custom message used when sharing the petition via the Web Share API
 what | String | Petition text in HTML format
 what_locked | Boolean | Petition creator cannot change the "what" field
+whatsapp_share_message | String | Custom message used when sharing the petition on WhatsApp
 who | String | Name of the person this petition is targeting. Petitions associated with a decision maker will not necessarily use this setting.
 who_locked | Boolean | Petition creator cannot change the "who" field
 why | String | "Why is this important?" text in HTML format
