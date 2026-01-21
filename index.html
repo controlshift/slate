@@ -394,6 +394,9 @@
                 <a href="#webhook-endpoints-event-created-requires_moderation" class="toc-h2 toc-link" data-title="event.created.requires_moderation">event.created.requires_moderation</a>
               </li>
               <li>
+                <a href="#webhook-endpoints-event-flagged" class="toc-h2 toc-link" data-title="event.flagged">event.flagged</a>
+              </li>
+              <li>
                 <a href="#webhook-endpoints-event-member_email_reply_received" class="toc-h2 toc-link" data-title="event.member_email_reply_received">event.member_email_reply_received</a>
               </li>
               <li>
@@ -2664,6 +2667,10 @@ Cloud for customers with a point of presence in the same AWS Region. Contact sup
 <td>A new event requires moderation</td>
 </tr>
 <tr>
+<td><a href="#webhook-endpoints-event-flagged">event.flagged</a></td>
+<td>An event is flagged for the first or fifth time</td>
+</tr>
+<tr>
 <td><a href="#webhook-endpoints-event-member_email_reply_received">event.member_email_reply_received</a></td>
 <td>A member replied to an event email</td>
 </tr>
@@ -3245,6 +3252,101 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>A new event requires moderation</p>
+<h2 id='webhook-endpoints-event-flagged'>event.flagged</h2>
+<blockquote>
+<p>Example payload for <code>event.flagged</code>:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"event.flagged"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"petition-hand-in"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Petition Hand In"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-29T18:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-29T22:00:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"virtual"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40.7638667"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-73.8098213"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11354"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"locality"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"155-06 Roosevelt Ave, Flushing, NY 11354, États-Unis"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Roosevelt Avenue"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"155-06"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-23T19:09:41Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"location_venue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Queens Public Library at McGoldrick"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unconfirmed_location"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"host"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jenny@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jennifer Goines"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jennifer"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Goines"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"opt_in_sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-555-5555"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"join_organisation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pre_checked_checkbox"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"mailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcd12345"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"sms_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unchecked_checkbox"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone_number_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"eu_data_processing_consent"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"consent_content_version"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc345"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"consent_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"explicit"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/events/petition-hand-in"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unreviewed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"administered_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"admin_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-25T13:11:02Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-26T17:32:15Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shifts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lunch"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-29T18:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-29T20:00:00Z"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"debrief"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-29T20:00:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"end_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-29T22:00:00Z"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"staff_led_organiser_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organisation"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d34smfggpfnvat.cloudfront.net/events/images/2656/hero/_uploads_7db6d361-d3a4-4ba3-8d82-7ec3d432eea6_gettyimages-469869876.jpg20210705-641506-dcm2y0.jpg?1625504128"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"image_caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The library at Roosevelt Avenue"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"petition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"brighter-lights-for-library"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"mentor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Richard Rodriguez"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"richard@dogooders.org"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"jid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"030ee43a4fa9788e084d9cfc"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>An event is flagged for the first or fifth time</p>
 <h2 id='webhook-endpoints-event-member_email_reply_received'>event.member_email_reply_received</h2>
 <blockquote>
 <p>Example payload for <code>event.member_email_reply_received</code>:</p>
@@ -3674,8 +3776,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3743,8 +3844,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3812,8 +3912,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3881,8 +3980,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3995,8 +4093,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local_chapter.join_request.requires_moderation"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"notification_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all_messages"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unreviewed"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"administered_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-06-25T15:03:14Z"</span><span class="p">,</span><span class="w">
@@ -4022,8 +4119,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
       </span><span class="nl">"opt_in_sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123-456-7890"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10015"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
       </span><span class="nl">"email_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"radio_sure"</span><span class="p">,</span><span class="w">
@@ -4142,8 +4238,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local_chapter.organiser_request.created"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"new_organiser_question_responses"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"new_organiser_question_responses"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T12:38:46Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unreviewed"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"administered_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -4178,8 +4273,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local_chapter.organiser_request.approved"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"new_organiser_question_responses"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"new_organiser_question_responses"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T12:38:46Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"administered_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T08:15:46Z"</span><span class="p">,</span><span class="w">
@@ -5960,8 +6054,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"last_signed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6064,8 +6157,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"last_signed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6168,8 +6260,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"last_signed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6272,8 +6363,7 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T09:01:23Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"double_opt_in"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"last_signed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6602,7 +6692,6 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 <li>partnership_admins</li>
 <li>partnership_subscriptions</li>
 <li>partnerships</li>
-<li>petition_flags</li>
 <li>petition_starts</li>
 <li>petitions</li>
 <li>regions</li>
@@ -7407,7 +7496,17 @@ it is possible to use Facebook to log in to an existing user account.</p>
         </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boats"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Boats"</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"bluesky_share_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Join us in supporting this petition!"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"facebook_share_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Help us stop the taxation of tea"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"facebook_share_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No Taxes on Tea"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"meta_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No Taxes on Tea - ControlShift"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"meta_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sign our petition to stop tea taxation"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"twitter_share_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stop taxing our tea!"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"twitter_share_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sign this petition to end tea taxes"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"twitter_share_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No Taxes on Tea"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"web_share_api_share_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Check out this petition about tea taxes"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"whatsapp_share_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I just signed a petition about tea taxes. Join me!"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -7573,7 +7672,17 @@ By default the first page is returned.</p>
         </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"end-colonialism-now"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"End Colonialism"</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"bluesky_share_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"facebook_share_description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"facebook_share_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"meta_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"meta_description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"twitter_share_description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"twitter_share_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"twitter_share_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"web_share_api_share_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"whatsapp_share_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -7910,6 +8019,11 @@ All other fields will be left unchanged.</p>
 <td>Used for the petition&#39;s short URL. Setting <code>alias</code> to &quot;foo&quot; will result in a short URL of /p/foo</td>
 </tr>
 <tr>
+<td>bluesky_share_message</td>
+<td>String</td>
+<td>Custom message used when sharing the petition on Bluesky</td>
+</tr>
+<tr>
 <td>campaigner_contactable</td>
 <td>Boolean</td>
 <td>Whether members of the public can contact the petition creator via the public petition page</td>
@@ -7960,6 +8074,16 @@ All other fields will be left unchanged.</p>
 <td>Petition creator cannot change the external site URL</td>
 </tr>
 <tr>
+<td>facebook_share_description</td>
+<td>String</td>
+<td>Custom description used when sharing the petition on Facebook</td>
+</tr>
+<tr>
+<td>facebook_share_title</td>
+<td>String</td>
+<td>Custom title used when sharing the petition on Facebook</td>
+</tr>
+<tr>
 <td>hide_petition_creator</td>
 <td>Boolean</td>
 <td>Do not display the petition creator&#39;s name or profile picture on the petition page</td>
@@ -7973,6 +8097,16 @@ All other fields will be left unchanged.</p>
 <td>hide_signature_form</td>
 <td>Boolean</td>
 <td>Turn off the form that allows people to sign the petition via the petition page</td>
+</tr>
+<tr>
+<td>meta_description</td>
+<td>String</td>
+<td>Custom meta description for the petition page (used for SEO and social media previews)</td>
+</tr>
+<tr>
+<td>meta_title</td>
+<td>String</td>
+<td>Custom meta title for the petition page (used for SEO and social media previews)</td>
 </tr>
 <tr>
 <td>partnerships</td>
@@ -8010,6 +8144,26 @@ All other fields will be left unchanged.</p>
 <td>Petition creator cannot change the title</td>
 </tr>
 <tr>
+<td>twitter_share_description</td>
+<td>String</td>
+<td>Custom description used when sharing the petition on Twitter/X</td>
+</tr>
+<tr>
+<td>twitter_share_message</td>
+<td>String</td>
+<td>Custom message used when sharing the petition on Twitter/X</td>
+</tr>
+<tr>
+<td>twitter_share_title</td>
+<td>String</td>
+<td>Custom title used when sharing the petition on Twitter/X</td>
+</tr>
+<tr>
+<td>web_share_api_share_message</td>
+<td>String</td>
+<td>Custom message used when sharing the petition via the Web Share API</td>
+</tr>
+<tr>
 <td>what</td>
 <td>String</td>
 <td>Petition text in HTML format</td>
@@ -8018,6 +8172,11 @@ All other fields will be left unchanged.</p>
 <td>what_locked</td>
 <td>Boolean</td>
 <td>Petition creator cannot change the &quot;what&quot; field</td>
+</tr>
+<tr>
+<td>whatsapp_share_message</td>
+<td>String</td>
+<td>Custom message used when sharing the petition on WhatsApp</td>
 </tr>
 <tr>
 <td>who</td>
@@ -9345,7 +9504,17 @@ the partnership <code>slug</code> is <code>new-york-for-clean-water</code>.</p>
         </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"repair-the-yellow-brick-road-1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/repair-the-yellow-brick-road-1"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"oz-organizer-help"</span><span class="p">]</span><span class="w">
+      </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"oz-organizer-help"</span><span class="p">],</span><span class="w">
+      </span><span class="nl">"bluesky_share_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Join us at this event!"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"facebook_share_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Come deliver the petition with us"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"facebook_share_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deliver the Petition to the Wizard"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"meta_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deliver the Petition to the Wizard - Event"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"meta_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Join us as we travel to the Emerald City"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"twitter_share_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Join us in the Emerald City!"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"twitter_share_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Attending this event to deliver our petition"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"twitter_share_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deliver the Petition to the Wizard"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"web_share_api_share_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Check out this event in the Emerald City"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"whatsapp_share_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I'm attending this event to deliver the petition. Join me!"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="err">...</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -9418,7 +9587,17 @@ By default the first page is returned.</p>
       </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"repair-the-yellow-brick-road-1"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demo.controlshiftlabs.com/petitions/repair-the-yellow-brick-road-1"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"oz-organizer-help"</span><span class="p">]</span><span class="w">
+    </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"oz-organizer-help"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"bluesky_share_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Join us at this event!"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"facebook_share_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Come deliver the petition with us"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"facebook_share_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deliver the Petition to the Wizard"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"meta_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deliver the Petition to the Wizard - Event"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"meta_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Join us as we travel to the Emerald City"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"twitter_share_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Join us in the Emerald City!"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"twitter_share_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Attending this event to deliver our petition"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"twitter_share_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deliver the Petition to the Wizard"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"web_share_api_share_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Check out this event in the Emerald City"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"whatsapp_share_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I'm attending this event to deliver the petition. Join me!"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -9535,7 +9714,17 @@ the event <code>slug</code> is <code>chapter-meeting-1</code>.</p>
     </span><span class="nl">"sharing_disabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"web_conference_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"mentor"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"reviewer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="nl">"reviewer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bluesky_share_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"facebook_share_description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"facebook_share_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"meta_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"meta_description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"twitter_share_description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"twitter_share_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"twitter_share_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"web_share_api_share_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"whatsapp_share_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -9728,6 +9917,11 @@ To update an event after creation, use the returned <code>slug</code> with the <
 </tr>
 </thead><tbody>
 <tr>
+<td>bluesky_share_message</td>
+<td>String</td>
+<td>Custom message used when sharing the event on Bluesky</td>
+</tr>
+<tr>
 <td>campaigner_contactable</td>
 <td>Boolean</td>
 <td>Whether members of the public can contact the event host via the public event page</td>
@@ -9746,6 +9940,16 @@ To update an event after creation, use the returned <code>slug</code> with the <
 <td>extra_location_info</td>
 <td>String</td>
 <td>Additional non-address information about the event&#39;s location, e.g. &quot;7th floor&quot; or &quot;Park in the back parking lot&quot;</td>
+</tr>
+<tr>
+<td>facebook_share_description</td>
+<td>String</td>
+<td>Custom description used when sharing the event on Facebook</td>
+</tr>
+<tr>
+<td>facebook_share_title</td>
+<td>String</td>
+<td>Custom title used when sharing the event on Facebook</td>
 </tr>
 <tr>
 <td>forum_enabled</td>
@@ -9778,6 +9982,16 @@ To update an event after creation, use the returned <code>slug</code> with the <
 <td>Limit on how many people, besides the host, may sign up for this event. Set to <code>null</code> for no limit.</td>
 </tr>
 <tr>
+<td>meta_description</td>
+<td>String</td>
+<td>Custom meta description for the event page (used for SEO and social media previews)</td>
+</tr>
+<tr>
+<td>meta_title</td>
+<td>String</td>
+<td>Custom meta title for the event page (used for SEO and social media previews)</td>
+</tr>
+<tr>
 <td>redirect_to</td>
 <td>String</td>
 <td>If set, visitors to the event page will be redirected to this URL</td>
@@ -9793,9 +10007,34 @@ To update an event after creation, use the returned <code>slug</code> with the <
 <td>Event title</td>
 </tr>
 <tr>
+<td>twitter_share_description</td>
+<td>String</td>
+<td>Custom description used when sharing the event on Twitter/X</td>
+</tr>
+<tr>
+<td>twitter_share_message</td>
+<td>String</td>
+<td>Custom message used when sharing the event on Twitter/X</td>
+</tr>
+<tr>
+<td>twitter_share_title</td>
+<td>String</td>
+<td>Custom title used when sharing the event on Twitter/X</td>
+</tr>
+<tr>
 <td>web_conference_url</td>
 <td>String</td>
 <td>Video call or web conference tool URL for attendees to access the event</td>
+</tr>
+<tr>
+<td>web_share_api_share_message</td>
+<td>String</td>
+<td>Custom message used when sharing the event via the Web Share API</td>
+</tr>
+<tr>
+<td>whatsapp_share_message</td>
+<td>String</td>
+<td>Custom message used when sharing the event on WhatsApp</td>
 </tr>
 </tbody></table>
 
