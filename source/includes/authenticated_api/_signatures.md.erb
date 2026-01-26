@@ -354,6 +354,100 @@ signatures | an array of signature results
 
 <div></div>
 
+### List by Facebook ID
+
+> GET response body for List by Facebook ID
+
+```json
+{
+  "signatures": [
+    {
+      "bucket": "",
+      "country_without_fallback": "US",
+      "from_embed": null,
+      "last_signed_at": "2020-02-01T10:00:00Z",
+      "user_agent": null,
+      "deleted_at": null,
+      "additional_fields": {},
+      "id": 123,
+      "country": "US",
+      "created_at": "2020-02-01T10:00:00Z",
+      "updated_at": "2020-02-01T10:00:00Z",
+      "unsubscribe_at": null,
+      "email": "foo@bar.com",
+      "confirmed_at": null,
+      "confirmed_reason": null,
+      "first_name": "Foo",
+      "join_organisation": true,
+      "last_name": "Bar",
+      "phone_number": "555-555-5555",
+      "postcode": "10010",
+      "source": "",
+      "token": "abcDEFghi123456789jklMNO",
+      "user_ip": "123.123.123.123",
+      "utm_campaign": null,
+      "utm_content": null,
+      "utm_medium": null,
+      "utm_source": null,
+      "utm_term": null,
+      "eu_data_processing_consent": false,
+      "consent_content_version": null,
+      "data_processing_consent_type": "explicit",
+      "partnership_opt_ins": [],
+      "email_opt_in_type": {
+        "context": "web_form",
+        "kind": "radio_sure",
+        "mailable": true,
+        "external_id": null,
+        "active": true
+      },
+      "member": {
+        "id": 111222333,
+        "created_at": "2020-02-01T10:00:00Z"
+      },
+      "message_to_target": {
+        "admin_reason": null,
+        "admin_status": "approved",
+        "administered_at": "2020-02-01T10:00:19Z",
+        "subject": "King George, Don't Tax our Tea!",
+        "text": "We don't want taxation without representation."
+      },
+      "petition": {
+        "url": "https://your-organisation.controlshiftlabs.com/petitions/no-taxes-on-tea",
+        "slug": "no-taxes-on-tea"
+      }
+    }
+  ],
+  "meta": {
+    "current_page": 1,
+    "total_pages": 1,
+    "previous_page": null,
+    "next_page": null
+  }
+}
+```
+
+List signatures within your organisation by Facebook ID. This endpoint allows you to find all signatures across all petitions (or optionally a specific petition) made by a member with a particular Facebook ID.
+
+<%= partial "includes/shared/pagination.md" %>
+
+Hash     | Description
+--------- | -------
+meta      | pagination information
+signatures | an array of signature results
+
+`GET /api/v1/signatures?facebook_id=1234567890`
+
+`GET /api/v1/signatures?facebook_id=1234567890&petition_slug=no-taxes-on-tea`
+
+Query Parameter | Description | Required?
+--------- | ------- | ---------
+facebook_id | The Facebook ID of the member whose signatures you want to retrieve | Yes
+petition_slug | Optional. If provided, will only return signatures for the specified petition | No
+page | Page number for pagination | No
+
+
+<div></div>
 
 ### Unsubscribe
 
