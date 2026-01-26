@@ -427,7 +427,11 @@ signatures | an array of signature results
 }
 ```
 
-List signatures within your organisation by Facebook ID. This endpoint allows you to find all signatures across all petitions (or optionally a specific petition) made by a member with a particular Facebook ID.
+List signatures within your organisation that were created via the Sign With Facebook feature from a particular Facebook account. This endpoint searches for signatures based on the Facebook ID that was recorded when someone signed a petition using the old Sign With Facebook authentication method.
+
+This is not a general member lookup - it specifically finds signatures created through Facebook authentication, not all signatures from a member who happens to have a Facebook account linked.
+
+This endpoint is primarily useful for responding to data deletion requests from Facebook, where you need to identify and potentially remove all signatures associated with a specific Facebook account.
 
 <%= partial "includes/shared/pagination.md" %>
 
