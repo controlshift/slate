@@ -5,6 +5,12 @@ This can be a helpful tool for answering high-level questions about member engag
 Once your data is in an external data warehouse replica analysts can use SQL to answer questions about activity or join it
 with data from other sources.
 
+<aside class="warning">
+Note that this is <strong>not</strong> a real-time replica of the database.
+A fresh copy of the data is provided nightly, but in between nightly exports, only <strong>inserts</strong> of new rows are exported, so updates or deletions will not be reflected until the next day.
+If real-time data is required, we recommend consuming the specific relevant webhooks (e.g. <code>signature.updated</code>) rather than relying on the incremental bulk data exports.
+</aside>
+
 We provide a set of automated bulk exports and webhooks, along with examples (linked below) on how to use them.
 
 It's possible to consume the Bulk Data API in its underlying format as CSV files in an S3 bucket or as a higher level
@@ -20,8 +26,10 @@ your technical architecture. Since we expose the file events as standard HTTPS w
 ## Export schedule and webhooks
 
 Every night, we'll export the most up-to-date version of all of your data into a set of CSV files, one for each internal ControlShift table. The [data.full_table_exported](#webhook-endpoints-data-full_table_exported) indicates such an export. These full CSV files should _replace_ the existing data in your mirror database.
+<strong>Refreshing your mirror database with the nightly full export is essential to ensuring an accurate copy of the data.</strong>
 
-Additionally, once a minute, we'll produce CSV files with any new rows that have been _added_ to ControlShift's internal tables. The [data.incremental_table_exported](#webhook-endpoints-data-incremental_table_exported) webhooks indicates a set of these added-rows exports. Note that the incremental exports do _not_ include any updates or deletions of existing rows; you'll have to wait for the nightly export to receive fresh data with updates and deletions included.
+Additionally, once a minute, we'll produce CSV files with any new rows that have been _added_ to ControlShift's internal tables. The [data.incremental_table_exported](#webhook-endpoints-data-incremental_table_exported) webhooks indicates a set of these added-rows exports.
+Remember, the incremental exports do _not_ include any updates or deletions of existing rows; you'll have to wait for the nightly export to receive fresh data with updates and deletions included.
 
 <aside class="notice">
 Bulk data webhooks should be automatically included when adding a new webhook endpoint. Please contact support to report any issues with bulk data webhook generation. For testing, you can manually trigger these wehbooks by visiting <code>https://&lt;your controlshift instance&gt;/org/settings/integrations/webhook_endpoints</code> and clicking on "Trigger" under "Test Nightly Bulk Data Export Webhook".
