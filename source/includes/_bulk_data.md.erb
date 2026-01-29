@@ -2,7 +2,7 @@
 
 To perform advanced reporting or analytics on your ControlShift data, you can mirror all your data into an external database.
 This can be a helpful tool for answering high-level questions about member engagement or integrating activity with data from other tools.
-Once your data is in an external data warehouse replica analysts can use SQL to answer questions about activity or join it
+Once your data is in an external data warehouse replica, analysts can use SQL to answer questions about activity or join it
 with data from other sources.
 
 <aside class="warning">
@@ -11,7 +11,34 @@ A fresh copy of the data is provided nightly, but in between nightly exports, on
 If real-time data is required, we recommend consuming the specific relevant webhooks (e.g. <code>signature.updated</code>) rather than relying on the incremental bulk data exports.
 </aside>
 
-We provide a set of automated bulk exports and webhooks, along with examples (linked below) on how to use them.
+To get the data into your external system, you'll need to consume **bulk data exports**. There are two types of exports:
+
+- The **full export** happens once a day, and includes a complete copy of the current data in the tables.
+- The **incremental export** happens once a _minute_, and includes only rows that have been added to the table in the last minute.
+
+A bulk data export (full or incremental) is a set of CSV files, one for each [ControlShift table](#bulk-data-bulk-data-data-schemas).
+
+## How to use full and incremental exports
+The data in the full exports should _replace_ the existing data in your mirror database.
+<strong>Refreshing your mirror database with the nightly full export is essential to ensuring an accurate copy of the data.</strong>
+
+If you're using the incremental exports, the data in them should be _added_ to your mirror database.
+Remember, the incremental exports do _not_ include any updates or deletions of existing rows; you'll have to wait for the nightly export to receive fresh data with updates and deletions included.
+
+## Webhooks
+
+When a new bulk data export is ready, you'll receive a webhook to each of your webhook endpoints.
+
+- The webhook for full exports is [`data.full_table_exported`](#webhook-endpoints-data-full_table_exported).
+- The webhook for incremental exports is [`data.incremental_table_exported`](#webhook-endpoints-data-incremental_table_exported)
+
+<aside class="notice">
+Bulk data webhooks should be automatically included when adding a new webhook endpoint. Please contact support to report any issues with bulk data webhook generation. For testing, you can manually trigger these wehbooks by visiting <code>https://&lt;your controlshift instance&gt;/org/settings/integrations/webhook_endpoints</code> and clicking on "Trigger" under "Test Nightly Bulk Data Export Webhook".
+</aside>
+
+Your system should listen for those webhooks to know when and where to get the exported data.
+
+## How to get the exported data
 
 It's possible to consume the Bulk Data API in its underlying format as CSV files in an S3 bucket or as a higher level
 HTTPS Webhook API that is not specific to AWS or S3. Many data warehouse integration technologies like [BigQuery S3 Transfers](https://cloud.google.com/bigquery/docs/s3-transfer),
@@ -23,31 +50,9 @@ We provide a [ControlShift to Redshift Pipeline](#bulk-data-controlshift-to-reds
 Similar strategies can be used to mirror your data into other data warehouses. We've designed the underlying APIs to work flexibly regardless of
 your technical architecture. Since we expose the file events as standard HTTPS webhooks they should be compatible with any programming language.
 
-## Export schedule and webhooks
-
-Every night, we'll export the most up-to-date version of all of your data into a set of CSV files, one for each internal ControlShift table. The [data.full_table_exported](#webhook-endpoints-data-full_table_exported) indicates such an export. These full CSV files should _replace_ the existing data in your mirror database.
-<strong>Refreshing your mirror database with the nightly full export is essential to ensuring an accurate copy of the data.</strong>
-
-Additionally, once a minute, we'll produce CSV files with any new rows that have been _added_ to ControlShift's internal tables. The [data.incremental_table_exported](#webhook-endpoints-data-incremental_table_exported) webhooks indicates a set of these added-rows exports.
-Remember, the incremental exports do _not_ include any updates or deletions of existing rows; you'll have to wait for the nightly export to receive fresh data with updates and deletions included.
-
-<aside class="notice">
-Bulk data webhooks should be automatically included when adding a new webhook endpoint. Please contact support to report any issues with bulk data webhook generation. For testing, you can manually trigger these wehbooks by visiting <code>https://&lt;your controlshift instance&gt;/org/settings/integrations/webhook_endpoints</code> and clicking on "Trigger" under "Test Nightly Bulk Data Export Webhook".
-</aside>
-
-## Bulk Data Data Schemas
-
-The bulk data webhooks include exports of the following tables:
-
-<% data.export_tables['tables'].each do |tbl_info| %>
-* <%= tbl_info['table']['name'] %>
-<% end %>
-
-For full information on the schema of each table, use the `/api/bulk_data/schema.json` API endpoint.
-
 ## Bulk Data Files
 
-Each table exposed by the bulk data API is made available as a CSV file with the URL to download each file sent via webhook.
+Each table exposed by the bulk data API is made available as a CSV file, with the URL to download each file sent via webhook.
 
 We expire access to data 6 hours after it has been generated. This means that if you are building an automated system
 to ingest data from this API it must process webhook notifications within 6 hours.
@@ -74,6 +79,17 @@ Finally, when the compression for data exports is enabled the filename includes 
 ### Files compression
 
 When the **Compress bulk data exports** option is enabled (available at the Webhooks integration page), incremental and nightly bulk data export files will be compressed in [`bzip2` format](https://sourceware.org/bzip2/). This will improve the performance for fetching the files from S3 since they will be considerably smaller.
+
+
+## Bulk Data Data Schemas
+
+The bulk data webhooks include exports of the following tables:
+
+<% data.export_tables['tables'].each do |tbl_info| %>
+* <%= tbl_info['table']['name'] %>
+<% end %>
+
+For full information on the schema of each table, use the `/api/bulk_data/schema.json` API endpoint.
 
 ### Interpreting the share_clicks table
 
