@@ -38,7 +38,7 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 
 Your system should listen for those webhooks to know when and where to get the exported data.
 
-## How to get the exported data
+## Processing the exported data
 
 It's possible to consume the Bulk Data API in its underlying format as CSV files in an S3 bucket or as a higher level
 HTTPS Webhook API that is not specific to AWS or S3. Many data warehouse integration technologies like [BigQuery S3 Transfers](https://cloud.google.com/bigquery/docs/s3-transfer),
@@ -50,7 +50,7 @@ We provide a [ControlShift to Redshift Pipeline](#bulk-data-controlshift-to-reds
 Similar strategies can be used to mirror your data into other data warehouses. We've designed the underlying APIs to work flexibly regardless of
 your technical architecture. Since we expose the file events as standard HTTPS webhooks they should be compatible with any programming language.
 
-## Bulk Data Files
+## Bulk data files
 
 Each table exposed by the bulk data API is made available as a CSV file, with the URL to download each file sent via webhook.
 
@@ -81,7 +81,7 @@ Finally, when the compression for data exports is enabled the filename includes 
 When the **Compress bulk data exports** option is enabled (available at the Webhooks integration page), incremental and nightly bulk data export files will be compressed in [`bzip2` format](https://sourceware.org/bzip2/). This will improve the performance for fetching the files from S3 since they will be considerably smaller.
 
 
-## Bulk Data Data Schemas
+## Data schemas
 
 The bulk data webhooks include exports of the following tables:
 
@@ -159,7 +159,7 @@ Additionally the following columns apply for all kinds of unsubscribe:
 | created_at | When the unsubscribe was recorded in the platform. |
 | updated_at | Same as `created_at` as unsubscribe records cannot be updated after creation. |
 
-## ControlShift to Redshift Pipeline
+## ControlShift to Redshift pipeline
 
 Setting up an Amazon Redshift integration is a great way to learn more about the actions your members are taking or perform
 sophisticated analytics, but it is an advanced topic that requires knowledge of Amazon Web Services, SQL, and Terraform.
