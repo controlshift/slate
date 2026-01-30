@@ -7,7 +7,7 @@ with data from other sources.
 
 <aside class="warning">
 Note that this is <strong>not</strong> a real-time replica of the database.
-A fresh copy of the data is provided nightly, but in between nightly exports, only <strong>inserts</strong> of new rows are exported, so updates or deletions will not be reflected until the next day.
+A fresh copy of the data is provided nightly, but in between nightly exports, only <strong>inserts</strong> of new rows are exported. Updates and deletions will only be reflected in the nightly export.
 If real-time data is required, we recommend consuming the specific relevant webhooks (e.g. <code>signature.updated</code>) rather than relying on the incremental bulk data exports.
 </aside>
 
