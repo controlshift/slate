@@ -564,16 +564,22 @@
         <a href="#bulk-data" class="toc-h1 toc-link" data-title="Bulk Data">Bulk Data</a>
           <ul class="toc-list-h2">
               <li>
-                <a href="#bulk-data-export-schedule-and-webhooks" class="toc-h2 toc-link" data-title="Export schedule and webhooks">Export schedule and webhooks</a>
+                <a href="#bulk-data-how-to-use-full-and-incremental-exports" class="toc-h2 toc-link" data-title="How to use full and incremental exports">How to use full and incremental exports</a>
               </li>
               <li>
-                <a href="#bulk-data-bulk-data-data-schemas" class="toc-h2 toc-link" data-title="Bulk Data Data Schemas">Bulk Data Data Schemas</a>
+                <a href="#bulk-data-webhooks" class="toc-h2 toc-link" data-title="Webhooks">Webhooks</a>
               </li>
               <li>
-                <a href="#bulk-data-bulk-data-files" class="toc-h2 toc-link" data-title="Bulk Data Files">Bulk Data Files</a>
+                <a href="#bulk-data-bulk-data-files" class="toc-h2 toc-link" data-title="Bulk data files">Bulk data files</a>
               </li>
               <li>
-                <a href="#bulk-data-controlshift-to-redshift-pipeline" class="toc-h2 toc-link" data-title="ControlShift to Redshift Pipeline">ControlShift to Redshift Pipeline</a>
+                <a href="#bulk-data-processing-the-exported-data" class="toc-h2 toc-link" data-title="Processing the exported data">Processing the exported data</a>
+              </li>
+              <li>
+                <a href="#bulk-data-data-schemas" class="toc-h2 toc-link" data-title="Data schemas">Data schemas</a>
+              </li>
+              <li>
+                <a href="#bulk-data-controlshift-to-redshift-pipeline" class="toc-h2 toc-link" data-title="ControlShift to Redshift pipeline">ControlShift to Redshift pipeline</a>
               </li>
           </ul>
       </li>
@@ -3776,7 +3782,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3844,7 +3851,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3912,7 +3920,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3980,7 +3989,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2919ec5f25d493c19690a21135d7fd902a336927"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4093,7 +4103,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local_chapter.join_request.requires_moderation"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"notification_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all_messages"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unreviewed"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"administered_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-06-25T15:03:14Z"</span><span class="p">,</span><span class="w">
@@ -4119,7 +4130,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
       </span><span class="nl">"opt_in_sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123-456-7890"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10015"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="nl">"email_opt_in_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web_form"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"radio_sure"</span><span class="p">,</span><span class="w">
@@ -4238,7 +4250,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local_chapter.organiser_request.created"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"new_organiser_question_responses"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"new_organiser_question_responses"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T12:38:46Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unreviewed"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"administered_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -4273,7 +4286,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local_chapter.organiser_request.approved"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"new_organiser_question_responses"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"new_organiser_question_responses"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T12:38:46Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"admin_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"administered_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T08:15:46Z"</span><span class="p">,</span><span class="w">
@@ -6054,7 +6068,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"last_signed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6157,7 +6172,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"last_signed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6260,7 +6276,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"last_signed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6363,7 +6380,8 @@ URL is encoded using (7-bit) ASCII and some characters will be escaped (i.e.: &#
     </span><span class="nl">"confirmed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T09:01:23Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"confirmed_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"double_opt_in"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"last_signed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-03T13:30:01Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"additional_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"partnership_opt_ins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnership"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6620,11 +6638,71 @@ The <strong>discussable.discussable_type</strong> field can take any of the foll
 <h1 id='bulk-data'>Bulk Data</h1>
 <p>To perform advanced reporting or analytics on your ControlShift data, you can mirror all your data into an external database.
 This can be a helpful tool for answering high-level questions about member engagement or integrating activity with data from other tools.
-Once your data is in an external data warehouse replica analysts can use SQL to answer questions about activity or join it
+Once your data is in an external data warehouse replica, analysts can use SQL to answer questions about activity or join it
 with data from other sources.</p>
 
-<p>We provide a set of automated bulk exports and webhooks, along with examples (linked below) on how to use them.</p>
+<aside class="warning">
+Note that this is <strong>not</strong> a real-time replica of the database.
+A fresh copy of the data is provided nightly, but in between nightly exports, only <strong>inserts</strong> of new rows are exported. Updates and deletions will only be reflected in the nightly export.
+If real-time data is required, we recommend consuming the specific relevant webhooks (e.g. <code>signature.updated</code>) rather than relying on the incremental bulk data exports.
+</aside>
 
+<p>To get the data into your external system, you&#39;ll need to consume <strong>bulk data exports</strong>. There are two types of exports:</p>
+
+<ul>
+<li>The <strong>full export</strong> happens once a day, and includes a <em>complete</em> copy of the current data in the tables.</li>
+<li>The <strong>incremental export</strong> happens once a <em>minute</em>, and includes only rows that have been <em>added</em> to the table in the last minute.</li>
+</ul>
+
+<p>A bulk data export (full or incremental) is a set of CSV files, one for each <a href="#bulk-data-bulk-data-data-schemas">ControlShift table</a>.</p>
+<h2 id='bulk-data-how-to-use-full-and-incremental-exports'>How to use full and incremental exports</h2>
+<p>The data in the full exports should <em>replace</em> the existing data in your mirror database.
+<strong>Refreshing your mirror database with the nightly full export is essential to ensuring an accurate copy of the data.</strong></p>
+
+<p>If you&#39;re using the incremental exports, the data in them should be <em>added</em> to your mirror database.
+Remember, the incremental exports do <em>not</em> include any updates or deletions of existing rows; you&#39;ll have to wait for the nightly export to receive fresh data with updates and deletions included.</p>
+<h2 id='bulk-data-webhooks'>Webhooks</h2>
+<p>When a new bulk data export is ready, you&#39;ll receive a webhook to each of your webhook endpoints.</p>
+
+<ul>
+<li>The webhook for full exports is <a href="#webhook-endpoints-data-full_table_exported"><code>data.full_table_exported</code></a>.</li>
+<li>The webhook for incremental exports is <a href="#webhook-endpoints-data-incremental_table_exported"><code>data.incremental_table_exported</code></a></li>
+</ul>
+
+<aside class="notice">
+Bulk data webhooks should be automatically included when adding a new webhook endpoint. Please contact support to report any issues with bulk data webhook generation. For testing, you can manually trigger these wehbooks by visiting <code>https://&lt;your controlshift instance&gt;/org/settings/integrations/webhook_endpoints</code> and clicking on "Trigger" under "Test Nightly Bulk Data Export Webhook".
+</aside>
+
+<p>Your system should listen for those webhooks to know when and where to get the exported data.</p>
+<h2 id='bulk-data-bulk-data-files'>Bulk data files</h2>
+<p>Each table exposed by the bulk data API is made available as a CSV file, with the URL to download each file sent via webhook.</p>
+
+<p>We expire access to data 6 hours after it has been generated. This means that if you are building an automated system
+to ingest data from this API it must process webhook notifications within 6 hours.</p>
+
+<p>Once webhook data has expired, the download URLs will return a 403 error response.</p>
+
+<p>The files on S3 can be accessed directly before they are expired by using the following URL format:</p>
+
+<p><strong>Incremental table export:</strong><br>
+<code>https://&lt;data exports bucket&gt;.s3.amazonaws.com/&lt;your organization slug&gt;/incremental/&lt;table name&gt;/&lt;date in YYYYMMDD format&gt;/&lt;table name&gt;_&lt;timestamp&gt;.csv</code></p>
+
+<p><strong>Full table export:</strong><br>
+<code>https://&lt;data exports bucket&gt;.s3.amazonaws.com/&lt;your organization slug&gt;/full/&lt;table name&gt;/&lt;date in YYYYMMDD format&gt;/&lt;table name&gt;_&lt;timestamp&gt;.csv</code></p>
+
+<p>Where <code>&lt;data exports bucket&gt;</code> depends on which data center your organization is hosted on:</p>
+
+<ul>
+<li>For organizations hosted in the <strong>US</strong> the bucket is: <code>agra-data-exports-production</code></li>
+<li>For organizations hosted in the <strong>EU</strong> the bucket is: <code>agra-data-exports-production-eu-central-1</code></li>
+</ul>
+
+<p>The value for <code>&lt;your organization slug&gt;</code> is the identifier for your organization within the ControlShift platform. You can find this value using the <a href="#authenticated-rest-api-organisation">Organization Retrieve API endpoint</a> or by contacting our team at <a href="mailto:support@controlshiftlabs.com">support@controlshiftlabs.com</a>.</p>
+
+<p>Finally, when the compression for data exports is enabled the filename includes an additional <code>.bz2</code> suffix.</p>
+<h3 id='bulk-data-bulk-data-files-files-compression'>Files compression</h3>
+<p>When the <strong>Compress bulk data exports</strong> option is enabled (available at the Webhooks integration page), incremental and nightly bulk data export files will be compressed in <a href="https://sourceware.org/bzip2/"><code>bzip2</code> format</a>. This will improve the performance for fetching the files from S3 since they will be considerably smaller.</p>
+<h2 id='bulk-data-processing-the-exported-data'>Processing the exported data</h2>
 <p>It&#39;s possible to consume the Bulk Data API in its underlying format as CSV files in an S3 bucket or as a higher level
 HTTPS Webhook API that is not specific to AWS or S3. Many data warehouse integration technologies like <a href="https://cloud.google.com/bigquery/docs/s3-transfer">BigQuery S3 Transfers</a>,
 <a href="https://docs.airbyte.com/integrations/sources/s3/">Airbyte</a> or <a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/build-an-etl-service-pipeline-to-load-data-incrementally-from-amazon-s3-to-amazon-redshift-using-aws-glue.html">AWS Data Glue</a>
@@ -6634,15 +6712,7 @@ you can use our webhook events to get the same data in a cloud platform agnostic
 <p>We provide a <a href="#bulk-data-controlshift-to-redshift-pipeline">ControlShift to Redshift Pipeline</a> as an example of sample code that demonstrates how to use the high-level webhooks to mirror your ControlShift data into Redshift.
 Similar strategies can be used to mirror your data into other data warehouses. We&#39;ve designed the underlying APIs to work flexibly regardless of
 your technical architecture. Since we expose the file events as standard HTTPS webhooks they should be compatible with any programming language.</p>
-<h2 id='bulk-data-export-schedule-and-webhooks'>Export schedule and webhooks</h2>
-<p>Every night, we&#39;ll export the most up-to-date version of all of your data into a set of CSV files, one for each internal ControlShift table. The <a href="#webhook-endpoints-data-full_table_exported">data.full_table_exported</a> indicates such an export. These full CSV files should <em>replace</em> the existing data in your mirror database.</p>
-
-<p>Additionally, once a minute, we&#39;ll produce CSV files with any new rows that have been <em>added</em> to ControlShift&#39;s internal tables. The <a href="#webhook-endpoints-data-incremental_table_exported">data.incremental_table_exported</a> webhooks indicates a set of these added-rows exports. Note that the incremental exports do <em>not</em> include any updates or deletions of existing rows; you&#39;ll have to wait for the nightly export to receive fresh data with updates and deletions included.</p>
-
-<aside class="notice">
-Bulk data webhooks should be automatically included when adding a new webhook endpoint. Please contact support to report any issues with bulk data webhook generation. For testing, you can manually trigger these wehbooks by visiting <code>https://&lt;your controlshift instance&gt;/org/settings/integrations/webhook_endpoints</code> and clicking on "Trigger" under "Test Nightly Bulk Data Export Webhook".
-</aside>
-<h2 id='bulk-data-bulk-data-data-schemas'>Bulk Data Data Schemas</h2>
+<h2 id='bulk-data-data-schemas'>Data schemas</h2>
 <p>The bulk data webhooks include exports of the following tables:</p>
 
 <ul>
@@ -6713,41 +6783,13 @@ Bulk data webhooks should be automatically included when adding a new webhook en
 </ul>
 
 <p>For full information on the schema of each table, use the <code>/api/bulk_data/schema.json</code> API endpoint.</p>
-<h2 id='bulk-data-bulk-data-files'>Bulk Data Files</h2>
-<p>Each table exposed by the bulk data API is made available as a CSV file with the URL to download each file sent via webhook.</p>
-
-<p>We expire access to data 6 hours after it has been generated. This means that if you are building an automated system
-to ingest data from this API it must process webhook notifications within 6 hours.</p>
-
-<p>Once webhook data has expired, the download URLs will return a 403 error response.</p>
-
-<p>The files on S3 can be accessed directly before they are expired by using the following URL format:</p>
-
-<p><strong>Incremental table export:</strong><br>
-<code>https://&lt;data exports bucket&gt;.s3.amazonaws.com/&lt;your organization slug&gt;/incremental/&lt;table name&gt;/&lt;date in YYYYMMDD format&gt;/&lt;table name&gt;_&lt;timestamp&gt;.csv</code></p>
-
-<p><strong>Full table export:</strong><br>
-<code>https://&lt;data exports bucket&gt;.s3.amazonaws.com/&lt;your organization slug&gt;/full/&lt;table name&gt;/&lt;date in YYYYMMDD format&gt;/&lt;table name&gt;_&lt;timestamp&gt;.csv</code></p>
-
-<p>Where <code>&lt;data exports bucket&gt;</code> depends on which data center your organization is hosted on:</p>
-
-<ul>
-<li>For organizations hosted in the <strong>US</strong> the bucket is: <code>agra-data-exports-production</code></li>
-<li>For organizations hosted in the <strong>EU</strong> the bucket is: <code>agra-data-exports-production-eu-central-1</code></li>
-</ul>
-
-<p>The value for <code>&lt;your organization slug&gt;</code> is the identifier for your organization within the ControlShift platform. You can find this value using the <a href="#authenticated-rest-api-organisation">Organization Retrieve API endpoint</a> or by contacting our team at <a href="mailto:support@controlshiftlabs.com">support@controlshiftlabs.com</a>.</p>
-
-<p>Finally, when the compression for data exports is enabled the filename includes an additional <code>.bz2</code> suffix.</p>
-<h3 id='bulk-data-bulk-data-files-files-compression'>Files compression</h3>
-<p>When the <strong>Compress bulk data exports</strong> option is enabled (available at the Webhooks integration page), incremental and nightly bulk data export files will be compressed in <a href="https://sourceware.org/bzip2/"><code>bzip2</code> format</a>. This will improve the performance for fetching the files from S3 since they will be considerably smaller.</p>
-<h3 id='bulk-data-bulk-data-files-interpreting-the-share_clicks-table'>Interpreting the share_clicks table</h3>
+<h3 id='bulk-data-data-schemas-interpreting-the-share_clicks-table'>Interpreting the share_clicks table</h3>
 <p>The <code>share_clicks</code> table is designed to help you understand in detail how social media sharing influences member actions.
 Every time a member clicks on a social sharing link on a petition or event page, it&#39;s recorded in the <code>share_clicks</code> table,
 and we add a unique sharing token to the campaign link they share. When another member follows the shared link and
 signs a petition, we record the <code>referring_share_click_id</code> for the new signature. Thus it is possible to trace the origin
 of a signature to the member who shared a campaign on social media.</p>
-<h4 id='bulk-data-bulk-data-files-interpreting-the-share_clicks-table-auto-generated-share-clicks'>Auto-generated share clicks</h4>
+<h4 id='bulk-data-data-schemas-interpreting-the-share_clicks-table-auto-generated-share-clicks'>Auto-generated share clicks</h4>
 <p>For button clicks on campaign pages, we can create share click records on the fly, using Javascript.
 But when members click on social sharing links in emails, or forward campaign emails to their friends, it&#39;s impossible
 to track that activity directly.</p>
@@ -6760,7 +6802,7 @@ Thanks For Signing email, and the Thanks For Creating Petition email.</p>
 
 <p>The pre-created <code>share_clicks</code> records have <code>true</code> values in the <code>auto_generated</code> column, to allow distinguishing them
 from records that represent a member definitely clicking on something.</p>
-<h4 id='bulk-data-bulk-data-files-interpreting-the-share_clicks-table-column-by-column'>Column by column</h4>
+<h4 id='bulk-data-data-schemas-interpreting-the-share_clicks-table-column-by-column'>Column by column</h4>
 <table><thead>
 <tr>
 <th>Column</th>
@@ -6804,7 +6846,7 @@ from records that represent a member definitely clicking on something.</p>
 <td>Whether this is an auto-generated share click. Boolean.</td>
 </tr>
 </tbody></table>
-<h3 id='bulk-data-bulk-data-files-interpreting-the-unsubscribes-table'>Interpreting the unsubscribes table</h3>
+<h3 id='bulk-data-data-schemas-interpreting-the-unsubscribes-table'>Interpreting the unsubscribes table</h3>
 <p>The <code>unsubscribes</code> table is used for keeping a record of all member unsubscribes.</p>
 
 <p>There are several kinds of unsubscribes:</p>
@@ -6875,7 +6917,7 @@ from records that represent a member definitely clicking on something.</p>
 <td>Same as <code>created_at</code> as unsubscribe records cannot be updated after creation.</td>
 </tr>
 </tbody></table>
-<h2 id='bulk-data-controlshift-to-redshift-pipeline'>ControlShift to Redshift Pipeline</h2>
+<h2 id='bulk-data-controlshift-to-redshift-pipeline'>ControlShift to Redshift pipeline</h2>
 <p>Setting up an Amazon Redshift integration is a great way to learn more about the actions your members are taking or perform
 sophisticated analytics, but it is an advanced topic that requires knowledge of Amazon Web Services, SQL, and Terraform.</p>
 
