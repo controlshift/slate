@@ -164,7 +164,8 @@ Petition are pieces of content that can be signed by members.
     "twitter_share_message": "Sign this petition to end tea taxes",
     "twitter_share_title": "No Taxes on Tea",
     "web_share_api_share_message": "Check out this petition about tea taxes",
-    "whatsapp_share_message": "I just signed a petition about tea taxes. Join me!"
+    "whatsapp_share_message": "I just signed a petition about tea taxes. Join me!",
+    "share_by_email_body": "I just signed this petition and thought you might be interested. Will you join me?"
   }
 }
 ```
@@ -345,7 +346,8 @@ Get a paginated list of all petitions, including ones that are unlaunched or oth
     "twitter_share_message": null,
     "twitter_share_title": null,
     "web_share_api_share_message": null,
-    "whatsapp_share_message": null
+    "whatsapp_share_message": null,
+    "share_by_email_body": null
   }
 }
 ```
@@ -439,6 +441,7 @@ meta_title | String | Custom meta title for the petition page (used for SEO and 
 partnerships | Array | List of partnerships this petition should be associated with, formatted like `[{"slug": "foo"}, {"slug": "bar"}]`. If the petition was associated with any partnerships that are not included in the list, it will be removed from those partnerships.
 petition_creator_name_override | String | Name to display for the petition creator on the petition page. Set to `null` to use the name from the petition creator's user account.
 redirect_to | String | If set, visitors to the petition page will be redirected to this URL
+share_by_email_body | String | Custom message pre-filled in the email body when supporters click the "Share by Email" button. Supports Liquid templating. Set to `null` to use the organisation's default.
 show_progress_bar | Boolean | Whether to show the signature progress bar on the petition page
 signature_count_add_amount | Integer | If set, the displayed signature total on the petition page will be this much higher than the actual number of signatures recorded by the platform. This is usually used to reflect signatures that were gathered elsewhere and cannot be added to the platform, or signers whose data has been anonymized. A negative number can be specified to subtract from the total.
 title | String | Petition title

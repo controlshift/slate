@@ -74,7 +74,8 @@ The authenticated REST API endpoints for events only deal with events created in
       "twitter_share_message": "Attending this event to deliver our petition",
       "twitter_share_title": "Deliver the Petition to the Wizard",
       "web_share_api_share_message": "Check out this event in the Emerald City",
-      "whatsapp_share_message": "I'm attending this event to deliver the petition. Join me!"
+      "whatsapp_share_message": "I'm attending this event to deliver the petition. Join me!",
+      "share_by_email_body": "I'm attending this event and thought you might be interested. Will you join me?"
     },
     ...
   ],
@@ -160,7 +161,8 @@ The response includes all the same data as the single-event endpoint for each ev
     "twitter_share_message": "Attending this event to deliver our petition",
     "twitter_share_title": "Deliver the Petition to the Wizard",
     "web_share_api_share_message": "Check out this event in the Emerald City",
-    "whatsapp_share_message": "I'm attending this event to deliver the petition. Join me!"
+    "whatsapp_share_message": "I'm attending this event to deliver the petition. Join me!",
+    "share_by_email_body": "I'm attending this event and thought you might be interested. Will you join me?"
   }
 }
 ```
@@ -290,7 +292,8 @@ the event `slug` is `chapter-meeting-1`.
     "twitter_share_message": null,
     "twitter_share_title": null,
     "web_share_api_share_message": null,
-    "whatsapp_share_message": null
+    "whatsapp_share_message": null,
+    "share_by_email_body": null
   }
 }
 ```
@@ -346,6 +349,7 @@ max_attendees_count | Integer | Limit on how many people, besides the host, may 
 meta_description | String | Custom meta description for the event page (used for SEO and social media previews)
 meta_title | String | Custom meta title for the event page (used for SEO and social media previews)
 redirect_to | String | If set, visitors to the event page will be redirected to this URL
+share_by_email_body | String | Custom message pre-filled in the email body when supporters click the "Share by Email" button. Supports Liquid templating. Set to `null` to use the organisation's default.
 sharing_disabled | Boolean | Turns off the social sharing prompts for the event
 title | String | Event title
 twitter_share_description | String | Custom description used when sharing the event on Twitter/X
