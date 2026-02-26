@@ -1,9 +1,14 @@
 ruby '>= 3.1'
 source 'https://rubygems.org'
 
+gem 'benchmark'
 gem 'bigdecimal'
-gem 'mutex_m'
 gem 'base64'
+gem 'csv'
+gem 'logger'
+gem 'mutex_m'
+gem 'ostruct'
+gem 'rdoc'
 
 # Middleman
 gem 'middleman', '~> 4.4'
