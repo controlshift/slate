@@ -11,7 +11,7 @@ gem 'ostruct'
 gem 'rdoc'
 
 # Middleman
-gem 'middleman', '~> 4.4'
+gem 'middleman', '~> 4.6.3'
 gem 'middleman-syntax', '~> 3.2'
 gem 'middleman-autoprefixer', '~> 3.0'
 gem 'middleman-sprockets', '~> 4.1'
