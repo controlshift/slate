@@ -53,7 +53,7 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      ruby-version: '4.0'
+      ruby-version: '3.4'
 
     steps:
     - uses: actions/checkout@v4

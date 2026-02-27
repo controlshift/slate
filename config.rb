@@ -8,7 +8,6 @@ end
 # from: https://github.com/slatedocs/slate/issues/738#issuecomment-406353752
 require './lib/nesting_unique_head.rb'
 require './lib/bulk_data_schema.rb'
-require './config/borrower_patch.rb'
 
 # Markdown
 set :markdown_engine, :redcarpet
