@@ -1,3 +1,8 @@
+# Monkey-patch File.exists? removed in Ruby 3.2, needed by the borrower gem
+class << ::File
+  alias_method :exists?, :exist? unless method_defined?(:exists?)
+end
+
 # Unique header generation
 # Fix for issue with header titles that are duplicated in different sections of the ToC
 # from: https://github.com/slatedocs/slate/issues/738#issuecomment-406353752
