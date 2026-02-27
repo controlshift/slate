@@ -110,10 +110,10 @@ GEM
       drb (~> 2.0)
       prism (~> 1.5)
     mutex_m (0.3.0)
-    nokogiri (1.18.10)
+    nokogiri (1.19.1)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.18.10-x86_64-linux-gnu)
+    nokogiri (1.19.1-x86_64-linux-gnu)
       racc (~> 1.4)
     ostruct (0.6.3)
     padrino-helpers (0.16.0)
@@ -187,7 +187,7 @@ DEPENDENCIES
   middleman-sprockets (~> 4.1)
   middleman-syntax (~> 3.2)
   mutex_m
-  nokogiri (~> 1.18.1)
+  nokogiri (~> 1.19)
   ostruct
   rdoc
   redcarpet (~> 3.6.0)
@@ -196,7 +196,7 @@ DEPENDENCIES
   webrick
 
 RUBY VERSION
-   ruby 3.4.7p58
+   ruby 4.0.1p0
 
 BUNDLED WITH
    2.6.8
