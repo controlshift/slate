@@ -43,8 +43,8 @@ $(document).ready(function(){
   "goal": 500,
   "effort": null,
   "partnership": null,
-  "resized_image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741",
-  "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741",
+  "resized_image_url": "https://images.controlshift.app/rails/active_storage/representations/proxy/abc123defg--12345/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg",
+  "image_url": "https://images.controlshift.app/rails/active_storage/representations/proxy/abc123defg--hijklmnop/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg",
   "creator_name": "Kristyn Arrighi",
   "signature_count": 223,
   "location": {

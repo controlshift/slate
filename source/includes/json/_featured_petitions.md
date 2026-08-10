@@ -40,23 +40,23 @@ $(document).ready(function(){
       "ended": false,
       "created_at": "2014-10-02T01:43:17Z",
       "updated_at": "2018-05-07T15:38:39Z",
-      "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/hero/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741",
+      "image_url": "https://images.controlshift.app/rails/active_storage/representations/proxy/abc123defg--12345/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg",
       "additional_image_sizes_url": [
         {
           "style": "original",
-          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/original/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"
+          "url": "https://images.controlshift.app/rails/active_storage/representations/proxy/abc123defg--hijklmnop/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg"
         },
         {
-          "style": "form",
-          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/form/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"
+          "style": "small_landscape",
+          "url": "https://images.controlshift.app/rails/active_storage/representations/proxy/abc123defg--qrstuv/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg"
         },
         {
-          "style": "horizontal",
-          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/horizontal/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"
+          "style": "landscape",
+          "url": "https://images.controlshift.app/rails/active_storage/representations/proxy/abc123defg--12345/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg"
         },
         {
-          "style": "open_graph",
-          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/92283/open_graph/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg?1473884741"
+          "style": "social",
+          "url": "https://images.controlshift.app/rails/active_storage/representations/proxy/abc123defg--abcde/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg"
         }
       ],
       "target": {
@@ -104,24 +104,23 @@ $(document).ready(function(){
       "ended": false,
       "created_at": "2016-08-12T18:08:32Z",
       "updated_at": "2016-09-14T12:43:45Z",
-      "image_url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/167492/original/IMG_1854.JPG?1472046912",
+      "image_url": "https://images.controlshift.app/rails/active_storage/representations/proxy/abc123defg--12345/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg",
       "additional_image_sizes_url": [
-      ]
         {
           "style": "original",
-          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/167492/original/IMG_1854.JPG?1473884741"
+          "url": "https://images.controlshift.app/rails/active_storage/representations/proxy/abc123defg--hijklmnop/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg"
         },
         {
-          "style": "form",
-          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/167492/form/IMG_1854.JPG?1473884741"
+          "style": "small_landscape",
+          "url": "https://images.controlshift.app/rails/active_storage/representations/proxy/abc123defg--qrstuv/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg"
         },
         {
-          "style": "horizontal",
-          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/167492/horizontal/IMG_1854.JPG?1473884741"
+          "style": "landscape",
+          "url": "https://images.controlshift.app/rails/active_storage/representations/proxy/abc123defg--12345/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg"
         },
         {
-          "style": "open_graph",
-          "url": "https://d8s293fyljwh4.cloudfront.net/petitions/images/167492/open_graph/IMG_1854.JPG?1473884741"
+          "style": "social",
+          "url": "https://images.controlshift.app/rails/active_storage/representations/proxy/abc123defg--abcde/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg"
         }
       ],
       "location": {
