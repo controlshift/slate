@@ -18,7 +18,7 @@ Partnerships are other organisations you collaborate with using the platform.
       "created_at": "2015-12-02T01:43:17Z",
       "updated_at": "2015-12-02T01:43:17Z",
       "url": "https://demo.controlshiftlabs.com/partnerships/fight-fascism",
-      "image":  "https://cdn.example.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODI2Mzg5LCJ--f17a/OiJ2YXJpYXRpb24ifX0=--924a23c065f/a-little-teapot.png"
+      "image":  "https://images.controlshift.app/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODI2Mzg5LCJ--f17a/OiJ2YXJpYXRpb24ifX0=--924a23c065f/a-little-teapot.png"
     },
     {
       "id": 107,
@@ -63,7 +63,7 @@ Get a paginated list of all partnerships.
     "created_at": "2015-12-02T01:43:17Z",
     "updated_at": "2015-12-02T01:43:17Z",
     "url": "https://demo.controlshiftlabs.com/partnerships/fight-fascism",
-    "image": "https://cdn.example.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODI2Mzg5LCJ--f17a/OiJ2YXJpYXRpb24ifX0=--924a23c065f/a-little-teapot.png"
+    "image": "https://images.controlshift.app/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODI2Mzg5LCJ--f17a/OiJ2YXJpYXRpb24ifX0=--924a23c065f/a-little-teapot.png"
   }
 }
 ```
