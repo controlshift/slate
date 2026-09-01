@@ -7750,7 +7750,7 @@ the petition <code>slug</code> is <code>save-our-library</code>.</p>
 <div></div>
 <h3 id='authenticated-rest-api-petitions-list'>List</h3>
 <blockquote>
-<p>GET response body</p>
+<p>GET response body for cursor-based pagination</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"petitions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -7770,19 +7770,36 @@ the petition <code>slug</code> is <code>save-our-library</code>.</p>
   </span><span class="p">],</span><span class="w">
 
   </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"previous_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"next_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="nl">"next_since_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">134</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Get a paginated list of all petitions, including ones that are unlaunched or otherwise not visible to the public. Includes all the same data as the single-petition endpoint for each petition.</p>
+<p>Get a paginated list of all petitions, including petitions that are unlaunched or otherwise not visible to the public. Each petition contains the same data returned by the single-petition endpoint.</p>
 
-<p>This is a paginated response. You can advance to the next page using the page parameter, which accepts a page number integer.
-By default the first page is returned.</p>
+<p>This endpoint supports two pagination mechanisms:</p>
 
-<p><code>GET /api/v1/petitions?page=1</code></p>
+<ul>
+<li><p><strong>Cursor-based pagination (recommended):</strong> Pass the <code>since_id</code> parameter with a petition ID. The response returns up to <code>per_page</code> petitions with IDs greater than <code>since_id</code>. To retrieve the first page, use <code>since_id=0</code>. Petitions are returned in ascending order by ID.</p>
+
+<p>The meta object includes:</p>
+
+<ul>
+<li><code>next_since_id</code>: the value to pass as <code>since_id</code> when requesting the next page.</li>
+<li><code>has_more</code>: whether additional petitions are available.</li>
+<li><code>per_page</code>: the number of petitions requested per page.</li>
+<li><code>total_count</code>: the total number of petitions.</li>
+</ul>
+
+<p>Use <code>per_page</code> to control the number of petitions returned per page. The default is 10 and the maximum is 100.</p></li>
+<li><p><strong>Page-number pagination:</strong> Pass the <code>page</code> parameter with the page number to retrieve. The meta object includes <code>current_page</code>, <code>total_pages</code>, <code>previous_page</code>, and <code>next_page</code>.</p></li>
+</ul>
+
+<p>The cursor-based approach is preferred as it offers better performance and allows retrieving larger result sets by using the <code>per_page</code> parameter.
+For backward compatibility, we use by default the page number mechanism for requests not including the <code>since_id</code> or <code>page</code> parameters, and we return the first page of results.</p>
+
+<p><code>GET /api/v1/petitions?since_id=0</code></p>
 
 <div></div>
 <h3 id='authenticated-rest-api-petitions-create'>Create</h3>
