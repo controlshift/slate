@@ -210,16 +210,26 @@ the petition `slug` is `save-our-library`.
 }
 ```
 
-Get a paginated list of all petitions, including ones that are unlaunched or otherwise not visible to the public. Includes all the same data as the single-petition endpoint for each petition.
+Get a paginated list of all petitions, including petitions that are unlaunched or otherwise not visible to the public. Each petition contains the same data returned by the single-petition endpoint.
 
-This is a paginated response. You can use two different mechanisms to advance to the next page of results:
+This endpoint supports two pagination mechanisms:
 
-- Using a cursor-based approach, passing the `since_id` parameter, which accepts a petition ID integer. The response will include all petitions with IDs greater than the `since_id` value and the `meta` object will include the `next_since_id`, `has_more` and `total_count` values. When using this pagination mechanism you can also pass a `per_page` parameter to change the limit of the number of petitions returned per page. The default is 10, and the maximum is 100. To retrieve the first page use `since_id=0`.
-- Passing the `page` parameter, which accepts a page number integer. The response includes a `meta` object with the `current_page`, `total_pages`, `previous_page` and `next_page` values.
+- **Cursor-based pagination (recommended):** Pass the `since_id` parameter with a petition ID. The response returns up to `per_page` petitions with IDs greater than `since_id`. To retrieve the first page, use `since_id=0`. Petitions are returned in ascending order by ID.
 
-By default we use the non cursor-based mechanism, returning the first page of results.
+    The meta object includes:
+    - `next_since_id`: the value to pass as `since_id` when requesting the next page.
+    - `has_more`: whether additional petitions are available.
+    - `per_page`: the number of petitions requested per page.
+    - `total_count`: the total number of petitions.
 
-`GET /api/v1/petitions?page=1`
+    Use `per_page` to control the number of petitions returned per page. The default is 10 and the maximum is 100.
+
+- **Page-number pagination:** Pass the `page` parameter with the page number to retrieve. The meta object includes `current_page`, `total_pages`, `previous_page`, and `next_page`.
+
+The cursor-based approach is preferred as it offers better performance and allows retrieving larger result sets by using the `per_page` parameter.
+For backward compatibility, we use by default the page number mechanism for requests not including the `since_id` or `page` parameters, and we return the first page of results.
+
+`GET /api/v1/petitions?since_id=0`
 
 <div></div>
 
