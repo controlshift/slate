@@ -7776,28 +7776,18 @@ the petition <code>slug</code> is <code>save-our-library</code>.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Get a paginated list of all petitions, including petitions that are unlaunched or otherwise not visible to the public. Each petition contains the same data returned by the single-petition endpoint.</p>
+<p>Get a paginated list of all petitions, including petitions that are unlaunched or otherwise not visible to the public. Each petition includes the same data returned by the single-petition endpoint.
+Pass the <code>since_id</code> parameter with a petition ID, and a <code>per_page</code> parameter to control the number of petitions returned per page. The default for the latter is 10 petitions per page, and the maximum is 100.</p>
 
-<p>This endpoint supports two pagination mechanisms:</p>
-
-<ul>
-<li><p><strong>Cursor-based pagination (recommended):</strong> Pass the <code>since_id</code> parameter with a petition ID. The response returns up to <code>per_page</code> petitions with IDs greater than <code>since_id</code>. To retrieve the first page, use <code>since_id=0</code>. Petitions are returned in ascending order by ID.</p>
+<p>The response returns up to <code>per_page</code> petitions with IDs greater than <code>since_id</code> in ascending order by ID. To retrieve the first page, use <code>since_id=0</code>.</p>
 
 <p>The meta object includes:</p>
 
 <ul>
 <li><code>next_since_id</code>: the value to pass as <code>since_id</code> when requesting the next page.</li>
 <li><code>has_more</code>: whether additional petitions are available.</li>
-<li><code>per_page</code>: the number of petitions requested per page.</li>
-<li><code>total_count</code>: the total number of petitions.</li>
+<li><code>per_page</code>: the requested number of petitions per page.</li>
 </ul>
-
-<p>Use <code>per_page</code> to control the number of petitions returned per page. The default is 10 and the maximum is 100.</p></li>
-<li><p><strong>Page-number pagination:</strong> Pass the <code>page</code> parameter with the page number to retrieve. The meta object includes <code>current_page</code>, <code>total_pages</code>, <code>previous_page</code>, and <code>next_page</code>.</p></li>
-</ul>
-
-<p>The cursor-based approach is preferred as it offers better performance and allows retrieving larger result sets by using the <code>per_page</code> parameter.
-For backward compatibility, we use by default the page number mechanism for requests not including the <code>since_id</code> or <code>page</code> parameters, and we return the first page of results.</p>
 
 <p><code>GET /api/v1/petitions?since_id=0</code></p>
 
