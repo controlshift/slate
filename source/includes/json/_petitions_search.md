@@ -23,6 +23,27 @@
           {"name": "Infrastructure", "slug": "infrastructure"},
           {"name": "Lions & Tigers & Bears", "slug": "lions-tigers-bears"}
         ],
+        "image": {
+          "image_url": "https://images.controlshift.app/rails/active_storage/representations/proxy/abc123defg--12345/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg",
+          "additional_image_sizes_url": [
+            {
+              "style": "original",
+              "url": "https://images.controlshift.app/rails/active_storage/representations/proxy/abc123defg--hijklmnop/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg"
+            },
+            {
+              "style": "small_landscape",
+              "url": "https://images.controlshift.app/rails/active_storage/representations/proxy/abc123defg--qrstuv/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg"
+            },
+            {
+              "style": "landscape",
+              "url": "https://images.controlshift.app/rails/active_storage/representations/proxy/abc123defg--12345/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg"
+            },
+            {
+              "style": "social",
+              "url": "https://images.controlshift.app/rails/active_storage/representations/proxy/abc123defg--abcde/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg"
+            }
+          ]
+        },
         "who": " Oz, the Great and Terrible, Wizard",
         "target": {
           "name": " Oz, the Great and Terrible",
