@@ -9,6 +9,7 @@
       "total_pages": 1,
       "total_entries": 2,
       "per_page": 10,
+      "current_page": 1,
       "search_term": "wizard"
     },
   "data":
@@ -18,6 +19,31 @@
         "title": "Let Dorothy Go Home!",
         "url": "http://demo.controlshiftlabs.com/petitions/let-dorothy-go-home",
         "admin_status": "good",
+        "categories": [
+          {"name": "Infrastructure", "slug": "infrastructure"},
+          {"name": "Lions & Tigers & Bears", "slug": "lions-tigers-bears"}
+        ],
+        "image": {
+          "image_url": "https://images.controlshift.app/rails/active_storage/representations/proxy/abc123defg--12345/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg",
+          "additional_image_sizes_url": [
+            {
+              "style": "original",
+              "url": "https://images.controlshift.app/rails/active_storage/representations/proxy/abc123defg--hijklmnop/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg"
+            },
+            {
+              "style": "small_landscape",
+              "url": "https://images.controlshift.app/rails/active_storage/representations/proxy/abc123defg--qrstuv/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg"
+            },
+            {
+              "style": "landscape",
+              "url": "https://images.controlshift.app/rails/active_storage/representations/proxy/abc123defg--12345/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg"
+            },
+            {
+              "style": "social",
+              "url": "https://images.controlshift.app/rails/active_storage/representations/proxy/abc123defg--abcde/2016-06-20-1466458252-1098096-ywllowbrickroad.jpg"
+            }
+          ]
+        },
         "who": " Oz, the Great and Terrible, Wizard",
         "target": {
           "name": " Oz, the Great and Terrible",
@@ -60,13 +86,15 @@
           "region": "NY",
           "street_number": "",
           "created_at": "2016-06-10T19:13:19Z"
-        }
+        },
+        "activity_score": 5.8
       },
       {
         "slug": "stop-saruman-saruman-the-white",
         "title": "Stop Saruman",
         "url": "http://demo.controlshiftlabs.com/petitions/stop-saruman-saruman-the-white",
         "admin_status": "good",
+        "categories": [],
         "who": "Saruman The White (Wizard)",
         "target":
         {
@@ -115,7 +143,8 @@
           "street_number": "94C7+4R",
           "created_at": "2021-07-19T19:55:11Z"
         }
-      }
+      },
+      "activity_score": "5.6"
     ]
 }
 ```
