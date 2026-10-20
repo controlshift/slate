@@ -330,10 +330,9 @@ Permanently deletes the signature with the specified ID. Note that this will dec
     }
   ],
   "meta": {
-    "current_page": 2,
-    "total_pages": 2,
-    "previous_page": 1,
-    "next_page": null
+    "next_since_id": 123,
+    "has_more": true,
+    "per_page": 25
   }
 }
 ```
@@ -341,7 +340,7 @@ Permanently deletes the signature with the specified ID. Note that this will dec
 
 List the signatures that are part of a Petition.
 
-<%= partial "includes/shared/pagination.md" %>
+<%= partial "includes/authenticated_api/cursor_pagination.md.erb", locals: {item_type_singular: 'signature', item_type_plural: 'signatures'} %>
 
 Hash     | Description
 --------- | -------
@@ -349,7 +348,7 @@ meta      | pagination information
 petition  | basic information about the petition
 signatures | an array of signature results
 
-`GET /api/v1/petitions/no-taxes-on-tea/signatures?page=2`
+`GET /api/v1/petitions/no-taxes-on-tea/signatures?since_id=123&per_page=25`
 
 
 <div></div>
