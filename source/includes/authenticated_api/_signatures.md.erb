@@ -330,10 +330,9 @@ Permanently deletes the signature with the specified ID. Note that this will dec
     }
   ],
   "meta": {
-    "current_page": 2,
-    "total_pages": 2,
-    "previous_page": 1,
-    "next_page": null
+    "next_since_id": 123,
+    "has_more": true,
+    "per_page": 25
   }
 }
 ```
@@ -341,7 +340,8 @@ Permanently deletes the signature with the specified ID. Note that this will dec
 
 List the signatures that are part of a Petition.
 
-<%= partial "includes/shared/pagination.md" %>
+Pass the `since_id` parameter with a signature ID, and a `per_page` parameter to control the number of signatures returned per page. The default for the latter is 10 signatures per page, and the maximum is 100.
+The response returns up to `per_page` signatures with IDs greater than `since_id` in ascending order by ID. To retrieve the first page, use `since_id=0`.
 
 Hash     | Description
 --------- | -------
@@ -349,7 +349,13 @@ meta      | pagination information
 petition  | basic information about the petition
 signatures | an array of signature results
 
-`GET /api/v1/petitions/no-taxes-on-tea/signatures?page=2`
+The meta object includes:
+
+- `next_since_id`: the value to pass as `since_id` when requesting the next page.
+- `has_more`: whether additional signatures are available.
+- `per_page`: the requested number of signatures per page.
+
+`GET /api/v1/petitions/no-taxes-on-tea/signatures?since_id=123&per_page=25`
 
 
 <div></div>
