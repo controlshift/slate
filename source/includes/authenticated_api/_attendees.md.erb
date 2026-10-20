@@ -224,7 +224,7 @@ Permanently deletes the attendee with the specified ID.
 
 List the attendees that have RSVPed to an Event.
 
-<%= partial "includes/shared/pagination.md" %>
+<%= partial "includes/authenticated_api/cursor_pagination.md.erb", locals: {item_type_singular: 'attendee', item_type_plural: 'attendees'} %>
 
 Hash        | Description
 ----------- | -----------
@@ -232,7 +232,7 @@ meta        | pagination information
 event       | basic information about the event
 attendees   | an array of attendee results
 
-`GET /api/v1/events/deliver-the-petition-to-the-wizard/attendees?page=2`
+`GET /api/v1/events/deliver-the-petition-to-the-wizard/attendees?since_id=123&per_page=25`
 
 <div></div>
 
