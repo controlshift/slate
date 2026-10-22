@@ -95,9 +95,9 @@ GEM
     middleman-sprockets (4.1.1)
       middleman-core (~> 4.0)
       sprockets (>= 3.0)
-    middleman-syntax (3.4.0)
+    middleman-syntax (3.6.2)
       middleman-core (>= 3.2)
-      rouge (~> 3.2)
+      rouge (>= 3.2, < 5)
     mini_portile2 (2.8.9)
     minitest (6.0.2)
       drb (~> 2.0)
@@ -126,7 +126,7 @@ GEM
       ffi (~> 1.0)
     redcarpet (3.6.1)
     rexml (3.4.4)
-    rouge (3.30.0)
+    rouge (4.7.0)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -166,7 +166,7 @@ DEPENDENCIES
   mutex_m
   nokogiri (~> 1.19.4)
   redcarpet (~> 3.6.0)
-  rouge (~> 3.21)
+  rouge (~> 4.7)
   sass
   sprockets (~> 3.7)
   webrick
